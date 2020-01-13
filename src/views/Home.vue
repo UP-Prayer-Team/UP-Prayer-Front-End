@@ -1,18 +1,39 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+    <div class="container"> 
+      <button @click="getEndos">Get Endorsements</button>
+      <button @click="getEndo">Get current endorsements</button>
+      <button @click="update"> Update </button>
+
+
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
   name: 'home',
-  components: {
-    HelloWorld
+  methods: {
+    getEndos() {
+
+    },
+    getEndo() {
+
+    },
+    update() {
+
+    }
   }
+
+
 }
 </script>
+<style lang="scss" scoped>
+button {
+  padding: 15px;
+}
+</style>
