@@ -1,4 +1,4 @@
-let host = "https://localhost:5001";
+const host = "https://localhost:5001";
 var locations = null;
 
 function submitRequest(method, endpoint, body, onSuccess, onFailure) {
@@ -11,6 +11,8 @@ function submitRequest(method, endpoint, body, onSuccess, onFailure) {
         else {
             onFailure(json.message);
         }
+    }).catch(error => {
+        onFailure(error);
     });
 }
 
