@@ -1,4 +1,5 @@
 let host = "https://localhost:5001";
+var locations = null;
 
 function submitRequest(method, endpoint, body, onSuccess, onFailure) {
     fetch(new Request(host + endpoint, { method: method, body: body })).then(response => {
@@ -16,6 +17,78 @@ function submitRequest(method, endpoint, body, onSuccess, onFailure) {
 export default class UPClient {
 
     // onFailure: (message: String) -> void
+
+    //
+    // RESERVATIONS
+    //
+
+    // year: Int
+    // monthIndex: Int
+    // onSuccess: ({ count: Int, locations: { country: String, district: String }[] }[]) -> void
+    //   The parameter is an array of summaries for the days in the requested month.
+    //   Each day's summary contains the number of confirmed reservations (`count`), as well as
+    //   some of the locations of those confirmed reservations. 
+    static getMonthSummary(year, monthIndex, onSuccess, onFailure) {
+        submitRequest("GET", "/api/reservations/summary?year=" + year + "&month=" + monthIndex, null, data => {
+            onSuccess(data);
+        }, onFailure);
+    }
+
+    // year: Int
+    // monthIndex: Int
+    // dayIndex: Int
+    // onSuccess: ({ country: String, district: String }[][]) -> void
+    //   The parameter is an array of slot summaries.
+    //   Each slot summary is an array of the locations of the reservations for that slot.
+    static getDaySummary(year, monthIndex, dayIndex, onSuccess, onFailure) {
+        submitRequest("GET", "/api/reservations/day?year=" + year + "&month=" + monthIndex + "&day=" + dayIndex, null, data => {
+            onSuccess(data);
+        }, onFailure);
+    }
+
+    // email: String
+    // countryCode: String
+    // districtCode: String
+    // slots: { year: Int, monthIndex: Int, dayIndex: Int, slotIndex: Int }[]
+    // onSuccess: () -> void
+    static createReservations(email, countryCode, districtCode, slots, onSuccess, onFailure) {
+        submitRequest("POST", "/api/reservations/create", { email: email, country: countryCode, district: districtCode, slots: slots }, _ => {
+            onSuccess();
+        }, onFailure);
+    }
+
+    // confirmationCode: String
+    // onSuccess: () -> void
+    static confirmReservation(confirmationCode, onSuccess, onFailure) {
+        submitRequest("POST", "/api/reservations/confirm", { confirmationID: confirmationCode }, _ => {
+            onSuccess();
+        }, onFailure);
+    }
+
+    //
+    // LOCATIONS
+    //
+
+    // onSuccess: ({ countryCode: String : { name: String, districts: { districtCode: String : { name: String }}}}) -> void
+    //   The parameter is a map of country codes to country data.
+    //   Each country data has a display name (`name`) and a map (`districts`) of district codes to district data.
+    //   Each district data has a display name (`name`).
+    static getLocations(onSuccess, onFailure) {
+        if (locations == null) {
+            submitRequest("GET", "/api/locations/list", null, data => {
+                locations = data;
+                onSuccess(data);
+            }, onFailure);
+        }
+        else {
+            onSuccess(locations);
+        }
+        
+    }
+
+    //
+    // ENDORSEMENTS
+    //
 
     // onSuccess: (currentIndex: Number, endorsements: { homepageURL: String, donateURL: String, summary: String }[]) -> void
     static getEndorsementList(onSuccess, onFailure) {
