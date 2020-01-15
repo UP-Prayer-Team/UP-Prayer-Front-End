@@ -1,10 +1,13 @@
 <template>
     <div class="home">
         <div class="container"> 
-        <v-btn id="button" @click="getEndos">Get Endorsements</v-btn>
-        <v-btn id="button" @click="getEndo">Get current endorsement</v-btn>
-        <v-btn id="button" @click="update"> Update </v-btn>
-        <v-btn id="button" @click="getMonthRes">Get This Month's Reservations</v-btn>
+            <v-btn id="button" @click="getEndos">Get Endorsements</v-btn>
+            <v-btn id="button" @click="getEndo">Get current endorsement</v-btn>
+            <v-btn id="button" @click="update"> Update </v-btn>
+            <v-btn id="button" @click="getMonthRes">Get This Month's Reservations</v-btn>
+            <endorsement v-bind:endorsement="currentEndorsement">
+
+            </endorsement>
         </div>
         <v-sheet min-width="150" height="100"> </v-sheet>
         
@@ -13,9 +16,18 @@
 
 <script>
 import UPClient from '../services/UPClient'
+import Endorsement from '../components/Endorsement.vue'
 
 export default {
     name: 'home',
+    components: {
+        'endorsement': Endorsement
+    },
+    data() {
+        return {
+            currentEndorsement: { homepageURL: "", donateURL: "", summary: "" }
+        };
+    },
     methods: {
         getEndos() {
             UPClient.getEndorsementList((currentIndex, endorsements) => {
@@ -27,6 +39,7 @@ export default {
         getEndo() {
             UPClient.getCurrentEndorsement(endorsement => {
                 console.log("Current endorsement: \n" + JSON.stringify(endorsement));
+                this.currentEndorsement = endorsement;
             }, message => {
                 console.log("ERROR: Couldn't get current endorsement. Message: " + message);
             });
@@ -45,11 +58,11 @@ export default {
                     for (let j = 0; j < dayData.locations.length; j++) {
                         let resData = dayData.locations[j];
                         console.log("  " + resData.district + ", " + resData.country);
-                    }   
+                    }
                 }
             }, message => {
                 console.log("ERROR: Couldn't get reservations for this month. Message: " + message);
-            })
+            });
         }
     }
 
