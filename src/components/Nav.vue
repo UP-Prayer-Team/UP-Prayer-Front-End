@@ -1,13 +1,14 @@
 <template>
     <div>
         <v-toolbar>
-            <v-tabs>
-                <v-tab>Item One</v-tab>
-                <v-tab>Item Two</v-tab>
-                <v-tab>Item Three</v-tab>
+            <v-toolbar-title>UP Prayer Movement</v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-tabs grow="true">
+                <v-tab @click="toHome">Home </v-tab>
+                <v-tab @click="toCharites">Charities</v-tab>
+                <v-tab @click="toPrayer">Prayer Guide</v-tab>
+                <v-tab @click="toAbout">About</v-tab>
             </v-tabs>
-        <v-toolbar-title>UP Prayer Movement</v-toolbar-title>
-
             <v-spacer></v-spacer>
         </v-toolbar>
     </div>
@@ -19,6 +20,21 @@ export default {
         return {
         }
     },
+
+    methods : {
+        toAbout() {
+            this.$router.replace({ name: "about" });
+            },
+        toHome() {
+            this.$router.replace({ name: "home" });
+            },
+        toCharites() {
+            this.$router.replace({ name: "charities" });
+        },
+        toPrayer() {
+            this.$router.replace({ name: "prayer" });
+        }
+    }
     
 }
 </script>
@@ -29,5 +45,8 @@ export default {
     }
     .basil--text {
         color: #356859 !important;
+    }
+    .v-toolbar__title {
+        width: 350px;
     }
 </style>
