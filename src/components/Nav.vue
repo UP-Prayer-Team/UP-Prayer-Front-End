@@ -1,15 +1,16 @@
 <template>
     <div>
-        <v-toolbar>
-            <v-tabs grow="true">
+        <v-app-bar>
+            <v-tabs grow=true>
                 <v-tab @click="toHome">UP Prayer Movement</v-tab>
                 <v-tab @click="toCharites">Charities</v-tab>
                 <v-tab @click="toPrayer">Prayer Guide</v-tab>
                 <v-tab @click="toAbout">About</v-tab>
                 <v-tab @click="toSignUp">Sign Up</v-tab>
             </v-tabs>
+            <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
             <!-- <v-spacer></v-spacer> -->
-        </v-toolbar>
+        </v-app-bar>
     </div>
 </template>
 
@@ -48,7 +49,7 @@ export default {
     .basil--text {
         color: #356859 !important;
     }
-    .v-toolbar__title {
+    /* .v-toolbar__title {
         width: 350px;
-    }
+    } */
 </style>
