@@ -1,15 +1,14 @@
 <template>
     <div>
         <v-toolbar>
-            <v-toolbar-title>UP Prayer Movement</v-toolbar-title>
-            <v-spacer></v-spacer>
             <v-tabs grow="true">
-                <v-tab @click="toHome">Home </v-tab>
+                <v-tab @click="toHome">UP Prayer Movement</v-tab>
                 <v-tab @click="toCharites">Charities</v-tab>
                 <v-tab @click="toPrayer">Prayer Guide</v-tab>
                 <v-tab @click="toAbout">About</v-tab>
+                <v-tab @click="toSignUp">Sign Up</v-tab>
             </v-tabs>
-            <v-spacer></v-spacer>
+            <!-- <v-spacer></v-spacer> -->
         </v-toolbar>
     </div>
 </template>
@@ -33,6 +32,9 @@ export default {
         },
         toPrayer() {
             this.$router.replace({ name: "prayer" });
+        },
+        toSignUp() {
+            this.$router.replace({ name: "sign-up" });
         }
     }
     
