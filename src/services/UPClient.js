@@ -2,7 +2,7 @@ const host = "https://localhost:5001";
 var locations = null;
 
 function submitRequest(method, endpoint, body, onSuccess, onFailure) {
-    fetch(new Request(host + endpoint, { method: method, body: body })).then(response => {
+    fetch(new Request(host + endpoint, { method: method, body: JSON.stringify(body), headers: { "Content-Type": "application/json" } })).then(response => {
         return response.json();
     }).then(json => {
         if (json.success) {

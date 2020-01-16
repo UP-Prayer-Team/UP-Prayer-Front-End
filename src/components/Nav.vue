@@ -3,7 +3,7 @@
         <v-toolbar>
             <v-toolbar-title>UP Prayer Movement</v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-tabs grow="true">
+            <v-tabs :grow="true">
                 <v-tab @click="toHome">Home</v-tab>
                 <v-tab @click="toSignUp">Sign Up</v-tab>
                 <v-tab @click="toCharites">Charities</v-tab>

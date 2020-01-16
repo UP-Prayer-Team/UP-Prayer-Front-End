@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <v-app id="app">
         <div id="nav">
             <nav-bar></nav-bar>
             <!-- <router-link to="/">Home</router-link> |
@@ -10,7 +10,7 @@
             <v-spacer></v-spacer>
             <div>&copy; {{ new Date().getFullYear() }}</div>
         </v-footer>
-    </div>
+    </v-app>
 </template>
 
 <script>
