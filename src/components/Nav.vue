@@ -4,7 +4,8 @@
             <v-toolbar-title>UP Prayer Movement</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-tabs grow="true">
-                <v-tab @click="toHome">Home </v-tab>
+                <v-tab @click="toHome">Home</v-tab>
+                <v-tab @click="toSignUp">Sign Up</v-tab>
                 <v-tab @click="toCharites">Charities</v-tab>
                 <v-tab @click="toPrayer">Prayer Guide</v-tab>
                 <v-tab @click="toAbout">About</v-tab>
@@ -16,18 +17,21 @@
 
 <script>
 export default {
-    data () {
+    data() {
         return {
         }
     },
 
-    methods : {
+    methods: {
         toAbout() {
             this.$router.replace({ name: "about" });
-            },
+        },
+        toSignUp() {
+            this.$router.replace({ name: "signup" });
+        },
         toHome() {
             this.$router.replace({ name: "home" });
-            },
+        },
         toCharites() {
             this.$router.replace({ name: "charities" });
         },
