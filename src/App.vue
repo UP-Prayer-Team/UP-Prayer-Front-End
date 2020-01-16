@@ -8,7 +8,7 @@
             <router-view/>
         <v-footer>
             <v-spacer></v-spacer>
-            <div>&copy; {{ new Date().getFullYear() }}</div>
+            <div>UP Prayer Movement &copy; {{ new Date().getFullYear() }}</div>
         </v-footer>
     </div>
 </template>

@@ -1,5 +1,17 @@
 <template>
     <div class="home">
+
+        <div class="map">
+            <v-carousel hide-delimiters :show-arrows="false" :cycle="true">
+                <v-carousel-item
+                v-for="(item,i) in items"
+                :key="i"
+                :src="item.src"
+                ></v-carousel-item>
+            </v-carousel>
+            
+        </div>
+
         <div class="container"> 
             <v-btn id="button" @click="getEndos">Get Endorsements</v-btn>
             <v-btn id="button" @click="getEndo">Get current endorsement</v-btn>
@@ -25,8 +37,19 @@ export default {
     },
     data() {
         return {
-            currentEndorsement: { homepageURL: "", donateURL: "", summary: "" }
-        };
+            currentEndorsement: { homepageURL: "", donateURL: "", summary: "" },
+            items: [
+                {
+                    src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
+                },
+                {
+                    src: 'https://d3nn82uaxijpm6.cloudfront.net/assets/website/heatmap/fb/heatmap-d31ff07df8339b44371bc78dee596642d9faca031132c130a03efba03aa82b57.jpg',
+                },
+                {
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Portland_and_Mt._Hood_from_Pittock_Mansion.jpg/1200px-Portland_and_Mt._Hood_from_Pittock_Mansion.jpg'
+                }
+            ],
+        }
     },
     methods: {
         getEndos() {
