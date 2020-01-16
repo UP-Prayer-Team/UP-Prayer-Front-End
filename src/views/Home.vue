@@ -17,7 +17,7 @@
             <v-btn id="button" @click="getEndo">Get current endorsement</v-btn>
             <v-btn id="button" @click="update"> Update </v-btn>
             <v-btn id="button" @click="getMonthRes">Get This Month's Reservations</v-btn>
-            <endorsement v-bind:endorsement="currentEndorsement">
+            <endorsement v-if="currentEndorsement" v-bind:endorsement="currentEndorsement">
 
             </endorsement>
         </div>
@@ -37,7 +37,7 @@ export default {
     },
     data() {
         return {
-            currentEndorsement: { homepageURL: "", donateURL: "", summary: "" },
+            currentEndorsement: null,
             items: [
                 {
                     src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',

@@ -15,18 +15,18 @@
 
 <script>
 export default {
-    data () {
+    data() {
         return {
         }
     },
 
-    methods : {
+    methods: {
         toAbout() {
             this.$router.replace({ name: "about" });
-            },
+        },
         toHome() {
             this.$router.replace({ name: "home" });
-            },
+        },
         toCharites() {
             this.$router.replace({ name: "charities" });
         },
