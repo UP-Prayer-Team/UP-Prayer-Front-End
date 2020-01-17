@@ -16,7 +16,7 @@
             <!-- <v-spacer></v-spacer> -->
         </v-app-bar>
         <v-app-bar class="hidden-md-and-up">
-        <v-toolbar-title @click="toHome"> UP Prayer Movement</v-toolbar-title>
+        <v-toolbar-title @click="toHome">UP Prayer Movement</v-toolbar-title>
         <v-spacer></v-spacer>
               <v-btn text @click.stop="drawer = !drawer">
                     <v-icon>menu</v-icon>
@@ -169,13 +169,10 @@ export default {
 }
 
 .v-toolbar__title {
-    overflow:visible !important;
+    overflow: visible !important;
     text-overflow: unset !important;
+    cursor: pointer;
 }
-
-// .v-tabs-bar.v-slide-group--is-overflowing.v-tabs-bar--is-mobile:not(.v-tabs-bar--show-arrows):not(.v-slide-group--has-affixes) .v-slide-group__prev {
-//     display: unset;
-// }
 
 
 #app:after {
