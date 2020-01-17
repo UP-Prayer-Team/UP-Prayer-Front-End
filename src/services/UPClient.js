@@ -18,6 +18,18 @@ function submitRequest(method, endpoint, body, onSuccess, onFailure) {
 
 export default class UPClient {
 
+    static numberOrParse(input) {
+        if (typeof(input) == "number") {
+            return input;
+        }
+        else if (typeof(input) == "string") {
+            return parseInt(input);
+        }
+        else {
+            throw "Not a number or string.";
+        }
+    }
+
     // onFailure: (message: String) -> void
 
     //
@@ -26,7 +38,7 @@ export default class UPClient {
 
     // year: Int
     // monthIndex: Int
-    // onSuccess: ({ count: Int, locations: { country: String, district: String }[] }[]) -> void
+    // onSuccess: ( summary: { count: Int, locations: { country: String, district: String }[] }[]) -> void
     //   The parameter is an array of summaries for the days in the requested month.
     //   Each day's summary contains the number of confirmed reservations (`count`), as well as
     //   some of the locations of those confirmed reservations. 

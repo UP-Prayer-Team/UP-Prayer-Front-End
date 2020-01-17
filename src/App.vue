@@ -1,9 +1,7 @@
 <template>
     <v-app id="app">
         <div id="nav">
-            <v-app-bar
-            
-            class="hidden-sm-and-down">
+            <v-app-bar class="hidden-sm-and-down">
             <v-toolbar-title @click="toHome">UP Prayer Movement</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-tabs :right="true">

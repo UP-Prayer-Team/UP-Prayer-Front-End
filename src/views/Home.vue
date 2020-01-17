@@ -2,7 +2,15 @@
     <div class="home">
 
         <div class="map">
-            <v-carousel hide-delimiters :show-arrows="false" :cycle="true">
+            <v-carousel :cycle="false">
+                <v-carousel-item>
+                    <v-sheet height="500">
+                        <month-summary-calendar>
+
+                        </month-summary-calendar>
+                    </v-sheet>
+                </v-carousel-item>
+
                 <v-carousel-item
                 v-for="(item,i) in items"
                 :key="i"
@@ -29,11 +37,13 @@
 <script>
 import UPClient from '../services/UPClient'
 import Endorsement from '../components/Endorsement.vue'
+import MonthSummaryCalendar from '../components/MonthSummaryCalendar.vue'
 
 export default {
     name: 'home',
     components: {
-        'endorsement': Endorsement
+        'endorsement': Endorsement,
+        'month-summary-calendar': MonthSummaryCalendar
     },
     data() {
         return {
