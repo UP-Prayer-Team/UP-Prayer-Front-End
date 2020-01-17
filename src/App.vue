@@ -1,9 +1,12 @@
 <template>
     <v-app id="app">
         <div id="nav">
-            <v-app-bar>
-            <v-tabs grow=true>
-                <v-tab @click="toHome">UP Prayer Movement</v-tab>
+            <v-app-bar
+            
+            class="hidden-sm-and-down">
+            <v-toolbar-title @click="toHome">UP Prayer Movement</v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-tabs :right="true">
                 <v-tab @click="toCharites">Charities</v-tab>
                 <v-tab @click="toPrayer">Prayer Guide</v-tab>
                 <v-tab @click="toAbout">About</v-tab>
@@ -12,9 +15,95 @@
             <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
             <!-- <v-spacer></v-spacer> -->
         </v-app-bar>
+        <v-app-bar class="hidden-md-and-up">
+        <v-toolbar-title @click="toHome"> UP Prayer Movement</v-toolbar-title>
+        <v-spacer></v-spacer>
+              <v-btn text @click.stop="drawer = !drawer">
+                    <v-icon>menu</v-icon>
+              </v-btn>
+        </v-app-bar>
             <!-- <router-link to="/">Home</router-link> |
             <router-link to="/about">About</router-link> -->
-            <v-navigation-drawer></v-navigation-drawer>
+            <v-navigation-drawer
+            v-model="drawer"
+            absolute
+            temporary
+            >
+
+        <v-list>
+
+        <v-list-item
+          link
+          @click="toHome"
+        >
+          <v-list-item-icon>
+            <v-icon>dashboard</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title style="text-align: left">Home</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item
+          link
+          @click="toCharites"
+        >
+
+        <v-list-item-icon>
+            <v-icon>dashboard</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title style="text-align: left">Charites</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item
+          link
+          @click="toPrayer"
+        >
+
+        <v-list-item-icon>
+            <v-icon>dashboard</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title style="text-align: left">Prayer Guide</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item
+          link
+          @click="toAbout"
+        >
+
+        <v-list-item-icon>
+            <v-icon>dashboard</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title style="text-align: left">About</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item
+          link
+          @click="toSignUp"
+        >
+
+        <v-list-item-icon>
+            <v-icon>dashboard</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title style="text-align: left">Sign Up</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+      </v-list>
+
+            </v-navigation-drawer>
         </div>
             <v-content>
                 <router-view/>
@@ -29,6 +118,19 @@
 <script>
 
 export default {
+
+    data() {
+        return {
+            drawer: null,
+            items: [
+                { title: 'Home', icon: 'dashboard' },
+                { title: 'Charities', icon: 'dashboard' },
+                { title: 'Prayer Guide', icon: 'dashboard' },
+                { title: 'About', icon: 'dashboard' },
+                { title: 'Sign Up', icon: 'question_answer' },
+            ],
+        }
+    },
 
     methods: {
         toAbout() {
@@ -61,6 +163,20 @@ export default {
     /* equal to footer height */
     margin-bottom: -30px; 
 }
+
+.v-content {
+    padding: 0;
+}
+
+.v-toolbar__title {
+    overflow:visible !important;
+    text-overflow: unset !important;
+}
+
+// .v-tabs-bar.v-slide-group--is-overflowing.v-tabs-bar--is-mobile:not(.v-tabs-bar--show-arrows):not(.v-slide-group--has-affixes) .v-slide-group__prev {
+//     display: unset;
+// }
+
 
 #app:after {
     display: block;
