@@ -7,7 +7,7 @@
             max-width="344"
             min-width="250"
             max-heigth="550"
-            shaped=true
+            :shaped="true"
         >
             <v-img :src="imgsrc" aspect-ratio="1.7"></v-img>
             <v-card-title> Lecia Retter </v-card-title>
