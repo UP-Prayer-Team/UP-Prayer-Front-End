@@ -74,7 +74,7 @@ export default {
             countryCode: "USA",
             districtCode: "OR",
             slots: [
-                { year: 2020, monthIndex: 0, dayIndex: 29, slotIndex: 3 }
+                { year: new Date().getUTCFullYear(), monthIndex: new Date().getUTCMonth(), dayIndex: new Date().getUTCDate(), slotIndex: 0 }
             ],
 
             countryCodeItems: [
@@ -98,7 +98,11 @@ export default {
         submit() {
             // TODO: Disable form
 
-            UPClient.createReservations(this.email, this.countryCode, this.districtCode, this.slots, () => {
+            let slotsNumeric = this.slots.map((slot => {
+                return { year: UPClient.numberOrParse(slot.year), monthIndex: UPClient.numberOrParse(slot.monthIndex), dayIndex: UPClient.numberOrParse(slot.dayIndex), slotIndex: UPClient.numberOrParse(slot.slotIndex) };
+            }));
+
+            UPClient.createReservations(this.email, this.countryCode, this.districtCode, slotsNumeric, () => {
                 this.showForm = false;
                 this.showThanks = true;
             }, (message) => {

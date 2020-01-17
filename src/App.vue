@@ -2,7 +2,7 @@
     <v-app id="app">
         <div id="nav">
             <v-app-bar>
-            <v-tabs grow=true>
+            <v-tabs :grow="true">
                 <v-tab @click="toHome">UP Prayer Movement</v-tab>
                 <v-tab @click="toCharites">Charities</v-tab>
                 <v-tab @click="toPrayer">Prayer Guide</v-tab>
