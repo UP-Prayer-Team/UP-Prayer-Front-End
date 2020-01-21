@@ -1,9 +1,4 @@
-# hello-world
-
-## Project setup
-```
-npm install
-```
+# UP Prayer Movement Website
 
 ### Compiles and hot-reloads for development
 ```
@@ -15,15 +10,14 @@ npm run serve
 npm run build
 ```
 
-### Run your tests
-```
-npm run test
-```
-
 ### Lints and fixes files
 ```
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+# Libraries and frameworks used by the project
+https://material.io/resources/icons/?style=baseline
+
+https://vuetifyjs.com/en/components/api-explorer
+
+https://vuejs.org/v2/guide/
