@@ -5,7 +5,7 @@
             <v-card
             class="mx-auto"
             max-width="344"
-            min-width="250"
+            min-width="300"
             max-heigth="550"
             :shaped="true"
         >
@@ -26,8 +26,9 @@
                 <v-card
                 class="mx-auto"
                 shaped=true
-                max-height="400"
-                min-width="400"
+                max-height="530"
+                min-width="300"
+                max-width="500"
                 >
                     <v-card-title> What is the UP Prayer Movement? </v-card-title>
                     <v-card-text>
@@ -60,12 +61,24 @@ export default {
 
 .v-card {
     margin: 1rem;
+    flex: 1 1 200px;
 }
 
 .card-grid {
+    // max-width: 940px;
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-auto-rows: auto;
+    margin: 0 20px;
     grid-gap: 1rem;
+}
+
+.v-card__title {
+    word-wrap: break-word !important;
+}
+
+.card-grid {
+  display: grid;
+  margin: 0 auto;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-auto-rows: minmax(auto, auto);
 }
 </style>
