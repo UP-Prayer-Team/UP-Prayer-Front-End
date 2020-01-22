@@ -172,7 +172,6 @@ export default {
     cursor: pointer;
 }
 
-
 #app:after {
     display: block;
 }

@@ -2,14 +2,10 @@
     <div class="home">
 
         <div class="map">
-            <v-carousel :cycle="false">
-                <v-carousel-item>
-                    <v-sheet height="500">
-                        <month-summary-calendar>
-
-                        </month-summary-calendar>
-                    </v-sheet>
-                </v-carousel-item>
+            <v-carousel 
+            :cycle="true"
+            :hide-delimiters="true"
+            :show-arrows="false">
 
                 <v-carousel-item
                 v-for="(item,i) in items"
@@ -17,32 +13,45 @@
                 :src="item.src"
                 ></v-carousel-item>
             </v-carousel>
+
+            <v-card class="banner-card">
+                <v-card-text class="headline">
+                    What happens when thousands around the world focus their prayer on bringing an end to human trafficking?
+                </v-card-text>
+                <v-card-text class="display-1 font-weight-black" style="text-align: right;">
+                    It. Ends. 
+                </v-card-text>
+            </v-card>
             
         </div>
 
         <div class="container"> 
-            <v-btn id="button" @click="getEndos">Get Endorsements</v-btn>
+            <!-- <v-btn id="button" @click="getEndos">Get Endorsements</v-btn>
             <v-btn id="button" @click="getEndo">Get current endorsement</v-btn>
             <v-btn id="button" @click="update"> Update </v-btn>
             <v-btn id="button" @click="getMonthRes">Get This Month's Reservations</v-btn>
-            <endorsement v-if="currentEndorsement" v-bind:endorsement="currentEndorsement">
+            <endorsement v-if="currentEndorsement" v-bind:endorsement="currentEndorsement"> -->
 
-            </endorsement>
+            <!-- </endorsement> -->
         </div>
-        <v-sheet min-width="150" height="100"> </v-sheet>
+        <v-sheet height="500">
+                        <month-summary-calendar>
+
+                        </month-summary-calendar>
+                    </v-sheet>
         
     </div>
 </template>
 
 <script>
 import UPClient from '../services/UPClient'
-import Endorsement from '../components/Endorsement.vue'
+// import Endorsement from '../components/Endorsement.vue'
 import MonthSummaryCalendar from '../components/MonthSummaryCalendar.vue'
 
 export default {
     name: 'home',
     components: {
-        'endorsement': Endorsement,
+        // 'endorsement': Endorsement,
         'month-summary-calendar': MonthSummaryCalendar
     },
     data() {
@@ -105,5 +114,12 @@ export default {
 <style lang="scss" scoped>
     #button {
         margin: 15px;
+    }
+
+    .banner-card {
+        margin: 0 auto;
+        width: 80%;
+        position: relative;
+        top: -25px
     }
 </style>
