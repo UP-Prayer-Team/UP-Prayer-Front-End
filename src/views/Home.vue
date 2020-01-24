@@ -17,23 +17,48 @@
             <v-card class="banner-card">
                 <v-card-text class="headline">
                     What happens when thousands around the world focus their prayer on bringing an end to human trafficking?
+                    <strong class="display-1 font-weight-bold"> It. Ends. </strong>
                 </v-card-text>
-                <v-card-text class="display-1 font-weight-black" style="text-align: right;">
+                <!-- <v-card-text class="display-1 font-weight-black" style="text-align: right;">
                     It. Ends. 
-                </v-card-text>
+                </v-card-text> -->
             </v-card>
             
         </div>
 
-        <div class="container"> 
-            <!-- <v-btn id="button" @click="getEndos">Get Endorsements</v-btn>
-            <v-btn id="button" @click="getEndo">Get current endorsement</v-btn>
-            <v-btn id="button" @click="update"> Update </v-btn>
-            <v-btn id="button" @click="getMonthRes">Get This Month's Reservations</v-btn>
-            <endorsement v-if="currentEndorsement" v-bind:endorsement="currentEndorsement"> -->
+        <v-container> 
+            <!-- row 1 -->
+            <v-row>
 
-            <!-- </endorsement> -->
-        </div>
+                <v-col>
+                    <v-hover v-slot:default="{ hover }">
+                        <v-card
+                        :elevation="hover ? 12 : 2"
+                        class="mx-auto"
+                        @click="toSignUp"
+                        >
+                                <v-card-title class="font-weight-bold"> Join the Unstoppable Prayer Movement </v-card-title> 
+                                <v-card-text class="subtitle-1"> Once a year (or more) commit to pray for 30 minutes and donate $30 to the anti-trafficking organization of your choice. </v-card-text>                 
+                        </v-card>
+                    </v-hover>
+
+                </v-col>
+
+                <v-col>
+                     <v-card>
+                        <v-card-title class="font-weight-bold">
+                            Q: Why 30 minutes and $30?
+                        </v-card-title>     
+                        <v-card-text>
+                            There are 8,750 hours per year which is 17,500 30-minute segments. With that many people praying and each donating $30, human trafficking can stop. It’s not about the money. It’s about the collective force that we can create to call on the Glory of the Lord. The UP Movement breaks down this complex and overwhelming issue into 30 minutes and $30. You, along with many others, can be the movement that stops trafficking in our world.
+                        </v-card-text>           
+                    </v-card>
+                </v-col>
+        
+            </v-row>
+
+        </v-container>
+
         <v-sheet height="500">
                         <month-summary-calendar>
 
@@ -105,7 +130,10 @@ export default {
             }, message => {
                 console.log("ERROR: Couldn't get reservations for this month. Message: " + message);
             });
-        }
+        },
+        toSignUp() {
+            this.$router.replace({ name: "sign-up" });
+        },
     }
 
 
@@ -121,5 +149,9 @@ export default {
         width: 80%;
         position: relative;
         top: -25px
+    }
+
+    .v-card__title {
+        word-break: keep-all;
     }
 </style>
