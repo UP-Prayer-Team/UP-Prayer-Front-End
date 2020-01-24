@@ -35,7 +35,7 @@
           @click="toHome"
         >
           <v-list-item-icon>
-            <v-icon>dashboard</v-icon>
+            <v-icon>home</v-icon>
           </v-list-item-icon>
 
           <v-list-item-content>
@@ -49,7 +49,7 @@
         >
 
         <v-list-item-icon>
-            <v-icon>dashboard</v-icon>
+            <v-icon>arrow_upward</v-icon>
           </v-list-item-icon>
 
           <v-list-item-content>
@@ -63,7 +63,7 @@
         >
 
         <v-list-item-icon>
-            <v-icon>dashboard</v-icon>
+            <v-icon>menu_book</v-icon>
           </v-list-item-icon>
 
           <v-list-item-content>
@@ -77,7 +77,7 @@
         >
 
         <v-list-item-icon>
-            <v-icon>dashboard</v-icon>
+            <v-icon>help</v-icon>
           </v-list-item-icon>
 
           <v-list-item-content>
@@ -91,8 +91,8 @@
         >
 
         <v-list-item-icon>
-            <v-icon>dashboard</v-icon>
-          </v-list-item-icon>
+            <v-icon>calendar_today</v-icon>
+        </v-list-item-icon>
 
           <v-list-item-content>
             <v-list-item-title style="text-align: left">Sign Up</v-list-item-title>
