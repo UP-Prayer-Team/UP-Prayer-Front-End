@@ -148,7 +148,7 @@ export default {
         margin: 0 auto;
         width: 80%;
         position: relative;
-        top: -25px
+        top: -25px  
     }
 
     .v-card__title {

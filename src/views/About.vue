@@ -72,7 +72,7 @@ export default {
 }
 
 .v-card__title {
-    word-wrap: break-word !important;
+    word-break: keep-all;
 }
 
 .card-grid {
