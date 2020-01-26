@@ -1,7 +1,7 @@
 <template>
     <div>
         <h3><a v-bind:href="endorsement.homepageURL">{{endorsement.homepageURL}}</a></h3>
-        <p class="text-left">
+        <br><p class="text-left">
             {{endorsement.summary}}
         </p>
         <p>
