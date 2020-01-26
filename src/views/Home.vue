@@ -28,8 +28,7 @@
 
         <v-container> 
             <!-- row 1 -->
-            <v-row>
-
+            <v-row class="hidden-sm-and-down">
                 <v-col>
                     <v-hover v-slot:default="{ hover }">
                         <v-card
@@ -43,6 +42,38 @@
                     </v-hover>
 
                 </v-col>
+
+                <v-col>
+                     <v-card>
+                        <v-card-title class="font-weight-bold">
+                            Q: Why 30 minutes and $30?
+                        </v-card-title>     
+                        <v-card-text>
+                            There are 8,750 hours per year which is 17,500 30-minute segments. With that many people praying and each donating $30, human trafficking can stop. It’s not about the money. It’s about the collective force that we can create to call on the Glory of the Lord. The UP Movement breaks down this complex and overwhelming issue into 30 minutes and $30. You, along with many others, can be the movement that stops trafficking in our world.
+                        </v-card-text>           
+                    </v-card>
+                </v-col>
+        
+            </v-row>
+
+            <v-row class="hidden-md-and-up" justify="center">
+                <v-col>
+                    <v-hover v-slot:default="{ hover }">
+                        <v-card
+                        :elevation="hover ? 12 : 2"
+                        class="mx-auto"
+                        @click="toSignUp"
+                        >
+                                <v-card-title class="font-weight-bold"> Join the Unstoppable Prayer Movement </v-card-title> 
+                                <v-card-text class="subtitle-1"> Once a year (or more) commit to pray for 30 minutes and donate $30 to the anti-trafficking organization of your choice. </v-card-text>                 
+                        </v-card>
+                    </v-hover>
+
+                </v-col>
+
+            </v-row>
+
+            <v-row class="hidden-md-and-up" justify="center">
 
                 <v-col>
                      <v-card>
@@ -83,12 +114,6 @@ export default {
         return {
             currentEndorsement: null,
             items: [
-                {
-                    src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
-                },
-                {
-                    src: 'https://d3nn82uaxijpm6.cloudfront.net/assets/website/heatmap/fb/heatmap-d31ff07df8339b44371bc78dee596642d9faca031132c130a03efba03aa82b57.jpg',
-                },
                 {
                     src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Portland_and_Mt._Hood_from_Pittock_Mansion.jpg/1200px-Portland_and_Mt._Hood_from_Pittock_Mansion.jpg'
                 }
