@@ -51,7 +51,7 @@ export default {
                 return "";
             }
             else {
-                return data.count + " people praying";
+                return data.count + " " + (data.count == 1 ? "person" : "people") + " praying";
             }
         },
         cellOpacity(date) {
@@ -85,5 +85,6 @@ export default {
     bottom: 0%;
     width: 100%;
     background-color: transparent;
+    opacity: 70%;
 }
 </style>
