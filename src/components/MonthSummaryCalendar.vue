@@ -1,7 +1,10 @@
 <template>
     <v-calendar v-bind:now="this.today()" v-bind:value="this.today()" color="primary">
         <template v-slot:day="{ present, past, date }">
-            <v-sheet height="50%" width="100%" tile>
+            <v-sheet class="day-summary-background primary" v-bind:style="{ opacity: cellOpacity(date) + '%' }" tile>
+                
+            </v-sheet>
+            <v-sheet class="day-summary-label" tile>
                 {{ cellText(date) }}
             </v-sheet>
         </template>
@@ -27,19 +30,38 @@ export default {
         });
     },
     methods: {
-        cellText(date) {
+        cellData(date) {
             let d = new Date(date);
             if (d.getUTCFullYear() == this.year && d.getUTCMonth() == this.month) {
                 if (this.summary.length > 0) {
-                    let summary = this.summary[d.getUTCDate() - 1];
-                    return summary.count + " people praying";
+                    return this.summary[d.getUTCDate() - 1];
                 }
                 else {
-                    return "";
+                    return null;
                 }
             }
             else {
+                return null;
+            }
+        },
+        cellText(date) {
+            let data = this.cellData(date);
+
+            if (data == null) {
                 return "";
+            }
+            else {
+                return data.count + " " + (data.count == 1 ? "person" : "people") + " praying";
+            }
+        },
+        cellOpacity(date) {
+            let data = this.cellData(date);
+
+            if (data == null) {
+                return 0.0;
+            }
+            else {
+                return 100.0 * this.cellData(date).count / 48; // 48 slots per 24-hour day
             }
         },
         today() {
@@ -48,3 +70,21 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+.day-summary-background {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+}
+
+.day-summary-label {
+    position: absolute;
+    bottom: 0%;
+    width: 100%;
+    background-color: transparent;
+    opacity: 70%;
+}
+</style>
