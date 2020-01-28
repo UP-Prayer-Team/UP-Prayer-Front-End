@@ -72,10 +72,10 @@ export default class UPClient {
     }
 
     // confirmationCode: String
-    // onSuccess: () -> void
+    // onSuccess: ({ year: Int, monthIndex: Int, dayIndex: Int, slotIndex: Int }[]) -> void
     static confirmReservation(confirmationCode, onSuccess, onFailure) {
-        submitRequest("POST", "/api/reservations/confirm", { confirmationID: confirmationCode }, _ => {
-            onSuccess();
+        submitRequest("POST", "/api/reservations/confirm", { confirmationID: confirmationCode }, data => {
+            onSuccess(data.slots);
         }, onFailure);
     }
 

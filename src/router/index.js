@@ -5,6 +5,7 @@ import About from '../views/About.vue'
 import Prayer from '../views/Prayer.vue'
 import Charities from '../views/Charities.vue'
 import SignUp from '../views/SignUp.vue'
+import Confirm from '../views/Confirm.vue'
 
 Vue.use(VueRouter);
 
@@ -34,6 +35,11 @@ const routes = [
         name: 'sign-up',
         component: SignUp
     },
+    {
+        path: '/confirm',
+        name: 'confirm',
+        component: Confirm
+    }
 ]
 
 const router = new VueRouter({
