@@ -2,110 +2,42 @@
     <v-app id="app">
         <div id="nav">
             <v-app-bar class="hidden-sm-and-down">
-            <v-spacer></v-spacer>
-            <v-tabs :right="true">
-                <v-tab @click="toHome" class="home-tab">UP Prayer Movement</v-tab>
-                <v-tab @click="toCharites">Charities</v-tab>
-                <v-tab @click="toPrayer">Prayer Guide</v-tab>
-                <v-tab @click="toAbout">About</v-tab>
-                <v-tab @click="toSignUp">Sign Up</v-tab>
-            </v-tabs>
-            <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
-            <!-- <v-spacer></v-spacer> -->
-        </v-app-bar>
-        <v-app-bar class="hidden-md-and-up">
-        <v-toolbar-title @click="toHome">UP Prayer Movement</v-toolbar-title>
-        <v-spacer></v-spacer>
-              <v-btn text @click.stop="drawer = !drawer">
+                <v-spacer></v-spacer>
+                <v-tabs :right="true" v-model="activeTab">
+                    <v-tab v-for="(route, i) in getTabRoutes()" v-bind:key="i" @click="tabClicked(route)" v-bind:class="{ 'home-tab': i == 0 }">
+                        {{ route.tabText }}
+                    </v-tab>
+                </v-tabs>
+                <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
+                <!-- <v-spacer></v-spacer> -->
+            </v-app-bar>
+            <v-app-bar class="hidden-md-and-up">
+                <v-toolbar-title>{{ this.$router.options.routes[0].tabText }}</v-toolbar-title>
+                <v-spacer></v-spacer>
+                <v-btn text @click.stop="drawer = !drawer">
                     <v-icon>menu</v-icon>
-              </v-btn>
-        </v-app-bar>
+                </v-btn>
+            </v-app-bar>
             <!-- <router-link to="/">Home</router-link> |
             <router-link to="/about">About</router-link> -->
-            <v-navigation-drawer
-            v-model="drawer"
-            absolute
-            temporary
-            >
+            <v-navigation-drawer v-model="drawer" absolute temporary>
 
-        <v-list>
-
-        <v-list-item
-          link
-          @click="toHome"
-        >
-          <v-list-item-icon>
-            <v-icon>home</v-icon>
-          </v-list-item-icon>
-
-          <v-list-item-content>
-            <v-list-item-title style="text-align: left">Home</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-
-        <v-list-item
-          link
-          @click="toCharites"
-        >
-
-        <v-list-item-icon>
-            <v-icon>arrow_upward</v-icon>
-          </v-list-item-icon>
-
-          <v-list-item-content>
-            <v-list-item-title style="text-align: left">Charites</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-
-        <v-list-item
-          link
-          @click="toPrayer"
-        >
-
-        <v-list-item-icon>
-            <v-icon>menu_book</v-icon>
-          </v-list-item-icon>
-
-          <v-list-item-content>
-            <v-list-item-title style="text-align: left">Prayer Guide</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-
-        <v-list-item
-          link
-          @click="toAbout"
-        >
-
-        <v-list-item-icon>
-            <v-icon>help</v-icon>
-          </v-list-item-icon>
-
-          <v-list-item-content>
-            <v-list-item-title style="text-align: left">About</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-
-        <v-list-item
-          link
-          @click="toSignUp"
-        >
-
-        <v-list-item-icon>
-            <v-icon>calendar_today</v-icon>
-        </v-list-item-icon>
-
-          <v-list-item-content>
-            <v-list-item-title style="text-align: left">Sign Up</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-
-      </v-list>
+                <v-list>
+                    <v-list-item v-for="(route, i) in getTabRoutes().slice(1)" v-bind:key="i" link @click="tabClicked(route)">
+                        <v-list-item-icon>
+                            <v-icon>{{ route.drawerIcon }}</v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-content>
+                            <v-list-item-title style="text-align: left">{{ route.tabText }}</v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                </v-list>
 
             </v-navigation-drawer>
         </div>
-            <v-content>
-                <router-view/>
-            </v-content>
+        <v-content>
+            <router-view/>
+        </v-content>
         <v-footer>
             <v-spacer></v-spacer>
             <div>UP Prayer Movement &copy; {{ new Date().getFullYear() }}</div>
@@ -119,6 +51,7 @@ export default {
 
     data() {
         return {
+            activeTab: 0,
             drawer: null,
             items: [
                 { title: 'Home', icon: 'dashboard' },
@@ -131,23 +64,39 @@ export default {
     },
 
     methods: {
-        toAbout() {
-            this.$router.replace({ name: "about" });
+        getTabRoutes() {
+            return this.$router.options.routes.filter(route => route.tabText != undefined);
         },
-        toHome() {
-            this.$router.replace({ name: "home" });
+        tabClicked(route) {
+            if (this.$route.name != route.name) {
+                this.$router.replace({ name: route.name });
+            }
+            this.drawer = false;
         },
-        toCharites() {
-            this.$router.replace({ name: "charities" });
-        },
-        toPrayer() {
-            this.$router.replace({ name: "prayer" });
-        },
-        toSignUp() {
-            this.$router.replace({ name: "sign-up" });
-        },
+        updateActiveTab() {
+            this.activeTab = 0;
+            // Count the number of tabs before the one we want
+            for (let i = 0; i < this.$router.options.routes.length; i++) {
+                // Stop counting if we've reached the route we're at
+                if (this.$router.options.routes[i].name == this.$router.currentRoute.name) {
+                    break;
+                }
+
+                if (this.$router.options.routes[i].tabText != undefined) {
+                    this.activeTab++;
+                }
+            }
+        }
+    },
+    mounted() {
+        this.updateActiveTab();
+    },
+    watch: {
+        $route(_, __) {
+            this.updateActiveTab();
         }
     }
+}
 </script>
 
 <style lang="scss">
