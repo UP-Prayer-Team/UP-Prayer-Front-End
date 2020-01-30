@@ -3,12 +3,23 @@
         <v-container>
             <!-- <h1>This is a charity page plz donate</h1> -->
             <v-row class="hidden-sm-and-down">
-                <v-col 
-                v-for="(end, i) in endorsements" 
-                v-bind:key="i" 
-                cols="6" 
-                >
-                    <v-card class="mb-5">
+                <v-col>
+                    <v-card class="mb-5"
+                        v-for="(end, i) in endorsements.slice(0, Math.ceil(endorsements.length / 2))" 
+                        v-bind:key="i"
+                        >
+                        <v-card-text>
+                            <endorsement v-bind:endorsement="end">
+
+                            </endorsement>
+                        </v-card-text>
+                    </v-card>
+                </v-col>
+                <v-col>
+                    <v-card class="mb-5"
+                        v-for="(end, i) in endorsements.slice(Math.ceil(endorsements.length / 2), endorsements.length)" 
+                        v-bind:key="i"
+                        >
                         <v-card-text>
                             <endorsement v-bind:endorsement="end">
 
