@@ -2,9 +2,9 @@
     <v-app id="app">
         <div id="nav">
             <v-app-bar class="hidden-sm-and-down">
-            <v-toolbar-title @click="toHome">UP Prayer Movement</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-tabs :right="true">
+                <v-tab @click="toHome" class="home-tab">UP Prayer Movement</v-tab>
                 <v-tab @click="toCharites">Charities</v-tab>
                 <v-tab @click="toPrayer">Prayer Guide</v-tab>
                 <v-tab @click="toAbout">About</v-tab>
@@ -178,6 +178,11 @@ export default {
 
 .site-footer, #app:after {
     height: 30px; 
+}
+
+.home-tab {
+    margin-left: 0px !important;
+    margin-right: auto;
 }
 
 html, body {
