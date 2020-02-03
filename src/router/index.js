@@ -13,27 +13,37 @@ const routes = [
     {
         path: '/',
         name: 'home',
-        component: Home
-    },
-    {
-        path: '/about',
-        name: 'about',
-        component: About
-    },
-    {
-        path: '/prayer',
-        name: 'prayer',
-        component: Prayer
+        component: Home,
+        tabText: 'UP Prayer Movement',
+        drawerIcon: 'home'
     },
     {
         path: '/charities',
         name: 'charities',
-        component: Charities
+        component: Charities,
+        tabText: 'Charities',
+        drawerIcon: 'arrow_upward'
+    },
+    {
+        path: '/prayer',
+        name: 'prayer',
+        component: Prayer,
+        tabText: 'Prayer Guide',
+        drawerIcon: 'menu_book'
+    },
+    {
+        path: '/about',
+        name: 'about',
+        component: About,
+        tabText: 'About',
+        drawerIcon: 'help'
     },
     {
         path: '/signup',
         name: 'sign-up',
-        component: SignUp
+        component: SignUp,
+        tabText: 'Sign Up',
+        drawerIcon: 'calendar_today'
     },
     {
         path: '/confirm',
