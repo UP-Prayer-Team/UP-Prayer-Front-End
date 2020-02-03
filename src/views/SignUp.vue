@@ -26,23 +26,41 @@
                     
                     <v-row>
                         <h3>Slots</h3>
-                        <v-btn @click="addSlot" class="ml-4">Add Slot</v-btn>
                     </v-row>
-                    
 
-                    <v-row v-for="(slot, i) in slots" v-bind:key="i">
-                        <v-text-field v-model="slot.year" label="Year" type="number" class="mr-4">
-                        </v-text-field>
-                        <v-text-field v-model="slot.monthIndex" label="Month Index" type="number" class="mr-4">
-                        </v-text-field>
-                        <v-text-field v-model="slot.dayIndex" label="Day Index" type="number" class="mr-4">
-                        </v-text-field>
-                        <v-text-field v-model="slot.slotIndex" label="Slot Index" type="number" class="mr-4">
-                        </v-text-field>
-                        <v-btn @click="removeSlot(i)">Remove</v-btn>
-                    </v-row>
+                    <div v-if="!showDayView">
+                        <v-system-bar>
+                            <v-btn @click="monthViewPrevMonth">
+                                &lt;
+                            </v-btn>
+                            {{ new Date(this.monthViewDate.year, this.monthViewDate.month).toLocaleString('default', { month: 'long' }) }} {{ monthViewDate.year }}
+
+                            <v-btn @click="monthViewNextMonth">
+                                &gt;
+                            </v-btn>
+                        </v-system-bar>
+
+                        <v-calendar @click:day="monthDayClick" v-bind:value="this.getMonthViewDateText()">
+
+                        </v-calendar>
+                    </div>
                     
-                    <v-btn @click="submit">Submit</v-btn>
+                    <div v-if="showDayView">
+                        <v-system-bar>
+                            Day And Month And Stuff
+
+                            <v-btn @click="backToMonthView">
+                                Back to Month
+                            </v-btn>
+                        </v-system-bar>
+
+                        <v-calendar-daily>
+
+                        </v-calendar-daily>
+                    </div>
+                    
+                    <br>
+                    <v-btn @click="submit" v-bind:disabled="slots.length == 0">Sign Up For {{ slots.length }} Prayer{{ slots.length == 1 ? '' : 's' }}</v-btn>
                 </v-form>
                 <div v-if="showThanks">
                     <p>
@@ -66,9 +84,20 @@ import UPClient from '../services/UPClient';
 export default {
     data() {
         return {
+            showDayView: false,
             showForm: true,
             showThanks: false,
             error: null,
+
+            monthViewDate: {
+                year: new Date().getUTCFullYear(),
+                month: new Date().getUTCMonth()
+            },
+            dayViewDate: {
+                year: new Date().getUTCFullYear(),
+                month: new Date().getUTCMonth(),
+                day: new Date().getUTCDate()
+            },
 
             email: "test@example.com",
             countryCode: "USA",
@@ -94,6 +123,33 @@ export default {
         },
         removeSlot(index) {
             this.slots.splice(index, 1);
+        },
+        monthDayClick(_) {
+            //console.log("Day clicked!");
+            this.showDayView = true;
+        },
+        backToMonthView() {
+            this.showDayView = false;
+        },
+        monthViewPrevMonth() {
+            this.monthViewDate.month -= 1;
+            if (this.monthViewDate.month < 0) {
+                this.monthViewDate.month += 12;
+                this.monthViewDate.year -= 1;
+            }
+        },
+        monthViewNextMonth() {
+            this.monthViewDate.month += 1;
+            if (this.monthViewDate.month >= 12) {
+                this.monthViewDate.month -= 12;
+                this.monthViewDate.year += 1;
+            }
+        },
+        getMonthViewDateText() {
+            return this.monthViewDate.year.toString() + '-' + (this.monthViewDate.month + 1).toString().padStart(2, '0') + '-01';
+        },
+        getDayViewDateText() {
+            return this.dayViewDate.year.toString() + '-' + (this.dayViewDate.month + 1).toString().padStart(2, '0') + '-' + (this.dayViewDate.day + 1).toString().padStart(2, '0');
         },
         submit() {
             // TODO: Disable form

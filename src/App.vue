@@ -53,13 +53,6 @@ export default {
         return {
             activeTab: 0,
             drawer: null,
-            items: [
-                { title: 'Home', icon: 'dashboard' },
-                { title: 'Charities', icon: 'dashboard' },
-                { title: 'Prayer Guide', icon: 'dashboard' },
-                { title: 'About', icon: 'dashboard' },
-                { title: 'Sign Up', icon: 'question_answer' },
-            ],
         }
     },
 
