@@ -90,11 +90,11 @@
 
         </v-container>
 
-        <v-sheet height="500">
-                        <month-summary-calendar>
+        <v-card :flat="true" class="calander-sheet" height="500">
+            <month-summary-calendar>
 
-                        </month-summary-calendar>
-                    </v-sheet>
+            </month-summary-calendar>
+        </v-card>
         
     </div>
 </template>
@@ -178,5 +178,12 @@ export default {
 
     .v-card__title {
         word-break: keep-all;
+    }
+
+    .calander-sheet {
+        margin-right: 2%;
+        margin-left: 2%;
+        margin-bottom: 30px;
+
     }
 </style>
