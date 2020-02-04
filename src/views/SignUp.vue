@@ -243,7 +243,7 @@ export default {
         },
         slotTimeString: UPUtils.slotTimeString,
         monthDayClick(date) {
-            this.loadDayView(this.monthViewDate.year, this.monthViewDate.month, date.day - 1);
+            this.loadDayView(date.year, date.month - 1, date.day - 1);
             this.showDayView = true;
         },
         backToMonthView() {
