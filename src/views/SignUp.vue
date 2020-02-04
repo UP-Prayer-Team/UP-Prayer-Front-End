@@ -3,7 +3,6 @@
 
         <v-container class="v-application">
             <v-col>
-                <h1>This is a signup page</h1>
                 <v-form v-if="showForm">
                     <v-row>
                         <v-col>
@@ -49,7 +48,6 @@
                         </v-system-bar>
 
                         <v-calendar @click:day="monthDayClick" @click:date="monthDayClick" v-bind:value="this.getMonthViewDateText()">
-
                         </v-calendar>
                     </div>
 
@@ -59,7 +57,7 @@
                         :min-height="100"
                         class="calander-bar"> 
 
-                            <v-btn color="grey darken-2" outlined @click="backToMonthView">
+                            <v-btn color="grey darken-2" style="margin-right: 1rem;" outlined @click="backToMonthView">
                                 Back to Month
                             </v-btn>
                             <v-btn fab icon small @click="dayViewPrevDay">
@@ -90,9 +88,23 @@
                             </template>
                         </v-calendar>
                     </div>
-
-                    
                     <br>
+
+                    <v-list>
+                        <v-list-item
+                            v-for="(slot, i) in slots"
+                            :key="i"
+                        >
+                            <v-list-item-content>
+                                {{ new Date(slot.year, slot.monthIndex).toLocaleString('default', { month: 'long' }) }} {{ slot.dayIndex + 1 }}, {{ slot.year }} @ slot time
+                            </v-list-item-content>
+                                <v-btn text icon color="grey darken-2">
+                                    <v-icon>close</v-icon>
+                                </v-btn>
+                        </v-list-item>
+                    </v-list>
+                    <br>
+
                     <v-btn @click="submit" v-bind:disabled="slots.length == 0">Sign Up For {{ slots.length }} Prayer{{ slots.length == 1 ? '' : 's' }}</v-btn>
                 </v-form>
                 <div v-if="showThanks">
@@ -186,7 +198,7 @@ export default {
             countryCode: "USA",
             districtCode: "OR",
             slots: [
-                { year: new Date().getUTCFullYear(), monthIndex: new Date().getUTCMonth(), dayIndex: new Date().getUTCDate(), slotIndex: 0 }
+                // { year: null, monthIndex: null, dayIndex: null, slotIndex: null }
             ],
 
             countryCodeItems: [
