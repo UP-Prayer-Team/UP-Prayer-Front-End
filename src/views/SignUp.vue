@@ -73,18 +73,13 @@
 
                         <v-calendar type="day" v-bind:value="this.getDayViewDateText()">
                             <template v-slot:interval="{ hour }">
-                                <v-sheet tile v-bind:class="{ 'blue': dayViewSlotStates[hour * 2] }" v-bind:dark="dayViewSlotStates[hour * 2]">
-                                    <v-checkbox class="day-slot" v-model="dayViewSlotStates[hour * 2]" @change="daySlotUpdated(hour * 2)" :label="hour + ' o\' clock'" hide-details="true" :dense="true">
+                                <sign-up-day-slot v-model="dayViewSlotStates[hour * 2]" v-bind:index="hour * 2" @input="daySlotUpdated(hour * 2)">
 
-                                    </v-checkbox>
-                                </v-sheet>
+                                </sign-up-day-slot>
 
-                                <v-sheet tile v-bind:class="{ 'blue': dayViewSlotStates[hour * 2 + 1] }" v-bind:dark="dayViewSlotStates[hour * 2 + 1]">
-                                    <v-checkbox class="day-slot" v-model="dayViewSlotStates[hour * 2 + 1]" @change="daySlotUpdated(hour * 2 + 1)" :label="hour + ' o\' clock'" hide-details="true" :dense="true">
+                                <sign-up-day-slot v-model="dayViewSlotStates[hour * 2 + 1]" v-bind:index="hour * 2 + 1" @input="daySlotUpdated(hour * 2 + 1)">
 
-                                    </v-checkbox>
-                                </v-sheet>
-                                
+                                </sign-up-day-slot>
                             </template>
                         </v-calendar>
                     </div>
@@ -125,8 +120,12 @@
 
 <script>
 import UPClient from '../services/UPClient';
+import SignUpDaySlot from '../components/SignUpDaySlot.vue';
 
 export default {
+    components: {
+        "sign-up-day-slot": SignUpDaySlot
+    },
     data() {
         return {
             showDayView: false,
@@ -320,17 +319,6 @@ export default {
 
 .v-toolbar__title {
     margin-left: 1rem;
-}
-
-.day-slot {
-    height: 50%;
-    margin: 0px;
-    padding: 0px;
-    cursor: pointer;
-}
-
-.day-slot .active {
-    background-color: red;
 }
 
 </style>
