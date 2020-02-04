@@ -30,7 +30,7 @@
 
                     <div v-if="!showDayView">
                         <v-system-bar 
-                        flat color="white"
+                        flat
                         :min-height="100"
                         class="calander-bar">
                             
@@ -55,15 +55,19 @@
 
                     <div v-if="showDayView">
                         <v-system-bar 
-                        flat color="white"
+                        flat
                         :min-height="100"
                         class="calander-bar"> 
 
-                            <div>
-                                <v-btn color="grey darken-2" outlined @click="backToMonthView">
-                                    Back to Month
-                                </v-btn>
-                            </div>
+                            <v-btn color="grey darken-2" outlined @click="backToMonthView">
+                                Back to Month
+                            </v-btn>
+                            <v-btn fab icon small @click="dayViewPrevDay">
+                                &lt;
+                            </v-btn>
+                            <v-btn fab icon small @click="dayViewNextDay">
+                                &gt;
+                            </v-btn>
                             <v-toolbar-title>{{ new Date(this.monthViewDate.year, this.dayViewDate.month).toLocaleString('default', { month: 'long' }) }} {{ dayViewDate.day }}, {{ dayViewDate.year }}</v-toolbar-title>
                             <v-spacer></v-spacer>
 
@@ -241,6 +245,12 @@ export default {
                 this.monthViewDate.year += 1;
             }
         },
+        dayViewNextDay() {
+
+        },
+        dayViewPrevDay() {
+
+        },
         getMonthViewDateText() {
             return this.monthViewDate.year.toString() + '-' + (this.monthViewDate.month + 1).toString().padStart(2, '0') + '-01';
         },
@@ -293,6 +303,7 @@ export default {
 <style lang="scss" scoped>
 .calander-bar {
     height: 70px !important;
+    background-color: rgba(0,0,0,0) !important;
 }
 
 .v-toolbar__title {
@@ -309,4 +320,5 @@ export default {
 .day-slot .active {
     background-color: red;
 }
+
 </style>
