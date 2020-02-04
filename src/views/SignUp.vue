@@ -29,35 +29,56 @@
                     </v-row>
 
                     <div v-if="!showDayView">
-                        <v-system-bar>
-                            <v-btn @click="monthViewPrevMonth">
+                        <v-system-bar 
+                        flat color="white"
+                        :min-height="100"
+                        class="calander-bar">
+                            
+                            <v-btn outlined class="mr-4" color="grey darken-2" @click="setToday">
+                                Today
+                            </v-btn>
+                            <v-btn fab icon small @click="monthViewPrevMonth">
                                 &lt;
                             </v-btn>
-                            {{ new Date(this.monthViewDate.year, this.monthViewDate.month).toLocaleString('default', { month: 'long' }) }} {{ monthViewDate.year }}
-
-                            <v-btn @click="monthViewNextMonth">
+                            <v-btn fab icon small @click="monthViewNextMonth">
                                 &gt;
                             </v-btn>
+                            <v-toolbar-title>{{ new Date(this.monthViewDate.year, this.monthViewDate.month).toLocaleString('default', { month: 'long' }) }} {{ monthViewDate.year }}</v-toolbar-title>
+                            <v-spacer></v-spacer>
+
                         </v-system-bar>
 
-                        <v-calendar @click:day="monthDayClick" v-bind:value="this.getMonthViewDateText()">
+                            <v-calendar 
+                            @click:day="monthDayClick" 
+                            @click:date="monthDayClick"
+                            v-bind:value="this.getMonthViewDateText()"
+                            >
+                            </v-calendar>
 
-                        </v-calendar>
                     </div>
-                    
-                    <div v-if="showDayView">
-                        <v-system-bar>
-                            Day And Month And Stuff
 
-                            <v-btn @click="backToMonthView">
-                                Back to Month
-                            </v-btn>
+                    <div v-if="showDayView">
+                        <v-system-bar 
+                        flat color="white"
+                        :min-height="100"
+                        class="calander-bar"> 
+
+                            <div>
+                                <v-btn outlined @click="backToMonthView">
+                                    Back to Month
+                                </v-btn>
+                            </div>
+                            <v-toolbar-title>{{ new Date(this.monthViewDate.year, this.dayViewDate.month).toLocaleString('default', { month: 'long' }) }} {{ dayViewDate.day }}, {{ dayViewDate.year }}</v-toolbar-title>
+                            <v-spacer></v-spacer>
+
                         </v-system-bar>
+
 
                         <v-calendar-daily>
-
                         </v-calendar-daily>
+        
                     </div>
+
                     
                     <br>
                     <v-btn @click="submit" v-bind:disabled="slots.length == 0">Sign Up For {{ slots.length }} Prayer{{ slots.length == 1 ? '' : 's' }}</v-btn>
@@ -151,6 +172,10 @@ export default {
         getDayViewDateText() {
             return this.dayViewDate.year.toString() + '-' + (this.dayViewDate.month + 1).toString().padStart(2, '0') + '-' + (this.dayViewDate.day + 1).toString().padStart(2, '0');
         },
+        setToday() {
+            this.monthViewDate.month = new Date().getUTCMonth();
+            this.monthViewDate.year = new Date().getUTCFullYear();
+        },
         submit() {
             // TODO: Disable form
 
@@ -171,3 +196,18 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+.calander-bar {
+    height: 70px !important;
+}
+
+.v-toolbar__title {
+    margin-left: 1rem;
+}
+
+
+// .v-btn .v-btn__content .v-icon {
+//   color: inherit;
+// }
+</style>
