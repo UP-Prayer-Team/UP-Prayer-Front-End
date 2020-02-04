@@ -1,12 +1,14 @@
 <template>
     <v-sheet tile v-bind:class="{ 'blue': value }" v-bind:dark="value">
-        <v-checkbox class="day-slot" v-model="internalValue" @change="checkboxUpdated" :label="((Math.floor(index / 2) + 11) % 12 + 1) + ':' + (index % 2 * 30).toString().padStart(2, '0')" hide-details="true" :dense="true">
+        <v-checkbox class="day-slot" v-model="internalValue" @change="checkboxUpdated" :label="timeString" hide-details="true" :dense="true">
 
         </v-checkbox>
     </v-sheet>
 </template>
 
 <script>
+import UPUtils from '../services/UPUtils';
+
 export default {
     props: {
         index: Number,
@@ -16,6 +18,11 @@ export default {
         return {
             internalValue: false
         };
+    },
+    computed: {
+        timeString() {
+            return UPUtils.slotTimeString(this.index);
+        }
     },
     methods: {
         checkboxUpdated() {

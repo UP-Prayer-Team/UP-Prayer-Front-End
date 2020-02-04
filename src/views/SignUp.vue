@@ -86,12 +86,9 @@
                     <br>
 
                     <v-list>
-                        <v-list-item
-                            v-for="(slot, i) in slots"
-                            :key="i"
-                        >
+                        <v-list-item v-for="(slot, i) in slots" :key="i">
                             <v-list-item-content>
-                                {{ new Date(slot.year, slot.monthIndex).toLocaleString('default', { month: 'long' }) }} {{ slot.dayIndex + 1 }}, {{ slot.year }} @ slot time
+                                {{ new Date(slot.year, slot.monthIndex).toLocaleString('default', { month: 'long' }) }} {{ slot.dayIndex + 1 }}, {{ slot.year }} at {{ slotTimeString(slot.slotIndex) }}
                             </v-list-item-content>
                                 <v-btn text icon color="grey darken-2">
                                     <v-icon>close</v-icon>
@@ -120,6 +117,7 @@
 
 <script>
 import UPClient from '../services/UPClient';
+import UPUtils from '../services/UPUtils';
 import SignUpDaySlot from '../components/SignUpDaySlot.vue';
 
 export default {
@@ -216,7 +214,16 @@ export default {
             this.slots.push({ year: 2020, monthIndex: 0, dayIndex: 0, slotIndex: 0 });
         },
         removeSlot(index) {
+            let slot = this.slots[index];
+
             this.slots.splice(index, 1);
+
+            // Check whether the slot list needs to be regenerated
+            if (slot.year == this.dayViewDate.year
+                && slot.monthIndex == this.dayViewDate.month
+                && slot.dayIndex == this.dayViewDate.day) {
+                this.loadDayView(this.dayViewDate.year, this.dayViewDate.month, this.dayViewDate.day);
+            }
         },
         loadDayView(year, month, day) {
             this.dayViewDate.year = year;
@@ -235,6 +242,7 @@ export default {
                 }
             }
         },
+        slotTimeString: UPUtils.slotTimeString,
         monthDayClick(date) {
             this.loadDayView(this.monthViewDate.year, this.monthViewDate.month, date.day - 1);
             this.showDayView = true;
