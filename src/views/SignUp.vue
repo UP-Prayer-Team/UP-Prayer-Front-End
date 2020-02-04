@@ -64,7 +64,7 @@
                         class="calander-bar"> 
 
                             <div>
-                                <v-btn outlined @click="backToMonthView">
+                                <v-btn color="grey darken-2" outlined @click="backToMonthView">
                                     Back to Month
                                 </v-btn>
                             </div>
