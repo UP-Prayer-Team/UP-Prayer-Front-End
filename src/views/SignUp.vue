@@ -37,14 +37,13 @@
                                 Today
                             </v-btn>
                             <v-btn fab icon small @click="monthViewPrevMonth">
-                                &lt;
+                                <v-icon>mdi-chevron-left</v-icon>
                             </v-btn>
+                            <v-toolbar-title class="ml-0">{{ new Date(this.monthViewDate.year, this.monthViewDate.month).toLocaleString('default', { month: 'long' }) }} {{ monthViewDate.year }}</v-toolbar-title>
                             <v-btn fab icon small @click="monthViewNextMonth">
-                                &gt;
+                                <v-icon>mdi-chevron-right</v-icon>
                             </v-btn>
-                            <v-toolbar-title>{{ new Date(this.monthViewDate.year, this.monthViewDate.month).toLocaleString('default', { month: 'long' }) }} {{ monthViewDate.year }}</v-toolbar-title>
                             <v-spacer></v-spacer>
-
                         </v-system-bar>
 
                         <v-calendar @click:day="monthDayClick" @click:date="monthDayClick" v-bind:value="this.getMonthViewDateText()">
@@ -61,12 +60,12 @@
                                 Back to Month
                             </v-btn>
                             <v-btn fab icon small @click="dayViewPrevDay">
-                                &lt;
+                                <v-icon>mdi-chevron-left</v-icon>
                             </v-btn>
+                            <v-toolbar-title class="ml-0">{{ new Date(this.monthViewDate.year, this.dayViewDate.month).toLocaleString('default', { month: 'long' }) }} {{ dayViewDate.day + 1 }}, {{ dayViewDate.year }}</v-toolbar-title>
                             <v-btn fab icon small @click="dayViewNextDay">
-                                &gt;
+                                <v-icon>mdi-chevron-right</v-icon>
                             </v-btn>
-                            <v-toolbar-title>{{ new Date(this.monthViewDate.year, this.dayViewDate.month).toLocaleString('default', { month: 'long' }) }} {{ dayViewDate.day + 1 }}, {{ dayViewDate.year }}</v-toolbar-title>
                             <v-spacer></v-spacer>
 
                         </v-system-bar>
