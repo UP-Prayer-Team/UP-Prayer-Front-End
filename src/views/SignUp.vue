@@ -1,6 +1,6 @@
 <template>
     <div class="about">
-        
+
         <v-container class="v-application">
             <v-col>
                 <h1>This is a signup page</h1>
@@ -48,13 +48,9 @@
 
                         </v-system-bar>
 
-                            <v-calendar 
-                            @click:day="monthDayClick" 
-                            @click:date="monthDayClick"
-                            v-bind:value="this.getMonthViewDateText()"
-                            >
-                            </v-calendar>
+                        <v-calendar @click:day="monthDayClick" @click:date="monthDayClick" v-bind:value="this.getMonthViewDateText()">
 
+                        </v-calendar>
                     </div>
 
                     <div v-if="showDayView">
@@ -73,10 +69,22 @@
 
                         </v-system-bar>
 
+                        <v-calendar type="day" v-bind:value="this.getDayViewDateText()">
+                            <template v-slot:interval="{ hour }">
+                                <v-sheet tile v-bind:class="{ 'blue': dayViewSlotStates[hour * 2] }" v-bind:dark="dayViewSlotStates[hour * 2]">
+                                    <v-checkbox class="day-slot" v-model="dayViewSlotStates[hour * 2]" @change="daySlotUpdated(hour * 2)" :label="hour + ' o\' clock'" hide-details="true" :dense="true">
 
-                        <v-calendar-daily>
-                        </v-calendar-daily>
-        
+                                    </v-checkbox>
+                                </v-sheet>
+
+                                <v-sheet tile v-bind:class="{ 'blue': dayViewSlotStates[hour * 2 + 1] }" v-bind:dark="dayViewSlotStates[hour * 2 + 1]">
+                                    <v-checkbox class="day-slot" v-model="dayViewSlotStates[hour * 2 + 1]" @change="daySlotUpdated(hour * 2 + 1)" :label="hour + ' o\' clock'" hide-details="true" :dense="true">
+
+                                    </v-checkbox>
+                                </v-sheet>
+                                
+                            </template>
+                        </v-calendar>
                     </div>
 
                     
@@ -119,6 +127,56 @@ export default {
                 month: new Date().getUTCMonth(),
                 day: new Date().getUTCDate()
             },
+            dayViewSlotStates: [
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+            ],
 
             email: "test@example.com",
             countryCode: "USA",
@@ -145,8 +203,25 @@ export default {
         removeSlot(index) {
             this.slots.splice(index, 1);
         },
-        monthDayClick(_) {
-            //console.log("Day clicked!");
+        loadDayView(year, month, day) {
+            this.dayViewDate.year = year;
+            this.dayViewDate.month = month;
+            this.dayViewDate.day = day;
+
+            for (let i = 0; i < this.dayViewSlotStates.length; i++) {
+                this.dayViewSlotStates[i] = false;
+            }
+
+            for (let i = 0; i < this.slots.length; i++) {
+                let slot = this.slots[i];
+
+                if (slot.year == year && slot.monthIndex == month && slot.dayIndex == day) {
+                    this.dayViewSlotStates[slot.slotIndex] = true;
+                }
+            }
+        },
+        monthDayClick(date) {
+            this.loadDayView(this.monthViewDate.year, this.monthViewDate.month, date.day - 1);
             this.showDayView = true;
         },
         backToMonthView() {
@@ -175,6 +250,24 @@ export default {
         setToday() {
             this.monthViewDate.month = new Date().getUTCMonth();
             this.monthViewDate.year = new Date().getUTCFullYear();
+        },
+        daySlotClick(index) {
+            this.dayViewSlotStates[index] = !this.dayViewSlotStates[index];
+            this.$forceUpdate();
+        },
+        daySlotUpdated(index) {
+            // Remove the slot from the list to reserve
+            this.slots = this.slots.filter(slot => {
+                return slot.year != this.dayViewDate.year
+                    || slot.monthIndex != this.dayViewDate.month
+                    || slot.dayIndex != this.dayViewDate.day
+                    || slot.slotIndex != index;
+            });
+
+            if (this.dayViewSlotStates[index]) {
+                // Ensure the slot is in the list to reserve
+                this.slots.push({ year: this.dayViewDate.year, monthIndex: this.dayViewDate.month, dayIndex: this.dayViewDate.day, slotIndex: index });
+            }
         },
         submit() {
             // TODO: Disable form
@@ -206,8 +299,14 @@ export default {
     margin-left: 1rem;
 }
 
+.day-slot {
+    height: 50%;
+    margin: 0px;
+    padding: 0px;
+    cursor: pointer;
+}
 
-// .v-btn .v-btn__content .v-icon {
-//   color: inherit;
-// }
+.day-slot .active {
+    background-color: red;
+}
 </style>
