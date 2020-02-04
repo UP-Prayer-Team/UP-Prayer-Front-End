@@ -68,7 +68,7 @@
                             <v-btn fab icon small @click="dayViewNextDay">
                                 &gt;
                             </v-btn>
-                            <v-toolbar-title>{{ new Date(this.monthViewDate.year, this.dayViewDate.month).toLocaleString('default', { month: 'long' }) }} {{ dayViewDate.day }}, {{ dayViewDate.year }}</v-toolbar-title>
+                            <v-toolbar-title>{{ new Date(this.monthViewDate.year, this.dayViewDate.month).toLocaleString('default', { month: 'long' }) }} {{ dayViewDate.day + 1 }}, {{ dayViewDate.year }}</v-toolbar-title>
                             <v-spacer></v-spacer>
 
                         </v-system-bar>
