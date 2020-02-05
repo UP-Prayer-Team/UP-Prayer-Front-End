@@ -31,7 +31,7 @@
                         <v-system-bar 
                         flat
                         :min-height="100"
-                        class="calander-bar">
+                        class="calendar-bar">
                             
                             <v-btn outlined class="mr-4" color="grey darken-2" @click="setToday">
                                 Today
@@ -39,14 +39,14 @@
                             <v-btn fab icon small @click="monthViewPrevMonth">
                                 <v-icon>mdi-chevron-left</v-icon>
                             </v-btn>
-                            <v-toolbar-title class="ml-0">{{ new Date(this.monthViewDate.year, this.monthViewDate.month).toLocaleString('default', { month: 'long' }) }} {{ monthViewDate.year }}</v-toolbar-title>
+                            <v-toolbar-title class="ml-0">{{ new Date(this.viewDate.year, this.viewDate.month).toLocaleString('default', { month: 'long' }) }} {{ viewDate.year }}</v-toolbar-title>
                             <v-btn fab icon small @click="monthViewNextMonth">
                                 <v-icon>mdi-chevron-right</v-icon>
                             </v-btn>
                             <v-spacer></v-spacer>
                         </v-system-bar>
 
-                        <v-calendar @click:day="monthDayClick" @click:date="monthDayClick" v-bind:value="this.getMonthViewDateText()">
+                        <v-calendar @click:day="monthDayClick" @click:date="monthDayClick" v-bind:value="this.getCalendarDateText()" v-bind:now="today" color="primary">
                         </v-calendar>
                     </div>
 
@@ -54,7 +54,7 @@
                         <v-system-bar 
                         flat
                         :min-height="100"
-                        class="calander-bar"> 
+                        class="calendar-bar">
 
                             <v-btn color="grey darken-2" style="margin-right: 1rem;" outlined @click="backToMonthView">
                                 Back to Month
@@ -62,7 +62,7 @@
                             <v-btn fab icon small @click="dayViewPrevDay">
                                 <v-icon>mdi-chevron-left</v-icon>
                             </v-btn>
-                            <v-toolbar-title class="ml-0">{{ new Date(this.monthViewDate.year, this.dayViewDate.month).toLocaleString('default', { month: 'long' }) }} {{ dayViewDate.day + 1 }}, {{ dayViewDate.year }}</v-toolbar-title>
+                            <v-toolbar-title class="ml-0">{{ new Date(this.viewDate.year, this.viewDate.month).toLocaleString('default', { month: 'long' }) }} {{ viewDate.day + 1 }}, {{ viewDate.year }}</v-toolbar-title>
                             <v-btn fab icon small @click="dayViewNextDay">
                                 <v-icon>mdi-chevron-right</v-icon>
                             </v-btn>
@@ -70,7 +70,7 @@
 
                         </v-system-bar>
 
-                        <v-calendar type="day" v-bind:value="this.getDayViewDateText()">
+                        <v-calendar type="day" v-bind:value="this.getCalendarDateText()" color="primary">
                             <template v-slot:interval="{ hour }">
                                 <sign-up-day-slot v-bind:slotInfo="dayViewSlotStates[hour * 2]" @input="daySlotUpdated(hour * 2)">
 
@@ -129,12 +129,9 @@ export default {
             showForm: true,
             showThanks: false,
             error: null,
+            today: new Date().getUTCFullYear() + '-' + (new Date().getMonth() + 1).toString().padStart(2, '0') + '-' + new Date().getDate().toString().padStart(2, '0'),
 
-            monthViewDate: {
-                year: new Date().getUTCFullYear(),
-                month: new Date().getUTCMonth()
-            },
-            dayViewDate: {
+            viewDate: {
                 year: new Date().getUTCFullYear(),
                 month: new Date().getUTCMonth(),
                 day: new Date().getUTCDate()
@@ -175,16 +172,16 @@ export default {
             this.slots.splice(index, 1);
 
             // Check whether the slot list needs to be regenerated
-            if (slot.year == this.dayViewDate.year
-                && slot.monthIndex == this.dayViewDate.month
-                && slot.dayIndex == this.dayViewDate.day) {
-                this.loadDayView(this.dayViewDate.year, this.dayViewDate.month, this.dayViewDate.day);
+            if (slot.year == this.viewDate.year
+                && slot.monthIndex == this.viewDate.month
+                && slot.dayIndex == this.viewDate.day) {
+                this.loadDayView(this.viewDate.year, this.viewDate.month, this.viewDate.day);
             }
         },
         loadDayView(year, month, day) {
-            this.dayViewDate.year = year;
-            this.dayViewDate.month = month;
-            this.dayViewDate.day = day;
+            this.viewDate.year = year;
+            this.viewDate.month = month;
+            this.viewDate.day = day;
 
             for (let i = 0; i < this.dayViewSlotStates.length; i++) {
                 this.dayViewSlotStates[i].selected = false;
@@ -207,36 +204,33 @@ export default {
             this.showDayView = false;
         },
         monthViewPrevMonth() {
-            this.monthViewDate.month -= 1;
-            if (this.monthViewDate.month < 0) {
-                this.monthViewDate.month += 12;
-                this.monthViewDate.year -= 1;
+            this.viewDate.month -= 1;
+            if (this.viewDate.month < 0) {
+                this.viewDate.month += 12;
+                this.viewDate.year -= 1;
             }
         },
         monthViewNextMonth() {
-            this.monthViewDate.month += 1;
-            if (this.monthViewDate.month >= 12) {
-                this.monthViewDate.month -= 12;
-                this.monthViewDate.year += 1;
+            this.viewDate.month += 1;
+            if (this.viewDate.month >= 12) {
+                this.viewDate.month -= 12;
+                this.viewDate.year += 1;
             }
         },
         dayViewNextDay() {
-            let date = new Date(this.dayViewDate.year, this.dayViewDate.month, this.dayViewDate.day + 1 + 1);
+            let date = new Date(this.viewDate.year, this.viewDate.month, this.viewDate.day + 1 + 1);
             this.loadDayView(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate() - 1);
         },
         dayViewPrevDay() {
-            let date = new Date(this.dayViewDate.year, this.dayViewDate.month, this.dayViewDate.day + 1 - 1);
+            let date = new Date(this.viewDate.year, this.viewDate.month, this.viewDate.day + 1 - 1);
             this.loadDayView(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate() - 1);
         },
-        getMonthViewDateText() {
-            return this.monthViewDate.year.toString() + '-' + (this.monthViewDate.month + 1).toString().padStart(2, '0') + '-01';
-        },
-        getDayViewDateText() {
-            return this.dayViewDate.year.toString() + '-' + (this.dayViewDate.month + 1).toString().padStart(2, '0') + '-' + (this.dayViewDate.day + 1).toString().padStart(2, '0');
+        getCalendarDateText() {
+            return this.viewDate.year.toString() + '-' + (this.viewDate.month + 1).toString().padStart(2, '0') + '-' + (this.viewDate.day + 1).toString().padStart(2, '0');
         },
         setToday() {
-            this.monthViewDate.month = new Date().getUTCMonth();
-            this.monthViewDate.year = new Date().getUTCFullYear();
+            this.viewDate.month = new Date().getUTCMonth();
+            this.viewDate.year = new Date().getUTCFullYear();
         },
         daySlotClick(index) {
             this.dayViewSlotStates[index].selected = !this.dayViewSlotStates[index].selected;
@@ -245,15 +239,15 @@ export default {
         daySlotUpdated(index) {
             // Remove the slot from the list to reserve
             this.slots = this.slots.filter(slot => {
-                return slot.year != this.dayViewDate.year
-                    || slot.monthIndex != this.dayViewDate.month
-                    || slot.dayIndex != this.dayViewDate.day
+                return slot.year != this.viewDate.year
+                    || slot.monthIndex != this.viewDate.month
+                    || slot.dayIndex != this.viewDate.day
                     || slot.slotIndex != index;
             });
 
             if (this.dayViewSlotStates[index].selected) {
                 // Ensure the slot is in the list to reserve
-                this.slots.push({ year: this.dayViewDate.year, monthIndex: this.dayViewDate.month, dayIndex: this.dayViewDate.day, slotIndex: index });
+                this.slots.push({ year: this.viewDate.year, monthIndex: this.viewDate.month, dayIndex: this.viewDate.day, slotIndex: index });
             }
         },
         submit() {
@@ -278,13 +272,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.calander-bar {
+.calendar-bar {
     height: 70px !important;
     background-color: rgba(0,0,0,0) !important;
 }
 
 .v-toolbar__title {
     margin-left: 1rem;
+}
+
+.theme--light.v-calendar-daily {
+    border: #e0e0e0 1px solid;
 }
 
 </style>
