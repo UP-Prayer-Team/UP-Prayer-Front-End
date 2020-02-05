@@ -72,11 +72,11 @@
 
                         <v-calendar type="day" v-bind:value="this.getDayViewDateText()">
                             <template v-slot:interval="{ hour }">
-                                <sign-up-day-slot v-bind:slot="dayViewSlotStates[hour * 2]" @input="daySlotUpdated(hour * 2)">
+                                <sign-up-day-slot v-bind:slotInfo="dayViewSlotStates[hour * 2]" @input="daySlotUpdated(hour * 2)">
 
                                 </sign-up-day-slot>
 
-                                <sign-up-day-slot v-bind:slot="dayViewSlotStates[hour * 2 + 1]" @input="daySlotUpdated(hour * 2 + 1)">
+                                <sign-up-day-slot v-bind:slotInfo="dayViewSlotStates[hour * 2 + 1]" @input="daySlotUpdated(hour * 2 + 1)">
 
                                 </sign-up-day-slot>
                             </template>
@@ -221,10 +221,12 @@ export default {
             }
         },
         dayViewNextDay() {
-
+            let date = new Date(this.dayViewDate.year, this.dayViewDate.month, this.dayViewDate.day + 1 + 1);
+            this.loadDayView(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate() - 1);
         },
         dayViewPrevDay() {
-
+            let date = new Date(this.dayViewDate.year, this.dayViewDate.month, this.dayViewDate.day + 1 - 1);
+            this.loadDayView(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate() - 1);
         },
         getMonthViewDateText() {
             return this.monthViewDate.year.toString() + '-' + (this.monthViewDate.month + 1).toString().padStart(2, '0') + '-01';
