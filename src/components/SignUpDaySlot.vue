@@ -1,6 +1,6 @@
 <template>
-    <v-sheet tile v-bind:class="{ 'blue': value }" v-bind:dark="value">
-        <v-checkbox class="day-slot" v-model="internalValue" @change="checkboxUpdated" :label="timeString" hide-details="true" :dense="true">
+    <v-sheet tile v-bind:class="{ 'blue': slotInfo.selected }" v-bind:dark="slotInfo.selected">
+        <v-checkbox class="day-slot" v-model="slotInfo.selected" @change="checkboxUpdated" :label="timeString" hide-details="true" :dense="true">
 
         </v-checkbox>
     </v-sheet>
@@ -11,17 +11,16 @@ import UPUtils from '../services/UPUtils';
 
 export default {
     props: {
-        index: Number,
-        value: Boolean
+        slotInfo: Object
     },
     data() {
         return {
-            internalValue: false
+            //internalValue: false
         };
     },
     computed: {
         timeString() {
-            return UPUtils.slotTimeString(this.index);
+            return UPUtils.slotTimeString(this.slotInfo.slotIndex);
         }
     },
     methods: {

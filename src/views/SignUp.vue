@@ -94,11 +94,11 @@
 
                         <v-calendar type="day" v-bind:value="this.getDayViewDateText()">
                             <template v-slot:interval="{ hour }">
-                                <sign-up-day-slot v-model="dayViewSlotStates[hour * 2]" v-bind:index="hour * 2" @input="daySlotUpdated(hour * 2)">
+                                <sign-up-day-slot v-bind:slotInfo="dayViewSlotStates[hour * 2]" @input="daySlotUpdated(hour * 2)">
 
                                 </sign-up-day-slot>
 
-                                <sign-up-day-slot v-model="dayViewSlotStates[hour * 2 + 1]" v-bind:index="hour * 2 + 1" @input="daySlotUpdated(hour * 2 + 1)">
+                                <sign-up-day-slot v-bind:slotInfo="dayViewSlotStates[hour * 2 + 1]" @input="daySlotUpdated(hour * 2 + 1)">
 
                                 </sign-up-day-slot>
                             </template>
@@ -111,7 +111,7 @@
                             <v-list-item-content>
                                 {{ new Date(slot.year, slot.monthIndex).toLocaleString('default', { month: 'long' }) }} {{ slot.dayIndex + 1 }}, {{ slot.year }} at {{ slotTimeString(slot.slotIndex) }}
                             </v-list-item-content>
-                                <v-btn text icon color="grey darken-2">
+                                <v-btn text icon color="grey darken-2" @click="removeSlot(i)">
                                     <v-icon>close</v-icon>
                                 </v-btn>
                         </v-list-item>
@@ -162,56 +162,13 @@ export default {
                 month: new Date().getUTCMonth(),
                 day: new Date().getUTCDate()
             },
-            dayViewSlotStates: [
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-            ],
+            dayViewSlotStates: function() {
+                let result = [];
+                for (let i = 0; i < 48; i++) {
+                    result.push({ slotIndex: i, selected: false });
+                }
+                return result;
+            }(),
 
             email: "test@example.com",
             countryCode: "USA",
@@ -253,14 +210,14 @@ export default {
             this.dayViewDate.day = day;
 
             for (let i = 0; i < this.dayViewSlotStates.length; i++) {
-                this.dayViewSlotStates[i] = false;
+                this.dayViewSlotStates[i].selected = false;
             }
 
             for (let i = 0; i < this.slots.length; i++) {
                 let slot = this.slots[i];
 
                 if (slot.year == year && slot.monthIndex == month && slot.dayIndex == day) {
-                    this.dayViewSlotStates[slot.slotIndex] = true;
+                    this.dayViewSlotStates[slot.slotIndex].selected = true;
                 }
             }
         },
@@ -287,10 +244,12 @@ export default {
             }
         },
         dayViewNextDay() {
-
+            let date = new Date(this.dayViewDate.year, this.dayViewDate.month, this.dayViewDate.day + 1 + 1);
+            this.loadDayView(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate() - 1);
         },
         dayViewPrevDay() {
-
+            let date = new Date(this.dayViewDate.year, this.dayViewDate.month, this.dayViewDate.day + 1 - 1);
+            this.loadDayView(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate() - 1);
         },
         getMonthViewDateText() {
             return this.monthViewDate.year.toString() + '-' + (this.monthViewDate.month + 1).toString().padStart(2, '0') + '-01';
@@ -303,7 +262,7 @@ export default {
             this.monthViewDate.year = new Date().getUTCFullYear();
         },
         daySlotClick(index) {
-            this.dayViewSlotStates[index] = !this.dayViewSlotStates[index];
+            this.dayViewSlotStates[index].selected = !this.dayViewSlotStates[index].selected;
             this.$forceUpdate();
         },
         daySlotUpdated(index) {
@@ -315,7 +274,7 @@ export default {
                     || slot.slotIndex != index;
             });
 
-            if (this.dayViewSlotStates[index]) {
+            if (this.dayViewSlotStates[index].selected) {
                 // Ensure the slot is in the list to reserve
                 this.slots.push({ year: this.dayViewDate.year, monthIndex: this.dayViewDate.month, dayIndex: this.dayViewDate.day, slotIndex: index });
             }
