@@ -12,15 +12,37 @@
                     </v-row>
 
                     <v-row>
-                        <v-text-field v-model="email" label="Email" required>
-                        </v-text-field>
+                        <v-text-field 
+                        v-model="email" 
+                        label="Email" 
+                        outlined
+                        required
+                        ></v-text-field>
                     </v-row>
                     
                     <v-row justify="space-between">
-                        <v-select v-model="countryCode" :items="countryCodeItems" label="Country code" class="mr-4">
+                        <v-select 
+                        v-model="countryCode" 
+                        :items="countryCodeItems" 
+                        label="Country code" 
+                        class="mr-4"
+                        outlined
+                        
+                        >
+                            <template v-slot:item="{ item }">
+                                {{item.displayName }}
+                                {{ item.flag }}
+                                
+                            </template>
+                        
                         </v-select>
-                        <v-select v-model="districtCode" :items="districtCodeItems" label="District code">
-                        </v-select>
+
+                        <v-select 
+                        v-model="districtCode" 
+                        :items="districtCodeItems" 
+                        label="District code"
+                        outlined
+                        ></v-select>
                     </v-row>
                     
                     <v-row>
@@ -118,6 +140,8 @@
 import UPClient from '../services/UPClient';
 import UPUtils from '../services/UPUtils';
 import SignUpDaySlot from '../components/SignUpDaySlot.vue';
+import { countries } from 'countries-list';
+
 
 export default {
     components: {
@@ -266,7 +290,21 @@ export default {
 
                 console.log("Error: Failed to create reservations. Message: " + message);
             });
+        },
+        populateCountryList() {
+            this.countryCodeItems.clear;
+            for (let country in countries) {
+                this.countryCodeItems.push({ 
+                    displayName: countries[country].name,
+                    code: country,
+                    flag: countries[country].emoji
+                 });
+            }
         }
+    },
+    mounted() {
+        this.populateCountryList();
+
     }
 }
 </script>
