@@ -12,7 +12,7 @@
                 <!-- <v-spacer></v-spacer> -->
             </v-app-bar>
             <v-app-bar class="hidden-md-and-up">
-                <v-toolbar-title>{{ this.$router.options.routes[0].tabText }}</v-toolbar-title>
+                <v-toolbar-title @click="toHome">{{ this.$router.options.routes[0].tabText }}</v-toolbar-title>
                 <v-spacer></v-spacer>
                 <v-btn text @click.stop="drawer = !drawer">
                     <v-icon>menu</v-icon>
@@ -79,6 +79,9 @@ export default {
                     this.activeTab++;
                 }
             }
+        },
+        toHome() {
+            this.$router.replace({ name: 'home' });
         }
     },
     mounted() {
