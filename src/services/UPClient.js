@@ -1,4 +1,4 @@
-const host = "https://localhost:5001";
+const host = "http://api.stage.upmovement.org:8080";
 var locations = null;
 
 function submitRequest(method, endpoint, body, onSuccess, onFailure) {
