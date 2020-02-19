@@ -40,7 +40,7 @@
         </v-content>
         <v-footer>
             <v-spacer></v-spacer>
-            <div>UP Prayer Movement &copy; {{ new Date().getFullYear() }}</div>
+            <div>UP Prayer Movement {{ getAppMode() }} &copy; {{ new Date().getFullYear() }}</div>
         </v-footer>
     </v-app>
 </template>
@@ -82,6 +82,9 @@ export default {
         },
         toHome() {
             this.$router.replace({ name: 'home' });
+        },
+        getAppMode() {
+            return process.env.VUE_APP_MODE;
         }
     },
     mounted() {
