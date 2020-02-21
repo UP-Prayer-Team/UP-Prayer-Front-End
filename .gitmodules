@@ -1,0 +1,4 @@
+[submodule "staging"]
+	path = staging
+	url = https://github.com/epicabsol/UP-Prayer-Frontend-staging.git
+	branch = master
