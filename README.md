@@ -7,7 +7,7 @@ npm run serve
 
 ### Compiles for staging
 ```
-npm run build -- --mode staging --no-clean
+npm run build -- --mode staging
 ```
 
 ### Compiles and minifies for production
