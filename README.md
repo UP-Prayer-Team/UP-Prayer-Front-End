@@ -20,6 +20,9 @@ npm run build
 npm run lint
 ```
 
+### Deploys staging branch to staging server
+`git push staging staging` (After setting up the staging repo as a remote)
+
 # Libraries and frameworks used by the project
 https://material.io/resources/icons/?style=baseline
 
