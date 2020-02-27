@@ -24,25 +24,42 @@
                         <v-select 
                         v-model="countryCode" 
                         :items="countryCodeItems" 
-                        label="Country code" 
+                        label="Country" 
                         class="mr-4"
+                        item-text="displayName"
+                        item-value="code"
                         outlined
                         
                         >
                             <template v-slot:item="{ item }">
-                                {{item.displayName }}
-                                {{ item.flag }}
+                                {{ item.displayName }}
+                                <span class="text-right flag-adornment">{{ item.flag }}</span>
                                 
+                            </template>
+
+                            <template v-slot:selection="{ item }">
+                                {{ item.displayName }}
+                                <span class="text-right flag-adornment mr-4">{{ item.flag }}</span>
+
                             </template>
                         
                         </v-select>
 
                         <v-select 
-                        v-model="districtCode" 
-                        :items="districtCodeItems" 
-                        label="District code"
-                        outlined
-                        ></v-select>
+                            v-model="districtCode" 
+                            :items="countryDict[countryCode].districts" 
+                            label="Region"
+                            item-text="name"
+                            item-value="shortCode"
+                            outlined>
+                            <template v-slot:item="{ item }">
+                                {{ item.name }}
+                            </template>
+
+                            <template v-slot:selection="{ item }">
+                                {{ item.name }}
+                            </template>
+                        </v-select>
                     </v-row>
                     
                     <v-row>
@@ -140,7 +157,8 @@
 import UPClient from '../services/UPClient';
 import UPUtils from '../services/UPUtils';
 import SignUpDaySlot from '../components/SignUpDaySlot.vue';
-import { countries } from 'countries-list';
+import flagCountries from 'countries-list';
+import countries from 'country-region-data';
 
 
 export default {
@@ -169,7 +187,7 @@ export default {
             }(),
 
             email: "test@example.com",
-            countryCode: "USA",
+            countryCode: "US",
             districtCode: "OR",
             slots: [
                 // { year: null, monthIndex: null, dayIndex: null, slotIndex: null }
@@ -179,11 +197,15 @@ export default {
                 "Not specified",
                 "USA"
             ],
+            countryDict: {
+
+            }
+            /*,
             districtCodeItems: [
                 "Not specified",
                 "WA",
                 "OR"
-            ]
+            ]*/
         };
     },
     methods: {
@@ -292,13 +314,17 @@ export default {
             });
         },
         populateCountryList() {
-            this.countryCodeItems.clear;
+            this.countryCodeItems = [ ];
+            this.countryDict = { };
             for (let country in countries) {
-                this.countryCodeItems.push({ 
-                    displayName: countries[country].name,
-                    code: country,
-                    flag: countries[country].emoji
-                 });
+                let data = {
+                    displayName: countries[country].countryName,
+                    code: countries[country].countryShortCode,
+                    flag: flagCountries.countries[countries[country].countryShortCode].emoji,
+                    districts: countries[country].regions
+                };
+                this.countryCodeItems.push(data);
+                this.countryDict[data.code] = data;
             }
         }
     },
@@ -321,6 +347,12 @@ export default {
 
 .theme--light.v-calendar-daily {
     border: #e0e0e0 1px solid;
+}
+
+.flag-adornment {
+    position: absolute;
+    right: 10px;
+    margin-top: 4px;
 }
 
 </style>
