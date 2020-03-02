@@ -1,7 +1,6 @@
 <template>
     <div class="about">
         <v-container>
-            <!-- <h1>This is a charity page plz donate</h1> -->
             <v-row class="hidden-sm-and-down">
                 <v-col>
                     <v-card class="mb-5"
