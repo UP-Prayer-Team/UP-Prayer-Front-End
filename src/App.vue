@@ -12,7 +12,7 @@
                 <!-- <v-spacer></v-spacer> -->
             </v-app-bar>
             <v-app-bar class="hidden-md-and-up">
-                <v-toolbar-title>{{ this.$router.options.routes[0].tabText }}</v-toolbar-title>
+                <v-toolbar-title @click="toHome">{{ this.$router.options.routes[0].tabText }}</v-toolbar-title>
                 <v-spacer></v-spacer>
                 <v-btn text @click.stop="drawer = !drawer">
                     <v-icon>menu</v-icon>
@@ -40,7 +40,7 @@
         </v-content>
         <v-footer>
             <v-spacer></v-spacer>
-            <div>UP Prayer Movement &copy; {{ new Date().getFullYear() }}</div>
+            <div>UP Prayer Movement {{ getAppMode() }} &copy; {{ new Date().getFullYear() }}</div>
         </v-footer>
     </v-app>
 </template>
@@ -53,13 +53,6 @@ export default {
         return {
             activeTab: 0,
             drawer: null,
-            items: [
-                { title: 'Home', icon: 'dashboard' },
-                { title: 'Charities', icon: 'dashboard' },
-                { title: 'Prayer Guide', icon: 'dashboard' },
-                { title: 'About', icon: 'dashboard' },
-                { title: 'Sign Up', icon: 'question_answer' },
-            ],
         }
     },
 
@@ -86,6 +79,12 @@ export default {
                     this.activeTab++;
                 }
             }
+        },
+        toHome() {
+            this.$router.replace({ name: 'home' });
+        },
+        getAppMode() {
+            return process.env.VUE_APP_MODE;
         }
     },
     mounted() {

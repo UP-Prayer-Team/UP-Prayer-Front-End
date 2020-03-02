@@ -5,6 +5,11 @@
 npm run serve
 ```
 
+### Compiles for staging
+```
+npm run build -- --mode staging
+```
+
 ### Compiles and minifies for production
 ```
 npm run build
@@ -14,6 +19,9 @@ npm run build
 ```
 npm run lint
 ```
+
+### Deploys staging branch to staging server
+`git push staging staging` (After setting up the staging repo as a remote)
 
 # Libraries and frameworks used by the project
 https://material.io/resources/icons/?style=baseline

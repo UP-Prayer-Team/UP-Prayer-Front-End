@@ -1,8 +1,7 @@
-const host = "https://localhost:5001";
 var locations = null;
 
 function submitRequest(method, endpoint, body, onSuccess, onFailure) {
-    fetch(new Request(host + endpoint, { method: method, body: body == null ? null : JSON.stringify(body), headers: { "Content-Type": "application/json" } })).then(response => {
+    fetch(new Request(process.env.VUE_APP_API_HOST + endpoint, { method: method, body: body == null ? null : JSON.stringify(body), headers: { "Content-Type": "application/json" } })).then(response => {
         return response.json();
     }).then(json => {
         if (json.success) {
