@@ -106,16 +106,39 @@
                     </div>
                     <br>
 
-                    <v-list>
-                        <v-list-item v-for="(slot, i) in slots" :key="i">
-                            <v-list-item-content>
-                                {{ new Date(slot.year, slot.monthIndex).toLocaleString('default', { month: 'long' }) }} {{ slot.dayIndex + 1 }}, {{ slot.year }} at {{ slotTimeString(slot.slotIndex) }}
-                            </v-list-item-content>
-                                <v-btn text icon color="grey darken-2" @click="removeSlot(i)">
-                                    <v-icon>close</v-icon>
-                                </v-btn>
-                        </v-list-item>
-                    </v-list>
+                    <v-expansion-panels accordion="true" multiple="true">
+                        <v-expansion-panel v-for="(month, key) in cartMonths" :key="key">
+                            <v-expansion-panel-header>
+                                Month: {{ key }}
+                            </v-expansion-panel-header>
+
+                            <v-expansion-panel-content>
+                                <v-simple-table>
+                                    <template v-slot:default>
+                                        <thead>
+                                            <tr>
+                                                <th class="text-left">Date</th>
+                                                <th class="text-right">Time</th>
+                                                <th class="text-right" style="width: 3em;"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr v-for="(slot, i) in month" :key="i">
+                                                <td class="text-left">{{ new Date(slot.year, slot.monthIndex).toLocaleString('default', { month: 'long' }) }} {{ slot.dayIndex + 1 }}, {{ slot.year }}</td>
+                                                <td class="text-right">{{ slotTimeString(slot.slotIndex) }}</td>
+                                                <td class="text-right">
+                                                    <v-btn text icon color="grey darken-2" @click="removeSlot(slot)">
+                                                        <v-icon>close</v-icon>
+                                                    </v-btn>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </template>
+                                </v-simple-table>
+                                
+                            </v-expansion-panel-content>
+                        </v-expansion-panel>
+                    </v-expansion-panels>
                     <br>
 
                     <v-btn @click="submit" v-bind:disabled="slots.length == 0">Sign Up For {{ slots.length }} Prayer{{ slots.length == 1 ? '' : 's' }}</v-btn>
@@ -186,13 +209,31 @@ export default {
             ]
         };
     },
+    computed: {
+        cartMonths() {
+            let result = {};
+
+            for (let index in this.slots) {
+                let slot = this.slots[index];
+                let key = slot.year + "-" + slot.monthIndex.toString().padStart(2, "0");
+
+                if (!result[key]) {
+                    result[key] = [ slot ];
+                }
+                else {
+                    result[key].push(slot);
+                }
+            }
+
+            return result;
+        }
+    },
     methods: {
         addSlot() {
             this.slots.push({ year: 2020, monthIndex: 0, dayIndex: 0, slotIndex: 0 });
         },
-        removeSlot(index) {
-            let slot = this.slots[index];
-
+        removeSlot(slot) {
+            let index = this.slots.indexOf(slot);
             this.slots.splice(index, 1);
 
             // Check whether the slot list needs to be regenerated
