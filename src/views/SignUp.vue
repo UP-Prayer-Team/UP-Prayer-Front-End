@@ -17,19 +17,22 @@
                         label="Email" 
                         outlined
                         required
+                        shaped
+                        placeholder="test@example.com"
                         ></v-text-field>
                     </v-row>
                     
                     <v-row justify="space-between">
-                        <v-select 
+                        <v-autocomplete
                         v-model="countryCode" 
                         :items="countryCodeItems" 
+                        :search-input.sync="countrySearch"
                         label="Country" 
                         class="mr-4"
                         item-text="displayName"
                         item-value="code"
                         outlined
-                        
+                        hide-no-data
                         >
                             <template v-slot:item="{ item }">
                                 {{ item.displayName }}
@@ -43,15 +46,17 @@
 
                             </template>
                         
-                        </v-select>
+                        </v-autocomplete>
 
-                        <v-select 
+                        <v-autocomplete
                             v-model="districtCode" 
-                            :items="countryDict[countryCode].districts" 
+                            :items="countryDict[countryCode].districts"
+                            :search-input.sync="regionSearch" 
                             label="Region"
                             item-text="name"
                             item-value="shortCode"
-                            outlined>
+                            outlined
+                            hide-no-data>
                             <template v-slot:item="{ item }">
                                 {{ item.name }}
                             </template>
@@ -59,7 +64,7 @@
                             <template v-slot:selection="{ item }">
                                 {{ item.name }}
                             </template>
-                        </v-select>
+                        </v-autocomplete>
                     </v-row>
                     
                     <v-row>
@@ -158,7 +163,7 @@
                     </v-expansion-panels>
                     <br>
 
-                    <v-btn @click="submit" v-bind:disabled="slots.length == 0">Sign Up For {{ slots.length }} Prayer{{ slots.length == 1 ? '' : 's' }}</v-btn>
+                    <v-btn @click="submit" v-bind:disabled="slots.length == 0">Sign Up For {{ slots.length }} Prayer Slot{{ slots.length == 1 ? '' : 's' }}</v-btn>
                 </v-form>
                 <div v-if="showThanks">
                     <p>
@@ -194,6 +199,8 @@ export default {
             showForm: true,
             showThanks: false,
             error: null,
+            countrySearch: null,
+            regionSearch: null,
             today: new Date().getUTCFullYear() + '-' + (new Date().getMonth() + 1).toString().padStart(2, '0') + '-' + new Date().getDate().toString().padStart(2, '0'),
 
             viewDate: {
@@ -209,7 +216,7 @@ export default {
                 return result;
             }(),
 
-            email: "test@example.com",
+            email: "",
             countryCode: "US",
             districtCode: "OR",
             slots: [
