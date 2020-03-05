@@ -61,28 +61,6 @@ export default {
         return {
             endorsements: [
 
-                { homepageURL: "www.example.com", donateURL: "www.example.com/donate", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
-                { homepageURL: "www.example.com", donateURL: "www.example.com/donate", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
-                { homepageURL: "www.example.com", donateURL: "www.example.com/donate", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
-                { homepageURL: "www.example.com", donateURL: "www.example.com/donate", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
-                { homepageURL: "www.example.com", donateURL: "www.example.com/donate", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
-                { homepageURL: "www.example.com", donateURL: "www.example.com/donate", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
-                { homepageURL: "www.example.com", donateURL: "www.example.com/donate", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
-                { homepageURL: "www.example.com", donateURL: "www.example.com/donate", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
-                { homepageURL: "www.example.com", donateURL: "www.example.com/donate", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
-                { homepageURL: "www.example.com", donateURL: "www.example.com/donate", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
-                { homepageURL: "www.example.com", donateURL: "www.example.com/donate", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
-                { homepageURL: "www.example.com", donateURL: "www.example.com/donate", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
-                { homepageURL: "www.example.com", donateURL: "www.example.com/donate", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
-                { homepageURL: "www.example.com", donateURL: "www.example.com/donate", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
-                { homepageURL: "www.example.com", donateURL: "www.example.com/donate", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
-                { homepageURL: "www.example.com", donateURL: "www.example.com/donate", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
-                { homepageURL: "www.example.com", donateURL: "www.example.com/donate", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
-                { homepageURL: "www.example.com", donateURL: "www.example.com/donate", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
-                { homepageURL: "www.example.com", donateURL: "www.example.com/donate", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
-                { homepageURL: "www.example.com", donateURL: "www.example.com/donate", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
-
-
             ]
         };
     },
