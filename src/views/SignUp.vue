@@ -31,6 +31,7 @@
                         class="mr-4"
                         item-text="displayName"
                         item-value="code"
+                        autocomplete="up-country-code"
                         outlined
                         hide-no-data
                         >
@@ -55,6 +56,7 @@
                             label="Region"
                             item-text="name"
                             item-value="shortCode"
+                            autocomplete="up-district-code"
                             outlined
                             hide-no-data>
                             <template v-slot:item="{ item }">
