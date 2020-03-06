@@ -265,8 +265,14 @@ export default {
         },
         slotTimeString: UPUtils.slotTimeString,
         monthDayClick(date) {
-            this.loadDayView(date.year, date.month - 1, date.day - 1);
-            this.showDayView = true;
+            var now = new Date();
+            if(date.day - 1 < now.getUTCDay() && date.month - 1 <= now.getUTCMonth() && date.year <= now.getFullYear()) {
+                alert("This date has already past");
+            }
+            else {
+                this.loadDayView(date.year, date.month - 1, date.day - 1);
+                this.showDayView = true;
+            }
         },
         backToMonthView() {
             this.showDayView = false;
