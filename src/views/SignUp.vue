@@ -400,7 +400,6 @@ export default {
 .flag-adornment {
     position: absolute;
     right: 10px;
-    margin-top: 4px;
 }
 
 </style>
