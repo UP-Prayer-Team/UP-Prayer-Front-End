@@ -128,6 +128,10 @@ export default {
     height: 30px; 
 }
 
+.theme--light.v-footer {
+    background-color: transparent !important;
+}
+
 .home-tab {
     margin-left: 0px !important;
     margin-right: auto;

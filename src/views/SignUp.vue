@@ -17,32 +17,56 @@
                         label="Email" 
                         outlined
                         required
+                        shaped
+                        placeholder="test@example.com"
                         ></v-text-field>
                     </v-row>
                     
                     <v-row justify="space-between">
-                        <v-select 
+                        <v-autocomplete
                         v-model="countryCode" 
                         :items="countryCodeItems" 
-                        label="Country code" 
+                        :search-input.sync="countrySearch"
+                        label="Country" 
                         class="mr-4"
+                        item-text="displayName"
+                        item-value="code"
+                        autocomplete="up-country-code"
                         outlined
-                        
+                        hide-no-data
                         >
                             <template v-slot:item="{ item }">
-                                {{item.displayName }}
-                                {{ item.flag }}
+                                {{ item.displayName }}
+                                <span class="text-right flag-adornment">{{ item.flag }}</span>
                                 
                             </template>
-                        
-                        </v-select>
 
-                        <v-select 
-                        v-model="districtCode" 
-                        :items="districtCodeItems" 
-                        label="District code"
-                        outlined
-                        ></v-select>
+                            <template v-slot:selection="{ item }">
+                                {{ item.displayName }}
+                                <span class="text-right flag-adornment mr-4">{{ item.flag }}</span>
+
+                            </template>
+                        
+                        </v-autocomplete>
+
+                        <v-autocomplete
+                            v-model="districtCode" 
+                            :items="countryDict[countryCode].districts"
+                            :search-input.sync="regionSearch" 
+                            label="Region"
+                            item-text="name"
+                            item-value="shortCode"
+                            autocomplete="up-district-code"
+                            outlined
+                            hide-no-data>
+                            <template v-slot:item="{ item }">
+                                {{ item.name }}
+                            </template>
+
+                            <template v-slot:selection="{ item }">
+                                {{ item.name }}
+                            </template>
+                        </v-autocomplete>
                     </v-row>
                     
                     <v-row>
@@ -141,7 +165,7 @@
                     </v-expansion-panels>
                     <br>
 
-                    <v-btn @click="submit" v-bind:disabled="slots.length == 0">Sign Up For {{ slots.length }} Prayer{{ slots.length == 1 ? '' : 's' }}</v-btn>
+                    <v-btn @click="submit" v-bind:disabled="slots.length == 0">Sign Up For {{ slots.length }} Prayer Slot{{ slots.length == 1 ? '' : 's' }}</v-btn>
                 </v-form>
                 <div v-if="showThanks">
                     <p>
@@ -163,7 +187,8 @@
 import UPClient from '../services/UPClient';
 import UPUtils from '../services/UPUtils';
 import SignUpDaySlot from '../components/SignUpDaySlot.vue';
-import { countries } from 'countries-list';
+import flagCountries from 'countries-list';
+import countries from 'country-region-data';
 
 
 export default {
@@ -176,6 +201,8 @@ export default {
             showForm: true,
             showThanks: false,
             error: null,
+            countrySearch: null,
+            regionSearch: null,
             today: new Date().getUTCFullYear() + '-' + (new Date().getMonth() + 1).toString().padStart(2, '0') + '-' + new Date().getDate().toString().padStart(2, '0'),
             //true if the month and year displayed are equal to the current date
             //dissables the month prev botton
@@ -194,8 +221,8 @@ export default {
                 return result;
             }(),
 
-            email: "test@example.com",
-            countryCode: "USA",
+            email: "",
+            countryCode: "US",
             districtCode: "OR",
             slots: [
                 // { year: null, monthIndex: null, dayIndex: null, slotIndex: null }
@@ -205,11 +232,15 @@ export default {
                 "Not specified",
                 "USA"
             ],
+            countryDict: {
+
+            }
+            /*,
             districtCodeItems: [
                 "Not specified",
                 "WA",
                 "OR"
-            ]
+            ]*/
         };
     },
     computed: {
@@ -346,13 +377,17 @@ export default {
             });
         },
         populateCountryList() {
-            this.countryCodeItems.clear;
+            this.countryCodeItems = [ ];
+            this.countryDict = { };
             for (let country in countries) {
-                this.countryCodeItems.push({ 
-                    displayName: countries[country].name,
-                    code: country,
-                    flag: countries[country].emoji
-                 });
+                let data = {
+                    displayName: countries[country].countryName,
+                    code: countries[country].countryShortCode,
+                    flag: flagCountries.countries[countries[country].countryShortCode].emoji,
+                    districts: countries[country].regions
+                };
+                this.countryCodeItems.push(data);
+                this.countryDict[data.code] = data;
             }
         }
     },
@@ -375,6 +410,11 @@ export default {
 
 .theme--light.v-calendar-daily {
     border: #e0e0e0 1px solid;
+}
+
+.flag-adornment {
+    position: absolute;
+    right: 10px;
 }
 
 </style>
