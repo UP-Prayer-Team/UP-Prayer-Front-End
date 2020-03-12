@@ -1,114 +1,102 @@
 <template>
     <div class="home">
 
-        <div class="map">
-            <v-carousel 
-            :cycle="true"
-            :hide-delimiters="true"
-            :show-arrows="false">
+        <div class="landing">
+            <v-sheet
+            height="200"
+            color="white">
 
-                <v-carousel-item
-                v-for="(item,i) in items"
-                :key="i"
-                :src="item.src"
-                ></v-carousel-item>
-            </v-carousel>
+                <div class="landing">
+                    <img src="..\assets\logo.svg" height="100" width="100">
+                   <h1> <strong>UP MOVEMENT </strong></h1>
+                </div>
 
-            <v-card class="banner-card">
-                <v-card-text class="headline">
-                    What happens when thousands around the world focus their prayer on bringing an end to human trafficking?
-                    <strong class="display-1 font-weight-bold"> It. Ends. </strong>
-                </v-card-text>
-                <!-- <v-card-text class="display-1 font-weight-black" style="text-align: right;">
-                    It. Ends. 
-                </v-card-text> -->
+
+            </v-sheet>
+        </div>
+        <div class="banner-wrapper">
+            <v-card class="banner">            
+                <div class="banner-text-wrapper">
+                    <v-card-text class="banner-text">
+                    What happens when thousands around the
+                    world focus their prayer on bringing an end
+                    to human trafficking? It ends.
+                    </v-card-text>
+                    <v-card-actions class="banner-btns">
+                        <v-btn
+                        depressed
+                        outlined="true"
+                        color="white"
+                        class="pray-btn"> 
+                        pray </v-btn>
+                    </v-card-actions>
+                </div>
             </v-card>
-            
         </div>
 
-        <v-container> 
-            <!-- row 1 -->
-            <v-row class="hidden-sm-and-down">
+        <v-container>
+            <v-row
+            align="start"
+            justify="end">
                 <v-col>
-                    <v-hover v-slot:default="{ hover }">
-                        <v-card
-                        :elevation="hover ? 12 : 2"
-                        class="mx-auto"
-                        @click="toSignUp"
-                        >
-                                <v-card-title class="font-weight-bold"> Join the Unstoppable Prayer Movement </v-card-title> 
-                                <v-card-text class="subtitle-1"> Once a year (or more) commit to pray for 30 minutes and donate $30 to the anti-trafficking organization of your choice. </v-card-text>                 
-                        </v-card>
-                    </v-hover>
-
                 </v-col>
+                 <v-col>
+                    <div class="resource-card-wrapper">
+                    <v-card 
+                    outlined="true"
+                    max-width="600"
+                    class="resource">
+                        <v-card-title class="resource-title">
+                            24hr/day
+                        </v-card-title>
 
-                <v-col>
-                     <v-card>
-                        <v-card-title class="font-weight-bold">
-                            Q: Why 30 minutes and $30?
-                        </v-card-title>     
-                        <v-card-text>
+                        <v-card-subtitle class="resource-subtitle">
+                            Freedom found in prayer
+                        </v-card-subtitle>
+
+                        <v-card-text class="resource-text">
+                            Join the Unstoppable Prayer Movement (UP Movement). Once a year (or more) commit to pray for 30 minutes and donate $30 to the anti-trafficking organization of your choice. 
+                            Why 30 minutes and $30? 
                             There are 8,750 hours per year which is 17,500 30-minute segments. With that many people praying and each donating $30, human trafficking can stop. It’s not about the money. It’s about the collective force that we can create to call on the Glory of the Lord. The UP Movement breaks down this complex and overwhelming issue into 30 minutes and $30. You, along with many others, can be the movement that stops trafficking in our world.
-                        </v-card-text>           
+
+                        </v-card-text>
+
+                        <v-card-actions>
+                            <v-btn 
+                            depressed
+                            color="rgba(0, 0, 0, 100)"
+                            class="signup-btn">
+                                sign up
+                            </v-btn>
+                            <v-btn 
+                            depressed
+                            outlined="true"
+                            color="rgba(0, 0, 0, 100)"
+                            class="resource-btn">
+                                resources
+                            </v-btn>
+                        </v-card-actions>
+
                     </v-card>
-                </v-col>
-        
-            </v-row>
-
-            <v-row class="hidden-md-and-up" justify="center">
-                <v-col>
-                    <v-hover v-slot:default="{ hover }">
-                        <v-card
-                        :elevation="hover ? 12 : 2"
-                        class="mx-auto"
-                        @click="toSignUp"
-                        >
-                                <v-card-title class="font-weight-bold"> Join the Unstoppable Prayer Movement </v-card-title> 
-                                <v-card-text class="subtitle-1"> Once a year (or more) commit to pray for 30 minutes and donate $30 to the anti-trafficking organization of your choice. </v-card-text>                 
-                        </v-card>
-                    </v-hover>
-
-                </v-col>
-
-            </v-row>
-
-            <v-row class="hidden-md-and-up" justify="center">
-
-                <v-col>
-                     <v-card>
-                        <v-card-title class="font-weight-bold">
-                            Q: Why 30 minutes and $30?
-                        </v-card-title>     
-                        <v-card-text>
-                            There are 8,750 hours per year which is 17,500 30-minute segments. With that many people praying and each donating $30, human trafficking can stop. It’s not about the money. It’s about the collective force that we can create to call on the Glory of the Lord. The UP Movement breaks down this complex and overwhelming issue into 30 minutes and $30. You, along with many others, can be the movement that stops trafficking in our world.
-                        </v-card-text>           
-                    </v-card>
-                </v-col>
-        
+                </div>
+                 </v-col>
             </v-row>
 
         </v-container>
 
-        <v-card :flat="true" class="calander-sheet" height="500">
-            <month-summary-calendar>
-
-            </month-summary-calendar>
-        </v-card>
-        
     </div>
 </template>
 
 <script>
 import UPClient from '../services/UPClient'
 // import Endorsement from '../components/Endorsement.vue'
-import MonthSummaryCalendar from '../components/MonthSummaryCalendar.vue'
+// import MonthSummaryCalendar from '../components/MonthSummaryCalendar.vue'
 
 export default {
     name: 'home',
     components: {
         // 'endorsement': Endorsement,
-        'month-summary-calendar': MonthSummaryCalendar
+        // 'month-summary-calendar': MonthSummaryCalendar
     },
     data() {
         return {
@@ -136,9 +124,6 @@ export default {
                 console.log("ERROR: Couldn't get current endorsement. Message: " + message);
             });
         },
-        update() {
-
-        },
         getMonthRes() {
             let today = new Date();
             UPClient.getMonthSummary(today.getUTCFullYear(), today.getUTCMonth(), data => {
@@ -160,20 +145,120 @@ export default {
             this.$router.replace({ name: "sign-up" });
         },
     }
-
-
 }
 </script>
 <style lang="scss" scoped>
+// @import '../scss/variables.scss';
+
     #button {
         margin: 15px;
     }
 
-    .banner-card {
-        margin: 0 auto;
-        width: 80%;
-        position: relative;
-        top: -25px  
+    .landing {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 800;
+        letter-spacing: 0.2em; 
+    }
+
+    .banner {
+        padding-left: 10%;
+    }
+
+    .v-card {
+        padding-top: 30px;
+        padding-bottom: 30px;
+        border-radius: 0px !important;
+    }
+
+    .v-btn {
+        border-radius: 0px !important;
+    }
+
+    .theme--light.v-card.v-card--outlined {
+        border: white;
+    }
+
+    .banner {
+        background: linear-gradient(to right, #a300ff, #c70098, #f91600);
+    }
+
+    .banner-wrapper {
+        padding-left: 5%;
+    }
+
+    .banner-text {
+        font-family: 'Montserrat', sans-serif;
+        color: white !important;    
+        text-align: left;
+        padding-right: 10%;
+        font-weight: 900;
+        font-size: 200%;
+        line-height: 1.33em;
+        padding-left: 0px !important;
+    }
+
+    .banner-text-wrapper {
+        text-align: left;
+        padding-left: 10%;
+        padding-right: 10%;
+        color: white !important; 
+    }
+
+    .banner-btns {
+        padding-left: 0px !important;
+    }
+
+    .pray-btn {
+        text-transform: lowercase;
+    }
+
+    .resoure-card-wrapper {
+        float: right;
+    }
+
+    .resource-title {
+        font-family: 'Montserrat', sans-serif;
+        text-align: left;
+        color: black;
+        font-size: 54pt;
+        font-weight: 900;
+        line-height: 1.5em;
+    }
+
+    .resource-subtitle {
+        font-family: 'Montserrat', sans-serif;
+        text-align: left;
+        color: black !important;
+        font-size: 40pt;
+        font-weight: 700;
+        line-height: 1.2em;
+    }
+
+    .signup-btn {
+        color: white; 
+        font-family: 'Inter', sans-serif;
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: 0.0em; 
+        text-transform: lowercase;
+    }
+
+    .resource-btn {
+        color: rbga(0, 0, 0, 100);
+        font-family: 'Inter', sans-serif;
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: 0.0em; 
+        text-transform: lowercase;
+    }
+
+    .resource-text {
+        font-family: 'Inter', sans-serif;
+        text-align: left;
+        color: black !important;
+        font-size: 16px;
+        margin-top: 20px;
+        padding-bottom: 35px;
     }
 
     .v-card__title {
@@ -184,6 +269,5 @@ export default {
         margin-right: 2%;
         margin-left: 2%;
         margin-bottom: 30px;
-
     }
 </style>

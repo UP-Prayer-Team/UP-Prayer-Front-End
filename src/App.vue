@@ -99,8 +99,11 @@ export default {
 </script>
 
 <style lang="scss">
+@import '@/preset/variables.scss';
+
 #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    // font-family: 'Montserrat', sans-serif;
+    // font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
@@ -139,7 +142,13 @@ export default {
 
 html, body {
     height: 100%;
+    background-color: white !important;
 }
+
+.theme--light.v-application {
+    background-color: white !important;
+}
+
 
 v-footer {
     height: 155px;
