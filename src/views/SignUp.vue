@@ -82,7 +82,7 @@
                             <v-btn outlined class="mr-4" color="grey darken-2" @click="setToday">
                                 Today
                             </v-btn>
-                            <v-btn fab icon small @click="monthViewPrevMonth">
+                            <v-btn v-bind:disabled="this.prevMonthDisabled" fab icon small @click="monthViewPrevMonth">
                                 <v-icon>mdi-chevron-left</v-icon>
                             </v-btn>
                             <v-toolbar-title class="ml-0">{{ new Date(this.viewDate.year, this.viewDate.month).toLocaleString('default', { month: 'long' }) }} {{ viewDate.year }}</v-toolbar-title>
@@ -204,6 +204,9 @@ export default {
             countrySearch: null,
             regionSearch: null,
             today: new Date().getUTCFullYear() + '-' + (new Date().getMonth() + 1).toString().padStart(2, '0') + '-' + new Date().getDate().toString().padStart(2, '0'),
+            //true if the month and year displayed are equal to the current date
+            //dissables the month prev botton
+            prevMonthDisabled: true,
 
             viewDate: {
                 year: new Date().getUTCFullYear(),
@@ -293,8 +296,14 @@ export default {
         },
         slotTimeString: UPUtils.slotTimeString,
         monthDayClick(date) {
-            this.loadDayView(date.year, date.month - 1, date.day - 1);
-            this.showDayView = true;
+            var now = new Date();
+            if(date.day - 1 < now.getUTCDay() && date.month - 1 <= now.getUTCMonth() && date.year <= now.getFullYear()) {
+                alert("This date has already past");
+            }
+            else {
+                this.loadDayView(date.year, date.month - 1, date.day - 1);
+                this.showDayView = true;
+            }
         },
         backToMonthView() {
             this.showDayView = false;
@@ -305,6 +314,9 @@ export default {
                 this.viewDate.month += 12;
                 this.viewDate.year -= 1;
             }
+            if (this.viewDate.month ==  new Date().getUTCMonth() && this.viewDate.year ==  new Date().getUTCFullYear()) {
+                this.prevMonthDisabled = true;
+            }
         },
         monthViewNextMonth() {
             this.viewDate.month += 1;
@@ -312,6 +324,7 @@ export default {
                 this.viewDate.month -= 12;
                 this.viewDate.year += 1;
             }
+            this.prevMonthDisabled = false;
         },
         dayViewNextDay() {
             let date = new Date(this.viewDate.year, this.viewDate.month, this.viewDate.day + 1 + 1);
