@@ -1,6 +1,6 @@
 <template>
     <v-app id="app">
-        <div id="nav">
+        <!-- <div id="nav">
             <v-app-bar class="hidden-sm-and-down">
                 <v-spacer></v-spacer>
                 <v-tabs :right="true" v-model="activeTab">
@@ -8,8 +8,6 @@
                         {{ route.tabText }}
                     </v-tab>
                 </v-tabs>
-                <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
-                <!-- <v-spacer></v-spacer> -->
             </v-app-bar>
             <v-app-bar class="hidden-md-and-up">
                 <v-toolbar-title @click="toHome">{{ this.$router.options.routes[0].tabText }}</v-toolbar-title>
@@ -18,8 +16,6 @@
                     <v-icon>menu</v-icon>
                 </v-btn>
             </v-app-bar>
-            <!-- <router-link to="/">Home</router-link> |
-            <router-link to="/about">About</router-link> -->
             <v-navigation-drawer v-model="drawer" absolute temporary>
 
                 <v-list>
@@ -34,7 +30,7 @@
                 </v-list>
 
             </v-navigation-drawer>
-        </div>
+        </div> -->
         <v-content>
             <router-view/>
         </v-content>
@@ -66,20 +62,20 @@ export default {
             }
             this.drawer = false;
         },
-        updateActiveTab() {
-            this.activeTab = 0;
-            // Count the number of tabs before the one we want
-            for (let i = 0; i < this.$router.options.routes.length; i++) {
-                // Stop counting if we've reached the route we're at
-                if (this.$router.options.routes[i].name == this.$router.currentRoute.name) {
-                    break;
-                }
+        // updateActiveTab() {
+        //     this.activeTab = 0;
+        //     // Count the number of tabs before the one we want
+        //     for (let i = 0; i < this.$router.options.routes.length; i++) {
+        //         // Stop counting if we've reached the route we're at
+        //         if (this.$router.options.routes[i].name == this.$router.currentRoute.name) {
+        //             break;
+        //         }
 
-                if (this.$router.options.routes[i].tabText != undefined) {
-                    this.activeTab++;
-                }
-            }
-        },
+        //         if (this.$router.options.routes[i].tabText != undefined) {
+        //             this.activeTab++;
+        //         }
+        //     }
+        // },
         toHome() {
             this.$router.replace({ name: 'home' });
         },
@@ -115,6 +111,7 @@ export default {
 
 .v-content {
     padding: 0;
+    margin-top: 30px;
 }
 
 .v-toolbar__title {

@@ -235,7 +235,7 @@ export default {
     }
 
     .signup-btn {
-        color: white; 
+        color: white !important; 
         font-family: 'Inter', sans-serif;
         font-size: 22px;
         font-weight: 700;
