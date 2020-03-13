@@ -36,7 +36,8 @@
         </v-content>
         <v-footer>
             <v-spacer></v-spacer>
-            <div>UP Prayer Movement {{ getAppMode() }} &copy; {{ new Date().getFullYear() }}</div>
+            <img src=".\assets\logo.svg" height="24" width="24">
+            <div class="footer">UP Prayer Movement {{ getAppMode() }} &copy; {{ new Date().getFullYear() }}</div>
         </v-footer>
     </v-app>
 </template>
@@ -53,15 +54,15 @@ export default {
     },
 
     methods: {
-        getTabRoutes() {
-            return this.$router.options.routes.filter(route => route.tabText != undefined);
-        },
-        tabClicked(route) {
-            if (this.$route.name != route.name) {
-                this.$router.replace({ name: route.name });
-            }
-            this.drawer = false;
-        },
+        // getTabRoutes() {
+        //     return this.$router.options.routes.filter(route => route.tabText != undefined);
+        // },
+        // tabClicked(route) {
+        //     if (this.$route.name != route.name) {
+        //         this.$router.replace({ name: route.name });
+        //     }
+        //     this.drawer = false;
+        // },
         // updateActiveTab() {
         //     this.activeTab = 0;
         //     // Count the number of tabs before the one we want
@@ -83,14 +84,14 @@ export default {
             return process.env.VUE_APP_MODE;
         }
     },
-    mounted() {
-        this.updateActiveTab();
-    },
-    watch: {
-        $route(_, __) {
-            this.updateActiveTab();
-        }
-    }
+    // mounted() {
+    //     // this.updateActiveTab();
+    // },
+    // watch: {
+    //     $route(_, __) {
+    //         this.updateActiveTab();
+    //     }
+    // }
 }
 </script>
 
@@ -144,6 +145,12 @@ html, body {
 
 .theme--light.v-application {
     background-color: white !important;
+}
+
+.footer {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    line-height: 1.2em;
 }
 
 

@@ -27,6 +27,8 @@
                         depressed
                         outlined="true"
                         color="white"
+                        min-width="100"
+                        max-width="100"
                         class="pray-btn"> 
                         pray </v-btn>
                     </v-card-actions>
@@ -65,13 +67,18 @@
                             <v-btn 
                             depressed
                             color="rgba(0, 0, 0, 100)"
-                            class="signup-btn">
+                            min-width="100"
+                            max-width="100"
+                            class="signup-btn"
+                            @click="toSignUp">
                                 sign up
                             </v-btn>
                             <v-btn 
                             depressed
-                            outlined="true"
+                            outlined=true
                             color="rgba(0, 0, 0, 100)"
+                            min-width="100"
+                            max-width="100"
                             class="resource-btn">
                                 resources
                             </v-btn>
@@ -88,7 +95,7 @@
 </template>
 
 <script>
-import UPClient from '../services/UPClient'
+// import UPClient from '../services/UPClient'
 // import Endorsement from '../components/Endorsement.vue'
 // import MonthSummaryCalendar from '../components/MonthSummaryCalendar.vue'
 
@@ -101,46 +108,41 @@ export default {
     data() {
         return {
             currentEndorsement: null,
-            items: [
-                {
-                    src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Portland_and_Mt._Hood_from_Pittock_Mansion.jpg/1200px-Portland_and_Mt._Hood_from_Pittock_Mansion.jpg'
-                }
-            ],
         }
     },
     methods: {
-        getEndos() {
-            UPClient.getEndorsementList((currentIndex, endorsements) => {
-                console.log("Endorsements: (current index: " + currentIndex + ")\n" + JSON.stringify(endorsements));
-            }, message => {
-                console.log("ERROR: Couldn't get endorsement list. Message: " + message);
-            });
-        },
-        getEndo() {
-            UPClient.getCurrentEndorsement(endorsement => {
-                console.log("Current endorsement: \n" + JSON.stringify(endorsement));
-                this.currentEndorsement = endorsement;
-            }, message => {
-                console.log("ERROR: Couldn't get current endorsement. Message: " + message);
-            });
-        },
-        getMonthRes() {
-            let today = new Date();
-            UPClient.getMonthSummary(today.getUTCFullYear(), today.getUTCMonth(), data => {
-                // Print out each day
-                for (let i = 0; i < data.length; i++) {
-                    let dayData = data[i];
-                    console.log("Day " + i + ": "  + dayData.count + " reservations");
+        // getEndos() {
+        //     UPClient.getEndorsementList((currentIndex, endorsements) => {
+        //         console.log("Endorsements: (current index: " + currentIndex + ")\n" + JSON.stringify(endorsements));
+        //     }, message => {
+        //         console.log("ERROR: Couldn't get endorsement list. Message: " + message);
+        //     });
+        // },
+        // getEndo() {
+        //     UPClient.getCurrentEndorsement(endorsement => {
+        //         console.log("Current endorsement: \n" + JSON.stringify(endorsement));
+        //         this.currentEndorsement = endorsement;
+        //     }, message => {
+        //         console.log("ERROR: Couldn't get current endorsement. Message: " + message);
+        //     });
+        // },
+        // getMonthRes() {
+        //     let today = new Date();
+        //     UPClient.getMonthSummary(today.getUTCFullYear(), today.getUTCMonth(), data => {
+        //         // Print out each day
+        //         for (let i = 0; i < data.length; i++) {
+        //             let dayData = data[i];
+        //             console.log("Day " + i + ": "  + dayData.count + " reservations");
 
-                    for (let j = 0; j < dayData.locations.length; j++) {
-                        let resData = dayData.locations[j];
-                        console.log("  " + resData.district + ", " + resData.country);
-                    }
-                }
-            }, message => {
-                console.log("ERROR: Couldn't get reservations for this month. Message: " + message);
-            });
-        },
+        //             for (let j = 0; j < dayData.locations.length; j++) {
+        //                 let resData = dayData.locations[j];
+        //                 console.log("  " + resData.district + ", " + resData.country);
+        //             }
+        //         }
+        //     }, message => {
+        //         console.log("ERROR: Couldn't get reservations for this month. Message: " + message);
+        //     });
+        // },
         toSignUp() {
             this.$router.replace({ name: "sign-up" });
         },
@@ -231,7 +233,7 @@ export default {
         color: black !important;
         font-size: 40pt;
         font-weight: 700;
-        line-height: 1.2em;
+        line-height: 1.0em;
     }
 
     .signup-btn {
@@ -263,6 +265,10 @@ export default {
 
     .v-card__title {
         word-break: keep-all;
+    }
+
+    .v-card__actions {
+        padding: 16px;
     }
 
     .calander-sheet {
