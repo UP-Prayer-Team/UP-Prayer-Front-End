@@ -6,6 +6,7 @@ import Prayer from '../views/Prayer.vue'
 import Charities from '../views/Charities.vue'
 import SignUp from '../views/SignUp.vue'
 import Confirm from '../views/Confirm.vue'
+import Blog from '../views/Blog.vue'
 
 Vue.use(VueRouter);
 
@@ -30,6 +31,13 @@ const routes = [
         component: Prayer,
         tabText: 'Prayer Guide',
         drawerIcon: 'menu_book'
+    },
+    {
+        path: '/blog/:id',
+        name: 'blog',
+        component: Blog,
+        tabText: 'Blog',
+        drawerIcon: 'mdi-newspaper-variant-multiple'
     },
     {
         path: '/about',
