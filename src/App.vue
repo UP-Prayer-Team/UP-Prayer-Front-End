@@ -2,7 +2,9 @@
     <v-app id="app">
         <div id="nav">
             <v-app-bar 
-            flat
+            elevate-on-scroll
+            fixed
+            :height="82"
             class="hidden-sm-and-down">
                 <v-spacer></v-spacer>
                 <v-tabs 
@@ -10,19 +12,20 @@
                 hide-slider="true"
                 :right="true" v-model="activeTab">
                     <v-tab v-for="(route, i) in getTabRoutes()" v-bind:key="i" @click="tabClicked(route)" v-bind:class="{ 'home-tab': i == 0 }">
-                        <!-- <div v-if="route.name =! 'home'"> -->
+                        <div v-if="route.name != 'home'">
                             {{ route.tabText }}
-                        <!-- </div> -->
-                        <!-- <div v-if="route.name == 'home'">
-                            <v-img :src="require('.\\assets\\Movement.png')"> </v-img>
-                        </div> -->
+                        </div>
+                        <div v-if="route.name == 'home'">
+                            <img src=".\assets\logo.svg" height="50" width="50">
+                        </div>
                     </v-tab>
                 </v-tabs>
             </v-app-bar>
             <v-app-bar
             flat 
+            height="60"
             class="hidden-md-and-up">
-                <v-toolbar-title @click="toHome"><img src=".\assets\logo.svg" height="40" width="40"></v-toolbar-title>
+                <v-toolbar-title @click="toHome"><img src=".\assets\logo.svg" height="36" width="36" style="padding-top: 10px;"></v-toolbar-title>
                 <v-spacer></v-spacer>
                 <v-btn text @click.stop="drawer = !drawer">
                     <v-icon>menu</v-icon>
@@ -120,6 +123,10 @@ export default {
     min-height: 100%;
     /* equal to footer height */
     margin-bottom: -30px; 
+}
+
+.v-tab {
+    font-family: 'Inter', sans-serif !important;
 }
 
 .v-content {

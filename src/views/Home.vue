@@ -1,14 +1,14 @@
 <template>
     <div class="home">
 
-        <div class="landing">
+        <div class="landing-wrapper">
             <v-sheet
             height="200"
             color="white">
 
                 <div class="landing">
                     <img src="..\assets\logo.svg" height="200" width="200">
-                    <h1> <strong>UP MOVEMENT </strong></h1>
+                    <h1 style="padding: 16px;"> <strong>UP MOVEMENT </strong></h1>
                 </div>
 
 
@@ -216,6 +216,16 @@ export default {
 
     #button {
         margin: 15px;
+    }
+
+    .home {
+        margin-top: 82px;
+    }
+
+    .landing-wrapper {
+        height: 350px;
+        padding-top: 16px;
+        padding-bottom: 16px;
     }
 
     .landing {
