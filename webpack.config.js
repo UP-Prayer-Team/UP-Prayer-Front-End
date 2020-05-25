@@ -11,11 +11,12 @@ module.exports = {
             loader: 'sass-loader',
             // Requires sass-loader@^8.0.0
             options: {
-              implementation: require('sass'),
-              sassOptions: {
-                fiber: require('fibers'),
-                indentedSyntax: true // optional
-              },
+              // implementation: require('sass'),
+              prependData: "@import '@/src/preset/variables.scss';",
+              // sassOptions: {
+              //   fiber: require('fibers'),
+              //   indentedSyntax: true // optional
+              // },
             },
           },
         ],

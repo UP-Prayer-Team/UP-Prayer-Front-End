@@ -1,25 +1,36 @@
 <template>
     <v-app id="app">
         <div id="nav">
-            <v-app-bar class="hidden-sm-and-down">
+            <v-app-bar 
+            elevate-on-scroll
+            fixed
+            :height="82"
+            class="hidden-sm-and-down">
                 <v-spacer></v-spacer>
-                <v-tabs :right="true" v-model="activeTab">
+                <v-tabs 
+                optional
+                hide-slider="true"
+                :right="true" v-model="activeTab">
                     <v-tab v-for="(route, i) in getTabRoutes()" v-bind:key="i" @click="tabClicked(route)" v-bind:class="{ 'home-tab': i == 0 }">
-                        {{ route.tabText }}
+                        <div v-if="route.name != 'home'">
+                            {{ route.tabText }}
+                        </div>
+                        <div v-if="route.name == 'home'">
+                            <img src=".\assets\logo.svg" height="50" width="50">
+                        </div>
                     </v-tab>
                 </v-tabs>
-                <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
-                <!-- <v-spacer></v-spacer> -->
             </v-app-bar>
-            <v-app-bar class="hidden-md-and-up">
-                <v-toolbar-title @click="toHome">{{ this.$router.options.routes[0].tabText }}</v-toolbar-title>
+            <v-app-bar
+            flat 
+            height="60"
+            class="hidden-md-and-up">
+                <v-toolbar-title @click="toHome"><img src=".\assets\logo.svg" height="36" width="36" style="padding-top: 10px;"></v-toolbar-title>
                 <v-spacer></v-spacer>
                 <v-btn text @click.stop="drawer = !drawer">
                     <v-icon>menu</v-icon>
                 </v-btn>
             </v-app-bar>
-            <!-- <router-link to="/">Home</router-link> |
-            <router-link to="/about">About</router-link> -->
             <v-navigation-drawer v-model="drawer" absolute temporary>
 
                 <v-list>
@@ -40,7 +51,8 @@
         </v-content>
         <v-footer>
             <v-spacer></v-spacer>
-            <div>UP Prayer Movement {{ getAppMode() }} &copy; {{ new Date().getFullYear() }}</div>
+            <img src=".\assets\logo.svg" height="24" width="24">
+            <div class="footer">UP Prayer Movement {{ getAppMode() }} &copy; {{ new Date().getFullYear() }}</div>
         </v-footer>
     </v-app>
 </template>
@@ -115,8 +127,11 @@ export default {
 </script>
 
 <style lang="scss">
+@import '@/preset/variables.scss';
+
 #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    // font-family: 'Montserrat', sans-serif;
+    // font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
@@ -126,8 +141,13 @@ export default {
     margin-bottom: -30px;
 }
 
+.v-tab {
+    font-family: 'Inter', sans-serif !important;
+}
+
 .v-content {
     padding: 0;
+    margin-top: 30px;
 }
 
 .v-toolbar__title {
@@ -155,7 +175,23 @@ export default {
 
 html, body {
     height: 100%;
+    background-color: white !important;
 }
+
+.theme--light.v-application {
+    background-color: white !important;
+}
+
+.footer {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    line-height: 1.2em;
+}
+
+.v-content {
+    margin-top: 0px;
+}
+
 
 v-footer {
     height: 155px;
