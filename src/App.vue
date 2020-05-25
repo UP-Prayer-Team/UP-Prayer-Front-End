@@ -1,16 +1,28 @@
 <template>
     <v-app id="app">
-        <!-- <div id="nav">
-            <v-app-bar class="hidden-sm-and-down">
+        <div id="nav">
+            <v-app-bar 
+            flat
+            class="hidden-sm-and-down">
                 <v-spacer></v-spacer>
-                <v-tabs :right="true" v-model="activeTab">
+                <v-tabs 
+                optional
+                hide-slider="true"
+                :right="true" v-model="activeTab">
                     <v-tab v-for="(route, i) in getTabRoutes()" v-bind:key="i" @click="tabClicked(route)" v-bind:class="{ 'home-tab': i == 0 }">
-                        {{ route.tabText }}
+                        <!-- <div v-if="route.name =! 'home'"> -->
+                            {{ route.tabText }}
+                        <!-- </div> -->
+                        <!-- <div v-if="route.name == 'home'">
+                            <v-img :src="require('.\\assets\\Movement.png')"> </v-img>
+                        </div> -->
                     </v-tab>
                 </v-tabs>
             </v-app-bar>
-            <v-app-bar class="hidden-md-and-up">
-                <v-toolbar-title @click="toHome">{{ this.$router.options.routes[0].tabText }}</v-toolbar-title>
+            <v-app-bar
+            flat 
+            class="hidden-md-and-up">
+                <v-toolbar-title @click="toHome"><img src=".\assets\logo.svg" height="40" width="40"></v-toolbar-title>
                 <v-spacer></v-spacer>
                 <v-btn text @click.stop="drawer = !drawer">
                     <v-icon>menu</v-icon>
@@ -30,7 +42,7 @@
                 </v-list>
 
             </v-navigation-drawer>
-        </div> -->
+        </div>
         <v-content>
             <router-view/>
         </v-content>
@@ -54,29 +66,29 @@ export default {
     },
 
     methods: {
-        // getTabRoutes() {
-        //     return this.$router.options.routes.filter(route => route.tabText != undefined);
-        // },
-        // tabClicked(route) {
-        //     if (this.$route.name != route.name) {
-        //         this.$router.replace({ name: route.name });
-        //     }
-        //     this.drawer = false;
-        // },
-        // updateActiveTab() {
-        //     this.activeTab = 0;
-        //     // Count the number of tabs before the one we want
-        //     for (let i = 0; i < this.$router.options.routes.length; i++) {
-        //         // Stop counting if we've reached the route we're at
-        //         if (this.$router.options.routes[i].name == this.$router.currentRoute.name) {
-        //             break;
-        //         }
+        getTabRoutes() {
+            return this.$router.options.routes.filter(route => route.tabText != undefined);
+        },
+        tabClicked(route) {
+            if (this.$route.name != route.name) {
+                this.$router.replace({ name: route.name });
+            }
+            this.drawer = false;
+        },
+        updateActiveTab() {
+            this.activeTab = 0;
+            // Count the number of tabs before the one we want
+            for (let i = 0; i < this.$router.options.routes.length; i++) {
+                // Stop counting if we've reached the route we're at
+                if (this.$router.options.routes[i].name == this.$router.currentRoute.name) {
+                    break;
+                }
 
-        //         if (this.$router.options.routes[i].tabText != undefined) {
-        //             this.activeTab++;
-        //         }
-        //     }
-        // },
+                if (this.$router.options.routes[i].tabText != undefined) {
+                    this.activeTab++;
+                }
+            }
+        },
         toHome() {
             this.$router.replace({ name: 'home' });
         },
@@ -84,14 +96,14 @@ export default {
             return process.env.VUE_APP_MODE;
         }
     },
-    // mounted() {
-    //     // this.updateActiveTab();
-    // },
-    // watch: {
-    //     $route(_, __) {
-    //         this.updateActiveTab();
-    //     }
-    // }
+    mounted() {
+        // this.updateActiveTab();
+    },
+    watch: {
+        $route(_, __) {
+            this.updateActiveTab();
+        }
+    }
 }
 </script>
 
@@ -151,6 +163,10 @@ html, body {
     font-family: 'Inter', sans-serif;
     font-weight: 700;
     line-height: 1.2em;
+}
+
+.v-content {
+    margin-top: 0px;
 }
 
 
