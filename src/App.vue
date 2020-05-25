@@ -58,6 +58,7 @@
 </template>
 
 <script>
+import UPClient from "./services/UPClient";
 
 export default {
 
@@ -65,6 +66,7 @@ export default {
         return {
             activeTab: 0,
             drawer: null,
+            latestBlogID: "",
         }
     },
 
@@ -74,7 +76,16 @@ export default {
         },
         tabClicked(route) {
             if (this.$route.name != route.name) {
-                this.$router.replace({ name: route.name });
+                // The blog tab links to the latest blog
+                if (route.name == "blog") {
+                    if (this.latestBlogID) {
+                        this.$router.push({ name: "blog", params: { id: this.latestBlogID } });
+                    }
+                }
+                else {
+                    this.$router.push({ name: route.name });
+                }
+
             }
             this.drawer = false;
         },
@@ -93,14 +104,19 @@ export default {
             }
         },
         toHome() {
-            this.$router.replace({ name: 'home' });
+            this.$router.push({ name: 'home' });
         },
         getAppMode() {
             return process.env.VUE_APP_MODE;
         }
     },
     mounted() {
-        // this.updateActiveTab();
+        this.updateActiveTab();
+        UPClient.listPosts(posts => {
+            this.latestBlogID = posts.length > 0 ? posts[0].id : null;
+        }, message => {
+            console.log("Couldn't get latest blog post: " + message);
+        });
     },
     watch: {
         $route(_, __) {
@@ -122,7 +138,7 @@ export default {
     color: #2c3e50;
     min-height: 100%;
     /* equal to footer height */
-    margin-bottom: -30px; 
+    margin-bottom: -30px;
 }
 
 .v-tab {
@@ -145,7 +161,7 @@ export default {
 }
 
 .site-footer, #app:after {
-    height: 30px; 
+    height: 30px;
 }
 
 .theme--light.v-footer {

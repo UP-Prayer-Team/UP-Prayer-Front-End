@@ -40,7 +40,7 @@ export default class UPClient {
     // onSuccess: ( summary: { count: Int, locations: { country: String, district: String }[] }[]) -> void
     //   The parameter is an array of summaries for the days in the requested month.
     //   Each day's summary contains the number of confirmed reservations (`count`), as well as
-    //   some of the locations of those confirmed reservations. 
+    //   some of the locations of those confirmed reservations.
     static getMonthSummary(year, monthIndex, onSuccess, onFailure) {
         submitRequest("GET", "/api/reservations/summary?year=" + year + "&month=" + monthIndex, null, data => {
             onSuccess(data);
@@ -96,7 +96,7 @@ export default class UPClient {
         else {
             onSuccess(locations);
         }
-        
+
     }
 
     //
@@ -122,6 +122,23 @@ export default class UPClient {
         submitRequest("POST", "/api/endorsements/update", { currentIndex: currentIndex, endorsements: endorsements }, _ => {
             onSuccess();
         }, onFailure);
+    }
+
+    //
+    // BLOG POSTS
+    //
+
+    // onSuccess: ({ id: String, title: String, date: String, author: String, content: "" }[]) -> void
+    static listPosts(onSuccess, onFailure) {
+        submitRequest("GET", "/api/posts/list", null, data => {
+            onSuccess(data);
+        }, onFailure);
+    }
+
+    // id: String
+    // onSuccess: ({ id: String, title: String, date: String, author: String, content: String }) -> void
+    static getPost(id, onSuccess, onFailure) {
+        submitRequest("GET", "/api/posts/post/" + id, null, onSuccess, onFailure);
     }
 }
 
