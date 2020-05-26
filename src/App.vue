@@ -22,13 +22,14 @@
                 </v-tabs>
             </v-app-bar>
             <v-app-bar
-            flat 
-            height="60"
+            elevate-on-scroll
+            fixed
+            :height="82"
             class="hidden-md-and-up">
-                <v-toolbar-title @click="toHome"><img src=".\assets\logo.svg" height="36" width="36" style="padding-top: 10px;"></v-toolbar-title>
+                <v-tab @click="toHome"> <img src=".\assets\logo.svg" height="50" width="50"> </v-tab>
                 <v-spacer></v-spacer>
                 <v-btn text @click.stop="drawer = !drawer">
-                    <v-icon>menu</v-icon>
+                    <v-icon :large="true">menu</v-icon>
                 </v-btn>
             </v-app-bar>
             <v-navigation-drawer v-model="drawer" absolute temporary>
@@ -39,7 +40,7 @@
                             <v-icon>{{ route.drawerIcon }}</v-icon>
                         </v-list-item-icon>
                         <v-list-item-content>
-                            <v-list-item-title style="text-align: left">{{ route.tabText }}</v-list-item-title>
+                            <v-list-item-title class="drawer-text">{{ route.tabText }}</v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
                 </v-list>
@@ -156,6 +157,10 @@ export default {
     cursor: pointer;
 }
 
+.v-toolbar__content {
+    padding-left: 0px !important;
+}
+
 #app:after {
     display: block;
 }
@@ -183,7 +188,7 @@ html, body {
 }
 
 .footer {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', sans-serif !important;
     font-weight: 700;
     line-height: 1.2em;
 }
@@ -192,8 +197,13 @@ html, body {
     margin-top: 0px;
 }
 
-
-v-footer {
-    height: 155px;
+.drawer-text {
+    font-family: 'Inter', sans-serif !important;
+    text-align: left;
 }
+
+
+// v-footer {
+//     height: 155px;
+// }
 </style>

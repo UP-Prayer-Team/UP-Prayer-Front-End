@@ -1,38 +1,52 @@
 <template>
     <div class="prayer">
-        <v-sheet
-        color="transparent"
-        >
+
+        <div class="landing-wrapper">
+            <v-sheet
+            :height="430">
+                <v-img :max-height="430" :position="center" :src="require('..\\assets\\placeholder3.jpg')"> 
+
+                    <div class="landing-text">
+                        <div> Prayer Guide </div>
+                    </div>
+                </v-img>
+            </v-sheet>
+        </div>
+
+        <v-container>
+            
+        <v-row>
+            <v-col>
             <div class="title">
-                <div class="headline" style="text-align: left">
-                    Prayer Guide
-                </div><br>
-                <div class="subtitle-1" style="text-align: left"> 
-                    Our focus is on the majesty of God. We are not here to take on the enemy. <strong> Jesus already won that battle. </strong>
-                    <div> We do not need to pray “if it be your will” prayers. We can be confident it is God’s will for trafficking and all evil associated with it to be annihilated. </div>
-                    <div> Focus on reminding God of what he says in scripture and declaring it back to him. “God, you said….” is a great way to do this.</div>
-                    <div> Consider praying with someone else. Maybe your small group, youth group or other parents of young children want to get together to pray. Even with small children running around you could declare scriptures aloud together as they play. </div><br>
+                <br><div class="subtitle-text" style="text-align: left"> 
+                    <div> Our focus is on the majesty of God. We are not here to take on the enemy. <strong> Jesus already won that battle. </strong> </div>
+                    <br><div> We do not need to pray “if it be your will” prayers. We can be confident it is God’s will for trafficking and all evil associated with it to be annihilated. </div>
+                    <br><div> Focus on reminding God of what he says in scripture and declaring it back to him. “God, you said….” is a great way to do this.</div>
+                    <br><div> Consider praying with someone else. Maybe your small group, youth group or other parents of young children want to get together to pray. Even with small children running around you could declare scriptures aloud together as they play. </div><br>
                     <div> Below is a sample outline, scriptures and examples to help you get started. </div>
 
                 </div><br>
             </div>
-
+            </v-col>
+        </v-row>
+        <v-row>
+            <v-col>
             <v-expansion-panels
-                multiple
                 accordion
                 flat
+                hover
                 >
                 <v-expansion-panel>
 
                     <v-expansion-panel-header
                     color="transparent">
-                        <div class="headline" style="text-align: left">
+                        <div class="header" style="text-align: left">
                             Worship and Prayer over those praying before me
                         </div><br>
                     </v-expansion-panel-header>
                     <v-expansion-panel-content
                     color="transparent">
-                        <div class="subtitle-1" style="text-align: left"> 
+                        <div class="body-text" style="text-align: left"> 
                             <div>We say to the industry of trafficking, “Get ready to encounter this Glory-King! The Lord, armed and ready for battle, the Mighty One, invincible in every way!” (Psalm 24:7-8) </div><br>
                             <div> As we unite in prayer we are confident we will continually experience the immeasurable greatness of God’s power made available to us through faith. Our lives will be an advertisement of this immense power as it works through us! This is the mighty power that was released when God raised Christ from the dead and exalted him to the place of highest honor and supreme authority in the heavenly realm! And now he is exalted as first above every ruler, authority, government and realm of power in existence! He is gloriously enthroned over every name that is ever praised, not only in this age, but in the age that is coming!” (Ephesians 1:19-21) </div><br>
                             <div> Thank you, God, for this impenetrable wall of prayer you are creating over the issue of trafficking. May your peace and protection rest on those who have prayed before me. I claim your peace and protection over me and my family as I take my place on the wall. You look for people who will build up the wall and stand before you in the gap on behalf of those involved in trafficking - victims, perpetrators and those who fight against it. (Ezekiel 22:30) We say yes! We are those people. We are here to stand and declare your glory, absolutely believing you are unstoppable! </div>
@@ -43,13 +57,13 @@
                 <v-expansion-panel>
                     <v-expansion-panel-header
                     color="transparent">
-                        <div class="headline" style="text-align: left">
+                        <div class="header" style="text-align: left">
                             Victims
                         </div><br>
                     </v-expansion-panel-header>
                     <v-expansion-panel-content
                     color="transparent">
-                        <div class="subtitle-1" style="text-align: left"> 
+                        <div class="body-text" style="text-align: left"> 
                         <div> We stand in the place of our brothers and sisters who have been forced into slavery, stolen from their homes, or given out of desperation, and we cry out to you on their behalf. We hear them groan, desperate for freedom, until hopelessness and despair become their constant companions. We recognize the addiction to drugs many have had forced upon them and understand why they do not want to face the reality of their lives. </div><br>
                         <div> We declare you, God, see their misery. You hear them crying out because of those who hold them in slavery, and you are concerned about their suffering. Your word says you are the Rescuer, O God. We appeal to you, “Come and rescue your children!” (Exodus 3:7-8) </div><br>
                         <div> When they cry out to you, you hear, for you are compassionate. (Exodus 22:27) You are a God of incredible compassion. This is not a forgotten group of people. Their cries, their screams, their tears of desperation, their anger and their hopelessness are heard by you. Respond to their cries, Lord. Meet them in their dreams. Even in what appears to be an impossible situation in their minds, woo them with your love. Reveal yourself to each individual caught in this industry. Even in their captivity, Jesus, capture them with your love. </div><br>
@@ -73,13 +87,13 @@
                 <v-expansion-panel>
                     <v-expansion-panel-header
                     color="transparent">
-                        <div class="headline" style="text-align: left">
+                        <div class="header" style="text-align: left">
                             Family and Friends
                         </div><br>
                     </v-expansion-panel-header>
                     <v-expansion-panel-content
                     color="transparent">
-                        <div class="subtitle-1" style="text-align: left">
+                        <div class="body-text" style="text-align: left">
                             <div> We feel the pain of the friends and family members of those who have been trafficked and are enslaved. We declare you are the shepherd of a hundred lambs, and you take the time to search out each one who is lost. We decree you do not stop until you find each trafficked person, set them free and bring them to safety. (Luke 15:1-6)</div><br>
                             <div> Comfort each one missing a friend or family member by your counsel. Draw them closer to you. Lead them with your secret wisdom to find their loved ones. Whom do they have to rely on but you? Give them courage when they do not see answers. Keep bitterness and rage far from them, rather grow their trust in you. In spite of all they see in the natural realm, or do not see, lock their eyes on you. Birth faith in each friend and family member and cause it to grow. May their pain push them further into your heart. You endured the agony on the cross so they do not have to and now - NOW - you are seated at the right hand of the throne of God! You will win this battle and rescue those enslaved. (Hebrews 12:2) </div><br>
                             <div> We declare worship is their warfare and they worship you with all of their hearts. They know even though they live in the natural realm they do not wage a military campaign employing human weapons, using manipulation to achieve their aims. Instead, their spiritual weapons are energized with divine power to effectively dismantle the defenses behind which human traffickers hide. As we use our spiritual weapons we declare you dismantle the enemy’s schemes and bring our loved ones home. (2 Corinthians 10:4)</div><br>
@@ -92,13 +106,13 @@
                 <v-expansion-panel>
                     <v-expansion-panel-header
                     color="transparent">
-                        <div class="headline" style="text-align: left">
+                        <div class="header" style="text-align: left">
                             Those fighting on the ground level
                         </div><br>
                     </v-expansion-panel-header>
                     <v-expansion-panel-content
                     color="transparent">
-                        <div class="subtitle-1" style="text-align: left">
+                        <div class="body-text" style="text-align: left">
                             <div> How we thank you for those who spend their lives fighting against human trafficking. They are like the army of Gideon, a small but mighty group of people fighting a vast evil. As you said to Gideon we also believe you are saying to these people, “Go down against the camp, for I have given it into your hands.” (Judges 7:9) We agree as you gave the Midianites to Joshua and his army you will give the trafficking industry to those fighting against it in your name. </div><br>
                             <div> God, you are the lamp. Be the lamp for those in the war against human trafficking. Turn the darkness into light and allow them to see those who are buying and selling people. (2 Samuel 22:29) </div><br>
                             <div> Draw each person who works for an anti-trafficking organization into your light. Be for them like the light of morning at sunrise on a cloudless morning or like the brightness after rain. Illuminate the world around them so they may be able to find those involved in trafficking and bring a stop to it. </div><br>
@@ -111,13 +125,13 @@
                 <v-expansion-panel>
                     <v-expansion-panel-header
                     color="transparent">
-                        <div class="headline" style="text-align: left">
+                        <div class="header" style="text-align: left">
                             Those who buy and sell people
                         </div><br>
                     </v-expansion-panel-header>
                     <v-expansion-panel-content
                     color="transparent">
-                        <div class="subtitle-1" style="text-align: left">
+                        <div class="body-text" style="text-align: left">
                             <div> You are the Mighty One, clothed in splendor and majesty. In your majesty ride forth victoriously in the cause of truth, humility and justice; let your right hand, God, achieve awesome deeds. May your sharp arrows pierce the hearts of those perpetuating this evil industry. Cause the human trafficking rings to fall beneath your feet. Your throne, O God, will last forever and ever; a scepter of justice will be the scepter of your kingdom. You love righteousness and hate wickedness; therefore, God, let your justice and mercy bring down this evil in our world. (Psalm 45:3-7) </div><br>
                             <div> Reveal the deep things of darkness and people involved in the trafficking industry. Bring utter darkness into the light. (Job 12:22) </div><br>
                             <div> Pursue your enemies and crush the human trafficking industry. Do not turn back until it is destroyed. Crush it completely so it cannot rise. May it fall beneath your feet. </div><br>
@@ -130,13 +144,13 @@
                 <v-expansion-panel>
                      <v-expansion-panel-header
                      color="transparent">
-                    <div class="headline" style="text-align: left">
+                    <div class="header" style="text-align: left">
                         Praise and Protection for those praying after me
                     </div><br>
                      </v-expansion-panel-header>
                     <v-expansion-panel-content
                     color="transparent">
-                        <div class="subtitle-1" style="text-align: left">
+                        <div class="body-text" style="text-align: left">
                             <div> The Lord lives! Praise be to you, our rock! Exalted be you, God, the rock, our Savior! You are the God who avenges the captives. You put this evil industry under your feet. You set captives free from their enemies. You exalt each individual as they come to know you; from violent men you rescue those who are enslaved. </div><br>
                             <div> Therefore we praise you, Lord, among the nations. We sing the praises of your name. You give us great victories. You show unfailing kindness to us and to those for whom we are praying. (II Samuel 22:47-51) </div><br>
                             <div> You will save each one who has been trafficked, God! We praise you in advance for gathering them and delivering them from captivity. We give thanks to your holy name and glory in your praise. Praise be to you, Lord, the God of each of us, from everlasting to everlasting. (I Chronicles 16:35-36) </div><br>
@@ -147,7 +161,9 @@
                     </v-expansion-panel-content>
                 </v-expansion-panel>
             </v-expansion-panels><br>
-        </v-sheet>
+            </v-col>
+            </v-row>
+        </v-container>
     </div>
 </template>
 
@@ -159,19 +175,58 @@ export default {
 
 <style lang="scss" scoped>
 .prayer {
-    margin-top: 40px;
-    margin-right: 5%;
-    margin-left: 5%;
+    margin-top: 82px;
+}
+
+.landing-text {
+    
+    font-family: 'Montserrat', sans-serif;
+    color: white !important;    
+    text-align: center;
+    font-weight: 700;
+    font-size: 200%;
+    line-height: 1.33em;
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    
+    transform: translate(-50%,-50%);
+    transform: translate3d(-50%,-50%,0);
+}
+
+.header {
+    font-family: 'Montserrat', sans-serif;   
+    text-align: center;
+    font-weight: 700;
+    font-size: 200%;
+    line-height: 2em;
+}
+
+.subtitle-text {
+    font-family: 'Inter', sans-serif;
+    padding-top: 16px;
+        padding-bottom: 16px;
+        line-height: 1.4em;
+}
+
+.body-text {
+    font-family: 'Inter', sans-serif;
+        text-align: left;
+        color: black !important;
+        // font-size: 1.333333rem; // 16pt
+        padding-top: 16px;
+        padding-bottom: 16px;
+        line-height: 1.4em;
 }
 
 .theme--light.v-expansion-panels .v-expansion-panel {
     background-color: rgba($color: #000000, $alpha: 0) !important;
 }
 
-.v-expansion-panels {
-    margin-left: -26px;
-    margin-right: -26px;
+.title {
+    padding-left: 24px;
+    padding-right: 24px;
 }
-
 
 </style>

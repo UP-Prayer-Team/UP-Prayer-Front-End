@@ -20,7 +20,7 @@
                     <v-card-text class="banner-text">
                     What happens when thousands around the
                     world focus their prayer on bringing an end
-                    to human trafficking? It ends.
+                    to human trafficking? <div> It ends. </div>
                     </v-card-text>
                     <v-card-actions class="banner-btns">
                         <v-btn
@@ -71,7 +71,6 @@
             align="start"
             justify="end">
                 <v-col
-                :md="5"
                 :align-self="center"
                 class="hidden-sm-and-down"
                 >
@@ -87,12 +86,11 @@
                     </v-card>
                 </v-col>
                  <v-col
-                 :md="7"
+                 :md="8"
                  >
                     <div class="resource-card-wrapper">
                     <v-card
-                    outlined="true" 
-                    max-width="700"
+                    outlined="true"
                     class="resource">
                         <v-card-title class="resource-title">
                             24hr/day
@@ -223,7 +221,7 @@ export default {
     }
 
     .landing-wrapper {
-        height: 350px;
+        height: 375px;
         padding-top: 16px;
         padding-bottom: 16px;
     }
@@ -233,7 +231,7 @@ export default {
         font-weight: 400;
         letter-spacing: 0.4em; 
         height: 350px;
-        font-size: 110%;
+        font-size: 1.5rem;
     }
 
     .banner {
@@ -290,13 +288,14 @@ export default {
 
     .resoure-card-wrapper {
         float: right;
+        
     }
 
     .resource-title {
         font-family: 'Montserrat', sans-serif;
         text-align: left;
         color: black;
-        font-size: 54pt;
+        font-size: 4.5rem; // 54pt
         font-weight: 900;
         line-height: 1.5em;
     }
@@ -305,7 +304,7 @@ export default {
         font-family: 'Montserrat', sans-serif;
         text-align: left;
         color: black !important;
-        font-size: 40pt;
+        font-size: 3.33333rem; // 40pt
         font-weight: 700;
         line-height: 1.0em;
     }
@@ -332,9 +331,9 @@ export default {
         font-family: 'Inter', sans-serif;
         text-align: left;
         color: black !important;
-        font-size: 16pt;
-        margin-top: 20px;
-        padding-bottom: 35px;
+        font-size: 1.333333rem; // 16pt
+        padding-top: 16px;
+        padding-bottom: 16px;
         line-height: 1.4em;
     }
 

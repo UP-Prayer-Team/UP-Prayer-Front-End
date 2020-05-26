@@ -1,11 +1,31 @@
 <template>
-    <div class="about">
+    <div class="charities-wrapper">
+        
+        <div class="landing-wrapper">
+            
+            <v-sheet
+            :height="430">
+                <v-img :max-height="430" :position="center" :src="require('..\\assets\\placeholder.jpg')"> 
+
+                    <div class="landing-text">
+                        <div> Our partners </div>
+                        <div> Warriors fighting on </div>
+                        <div> the front lines </div>
+                    </div>
+                </v-img>
+
+
+            </v-sheet>
+
+        </div>
+
         <v-container>
             <v-row class="hidden-sm-and-down">
                 <v-col>
                     <v-card class="mb-5"
                         v-for="(end, i) in endorsements.slice(0, Math.ceil(endorsements.length / 2))" 
                         v-bind:key="i"
+                        :outlined="true"
                         >
                         <v-card-text>
                             <endorsement v-bind:endorsement="end">
@@ -18,6 +38,7 @@
                     <v-card class="mb-5"
                         v-for="(end, i) in endorsements.slice(Math.ceil(endorsements.length / 2), endorsements.length)" 
                         v-bind:key="i"
+                        :outlined="true"
                         >
                         <v-card-text>
                             <endorsement v-bind:endorsement="end">
@@ -60,6 +81,14 @@ export default {
     data() {
         return {
             endorsements: [
+                { homepageURL: "www.courageworldwide.org", name: "Courage Worldwide", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." }, 
+                { homepageURL: "www.demandabolition.org", name: "Demand Abolition", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." } ,
+                { homepageURL: "www.ecpatusa.org", name: "ECPAT-USA", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." } , 
+                { homepageURL: "www.exoduscry.com", name: "Exodus Cry", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
+                { homepageURL: "www.fairgirls.org", name: "FAIR Girls", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
+                { homepageURL: "www.missingkids.org/", name: "National Center for Missing & Exploited Children", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
+                { homepageURL: "www.centralusa.salvationarmy.org/metro/fight-for-justice/", name: "Salvation Army", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
+                { homepageURL: "www.worldrelief.org", name: "World Relief", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." }
 
             ]
         };
@@ -73,3 +102,28 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+
+.charities-wrapper {
+    margin-top: 82px;
+} 
+
+.landing-text {
+    
+    font-family: 'Montserrat', sans-serif;
+    color: white !important;    
+    text-align: center;
+    font-weight: 700;
+    font-size: 200%;
+    line-height: 1.33em;
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    
+    transform: translate(-50%,-50%);
+    transform: translate3d(-50%,-50%,0);
+}
+
+</style>

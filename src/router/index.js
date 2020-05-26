@@ -29,14 +29,14 @@ const routes = [
         path: '/prayer',
         name: 'prayer',
         component: Prayer,
-        tabText: 'Prayer Guide',
+        tabText: 'Resources',
         drawerIcon: 'menu_book'
     },
     {
-        path: '/blog/:id',
+        path: '/updates/:id', 
         name: 'blog',
         component: Blog,
-        tabText: 'Blog',
+        tabText: 'Updates',
         drawerIcon: 'mdi-newspaper-variant-multiple'
     },
     {
@@ -50,7 +50,7 @@ const routes = [
         path: '/signup',
         name: 'sign-up',
         component: SignUp,
-        tabText: 'Sign Up',
+        tabText: 'Pray',
         drawerIcon: 'calendar_today'
     },
     {

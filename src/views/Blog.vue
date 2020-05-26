@@ -72,10 +72,10 @@ export default {
             });
         },
         toNextPost() {
-            this.$router.push({ name: "blog", params: { id: this.nextPost.id } });
+            this.$router.push({ name: "updates", params: { id: this.nextPost.id } });
         },
         toPrevPost() {
-            this.$router.push({ name: "blog", params: { id: this.prevPost.id } });
+            this.$router.push({ name: "updates", params: { id: this.prevPost.id } });
         }
     },
     watch: {
@@ -86,7 +86,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 /* Blog Content Styles
    (Please keep in sync with UP-Prayer-Admin's BlogPosts.vue) */
 /* Hack because something (Vuetify?) is killing all margins on heading elements for some reason. */

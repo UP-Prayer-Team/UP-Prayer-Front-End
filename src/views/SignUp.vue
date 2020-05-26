@@ -1,78 +1,115 @@
 <template>
-    <div class="about">
+    <div class="signup">
 
+        <v-form v-if="showForm">
+        <v-sheet
+        color="rgba(192,192,192,0.3)">
+            
+            <v-container>
+
+                <v-row>
+
+                    <v-col
+                    :md="6">
+
+                        <div class="logo">
+                            <img src="..\assets\logo.svg" height="200" width="200">
+                            <h1 style="padding: 16px;"> <strong>UP MOVEMENT </strong></h1>
+                        </div>
+
+                    </v-col>
+
+                    <v-col
+                    :md="6">
+                            <v-row>
+                                <v-col>
+                                    <v-alert v-if="error" type="error">{{error}}</v-alert>
+                                </v-col>
+                                
+                            </v-row>
+
+                            <v-row>
+                                <v-text-field 
+                                v-model="email" 
+                                label="Email" 
+                                required
+                                placeholder="jsmith@example.com"
+                                ></v-text-field>
+                            </v-row>
+                            
+                            <v-row>
+                                <v-autocomplete
+                                v-model="countryCode" 
+                                :items="countryCodeItems" 
+                                :search-input.sync="countrySearch"
+                                label="Country" 
+                                class="mr-4"
+                                item-text="displayName"
+                                item-value="code"
+                                autocomplete="up-country-code"
+                                >
+                                    <template v-slot:item="{ item }">
+                                        {{ item.displayName }}
+                                        <span class="text-right flag-adornment">{{ item.flag }}</span>
+                                        
+                                    </template>
+
+                                    <template v-slot:selection="{ item }">
+                                        {{ item.displayName }}
+                                        <span class="text-right flag-adornment mr-4">{{ item.flag }}</span>
+
+                                    </template>
+                                
+                                </v-autocomplete>
+
+                                <v-autocomplete
+                                    v-model="districtCode" 
+                                    :items="countryDict[countryCode].districts"
+                                    :search-input.sync="regionSearch" 
+                                    label="Region"
+                                    item-text="name"
+                                    item-value="shortCode"
+                                    autocomplete="up-district-code"
+                                    >
+                                    <template v-slot:item="{ item }">
+                                        {{ item.name }}
+                                    </template>
+
+                                    <template v-slot:selection="{ item }">
+                                        {{ item.name }}
+                                    </template>
+                                </v-autocomplete>
+                            
+                            </v-row>
+                            <v-row>
+                                <v-select
+                                :items="organizations"
+                                label="Anti-Trafficking Organization"
+                                >
+                                </v-select>
+                            </v-row>
+                            <v-row>
+                                <p> Don't see your organization of choice?</p><br>
+                                <v-btn depressed small color="#c70098" style="color: white !important;">Suggest an organization</v-btn>
+                            </v-row>
+                            <v-row> 
+                                <v-checkbox
+                                v-model="ex4"
+                                label="I pledge to donate $30 to my chosen Anti-Trafficking Organization"
+                                color="#a300ff"
+                                hide-details
+                                ></v-checkbox> 
+                            </v-row>
+                    </v-col>
+
+                </v-row>
+
+            </v-container>
+
+
+        </v-sheet>
         <v-container class="v-application">
             <v-col>
-                <v-form v-if="showForm">
-                    <v-row>
-                        <v-col>
-                            <v-alert v-if="error" type="error">{{error}}</v-alert>
-                        </v-col>
-                        
-                    </v-row>
-
-                    <v-row>
-                        <v-text-field 
-                        v-model="email" 
-                        label="Email" 
-                        outlined
-                        required
-                        shaped
-                        placeholder="test@example.com"
-                        ></v-text-field>
-                    </v-row>
-                    
-                    <v-row justify="space-between">
-                        <v-autocomplete
-                        v-model="countryCode" 
-                        :items="countryCodeItems" 
-                        :search-input.sync="countrySearch"
-                        label="Country" 
-                        class="mr-4"
-                        item-text="displayName"
-                        item-value="code"
-                        autocomplete="up-country-code"
-                        outlined
-                        hide-no-data
-                        >
-                            <template v-slot:item="{ item }">
-                                {{ item.displayName }}
-                                <span class="text-right flag-adornment">{{ item.flag }}</span>
-                                
-                            </template>
-
-                            <template v-slot:selection="{ item }">
-                                {{ item.displayName }}
-                                <span class="text-right flag-adornment mr-4">{{ item.flag }}</span>
-
-                            </template>
-                        
-                        </v-autocomplete>
-
-                        <v-autocomplete
-                            v-model="districtCode" 
-                            :items="countryDict[countryCode].districts"
-                            :search-input.sync="regionSearch" 
-                            label="Region"
-                            item-text="name"
-                            item-value="shortCode"
-                            autocomplete="up-district-code"
-                            outlined
-                            hide-no-data>
-                            <template v-slot:item="{ item }">
-                                {{ item.name }}
-                            </template>
-
-                            <template v-slot:selection="{ item }">
-                                {{ item.name }}
-                            </template>
-                        </v-autocomplete>
-                    </v-row>
-                    
-                    <v-row>
-                        <h3>Slots</h3>
-                    </v-row>
-
                     <div v-if="!showDayView">
                         <v-system-bar 
                         flat
@@ -166,19 +203,19 @@
                     <br>
 
                     <v-btn @click="submit" v-bind:disabled="slots.length == 0">Sign Up For {{ slots.length }} Prayer Slot{{ slots.length == 1 ? '' : 's' }}</v-btn>
-                </v-form>
-                <div v-if="showThanks">
-                    <p>
-                        Thanks for signing up! We have sent you an email that will let you confirm your reservation.
+                </v-col>
+            </v-container>
+        </v-form>
 
-                        <br/>
+        <div v-if="showThanks">
+            <p>
+                Thanks for signing up! We have sent you an email that will let you confirm your reservation.
 
-                        To get your heart in a place of prayer, we encourage you to read through this message from Lecia.
-                    </p>
-                </div>
-            </v-col>
-            
-        </v-container>
+                <br/>
+
+                To get your heart in a place of prayer, we encourage you to read through this message from Lecia.
+            </p>
+        </div>
         
     </div>
 </template>
@@ -223,9 +260,20 @@ export default {
 
             email: "",
             countryCode: "US",
-            districtCode: "OR",
+            districtCode: "",
             slots: [
                 // { year: null, monthIndex: null, dayIndex: null, slotIndex: null }
+            ],
+
+            organizations: [
+                "Courage Worldwide",
+                "FAIR Girls",
+                "Demand Abolition",
+                "National Center for Missing & Exploited Children",
+                "ECPAT-USA",
+                "Salvation Army",
+                "Exodus Cry",
+                "World Relief"
             ],
 
             countryCodeItems: [
@@ -389,16 +437,34 @@ export default {
                 this.countryCodeItems.push(data);
                 this.countryDict[data.code] = data;
             }
+        },
+        getOrganizations() {
+            var data = UPClient.getEndorsementList();
+            for (let organization in data) {
+                this.organizations.push(organization.name);
+            }
         }
     },
     mounted() {
+        this.getOrganizations();
         this.populateCountryList();
-
     }
 }
 </script>
 
 <style lang="scss" scoped>
+.signup {
+    margin-top: 82px;
+}
+
+.landing {
+    font-family: 'Montserrat', sans-serif;
+        font-weight: 400;
+        letter-spacing: 0.4em; 
+        height: 350px;
+        font-size: 1.5rem;
+}
+
 .calendar-bar {
     height: 70px !important;
     background-color: rgba(0,0,0,0) !important;
