@@ -128,7 +128,8 @@
                             color="rgba(0, 0, 0, 100)"
                             min-width="150"
                             max-width="150"
-                            class="resource-btn">
+                            class="resource-btn"
+                            @click="toResources">
                                 resources
                             </v-btn>
                         </v-card-actions>
@@ -205,6 +206,9 @@ export default {
         // },
         toSignUp() {
             this.$router.replace({ name: "sign-up" });
+        },
+        toResources() {
+            this.$router.replace({ name: "prayer" });
         },
     }
 }
