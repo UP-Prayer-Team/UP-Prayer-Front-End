@@ -32,7 +32,7 @@
                     <v-icon :large="true">menu</v-icon>
                 </v-btn>
             </v-app-bar>
-            <v-navigation-drawer v-model="drawer" absolute temporary>
+            <v-navigation-drawer v-model="drawer" fixed temporary>
 
                 <v-list>
                     <v-list-item v-for="(route, i) in getTabRoutes().slice(1)" v-bind:key="i" link @click="tabClicked(route)">
@@ -44,7 +44,7 @@
                         </v-list-item-content>
                     </v-list-item>
                 </v-list>
-
+                
             </v-navigation-drawer>
         </div>
         <v-content>
