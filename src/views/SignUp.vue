@@ -3,24 +3,25 @@
 
         <v-form v-if="showForm">
         <v-sheet
-        color="rgba(192,192,192,0.3)">
+        >
             
             <v-container>
 
                 <v-row>
 
                     <v-col
-                    :md="6">
+                    lg="6">
 
                         <div class="logo">
                             <img src="..\assets\logo.svg" height="200" width="200">
-                            <h1 style="padding: 16px;"> <strong>UP MOVEMENT </strong></h1>
+                            <div style="padding: 16px;"> Join us in prayer bringing heaven to earth </div>
                         </div>
 
                     </v-col>
 
                     <v-col
-                    :md="6">
+                    lg="6"
+                    sm="12">
                             <v-row>
                                 <v-col>
                                     <v-alert v-if="error" type="error">{{error}}</v-alert>
@@ -90,7 +91,7 @@
                             </v-row>
                             <v-row>
                                 <p> Don't see your organization of choice?</p><br>
-                                <v-btn depressed small color="#c70098" style="color: white !important;">Suggest an organization</v-btn>
+                                <v-spacer></v-spacer><v-btn depressed small color="#c70098" style="color: white !important;">Suggest an organization</v-btn>
                             </v-row>
                             <v-row> 
                                 <v-checkbox
@@ -457,12 +458,12 @@ export default {
     margin-top: 82px;
 }
 
-.landing {
+.logo {
     font-family: 'Montserrat', sans-serif;
-        font-weight: 400;
-        letter-spacing: 0.4em; 
         height: 350px;
-        font-size: 1.5rem;
+        font-weight: 700;
+        font-size: 200%;
+        line-height: 1.33em;
 }
 
 .calendar-bar {
@@ -481,6 +482,11 @@ export default {
 .flag-adornment {
     position: absolute;
     right: 10px;
+}
+
+.row {
+    margin-right: 0px !important; 
+    margin-left: 0px !important;
 }
 
 </style>
