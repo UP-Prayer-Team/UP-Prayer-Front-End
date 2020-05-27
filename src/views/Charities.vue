@@ -3,8 +3,7 @@
         
         <div class="landing-wrapper">
             
-            <v-sheet
-            :height="430">
+            <v-sheet>
                 <v-img :max-height="430" :position="center" :src="require('..\\assets\\placeholder.jpg')"> 
 
                     <div class="landing-text">

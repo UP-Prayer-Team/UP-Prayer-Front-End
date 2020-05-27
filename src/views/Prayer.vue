@@ -2,8 +2,7 @@
     <div class="prayer">
 
         <div class="landing-wrapper">
-            <v-sheet
-            :height="430">
+            <v-sheet>
                 <v-img :max-height="430" :position="center" :src="require('..\\assets\\placeholder3.jpg')"> 
 
                     <div class="landing-text">
@@ -25,7 +24,7 @@
                     <br><div> Consider praying with someone else. Maybe your small group, youth group or other parents of young children want to get together to pray. Even with small children running around you could declare scriptures aloud together as they play. </div><br>
                     <div> Below is a sample outline, scriptures and examples to help you get started. </div>
 
-                </div><br>
+                </div>
             </div>
             </v-col>
         </v-row>
@@ -79,7 +78,7 @@
                         <div> Your desire for each of them, Jesus, is righteousness; you want to show them how to be clean. Salvation, healing and wholeness are your reward for them. </div><br>
                         <div> We declare they will know your ways. They will turn to you. They will learn how you stood in their place so they can be blameless and pure before you. How you love each one of them! Be their lamp, Lord; turn their darkness into light. </div><br>
                         <div> We advance against the troops of the enemy with your help. Because of your majesty we scale this wall of evil, knowing your ways are perfect. Your word is flawless. You shield us as we take refuge in you and stand in the gap so those in captivity will be rescued and learn what refuge in you truly is. </div><br>
-                        <div> Your way is perfect. Your word is flawless. You are their refuge. Who is God besides you, Lord? Who is the Rock except our God? Arm each trafficked individual with strength and create a perfect way for their escape. Open a path for their feet to walk away; enable them to clearly see it and give them victory in a successful escape from their captors.  (II Samuel 22:1-37) </div><br>
+                        <div> Your way is perfect. Your word is flawless. You are their refuge. Who is God besides you, Lord? Who is the Rock except our God? Arm each trafficked individual with strength and create a perfect way for their escape. Open a path for their feet to walk away; enable them to clearly see it and give them victory in a successful escape from their captors.  (II Samuel 22:1-37) </div>
                         </div>
                     </v-expansion-panel-content>
                 </v-expansion-panel>
@@ -98,7 +97,7 @@
                             <div> Comfort each one missing a friend or family member by your counsel. Draw them closer to you. Lead them with your secret wisdom to find their loved ones. Whom do they have to rely on but you? Give them courage when they do not see answers. Keep bitterness and rage far from them, rather grow their trust in you. In spite of all they see in the natural realm, or do not see, lock their eyes on you. Birth faith in each friend and family member and cause it to grow. May their pain push them further into your heart. You endured the agony on the cross so they do not have to and now - NOW - you are seated at the right hand of the throne of God! You will win this battle and rescue those enslaved. (Hebrews 12:2) </div><br>
                             <div> We declare worship is their warfare and they worship you with all of their hearts. They know even though they live in the natural realm they do not wage a military campaign employing human weapons, using manipulation to achieve their aims. Instead, their spiritual weapons are energized with divine power to effectively dismantle the defenses behind which human traffickers hide. As we use our spiritual weapons we declare you dismantle the enemy’s schemes and bring our loved ones home. (2 Corinthians 10:4)</div><br>
                             <div> Open your ears to the pleas of your servants. Listen to these loved ones as they cry out to you and rescue their loved ones. Bring them out of captivity and into safety. (I Kings 8:52) </div><br>
-                            <div> You do not despise deep cries of despair. You are the first responder to suffering and you do not look the other way when your people are in pain. You are there all the time, Lord, listening to the song of the afflicted.  (Psalm 22:24 TPT) We declare you see each one who is captured and are opening the way to their freedom. </div><br>
+                            <div> You do not despise deep cries of despair. You are the first responder to suffering and you do not look the other way when your people are in pain. You are there all the time, Lord, listening to the song of the afflicted.  (Psalm 22:24 TPT) We declare you see each one who is captured and are opening the way to their freedom. </div>
                         </div>
                     </v-expansion-panel-content>
                 </v-expansion-panel>
@@ -117,7 +116,7 @@
                             <div> God, you are the lamp. Be the lamp for those in the war against human trafficking. Turn the darkness into light and allow them to see those who are buying and selling people. (2 Samuel 22:29) </div><br>
                             <div> Draw each person who works for an anti-trafficking organization into your light. Be for them like the light of morning at sunrise on a cloudless morning or like the brightness after rain. Illuminate the world around them so they may be able to find those involved in trafficking and bring a stop to it. </div><br>
                             <div> Reveal the deep things of darkness and people involved in the trafficking industry. Bring utter darkness into the light. (Job 12:22) </div><br>
-                            <div> Strengthen each of these people according to your word. (Psalm 119:28) Increase their power as they search out those who traffic others. May their hope in you rise up. Renew their strength. Cause them to soar on wings like eagles; to run and not grow weary, to walk and not faint. (Isaiah 40:29-31)</div><br>
+                            <div> Strengthen each of these people according to your word. (Psalm 119:28) Increase their power as they search out those who traffic others. May their hope in you rise up. Renew their strength. Cause them to soar on wings like eagles; to run and not grow weary, to walk and not faint. (Isaiah 40:29-31)</div>
                         </div>
                     </v-expansion-panel-content>
                 </v-expansion-panel>
@@ -136,7 +135,7 @@
                             <div> Reveal the deep things of darkness and people involved in the trafficking industry. Bring utter darkness into the light. (Job 12:22) </div><br>
                             <div> Pursue your enemies and crush the human trafficking industry. Do not turn back until it is destroyed. Crush it completely so it cannot rise. May it fall beneath your feet. </div><br>
                             <div> Arm us with strength for battle and humble our adversaries before us. You make those who buy and sell others turn their backs in flight. You destroy your foes. They cry for help, but there is no one to save this industry. Beat this industry as fine as the dust of the earth; pound and trample it like mud in the streets. May each individual who buys and sells others lose heart and come trembling from their strongholds. (II Samuel 22:38-46) </div><br>
-                            <div> At the same time our hearts cry out for justice to come to each of those who have bought and sold others, we also know mercy triumphs over judgment. You have judged the enemy of our souls and gained victory for each of us on the cross. Call these people into repentance, Lord. May they truly have a change of heart and turn to you. Your mercy triumphs over judgement. May they know eternal mercy even as they experience the judgment of earth. </div><br>
+                            <div> At the same time our hearts cry out for justice to come to each of those who have bought and sold others, we also know mercy triumphs over judgment. You have judged the enemy of our souls and gained victory for each of us on the cross. Call these people into repentance, Lord. May they truly have a change of heart and turn to you. Your mercy triumphs over judgement. May they know eternal mercy even as they experience the judgment of earth. </div>
                         </div>
                     </v-expansion-panel-content>
                 </v-expansion-panel>
@@ -156,7 +155,7 @@
                             <div> You will save each one who has been trafficked, God! We praise you in advance for gathering them and delivering them from captivity. We give thanks to your holy name and glory in your praise. Praise be to you, Lord, the God of each of us, from everlasting to everlasting. (I Chronicles 16:35-36) </div><br>
                             <div> We cut off any bitterness, rage, anger, slander, and all forms of negativity from this time of intercession. We close any opening to the enemy created in our spirits as we prayed. We lock them up and seal them with the blood of Jesus shed on the cross for each of us. </div><br>
                             <div> We release each person who has trafficked others or been involved in the human trafficking industry from our judgement and expections. We give up our right to judge them. Because of your love and the redemption you offer to each of them, woo them with your kindness. We bless and do not curse them. May your kindness lead to redemption for millions of people in the human trafficking industry. Let them be part of your billion soul harvest, leading to revival throughout the world! </div><br>
-                            <div> Pour your anointing on those who are praying next. Surround them with a wall of holy fire as protection over each of them and those they love. We recognize we are joining heavenly forces in this unstoppable prayer movement. Keep each of us who have prayed, who are praying and who will pray safe physically, mentally, spiritually and emotionally. We trust you and place our lives in your hands. </div><br>
+                            <div> Pour your anointing on those who are praying next. Surround them with a wall of holy fire as protection over each of them and those they love. We recognize we are joining heavenly forces in this unstoppable prayer movement. Keep each of us who have prayed, who are praying and who will pray safe physically, mentally, spiritually and emotionally. We trust you and place our lives in your hands. </div>
                         </div>
                     </v-expansion-panel-content>
                 </v-expansion-panel>
@@ -206,8 +205,8 @@ export default {
 .subtitle-text {
     font-family: 'Inter', sans-serif;
     padding-top: 16px;
-        padding-bottom: 16px;
-        line-height: 1.4em;
+    padding-bottom: 16px;
+    line-height: 1.4em;
 }
 
 .body-text {

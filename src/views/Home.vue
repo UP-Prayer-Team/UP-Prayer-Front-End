@@ -3,7 +3,7 @@
 
         <div class="landing-wrapper">
             <v-sheet
-            height="200"
+            
             color="white">
 
                 <div class="landing">
@@ -59,8 +59,8 @@
                 :md="6">
                     <v-card 
                     outlined="true"
-                    min-height="375"
-                    min-width="375"
+                    min-height="300"
+                    min-width="300"
                     style="padding-top: 0px; padding-bottom: 0px; float: left;">
                         <v-img contain="true" :src="require('..\\assets\\Tear.png')"> </v-img>
                     </v-card>
@@ -225,16 +225,16 @@ export default {
     }
 
     .landing-wrapper {
-        height: 375px;
+
         padding-top: 16px;
-        padding-bottom: 16px;
+        padding-bottom: 24px;
     }
 
     .landing {
         font-family: 'Montserrat', sans-serif;
         font-weight: 400;
         letter-spacing: 0.4em; 
-        height: 350px;
+       
         font-size: 1.5rem;
     }
 
