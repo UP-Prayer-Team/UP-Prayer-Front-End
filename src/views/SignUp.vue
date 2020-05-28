@@ -1,7 +1,7 @@
 <template>
     <div class="signup">
 
-        <form v-if="showForm">
+        <v-form v-if="showForm">
         <v-sheet>
             <v-container>
                 <v-row>
@@ -25,7 +25,6 @@
                             </v-row>
 
                             <v-row>
-                                
                                 <v-text-field 
                                 v-model="email" 
                                 :error-messages="emailErrors"
@@ -283,7 +282,7 @@
                     </v-btn>
                 </v-col>
             </v-container>
-        </form>
+        </v-form>
 
         <div v-if="showThanks">
             <p>
