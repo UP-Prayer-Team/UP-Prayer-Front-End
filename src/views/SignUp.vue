@@ -2,13 +2,9 @@
     <div class="signup">
 
         <v-form v-if="showForm">
-        <v-sheet
-        >
-            
+        <v-sheet>
             <v-container>
-
                 <v-row>
-
                     <v-col
                     lg="6">
 
@@ -24,9 +20,12 @@
                     sm="12">
                             <v-row>
                                 <v-col>
-                                    <v-alert v-if="error" type="error">{{error}}</v-alert>
+                                    <v-alert v-if="create_error" type="error">{{error}}</v-alert>
                                 </v-col>
-                                
+
+                                <v-col>
+                                    <v-alert v-if="form_error" type="error">{{error}}</v-alert>
+                                </v-col>
                             </v-row>
 
                             <v-row>
@@ -91,7 +90,51 @@
                             </v-row>
                             <v-row>
                                 <p> Don't see your organization of choice?</p><br>
-                                <v-spacer></v-spacer><v-btn depressed small color="#c70098" style="color: white !important;">Suggest an organization</v-btn>
+                                <v-spacer></v-spacer>
+                                
+                                <v-dialog v-model="dialog" persistent max-width="600px">
+                                    <template v-slot:activator="{ on }">
+                                         <v-btn depressed small color="#c70098" style="color: white !important;" v-on="on">Suggest an organization</v-btn>
+                                    </template>
+
+                                    <v-card>
+                                        <v-card-title>
+                                        <span class="headline">Suggest an organization</span>
+                                        </v-card-title>
+                                        <v-card-text>
+                                        <v-container>
+                                            <v-row>
+
+                                            <v-col cols="12">
+                                                <v-text-field label="Email*" required v-model="email"></v-text-field>
+                                            </v-col>
+                                            <v-col cols="12">
+                                                <v-text-field
+                                                label="Anti-Trafficking Organization*"
+                                                persistent
+                                                required
+                                                ></v-text-field>
+                                            </v-col>
+                                            <v-col cols="12">
+                                                <v-textarea 
+                                                outlined
+                                                rows="5"
+                                                no-resize="true"
+                                                label="Summary"
+                                                ></v-textarea>
+                                            </v-col>
+                                            </v-row>
+                                        </v-container>
+                                        <small>*indicates required field</small>
+                                        </v-card-text>
+                                        <v-card-actions>
+                                        <v-spacer></v-spacer>
+                                        <v-btn color="blue darken-1" text @click="dialog = false">Cancel</v-btn>
+                                        <v-btn color="blue darken-1" text @click="dialog = false">Submit Request</v-btn>
+                                        </v-card-actions>
+                                    </v-card>
+                                    </v-dialog>
+    
                             </v-row>
                             <v-row> 
                                 <v-checkbox
@@ -106,7 +149,6 @@
                 </v-row>
 
             </v-container>
-
 
         </v-sheet>
         <v-container class="v-application">
@@ -238,7 +280,9 @@ export default {
             showDayView: false,
             showForm: true,
             showThanks: false,
-            error: null,
+            dialog: false,
+            form_error: null,
+            create_error: null,
             countrySearch: null,
             regionSearch: null,
             today: new Date().getUTCFullYear() + '-' + (new Date().getMonth() + 1).toString().padStart(2, '0') + '-' + new Date().getDate().toString().padStart(2, '0'),
@@ -419,7 +463,7 @@ export default {
                 this.showForm = false;
                 this.showThanks = true;
             }, (message) => {
-                this.error = message;
+                this.create_error = message;
                 // TODO: Enable form
 
                 console.log("Error: Failed to create reservations. Message: " + message);
