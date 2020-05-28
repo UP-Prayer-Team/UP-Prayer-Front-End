@@ -4,7 +4,7 @@
         <div class="landing-wrapper">
             
             <v-sheet>
-                <v-img :max-height="430" :position="center" :src="require('..\\assets\\placeholder.jpg')"> 
+                <v-img :max-height="430" position="center" :src="require('..\\assets\\placeholder.jpg')"> 
 
                     <div class="landing-text">
                         <div> Our partners </div>
@@ -80,14 +80,14 @@ export default {
     data() {
         return {
             endorsements: [
-                { homepageURL: "www.courageworldwide.org", name: "Courage Worldwide", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." }, 
-                { homepageURL: "www.demandabolition.org", name: "Demand Abolition", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." } ,
-                { homepageURL: "www.ecpatusa.org", name: "ECPAT-USA", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." } , 
-                { homepageURL: "www.exoduscry.com", name: "Exodus Cry", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
-                { homepageURL: "www.fairgirls.org", name: "FAIR Girls", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
-                { homepageURL: "www.missingkids.org/", name: "National Center for Missing & Exploited Children", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
-                { homepageURL: "www.centralusa.salvationarmy.org/metro/fight-for-justice/", name: "Salvation Army", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
-                { homepageURL: "www.worldrelief.org", name: "World Relief", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." }
+                // { homepageURL: "www.courageworldwide.org", name: "Courage Worldwide", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." }, 
+                // { homepageURL: "www.demandabolition.org", name: "Demand Abolition", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." } ,
+                // { homepageURL: "www.ecpatusa.org", name: "ECPAT-USA", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." } , 
+                // { homepageURL: "www.exoduscry.com", name: "Exodus Cry", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
+                // { homepageURL: "www.fairgirls.org", name: "FAIR Girls", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
+                // { homepageURL: "www.missingkids.org/", name: "National Center for Missing & Exploited Children", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
+                // { homepageURL: "www.centralusa.salvationarmy.org/metro/fight-for-justice/", name: "Salvation Army", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
+                // { homepageURL: "www.worldrelief.org", name: "World Relief", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." }
 
             ]
         };

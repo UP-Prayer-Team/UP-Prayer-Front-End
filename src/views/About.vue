@@ -4,7 +4,7 @@
         <div class="landing-wrapper">
             
             <v-sheet>
-                <v-img :max-height="430" :position="center" :src="require('..\\assets\\placeholder2.jpg')"> 
+                <v-img :max-height="430" position="center" :src="require('..\\assets\\placeholder2.jpg')"> 
 
                     <div class="landing-text">
                         <div> Who are we? </div>
