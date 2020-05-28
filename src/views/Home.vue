@@ -26,7 +26,7 @@
                         <v-btn
                         @click="toSignUp"
                         depressed
-                        outlined="true"
+                        :outlined="true"
                         color="white"
                         min-width="100"
                         max-width="100"
@@ -47,22 +47,22 @@
                 <v-col
                 :md="6">
                     <v-card 
-                    outlined="true"
+                    :outlined="true"
                     min-height="325"
                     min-width="325"
                     style="padding-top: 0px; padding-bottom: 0px; float: left;">
-                        <v-img contain="true" :src="require('..\\assets\\Flower_Mountain.png')" />
+                        <v-img :contain="true" :src="require('..\\assets\\Flower_Mountain.png')" />
                     </v-card>
                 </v-col>
 
                 <v-col
                 :md="6">
                     <v-card 
-                    outlined="true"
+                    :outlined="true"
                     min-height="300"
                     min-width="300"
                     style="padding-top: 0px; padding-bottom: 0px; float: left;">
-                        <v-img contain="true" :src="require('..\\assets\\Tear.png')"> </v-img>
+                        <v-img :contain="true" :src="require('..\\assets\\Tear.png')"> </v-img>
                     </v-card>
                 </v-col>
             </v-row>
@@ -71,12 +71,11 @@
             align="start"
             justify="end">
                 <v-col
-                :align-self="center"
                 class="hidden-sm-and-down"
                 >
 
                     <v-card
-                    outlined="true"
+                    :outlined="true"
                     class="logo-card"> 
                         <v-card-title>
                         </v-card-title>
@@ -90,7 +89,7 @@
                  >
                     <div class="resource-card-wrapper">
                     <v-card
-                    outlined="true"
+                    :outlined="true"
                     class="resource">
                         <v-card-title class="resource-title">
                             24hr/day
@@ -124,7 +123,7 @@
                             <v-btn 
                             depressed
                             height="50px"
-                            outlined=true
+                            :outlined="true"
                             color="rgba(0, 0, 0, 100)"
                             min-width="150"
                             max-width="150"
@@ -147,9 +146,9 @@
             class="footer-sheet">
             </v-sheet>
             <div class="up-footer">
-                    <v-img contain="true" :src="require('..\\assets\\up.png')"> </v-img>
+                    <v-img :contain="true" :src="require('..\\assets\\up.png')"> </v-img>
             </div>
-            <div class="movement-footer"> <v-img contain="true" :src="require('..\\assets\\Movement.png')"> </v-img> </div>
+            <div class="movement-footer"> <v-img :contain="true" :src="require('..\\assets\\Movement.png')"> </v-img> </div>
         </div>
 
     </div>

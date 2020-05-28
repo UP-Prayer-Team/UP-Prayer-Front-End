@@ -3,7 +3,7 @@
 
         <div class="landing-wrapper">
             <v-sheet>
-                <v-img :max-height="430" :position="center" :src="require('..\\assets\\placeholder3.jpg')"> 
+                <v-img :max-height="430" position="center" :src="require('..\\assets\\placeholder3.jpg')"> 
 
                     <div class="landing-text">
                         <div> Prayer Guide </div>

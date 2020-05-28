@@ -20,20 +20,19 @@
                     sm="12">
                             <v-row>
                                 <v-col>
-                                    <v-alert v-if="create_error" type="error">{{error}}</v-alert>
-                                </v-col>
-
-                                <v-col>
-                                    <v-alert v-if="form_error" type="error">{{error}}</v-alert>
+                                    <v-alert v-if="error" type="error">{{error}}</v-alert>
                                 </v-col>
                             </v-row>
 
                             <v-row>
                                 <v-text-field 
                                 v-model="email" 
+                                :error-messages="emailErrors"
                                 label="Email" 
                                 required
                                 placeholder="jsmith@example.com"
+                                @input="$v.email.$touch()"
+                                @blur="$v.email.$touch()"
                                 ></v-text-field>
                             </v-row>
                             
@@ -42,11 +41,15 @@
                                 v-model="countryCode" 
                                 :items="countryCodeItems" 
                                 :search-input.sync="countrySearch"
+                                :error-messages="countryErrors"
+                                required
                                 label="Country" 
                                 class="mr-4"
                                 item-text="displayName"
                                 item-value="code"
                                 autocomplete="up-country-code"
+                                @change="$v.countryCode.$touch()"
+                                @blur="$v.countryCode.$touch()"
                                 >
                                     <template v-slot:item="{ item }">
                                         {{ item.displayName }}
@@ -65,11 +68,17 @@
                                 <v-autocomplete
                                     v-model="districtCode" 
                                     :items="countryDict[countryCode].districts"
-                                    :search-input.sync="regionSearch" 
+                                    :search-input.sync="regionSearch"
+                                    :error-messages="districtErrors" 
+                                    :hide-no-data="true"
+                                    :validate-on-blur="true"
                                     label="Region"
                                     item-text="name"
                                     item-value="shortCode"
                                     autocomplete="up-district-code"
+                                    required
+                                    @change="$v.districtCode.$touch()"
+                                    @blur="$v.districtCode.$touch()"
                                     >
                                     <template v-slot:item="{ item }">
                                         {{ item.name }}
@@ -84,6 +93,7 @@
                             <v-row>
                                 <v-select
                                 :items="organizations"
+                                v-model="organization"
                                 label="Anti-Trafficking Organization"
                                 >
                                 </v-select>
@@ -106,18 +116,28 @@
                                             <v-row>
 
                                             <v-col cols="12">
-                                                <v-text-field label="Email*" required v-model="email"></v-text-field>
+                                                <v-text-field
+                                                v-model="email"
+                                                :error-messages="emailErrors" 
+                                                label="Email*" 
+                                                required
+                                                @change="$v.email.$touch()"
+                                                @blur="$v.email.$touch()"
+                                                ></v-text-field>
                                             </v-col>
                                             <v-col cols="12">
                                                 <v-text-field
                                                 label="Anti-Trafficking Organization*"
+                                                v-model="organization"
                                                 persistent
                                                 required
+                                                @change="$v.organization.$touch()"
+                                                @blur="$v.organization.$touch()"
                                                 ></v-text-field>
                                             </v-col>
                                             <v-col cols="12">
                                                 <v-textarea 
-                                                outlined
+                                                :outlined="true"
                                                 rows="5"
                                                 no-resize="true"
                                                 label="Summary"
@@ -130,7 +150,7 @@
                                         <v-card-actions>
                                         <v-spacer></v-spacer>
                                         <v-btn color="blue darken-1" text @click="dialog = false">Cancel</v-btn>
-                                        <v-btn color="blue darken-1" text @click="dialog = false">Submit Request</v-btn>
+                                        <v-btn color="blue darken-1" text @click="suggest">Submit Request</v-btn>
                                         </v-card-actions>
                                     </v-card>
                                     </v-dialog>
@@ -138,7 +158,7 @@
                             </v-row>
                             <v-row> 
                                 <v-checkbox
-                                v-model="ex4"
+                                v-model="pledge"
                                 label="I pledge to donate $30 to my chosen Anti-Trafficking Organization"
                                 color="#a300ff"
                                 hide-details
@@ -159,7 +179,7 @@
                         :min-height="100"
                         class="calendar-bar">
                             
-                            <v-btn outlined class="mr-4" color="grey darken-2" @click="setToday">
+                            <v-btn :outlined="true" class="mr-4" color="grey darken-2" @click="setToday">
                                 Today
                             </v-btn>
                             <v-btn v-bind:disabled="this.prevMonthDisabled" fab icon small @click="monthViewPrevMonth">
@@ -182,7 +202,7 @@
                         :min-height="100"
                         class="calendar-bar">
 
-                            <v-btn color="grey darken-2" style="margin-right: 1rem;" outlined @click="backToMonthView">
+                            <v-btn color="grey darken-2" style="margin-right: 1rem;" :outlined="true" @click="backToMonthView">
                                 Back to Month
                             </v-btn>
                             <v-btn fab icon small @click="dayViewPrevDay">
@@ -210,7 +230,7 @@
                     </div>
                     <br>
 
-                    <v-expansion-panels accordion="true" multiple="true">
+                    <v-expansion-panels :accordion="true" :multiple="true">
                         <v-expansion-panel v-for="(month, key) in cartMonths" :key="key">
                             <v-expansion-panel-header>
                                 Month: {{ key }}
@@ -245,7 +265,21 @@
                     </v-expansion-panels>
                     <br>
 
-                    <v-btn @click="submit" v-bind:disabled="slots.length == 0">Sign Up For {{ slots.length }} Prayer Slot{{ slots.length == 1 ? '' : 's' }}</v-btn>
+                    <v-row>
+                        <v-col>
+                            <v-alert v-if="submitStatus == 'ERROR'" type="error"> Form not completed!</v-alert>
+                        </v-col>
+                    </v-row>
+
+                    <v-btn 
+                    @click="submit" 
+                    :loading="submitStatus == 'PENDING'" 
+                    v-bind:disabled="slots.length == 0"
+                    > Sign Up For {{ slots.length }} Prayer Slot{{ slots.length == 1 ? '' : 's' }}
+                    <template v-slot:submit>
+                        <span>Submitting...</span>
+                    </template>
+                    </v-btn>
                 </v-col>
             </v-container>
         </v-form>
@@ -269,11 +303,22 @@ import UPUtils from '../services/UPUtils';
 import SignUpDaySlot from '../components/SignUpDaySlot.vue';
 import flagCountries from 'countries-list';
 import countries from 'country-region-data';
+import { validationMixin } from 'vuelidate'
+import { required, email } from 'vuelidate/lib/validators'
 
 
 export default {
+    mixins: [validationMixin],
+
     components: {
         "sign-up-day-slot": SignUpDaySlot
+    },
+    validations: {
+        email: { required, email },
+        countryCode: { required },
+        districtCode: { required },
+        slots: { required },
+        organization: { required }
     },
     data() {
         return {
@@ -281,10 +326,10 @@ export default {
             showForm: true,
             showThanks: false,
             dialog: false,
-            form_error: null,
-            create_error: null,
+            error: null,
             countrySearch: null,
             regionSearch: null,
+            submitStatus: false,
             today: new Date().getUTCFullYear() + '-' + (new Date().getMonth() + 1).toString().padStart(2, '0') + '-' + new Date().getDate().toString().padStart(2, '0'),
             //true if the month and year displayed are equal to the current date
             //dissables the month prev botton
@@ -303,9 +348,13 @@ export default {
                 return result;
             }(),
 
-            email: "",
-            countryCode: "US",
-            districtCode: "",
+            /* form data required to sign up */
+            email: '',
+            countryCode: "US", // have to provide a default for the page to render
+            districtCode: '',
+            organization: '',
+            suggestedOrg: '',
+            pledge: false,
             slots: [
                 // { year: null, monthIndex: null, dayIndex: null, slotIndex: null }
             ],
@@ -328,12 +377,6 @@ export default {
             countryDict: {
 
             }
-            /*,
-            districtCodeItems: [
-                "Not specified",
-                "WA",
-                "OR"
-            ]*/
         };
     },
     computed: {
@@ -353,7 +396,26 @@ export default {
             }
 
             return result;
-        }
+        },
+        emailErrors () {
+        const errors = []
+        if (!this.$v.email.$dirty) return errors
+        !this.$v.email.email && errors.push('Must be valid email')
+        !this.$v.email.required && errors.push('Email is required')
+        return errors
+      },
+      countryErrors () {
+        const errors = []
+        if (!this.$v.countryCode.$dirty) return errors
+        !this.$v.countryCode.required && errors.push('Country Code is required')
+        return errors
+      },
+      districtErrors () {
+        const errors = []
+        if (!this.$v.districtCode.$dirty) return errors
+        !this.$v.districtCode.required && errors.push('Region is required')
+        return errors
+      },
     },
     methods: {
         addSlot() {
@@ -452,22 +514,39 @@ export default {
                 this.slots.push({ year: this.viewDate.year, monthIndex: this.viewDate.month, dayIndex: this.viewDate.day, slotIndex: index });
             }
         },
+        suggest() {
+
+        },
         submit() {
-            // TODO: Disable form
 
-            let slotsNumeric = this.slots.map((slot => {
+            this.$v.$touch()
+
+            if (this.$v.$invalid) {
+                this.submitStatus = 'ERROR'
+            } else {
+                // do your submit logic here
+                this.submitStatus = 'PENDING'
+                let slotsNumeric = this.slots.map((slot => {
                 return { year: UPClient.numberOrParse(slot.year), monthIndex: UPClient.numberOrParse(slot.monthIndex), dayIndex: UPClient.numberOrParse(slot.dayIndex), slotIndex: UPClient.numberOrParse(slot.slotIndex) };
-            }));
+                }));
 
-            UPClient.createReservations(this.email, this.countryCode, this.districtCode, slotsNumeric, () => {
-                this.showForm = false;
-                this.showThanks = true;
-            }, (message) => {
-                this.create_error = message;
-                // TODO: Enable form
+                UPClient.createReservations(this.email, this.countryCode, this.districtCode, slotsNumeric, () => {
+                    this.showForm = false;
+                    this.showThanks = true;
+                    this.$v.$reset()
+                    this.email = '';
+                    this.slots = [ ];
+                }, (message) => {
+                    this.error = message;
+                    console.log("Error: Failed to create reservations. Message: " + message);
+                });
 
-                console.log("Error: Failed to create reservations. Message: " + message);
-            });
+
+                setTimeout(() => {
+                this.submitStatus = 'OK'
+                }, 500)
+            }
+
         },
         populateCountryList() {
             this.countryCodeItems = [ ];
