@@ -9,7 +9,7 @@
                 <v-spacer></v-spacer>
                 <v-tabs 
                 optional
-                hide-slider="true"
+                :hide-slider="true"
                 :right="true" v-model="activeTab">
                     <v-tab v-for="(route, i) in getTabRoutes()" v-bind:key="i" @click="tabClicked(route)" v-bind:class="{ 'home-tab': i == 0 }">
                         <div v-if="route.name != 'home'">
