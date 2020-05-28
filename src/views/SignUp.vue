@@ -150,7 +150,7 @@
                                         <v-card-actions>
                                         <v-spacer></v-spacer>
                                         <v-btn color="blue darken-1" text @click="dialog = false">Cancel</v-btn>
-                                        <v-btn color="blue darken-1" text @click="dialog = false">Submit Request</v-btn>
+                                        <v-btn color="blue darken-1" text @click="suggest">Submit Request</v-btn>
                                         </v-card-actions>
                                     </v-card>
                                     </v-dialog>
@@ -513,6 +513,9 @@ export default {
                 // Ensure the slot is in the list to reserve
                 this.slots.push({ year: this.viewDate.year, monthIndex: this.viewDate.month, dayIndex: this.viewDate.day, slotIndex: index });
             }
+        },
+        suggest() {
+
         },
         submit() {
 
