@@ -6,7 +6,7 @@
             <v-container>
                 <v-row>
                     <v-col
-                    lg="6">
+                    cols="12">
 
                         <div class="logo">
                             <img src="..\assets\logo.svg" height="200" width="200">
@@ -16,84 +16,100 @@
                     </v-col>
 
                     <v-col
-                    lg="6"
-                    sm="12">
-                            <v-row>
-                                <v-col>
-                                    <v-alert v-if="error" type="error">{{error}}</v-alert>
-                                </v-col>
-                            </v-row>
-
-                            <v-row>
+                    cols="12"
+                    >
+                            
+                            <v-row class="form-row" id="scroll-to">
                                 <v-text-field 
                                 v-model="email" 
                                 :error-messages="emailErrors"
                                 label="Email" 
                                 required
+                                filled
                                 placeholder="jsmith@example.com"
                                 @input="$v.email.$touch()"
                                 @blur="$v.email.$touch()"
                                 ></v-text-field>
                             </v-row>
                             
-                            <v-row>
-                                <v-autocomplete
-                                v-model="countryCode" 
-                                :items="countryCodeItems" 
-                                :search-input.sync="countrySearch"
-                                :error-messages="countryErrors"
-                                required
-                                label="Country" 
-                                class="mr-4"
-                                item-text="displayName"
-                                item-value="code"
-                                autocomplete="up-country-code"
-                                @change="$v.countryCode.$touch()"
-                                @blur="$v.countryCode.$touch()"
+                            <v-row class="form-row">
+
+                                <v-col  
+                                v-for="n in 1"
+                                :key="n"
+                                cols="12"
+                                md="6"
+                                style="padding-left: 0 !important; padding-right: 0 !important;"
                                 >
-                                    <template v-slot:item="{ item }">
-                                        {{ item.displayName }}
-                                        <span class="text-right flag-adornment">{{ item.flag }}</span>
-                                        
-                                    </template>
-
-                                    <template v-slot:selection="{ item }">
-                                        {{ item.displayName }}
-                                        <span class="text-right flag-adornment mr-4">{{ item.flag }}</span>
-
-                                    </template>
-                                
-                                </v-autocomplete>
-
-                                <v-autocomplete
-                                    v-model="districtCode" 
-                                    :items="countryDict[countryCode].districts"
-                                    :search-input.sync="regionSearch"
-                                    :error-messages="districtErrors" 
-                                    :hide-no-data="true"
-                                    :validate-on-blur="true"
-                                    label="Region"
-                                    item-text="name"
-                                    item-value="shortCode"
-                                    autocomplete="up-district-code"
+                                    <v-autocomplete
+                                    v-model="countryCode" 
+                                    :items="countryCodeItems" 
+                                    :search-input.sync="countrySearch"
+                                    :error-messages="countryErrors"
                                     required
-                                    @change="$v.districtCode.$touch()"
-                                    @blur="$v.districtCode.$touch()"
+                                    filled
+                                    label="Country" 
+                                    item-text="displayName"
+                                    item-value="code"
+                                    autocomplete="up-country-code"
+                                    @change="$v.countryCode.$touch()"
+                                    @blur="$v.countryCode.$touch()"
                                     >
-                                    <template v-slot:item="{ item }">
-                                        {{ item.name }}
-                                    </template>
+                                        <template v-slot:item="{ item }">
+                                            {{ item.displayName }}
+                                            <span class="text-right flag-adornment">{{ item.flag }}</span>
+                                            
+                                        </template>
 
-                                    <template v-slot:selection="{ item }">
-                                        {{ item.name }}
-                                    </template>
-                                </v-autocomplete>
+                                        <template v-slot:selection="{ item }">
+                                            {{ item.displayName }}
+                                            <span class="text-right flag-adornment mr-4">{{ item.flag }}</span>
+
+                                        </template>
+                                    
+                                    </v-autocomplete>
+                                </v-col>
+
+        
+                                <v-col  
+                                v-for="n in 1"
+                                :key="n"
+                                cols="12"
+                                md="6"
+                                style="padding-left: 0 !important; padding-right: 0 !important;"
+                                >
+                                    <v-autocomplete
+                                        v-model="districtCode" 
+                                        :items="countryDict[countryCode].districts"
+                                        :search-input.sync="regionSearch"
+                                        :error-messages="districtErrors" 
+                                        :hide-no-data="true"
+                                        :validate-on-blur="true"
+                                        label="Region"
+                                        item-text="name"
+                                        item-value="shortCode"
+                                        autocomplete="up-district-code"
+                                        required
+                                        filled
+                                        @change="$v.districtCode.$touch()"
+                                        @blur="$v.districtCode.$touch()"
+                                        >
+                                        <template v-slot:item="{ item }">
+                                            {{ item.name }}
+                                        </template>
+
+                                        <template v-slot:selection="{ item }">
+                                            {{ item.name }}
+                                        </template>
+                                    </v-autocomplete>
+                                </v-col>
                             
                             </v-row>
-                            <v-row>
+                            <v-row class="form-row">
                                 <v-select
                                 :items="organizations"
                                 v-model="organization"
+                                filled
                                 label="Anti-Trafficking Organization"
                                 >
                                 </v-select>
@@ -108,12 +124,13 @@
                                     </template>
 
                                     <v-card>
-                                        <v-card-title>
-                                        <span class="headline">Suggest an organization</span>
-                                        </v-card-title>
+                                        
                                         <v-card-text>
                                         <v-container>
                                             <v-row>
+                                                <v-col cols="12"> 
+                                                    <span class="headline">Suggest an organization</span>
+                                                </v-col>
 
                                             <v-col cols="12">
                                                 <v-text-field
@@ -121,6 +138,7 @@
                                                 :error-messages="emailErrors" 
                                                 label="Email*" 
                                                 required
+                                                filled
                                                 @change="$v.email.$touch()"
                                                 @blur="$v.email.$touch()"
                                                 ></v-text-field>
@@ -131,17 +149,26 @@
                                                 v-model="organization"
                                                 persistent
                                                 required
+                                                filled
                                                 @change="$v.organization.$touch()"
                                                 @blur="$v.organization.$touch()"
                                                 ></v-text-field>
                                             </v-col>
                                             <v-col cols="12">
                                                 <v-textarea 
-                                                :outlined="true"
+                                                filled
                                                 rows="5"
                                                 no-resize="true"
                                                 label="Summary"
                                                 ></v-textarea>
+                                                <v-tooltip v-model="show" top>
+                                                    <template v-slot:activator="{ on }">
+                                                        <v-btn style="float: right;" icon v-on="on">
+                                                        <v-icon color="grey lighten-1">help</v-icon>
+                                                        </v-btn>
+                                                    </template>
+                                                    <span>Programmatic tooltip</span>
+                                                </v-tooltip>
                                             </v-col>
                                             </v-row>
                                         </v-container>
@@ -267,7 +294,7 @@
 
                     <v-row>
                         <v-col>
-                            <v-alert v-if="submitStatus == 'ERROR'" type="error"> Form not completed!</v-alert>
+                            <v-alert v-if="error" type="error">{{error}}</v-alert>
                         </v-col>
                     </v-row>
 
@@ -522,7 +549,10 @@ export default {
             this.$v.$touch()
 
             if (this.$v.$invalid) {
-                this.submitStatus = 'ERROR'
+                this.submitStatus = 'ERROR';
+                var elmnt = document.getElementById("scroll-to");
+                elmnt.scrollIntoView();
+                window.scrollBy(0, -92);
             } else {
                 // do your submit logic here
                 this.submitStatus = 'PENDING'
@@ -583,10 +613,13 @@ export default {
 
 .logo {
     font-family: 'Montserrat', sans-serif;
-        height: 350px;
         font-weight: 700;
         font-size: 200%;
         line-height: 1.33em;
+}
+
+.form-row {
+    padding-top: 10px;
 }
 
 .calendar-bar {
@@ -603,8 +636,9 @@ export default {
 }
 
 .flag-adornment {
-    position: absolute;
-    right: 10px;
+    position: relative;
+    left: 10px;
+    
 }
 
 .row {
