@@ -18,7 +18,6 @@
                     <v-col
                     cols="12"
                     >
-                            
                             <v-row class="form-row" id="scroll-to">
                                 <v-text-field 
                                 v-model="email" 
@@ -35,11 +34,43 @@
                             <v-row class="form-row">
 
                                 <v-col  
-                                v-for="n in 1"
-                                :key="n"
+                                cols="6"
+                                class="hidden-sm-and-down"
+                                style="padding-left: 0px !important;"
+                                >
+                                    <v-autocomplete
+                                    v-model="countryCode" 
+                                    :items="countryCodeItems" 
+                                    :search-input.sync="countrySearch"
+                                    :error-messages="countryErrors"
+                                    required
+                                    filled
+                                    label="Country" 
+                                    item-text="displayName"
+                                    item-value="code"
+                                    autocomplete="up-country-code"
+                                    @change="$v.countryCode.$touch()"
+                                    @blur="$v.countryCode.$touch()"
+                                    >
+                                        <template v-slot:item="{ item }">
+                                            {{ item.displayName }}
+                                            <span class="text-right flag-adornment">{{ item.flag }}</span>
+                                            
+                                        </template>
+
+                                        <template v-slot:selection="{ item }">
+                                            {{ item.displayName }}
+                                            <span class="text-right flag-adornment mr-4">{{ item.flag }}</span>
+
+                                        </template>
+                                    
+                                    </v-autocomplete>
+                                </v-col>
+
+                                <v-col  
                                 cols="12"
-                                md="6"
-                                style="padding-left: 0 !important; padding-right: 0 !important;"
+                                class="hidden-md-and-up"
+                                style="padding-left: 0px !important; padding-right: 0px !important;"
                                 >
                                     <v-autocomplete
                                     v-model="countryCode" 
@@ -72,11 +103,40 @@
 
         
                                 <v-col  
-                                v-for="n in 1"
-                                :key="n"
+                                cols="6"
+                                class="hidden-sm-and-down"
+                                style="padding-right: 0px !important;"
+                                >
+                                    <v-autocomplete
+                                        v-model="districtCode" 
+                                        :items="countryDict[countryCode].districts"
+                                        :search-input.sync="regionSearch"
+                                        :error-messages="districtErrors" 
+                                        :hide-no-data="true"
+                                        :validate-on-blur="true"
+                                        label="Region"
+                                        item-text="name"
+                                        item-value="shortCode"
+                                        autocomplete="up-district-code"
+                                        required
+                                        filled
+                                        @change="$v.districtCode.$touch()"
+                                        @blur="$v.districtCode.$touch()"
+                                        >
+                                        <template v-slot:item="{ item }">
+                                            {{ item.name }}
+                                        </template>
+
+                                        <template v-slot:selection="{ item }">
+                                            {{ item.name }}
+                                        </template>
+                                    </v-autocomplete>
+                                </v-col>
+
+                                <v-col  
                                 cols="12"
-                                md="6"
-                                style="padding-left: 0 !important; padding-right: 0 !important;"
+                                class="hidden-md-and-up"
+                                style="padding-left: 0px !important; padding-right: 0px !important;"
                                 >
                                     <v-autocomplete
                                         v-model="districtCode" 
