@@ -1,4 +1,6 @@
-# UP Prayer Movement Website
+# UP Prayer Movement Website 
+
+<img src="https://raw.githubusercontent.com/UP-Prayer-Team/UP-Prayer-Front-End/master/public/favicon.ico" alt="drawing" width="150"/>
 
 ### Compiles and hot-reloads for development
 ```
