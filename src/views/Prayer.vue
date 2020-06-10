@@ -15,15 +15,14 @@
         <v-container>
             
         <v-row>
-            <v-col>
+            <v-col align-self="start">
             <div class="title">
-                <br><div class="subtitle-text" style="text-align: left"> 
+                <div class="subtitle-text" style="text-align: left"> 
                     <div> Our focus is on the majesty of God. We are not here to take on the enemy. <strong> Jesus already won that battle. </strong> </div>
-                    <br><div> We do not need to pray “if it be your will” prayers. We can be confident it is God’s will for trafficking and all evil associated with it to be annihilated. </div>
-                    <br><div> Focus on reminding God of what he says in scripture and declaring it back to him. “God, you said….” is a great way to do this.</div>
+                    <br><div> We do not need to pray “if it be your will” prayers. We can be confident it is God’s will for trafficking and all evil associated with it to be annihilated. Focus on reminding God of what he says in scripture and declaring it back to him. “God, you said….” is a great way to do this.</div>
+                     
                     <br><div> Consider praying with someone else. Maybe your small group, youth group or other parents of young children want to get together to pray. Even with small children running around you could declare scriptures aloud together as they play. </div><br>
-                    <div> Below is a sample outline, scriptures and examples to help you get started. </div>
-
+                
                 </div>
             </div>
             </v-col>
@@ -224,8 +223,29 @@ export default {
 }
 
 .title {
+    padding-top: 24px;
     padding-left: 24px;
     padding-right: 24px;
 }
+
+
+
+/* xs devices (phones, 440px width and down) */
+    @media only screen and (max-width: 600px) {
+        .header {
+            font-family: 'Montserrat', sans-serif;   
+            text-align: center;
+            font-weight: 700;
+            font-size: 200%;
+            line-height: 1.5em;
+            padding-right: 2.5%;
+        }
+
+
+        .title {
+        padding-left: 24px;
+        padding-right: 24px;
+        }
+    }
 
 </style>
