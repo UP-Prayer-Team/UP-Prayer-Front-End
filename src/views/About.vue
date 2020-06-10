@@ -7,7 +7,7 @@
                 <v-img :max-height="430" position="center" :src="require('..\\assets\\placeholder2.jpg')"> 
 
                     <div class="landing-text">
-                        <div> Who are we? </div>
+                        
                         <div> <strong> We are prayer warriors </strong></div>
                     </div>
                 </v-img>
@@ -147,6 +147,7 @@ export default {
     transform: translate3d(-50%,-50%,0);
 }
 
+
 .belief-wrapper {
     margin-top: 24px;
     margin-bottom: 24px;
@@ -159,7 +160,7 @@ export default {
         color: black;
         font-size: 2.5rem; // 54pt
         font-weight: 900;
-        line-height: 1.5em;
+        line-height: 1.2em;
         // margin: auto;
 }
 

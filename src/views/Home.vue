@@ -48,8 +48,8 @@
                 :md="6">
                     <v-card 
                     :outlined="true"
-                    min-height="325"
-                    min-width="325"
+                    min-height="300"
+                    min-width="300"
                     style="padding-top: 0px; padding-bottom: 0px; float: left;">
                         <v-img :contain="true" :src="require('..\\assets\\Flower_Mountain.png')" />
                     </v-card>
@@ -101,9 +101,15 @@
 
                         <v-card-text class="resource-text">
                             <div class="resource-text">
-                                Join the Unstoppable Prayer Movement (UP Movement). Once a year (or more) commit to pray for 30 minutes and donate $30 to the anti-trafficking organization of your choice. 
-                            Why 30 minutes and $30? 
-                            There are 8,750 hours per year which is 17,500 30-minute segments. With that many people praying and each donating $30, human trafficking can stop. It’s not about the money. It’s about the collective force that we can create to call on the Glory of the Lord. The UP Movement breaks down this complex and overwhelming issue into 30 minutes and $30. You, along with many others, can be the movement that stops trafficking in our world.
+                                We say to the industry of trafficking, “Get ready to encounter this
+                                Glory-King! The Lord, armed and ready for battle, the Mighty One,
+                                invincible in every way!” (Psalm 247-8) As we unite in prayer we
+                                are confident we will continually experience the immeasurable
+                                greatness of God’s power made available to us through faith. Our
+                                lives will be an advertisement of this immense power as it works
+                                through us! This is the mighty power that was released when God
+                                raised Christ from the dead and exalted him to the place of highest
+                                honor and supreme authority in the heavenly realm! 
 
                             </div>
                         
@@ -112,7 +118,7 @@
                         <v-card-actions>
                             <v-btn 
                             depressed
-                            height="50px"
+                            height="60px"
                             color="rgba(0, 0, 0, 100)"
                             min-width="150"
                             max-width="150"
@@ -122,7 +128,7 @@
                             </v-btn>
                             <v-btn 
                             depressed
-                            height="50px"
+                            height="60px"
                             :outlined="true"
                             color="rgba(0, 0, 0, 100)"
                             min-width="150"
@@ -364,5 +370,35 @@ export default {
     .movement-footer {
         margin-left: 2.5%;
         margin-right: 17%;
+    }
+
+    /* xxs devices (phones, 430px width and down) */
+    @media only screen and (max-width: 430px) {
+
+        .landing {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 400;
+        letter-spacing: 0.4em; 
+        font-size: 1.2rem;
+        }
+
+
+        .resource-title {
+        font-family: 'Montserrat', sans-serif;
+        text-align: left;
+        color: black;
+        font-size: 4.1777rem; // 54pt
+        font-weight: 900;
+        line-height: 1.5em;
+        }
+
+    .resource-subtitle {
+        font-family: 'Montserrat', sans-serif;
+        text-align: left;
+        color: black !important;
+        font-size: 3rem; // 40pt
+        font-weight: 700;
+        line-height: 1.0em;
+        }
     }
 </style>

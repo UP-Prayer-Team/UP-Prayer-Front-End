@@ -7,7 +7,7 @@
                 <v-img :max-height="430" position="center" :src="require('..\\assets\\placeholder.jpg')"> 
 
                     <div class="landing-text">
-                        <div> Our partners </div>
+                        <div> Our partners: </div>
                         <div> Warriors fighting on </div>
                         <div> the front lines </div>
                     </div>
@@ -24,7 +24,7 @@
                     <v-card class="mb-5"
                         v-for="(end, i) in endorsements.slice(0, Math.ceil(endorsements.length / 2))" 
                         v-bind:key="i"
-                        :outlined="true"
+                        
                         >
                         <v-card-text>
                             <endorsement v-bind:endorsement="end">
@@ -37,7 +37,7 @@
                     <v-card class="mb-5"
                         v-for="(end, i) in endorsements.slice(Math.ceil(endorsements.length / 2), endorsements.length)" 
                         v-bind:key="i"
-                        :outlined="true"
+                        
                         >
                         <v-card-text>
                             <endorsement v-bind:endorsement="end">
@@ -64,31 +64,43 @@
                     </v-card>
                 </v-col>
             </v-row>
+            <v-row>
+                <v-col
+                cols="12">
+                    <v-sheet :max-height="430" class="donate">
+  
+                    <div style="padding: 16px;"> You can also donate directly to us! </div>
+                    <div> <donate></donate> </div>
+                    
+                    </v-sheet>
+                </v-col>
+            </v-row>
         </v-container>
         
     </div>
 </template>
 
 <script>
-import UPClient from '../services/UPClient'
+import UPClient from '../services/UPClient';
 import Endorsement from '../components/Endorsement.vue';
+import Donate from '../components/Donate.vue';
 
 export default {
     components: {
-        'endorsement': Endorsement
+        'endorsement': Endorsement,
+        'donate' : Donate
     },
     data() {
         return {
             endorsements: [
-                // { homepageURL: "www.courageworldwide.org", name: "Courage Worldwide", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." }, 
+                // { homepageURL: "www.courageworldwide.org", name: "Courage Worldwide",  }, 
                 // { homepageURL: "www.demandabolition.org", name: "Demand Abolition", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." } ,
                 // { homepageURL: "www.ecpatusa.org", name: "ECPAT-USA", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." } , 
                 // { homepageURL: "www.exoduscry.com", name: "Exodus Cry", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
                 // { homepageURL: "www.fairgirls.org", name: "FAIR Girls", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
                 // { homepageURL: "www.missingkids.org/", name: "National Center for Missing & Exploited Children", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
                 // { homepageURL: "www.centralusa.salvationarmy.org/metro/fight-for-justice/", name: "Salvation Army", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
-                // { homepageURL: "www.worldrelief.org", name: "World Relief", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." }
-
+                // { homepageURL: "www.worldrelief.org", name: "World Relief", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
             ]
         };
     },
