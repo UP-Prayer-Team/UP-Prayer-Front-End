@@ -92,24 +92,23 @@
                     :outlined="true"
                     class="resource">
                         <v-card-title class="resource-title">
-                            24hr/day
+                            Freedom found in prayer
                         </v-card-title>
 
                         <v-card-subtitle class="resource-subtitle">
-                            Freedom found in prayer
+                            What is 30/30?
                         </v-card-subtitle>
 
                         <v-card-text class="resource-text">
                             <div class="resource-text">
-                                We say to the industry of trafficking, “Get ready to encounter this
-                                Glory-King! The Lord, armed and ready for battle, the Mighty One,
-                                invincible in every way!” (Psalm 247-8) As we unite in prayer we
-                                are confident we will continually experience the immeasurable
-                                greatness of God’s power made available to us through faith. Our
-                                lives will be an advertisement of this immense power as it works
-                                through us! This is the mighty power that was released when God
-                                raised Christ from the dead and exalted him to the place of highest
-                                honor and supreme authority in the heavenly realm! 
+                                <div>We believe united, global prayer is powerful and results in change.
+                                The 30/30 idea is to pray for a 30-minute interval and give $30 to an 
+                                anti-trafficking organization of your choice. Prayer opportunities are available
+                                24/7/365. The $30 is to put love in action. It's not a required step, but do encourage you to 
+                                engage in this way. </div>
+                                <div> We say to the industry of trafficking, "Get ready to encounter this Glory-King!"
+                                    The Lord, armed and ready for battle, the Mighty One, invincible in every way!" (Psalm 24:7-8). </div>
+
 
                             </div>
                         
@@ -306,7 +305,7 @@ export default {
         color: black;
         font-size: 4.5rem; // 54pt
         font-weight: 900;
-        line-height: 1.5em;
+        line-height: 1em;
     }
 
     .resource-subtitle {
@@ -316,6 +315,7 @@ export default {
         font-size: 3.33333rem; // 40pt
         font-weight: 700;
         line-height: 1.0em;
+        padding-top: 32px !important;
     }
 
     .signup-btn {
@@ -389,16 +389,17 @@ export default {
         color: black;
         font-size: 4.1777rem; // 54pt
         font-weight: 900;
-        line-height: 1.5em;
+        line-height: 1em;
         }
 
-    .resource-subtitle {
-        font-family: 'Montserrat', sans-serif;
-        text-align: left;
-        color: black !important;
-        font-size: 3rem; // 40pt
-        font-weight: 700;
-        line-height: 1.0em;
+        .resource-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            text-align: left;
+            color: black !important;
+            font-size: 3rem; // 40pt
+            font-weight: 700;
+            line-height: 1.0em;
+            padding-top: 32px !important;
         }
     }
 </style>
