@@ -1,9 +1,8 @@
 <template>
     <div class="signup">
 
-        <v-form v-if="showForm">
-        <v-sheet>
-            <v-container>
+
+        <v-container v-if="showForm">
                 <v-row>
                     <v-col
                     cols="12">
@@ -14,7 +13,13 @@
                         </div>
 
                     </v-col>
+                </v-row>
+        </v-container>
 
+
+        <v-form v-if="showForm">
+        <v-sheet>
+            <v-container>
                     <v-col
                     cols="12"
                     >
@@ -253,8 +258,6 @@
                             </v-row>
                     </v-col>
 
-                </v-row>
-
             </v-container>
 
         </v-sheet>
@@ -317,13 +320,12 @@
                     </div>
                     <br>
 
-                    <v-expansion-panels :accordion="true" :multiple="true">
-                        <v-expansion-panel v-for="(month, key) in cartMonths" :key="key">
-                            <v-expansion-panel-header>
-                                Month: {{ key }}
-                            </v-expansion-panel-header>
+                        <v-card
+                        :flat="true"
+                        >
+                            
 
-                            <v-expansion-panel-content>
+                            <v-div v-for="(month, key) in cartMonths" :key="key">
                                 <v-simple-table>
                                     <template v-slot:default>
                                         <thead>
@@ -347,9 +349,21 @@
                                     </template>
                                 </v-simple-table>
                                 
-                            </v-expansion-panel-content>
-                        </v-expansion-panel>
-                    </v-expansion-panels>
+                            </v-div>
+                            
+                            <div style="padding: 16px;">
+                                <v-btn 
+                                @click="submit" 
+                                :loading="submitStatus == 'PENDING'" 
+                                v-bind:disabled="slots.length == 0"
+                                > Sign Up For {{ slots.length }} Prayer Slot{{ slots.length == 1 ? '' : 's' }}
+                                <template v-slot:submit>
+                                    <span>Submitting...</span>
+                                </template>
+                                </v-btn>
+                            </div>
+                        </v-card>
+                    <!-- </v-expansion-panels> -->
                     <br>
 
                     <v-row>
@@ -358,15 +372,7 @@
                         </v-col>
                     </v-row>
 
-                    <v-btn 
-                    @click="submit" 
-                    :loading="submitStatus == 'PENDING'" 
-                    v-bind:disabled="slots.length == 0"
-                    > Sign Up For {{ slots.length }} Prayer Slot{{ slots.length == 1 ? '' : 's' }}
-                    <template v-slot:submit>
-                        <span>Submitting...</span>
-                    </template>
-                    </v-btn>
+                    
                 </v-col>
             </v-container>
         </v-form>
@@ -390,8 +396,8 @@ import UPUtils from '../services/UPUtils';
 import SignUpDaySlot from '../components/SignUpDaySlot.vue';
 import flagCountries from 'countries-list';
 import countries from 'country-region-data';
-import { validationMixin } from 'vuelidate'
-import { required, email } from 'vuelidate/lib/validators'
+import { validationMixin } from 'vuelidate';
+import { required, email } from 'vuelidate/lib/validators';
 
 
 export default {
@@ -636,7 +642,6 @@ export default {
                 this.submitStatus = 'OK'
                 }, 500)
             }
-
         },
         populateCountryList() {
             this.countryCodeItems = [ ];
