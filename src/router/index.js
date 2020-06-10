@@ -7,6 +7,7 @@ import Charities from '../views/Charities.vue'
 import SignUp from '../views/SignUp.vue'
 import Confirm from '../views/Confirm.vue'
 import Blog from '../views/Blog.vue'
+import Thanks from '../views/Thanks.vue'
 
 Vue.use(VueRouter);
 
@@ -57,7 +58,12 @@ const routes = [
         path: '/confirm',
         name: 'confirm',
         component: Confirm
-    }
+    },
+    {
+        path: '/thanks',
+        name: 'thanks',
+        component: Thanks,
+    },
 ]
 
 const router = new VueRouter({
