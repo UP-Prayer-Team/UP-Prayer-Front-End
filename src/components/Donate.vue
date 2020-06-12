@@ -1,7 +1,11 @@
 <template>
 
-    <v-btn @click="donate">
-        Donate
+    <v-btn
+    tile
+    :outlined="true"
+    @click="donate"
+    :color="color">
+    Give <v-icon right>chevron_right</v-icon>
     </v-btn>
   
 </template>
@@ -11,6 +15,13 @@ import { loadStripe } from '@stripe/stripe-js';
 const stripePromise = loadStripe('pk_live_WYk87SMj78XtusRoL72L7lhb00xjX3YWHY');
 
 export default {
+
+    props: {
+        color: {
+            type: String,
+            default: 'black'
+        }
+    },
 
     methods: {
         async donate() {
