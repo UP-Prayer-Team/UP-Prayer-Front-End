@@ -50,24 +50,161 @@
         <v-content>
             <router-view/>
         </v-content>
-        <v-footer>
-            <v-spacer></v-spacer>
+        <v-footer
+        :absolute="true"
+        :padless="true"
+        :app="true"
+        class="footer"
+        >
+
+        <v-container>
+        <v-row
+        >
+            <v-col
+            cols="12">
+                <v-row
+                justify="center"
+                align="end">
+                    
+                    <img src=".\assets\logo.svg" height="70" width="70">
+                    <div style="padding: 16px; color: white;" class="logo"> UP Movement </div>
+                   
+                </v-row>
+            </v-col>
+        </v-row>
+        <v-row> 
+            <v-col>
+                <v-row
+                justify="center"
+                align="center"
+                class="desktop-footer">
+                    
+                    <!-- <v-col><img src=".\assets\logo.svg" height="75" width="75"></v-col> -->
+                    <v-col lg="3"></v-col>
+                    <v-col>
+                        <donate color="white"></donate>
+                    </v-col>
+
+                    <v-col> 
+                        <v-btn 
+                        tile 
+                        :outlined="true"
+                        color="white"> Contact Us 
+                        <v-icon right>chevron_right</v-icon></v-btn> 
+                    </v-col>
+
+                    <v-col> 
+                        <v-btn 
+                        tile 
+                        :outlined="true"
+                        color="white"
+                        @click="toSignUp"> Pray 
+                        <v-icon right>chevron_right</v-icon></v-btn> 
+                    </v-col>
+                    <v-col lg="3"></v-col>
+                </v-row>
+
+                    <v-row justify="center"
+                align="center"
+                class="mobile-footer"> <donate color="white"></donate> </v-row>
+                    <v-row justify="center"
+                align="center"
+                class="mobile-footer"> <v-btn 
+                    tile 
+                    :outlined="true"
+                    color="white"> Contact Us 
+                    <v-icon right>chevron_right</v-icon></v-btn> </v-row>
+                    <v-row justify="center"
+                align="center"
+                class="mobile-footer"><v-btn 
+                    tile 
+                    :outlined="true"
+                    color="white"> Pray 
+                    <v-icon right>chevron_right</v-icon></v-btn> </v-row>
+                    <v-spacer></v-spacer>
+            </v-col>
+        </v-row>
+        <v-row>
+            <v-col
+            >
+                <v-row
+                justify="center"
+                align="center">
+            
+                <v-breadcrumbs
+                :dark="true" 
+                :items="siteMap">
+                    <template v-slot:siteMap="{ item }">
+                        <v-breadcrumbs-item
+                            :to="item.to"
+                            :disabled="item.disabled"
+                            :exact-active-class="true"
+                        >
+                            {{ item.text }}
+                        </v-breadcrumbs-item>
+                    </template>
+                </v-breadcrumbs>
+                
+                </v-row>
+            </v-col>
+        </v-row>
+    </v-container>
+            <!-- <v-spacer></v-spacer>
             <img src=".\assets\logo.svg" height="24" width="24">
-            <div class="footer">UP Prayer Movement {{ getAppMode() }} &copy; {{ new Date().getFullYear() }}</div>
+            <div class="footer">UP Prayer Movement {{ getAppMode() }} &copy; {{ new Date().getFullYear() }}</div> -->
         </v-footer>
     </v-app>
 </template>
 
 <script>
 import UPClient from "./services/UPClient";
+import Donate from './components/Donate.vue';
 
 export default {
+
+    components: {
+        'donate' : Donate
+    },
 
     data() {
         return {
             activeTab: 0,
             drawer: null,
             latestBlogID: "",
+            siteMap: [
+                {
+                    text: 'Home',
+                    disabled: false,
+                    to: '/',
+                },
+                {
+                    text: 'Charities',
+                    disabled: false,
+                    to: 'charities',
+                },
+                {
+                    text: 'Updates',
+                    disabled: false,
+                    to: 'blog',
+                    
+                },
+                {
+                    text: 'Resources',
+                    disabled: false,
+                    to: 'prayer',
+                    
+                },
+                {
+                    text: 'About',
+                    disabled: false,
+                    to: 'about',
+                },
+                {
+                    text: 'Pray',
+                    disabled: false,
+                    to: 'signup',
+                }
+            ]
         }
     },
 
@@ -109,7 +246,10 @@ export default {
         },
         getAppMode() {
             return process.env.VUE_APP_MODE;
-        }
+        },
+        toSignUp() {
+            this.$router.replace({ name: "sign-up" });
+        },
     },
     mounted() {
         this.updateActiveTab();
@@ -130,6 +270,18 @@ export default {
 <style lang="scss">
 @import '@/preset/variables.scss';
 
+.v-application a {
+    color: white !important;
+}
+
+.theme--light.v-application {
+    background-color: white !important;
+}
+
+.theme--dark.v-breadcrumbs .v-breadcrumbs__item--disabled {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
 #app {
     // font-family: 'Montserrat', sans-serif;
     // font-family: 'Inter', sans-serif;
@@ -138,8 +290,7 @@ export default {
     text-align: center;
     color: #2c3e50;
     min-height: 100%;
-    /* equal to footer height */
-    margin-bottom: -30px;
+   
 }
 
 .v-tab {
@@ -165,10 +316,6 @@ export default {
     display: block;
 }
 
-.site-footer, #app:after {
-    height: 30px;
-}
-
 .theme--light.v-footer {
     background-color: transparent !important;
 }
@@ -183,16 +330,6 @@ html, body {
     background-color: white !important;
 }
 
-.theme--light.v-application {
-    background-color: white !important;
-}
-
-.footer {
-    font-family: 'Inter', sans-serif !important;
-    font-weight: 700;
-    line-height: 1.2em;
-}
-
 .v-content {
     margin-top: 0px;
 }
@@ -202,8 +339,27 @@ html, body {
     text-align: left;
 }
 
+.footer {
+    background: linear-gradient(to right, black, black, black) !important;
+}
 
-// v-footer {
-//     height: 155px;
-// }
+div.mobile-footer {
+    margin: 16px !important;
+  }
+
+/* xxs devices (phones, 430px width and down) */
+@media only screen and (max-width: 479px) {
+  div.desktop-footer {
+    display: none;
+  }
+}
+
+/* xxs devices (phones, 430px width and up) */
+@media only screen and (min-width: 480px) {
+  div.mobile-footer {
+    display: none;
+    margin: 16px !important;
+  }
+}
+
 </style>
