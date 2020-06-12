@@ -3,7 +3,7 @@
 
         <div class="landing-wrapper">
             
-            <v-sheet>
+            <!-- <v-sheet>
                 <v-img :max-height="430" position="center" :src="require('..\\assets\\placeholder2.jpg')"> 
 
                     <div class="landing-text">
@@ -13,7 +13,18 @@
                 </v-img>
 
 
+            </v-sheet> -->
+
+            <div>
+            <v-sheet
+            color="#ededee"
+            class="footer-sheet">
             </v-sheet>
+            <div class="up-footer">
+                    <v-img :contain="true" alt="" :src="require('..\\assets\\up.png')"> </v-img>
+            </div>
+            <div class="movement-footer"> <v-img :contain="true" :src="require('..\\assets\\Movement.png')"> </v-img> </div>
+        </div>
 
         </div>
 
@@ -121,7 +132,10 @@ export default {
     return {
       imgsrc: require('../assets/_GFU9977.jpg')
     }
-  }
+  },
+  mounted () {
+    window.scrollTo(0, 0);
+}
 }
 </script>
 
@@ -233,5 +247,17 @@ export default {
 .v-card__title {
     word-break: keep-all;
 }
+
+.footer-sheet {
+        border-radius: 0px !important;
+    }
+
+    .up-footer {
+        margin-right: 33.33%;
+    }
+    .movement-footer {
+        margin-left: 2.5%;
+        margin-right: 17%;
+    }
 
 </style>

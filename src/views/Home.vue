@@ -7,7 +7,7 @@
             color="white">
 
                 <div class="landing">
-                    <img src="..\assets\logo.svg" height="200" width="200">
+                    <img src="..\assets\logo.svg" alt="" height="200" width="200">
                     <h1 style="padding: 16px;"> <strong>UP MOVEMENT </strong></h1>
                 </div>
 
@@ -51,7 +51,7 @@
                     min-height="300"
                     min-width="300"
                     style="padding-top: 0px; padding-bottom: 0px; float: left;">
-                        <v-img :contain="true" :src="require('..\\assets\\Flower_Mountain.png')" />
+                        <v-img :contain="true" alt="" :src="require('..\\assets\\Flower_Mountain.png')" />
                     </v-card>
                 </v-col>
 
@@ -62,7 +62,7 @@
                     min-height="300"
                     min-width="300"
                     style="padding-top: 0px; padding-bottom: 0px; float: left;">
-                        <v-img :contain="true" :src="require('..\\assets\\Tear.png')"> </v-img>
+                        <v-img :contain="true" alt="" :src="require('..\\assets\\Tear.png')"> </v-img>
                     </v-card>
                 </v-col>
             </v-row>
@@ -80,7 +80,7 @@
                         <v-card-title>
                         </v-card-title>
                         
-                        <v-card-text> <img src="..\assets\logo.svg"> 
+                        <v-card-text> <img alt="" src="..\assets\logo.svg"> 
                         </v-card-text>
                     </v-card>
                 </v-col>
@@ -145,75 +145,30 @@
 
         </v-container>
 
-        <div>
-            <v-sheet
-            color="#ededee"
-            class="footer-sheet">
-            </v-sheet>
-            <div class="up-footer">
-                    <v-img :contain="true" :src="require('..\\assets\\up.png')"> </v-img>
-            </div>
-            <div class="movement-footer"> <v-img :contain="true" :src="require('..\\assets\\Movement.png')"> </v-img> </div>
-        </div>
-
     </div>
 </template>
 
 <script>
-// import UPClient from '../services/UPClient'
-// import Endorsement from '../components/Endorsement.vue'
-// import MonthSummaryCalendar from '../components/MonthSummaryCalendar.vue'
 
 export default {
     name: 'home',
-    components: {
-        // 'endorsement': Endorsement,
-        // 'month-summary-calendar': MonthSummaryCalendar
-    },
+
     data() {
         return {
             currentEndorsement: null,
         }
     },
     methods: {
-        // getEndos() {
-        //     UPClient.getEndorsementList((currentIndex, endorsements) => {
-        //         console.log("Endorsements: (current index: " + currentIndex + ")\n" + JSON.stringify(endorsements));
-        //     }, message => {
-        //         console.log("ERROR: Couldn't get endorsement list. Message: " + message);
-        //     });
-        // },
-        // getEndo() {
-        //     UPClient.getCurrentEndorsement(endorsement => {
-        //         console.log("Current endorsement: \n" + JSON.stringify(endorsement));
-        //         this.currentEndorsement = endorsement;
-        //     }, message => {
-        //         console.log("ERROR: Couldn't get current endorsement. Message: " + message);
-        //     });
-        // },
-        // getMonthRes() {
-        //     let today = new Date();
-        //     UPClient.getMonthSummary(today.getUTCFullYear(), today.getUTCMonth(), data => {
-        //         // Print out each day
-        //         for (let i = 0; i < data.length; i++) {
-        //             let dayData = data[i];
-        //             console.log("Day " + i + ": "  + dayData.count + " reservations");
-
-        //             for (let j = 0; j < dayData.locations.length; j++) {
-        //                 let resData = dayData.locations[j];
-        //                 console.log("  " + resData.district + ", " + resData.country);
-        //             }
-        //         }
-        //     }, message => {
-        //         console.log("ERROR: Couldn't get reservations for this month. Message: " + message);
-        //     });
-        // },
+     
         toSignUp() {
             this.$router.replace({ name: "sign-up" });
         },
         toResources() {
             this.$router.replace({ name: "prayer" });
         },
+    },
+    mounted () {
+        window.scrollTo(0, 0);
     }
 }
 </script>
@@ -358,18 +313,6 @@ export default {
 
     .v-card__actions {
         padding: 16px;
-    }
-
-    .footer-sheet {
-        border-radius: 0px !important;
-    }
-
-    .up-footer {
-        margin-right: 33.33%;
-    }
-    .movement-footer {
-        margin-left: 2.5%;
-        margin-right: 17%;
     }
 
     /* xxs devices (phones, 430px width and down) */
