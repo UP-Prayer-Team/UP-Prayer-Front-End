@@ -22,6 +22,10 @@ export default {
 
 <style lang="scss" scoped>
 
+.v-application a {
+    color: #1565C0 !important;
+}
+
 .endo-title {
     font-family: 'Montserrat', sans-serif !important;
         font-weight: 700;
