@@ -667,6 +667,7 @@ export default {
     mounted() {
         this.getOrganizations();
         this.populateCountryList();
+        window.scrollTo(0, 0);
     }
 }
 </script>
