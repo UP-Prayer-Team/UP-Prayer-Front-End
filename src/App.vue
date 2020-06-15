@@ -268,7 +268,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import '@/preset/variables.scss';
 
 .v-application a {
     color: white !important;

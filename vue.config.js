@@ -9,5 +9,12 @@ module.exports = {
     },
     devServer: {
         https: true
+      },
+      css: {
+        loaderOptions: {
+          scss: {
+            data: `@import "~@/scss/variables.scss";`
+          }
+        }
       }
   }
