@@ -239,22 +239,6 @@
                                                 filled
                                                 ></v-text-field>
                                             </v-col>
-                                            <v-col cols="12">
-                                                <v-textarea 
-                                                filled
-                                                rows="5"
-                                                no-resize="true"
-                                                label="Summary"
-                                                ></v-textarea>
-                                                <v-tooltip v-model="show" top>
-                                                    <template v-slot:activator="{ on }">
-                                                        <v-btn style="float: right;" icon v-on="on">
-                                                        <v-icon color="grey lighten-1">help</v-icon>
-                                                        </v-btn>
-                                                    </template>
-                                                    <span>Programmatic tooltip</span>
-                                                </v-tooltip>
-                                            </v-col>
                                             </v-row>
                                         </v-container>
                                         <small>*indicates required field</small>
@@ -356,8 +340,8 @@
                             </div>
                             <br>
 
-                            <v-row>
-                                <v-col>
+                            <v-row v-if="error">
+                                <v-col v-if="error">
                                     <v-alert v-if="error" type="error">{{error}}</v-alert>
                                 </v-col>
                             </v-row>  
