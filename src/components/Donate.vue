@@ -32,8 +32,8 @@ export default {
                 {price: 'price_1GsBucCO1IOF3vob7EQyOZKa', quantity: 1}
             ],
             mode: 'payment',
-            successUrl: 'https://192.168.0.24:8080/#/thanks',
-            cancelUrl: 'https://192.168.0.24:8080/#' + this.currentRoutePath,
+            successUrl: process.env.VUE_APP_HOST + '/#/thanks',
+            cancelUrl: process.env.VUE_APP_HOST + '/#' + this.currentRoutePath,
             });
         }
     },
