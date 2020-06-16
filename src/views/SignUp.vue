@@ -8,7 +8,7 @@
                     cols="12">
 
                         <div class="logo">
-                            <img src="..\assets\logo.svg" height="200" width="200">
+                            <v-img style="margin: auto;" :contain="true" :src="require('../assets/logo.svg')" height="200" width="200" />
                             <div style="padding: 16px;"> Join us in prayer bringing heaven to earth </div>
                         </div>
 

@@ -6,7 +6,7 @@
             cols="12">
 
                 <div class="logo">
-                    <img src="..\assets\logo.svg" alt="" height="250" width="250">
+                    <v-img style="margin: auto;" :contain="true" :src="require('../assets/logo.svg')" height="250" width="250" />
                     <div style="padding: 16px;"> Thank you for believing with us and giving to our mission! </div>
                 </div>
 
