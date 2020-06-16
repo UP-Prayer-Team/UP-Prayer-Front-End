@@ -2,28 +2,15 @@
     <div class="about">
 
         <div class="landing-wrapper">
-            
-            <!-- <v-sheet>
-                <v-img :max-height="430" position="center" :src="require('..\\assets\\placeholder2.jpg')"> 
-
-                    <div class="landing-text">
-                        
-                        <div> <strong> We are prayer warriors </strong></div>
-                    </div>
-                </v-img>
-
-
-            </v-sheet> -->
-
             <div>
             <v-sheet
             color="#ededee"
             class="footer-sheet">
             </v-sheet>
             <div class="up-footer">
-                    <v-img :contain="true" alt="" :src="require('..\\assets\\up.png')"> </v-img>
+                    <v-img :contain="true" alt="" :src="upsrc"> </v-img>
             </div>
-            <div class="movement-footer"> <v-img :contain="true" :src="require('..\\assets\\Movement.png')"> </v-img> </div>
+            <div class="movement-footer"> <v-img :contain="true" :src="movementsrc"> </v-img> </div>
         </div>
 
         </div>
@@ -98,7 +85,7 @@
                 md="6"
                 align-self="center">
                 <div class="belief-wrapper"> 
-                    <v-img class="founder" :src="require('..\\assets\\_GFU9977.jpg')"> </v-img>
+                    <v-img class="founder" :src="foundersrc"> </v-img>
                 </div>
                 </v-col>
                  
@@ -130,7 +117,9 @@
 export default {
   data() {
     return {
-      imgsrc: require('../assets/_GFU9977.jpg')
+      foundersrc: require('../assets/_GFU9977.jpg'),
+      upsrc: require('../assets/up.png'),
+      movementsrc: require('../assets/Movement.png')
     }
   },
   mounted () {

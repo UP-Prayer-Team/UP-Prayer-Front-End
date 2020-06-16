@@ -156,6 +156,8 @@ export default {
     data() {
         return {
             currentEndorsement: null,
+            flowerSrc: require('../assets/Flower_Mountain.png'),
+            tearSrc: require('../assets/Tear.png'),
         }
     },
     methods: {
@@ -173,7 +175,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-// @import '../scss/variables.scss';
 
     #button {
         margin: 15px;

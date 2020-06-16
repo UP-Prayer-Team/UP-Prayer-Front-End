@@ -17,12 +17,15 @@
         <v-row>
             <v-col align-self="start">
             <div class="title">
+                <div class="page-header" style="text-align: left">
+                            Prayer Focus
+                </div>
                 <div class="subtitle-text" style="text-align: left"> 
-                    <div> Our focus is on the majesty of God. We are not here to take on the enemy. <strong> Jesus already won that battle. </strong> </div>
-                    <br><div> We do not need to pray “if it be your will” prayers. We can be confident it is God’s will for trafficking and all evil associated with it to be annihilated. Focus on reminding God of what he says in scripture and declaring it back to him. “God, you said….” is a great way to do this.</div>
+                    <div> Our focus is on the majesty of God. We are not here to take on the enemy. <strong> Jesus already won that battle. </strong>
+                    We do not need to pray “if it be your will” prayers. Declare scriptures back to him. “God, you said….” is a great way to do this.
+                        Be confident in your prayers: It is God's will for trafficking and all evil associated with it to come to an end.
+                    </div>
                      
-                    <br><div> Consider praying with someone else. Maybe your small group, youth group or other parents of young children want to get together to pray. Even with small children running around you could declare scriptures aloud together as they play. </div><br>
-                
                 </div>
             </div>
             </v-col>
@@ -167,7 +170,14 @@
 
 <script>
 export default {
-    
+    data() {
+        return {
+            bannerSrc: require('../assets/placeholder3.jpg'),
+        }
+    },
+    mounted () {
+        window.scrollTo(0, 0);
+    }
 }
 </script>
 
@@ -193,6 +203,15 @@ export default {
     transform: translate3d(-50%,-50%,0);
 }
 
+.page-header {
+    font-family: 'Montserrat', sans-serif;   
+    text-align: center;
+    font-weight: 700;
+    font-size: 2em;
+    line-height: 2em;
+    color: black !important;
+}
+
 .header {
     font-family: 'Montserrat', sans-serif;   
     text-align: center;
@@ -206,6 +225,7 @@ export default {
     padding-top: 16px;
     padding-bottom: 16px;
     line-height: 1.4em;
+    color: black !important;
 }
 
 .body-text {
@@ -219,7 +239,7 @@ export default {
 }
 
 .theme--light.v-expansion-panels .v-expansion-panel {
-    background-color: rgba($color: #000000, $alpha: 0) !important;
+    // background-color: rgba($color: #000000, $alpha: 0) !important;
 }
 
 .title {

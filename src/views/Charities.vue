@@ -4,7 +4,7 @@
         <div class="landing-wrapper">
             
             <v-sheet>
-                <v-img :max-height="430" position="center" :src="require('..\\assets\\placeholder.jpg')"> 
+                <v-img :max-height="430" position="center" :src="bannerSrc"> 
 
                     <div class="landing-text">
                         <div> Our partners: </div>
@@ -90,7 +90,8 @@ export default {
                 { homepageURL: "www.missingkids.org/", name: "National Center for Missing & Exploited Children", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
                 { homepageURL: "www.centralusa.salvationarmy.org/metro/fight-for-justice/", name: "Salvation Army", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
                 { homepageURL: "www.worldrelief.org", name: "World Relief", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
-            ]
+            ],
+            bannerSrc: require('../assets/placeholder.jpg')
         };
     },
     mounted() {
