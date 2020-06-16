@@ -1,0 +1,48 @@
+<template>
+
+    <v-container class="thanks">
+        <v-row>
+            <v-col
+            cols="12">
+
+                <div class="logo">
+                    <img src="..\assets\logo.svg" alt="" height="250" width="250">
+                    <div style="padding: 16px;"> Thank you for believing with us and signing up! </div>
+                    <div style="padding: 16px;" class="subtitle"> We have sent you an email that will let you confirm your prayer slot along with some prayer resources. </div>
+                </div><br><br>
+
+            </v-col>
+        </v-row>
+    </v-container>
+  
+</template>
+
+<script>
+export default {
+    mounted () {
+        window.scrollTo(0, 0);
+    }
+}
+</script>
+
+<style scoped>
+
+.thanks {
+    margin-top: 82px;
+}
+
+.logo {
+    font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 200%;
+        line-height: 1.33em;
+}
+
+.subtitle {
+    font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 70%;
+        line-height: 1.33em;
+}
+
+</style>

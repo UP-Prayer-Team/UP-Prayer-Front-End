@@ -2,18 +2,16 @@
     <div class="about">
 
         <div class="landing-wrapper">
-            
-            <v-sheet>
-                <v-img :max-height="430" position="center" :src="require('..\\assets\\placeholder2.jpg')"> 
-
-                    <div class="landing-text">
-                        <div> Who are we? </div>
-                        <div> <strong> We are prayer warriors </strong></div>
-                    </div>
-                </v-img>
-
-
+            <div>
+            <v-sheet
+            color="#ededee"
+            class="footer-sheet">
             </v-sheet>
+            <div class="up-footer">
+                    <v-img :contain="true" alt="" :src="upsrc"> </v-img>
+            </div>
+            <div class="movement-footer"> <v-img :contain="true" :src="movementsrc"> </v-img> </div>
+        </div>
 
         </div>
 
@@ -87,7 +85,7 @@
                 md="6"
                 align-self="center">
                 <div class="belief-wrapper"> 
-                    <v-img class="founder" :src="require('..\\assets\\_GFU9977.jpg')"> </v-img>
+                    <v-img class="founder" :src="foundersrc"> </v-img>
                 </div>
                 </v-col>
                  
@@ -119,9 +117,14 @@
 export default {
   data() {
     return {
-      imgsrc: require('../assets/_GFU9977.jpg')
+      foundersrc: require('../assets/_GFU9977.jpg'),
+      upsrc: require('../assets/up.png'),
+      movementsrc: require('../assets/Movement.png')
     }
-  }
+  },
+  mounted () {
+    window.scrollTo(0, 0);
+}
 }
 </script>
 
@@ -147,6 +150,7 @@ export default {
     transform: translate3d(-50%,-50%,0);
 }
 
+
 .belief-wrapper {
     margin-top: 24px;
     margin-bottom: 24px;
@@ -159,7 +163,7 @@ export default {
         color: black;
         font-size: 2.5rem; // 54pt
         font-weight: 900;
-        line-height: 1.5em;
+        line-height: 1.2em;
         // margin: auto;
 }
 
@@ -232,5 +236,17 @@ export default {
 .v-card__title {
     word-break: keep-all;
 }
+
+.footer-sheet {
+        border-radius: 0px !important;
+    }
+
+    .up-footer {
+        margin-right: 33.33%;
+    }
+    .movement-footer {
+        margin-left: 2.5%;
+        margin-right: 17%;
+    }
 
 </style>

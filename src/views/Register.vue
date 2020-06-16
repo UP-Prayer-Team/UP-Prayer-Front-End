@@ -1,29 +1,49 @@
 <template>
-    <div class="signup">
 
+<div class="signup">
 
-        <v-container v-if="showForm">
-                <v-row>
-                    <v-col
-                    cols="12">
+    <v-container>
+        <v-row>
+            <v-col
+            cols="12">
+                <div class="logo">
+                    <img src="..\assets\logo.svg" height="200" width="200">
+                    <div style="padding: 16px;"> Join us in prayer bringing heaven to earth </div>
+                </div>
+            </v-col>
+        </v-row>
 
-                        <div class="logo">
-                            <img src="..\assets\logo.svg" height="200" width="200">
-                            <div style="padding: 16px;"> Join us in prayer bringing heaven to earth </div>
-                        </div>
+        <v-row>
+            <v-col
+            cols="12"
+            >
+            <v-form>
+                <v-stepper v-model="step" class="elevation-0">
+                    <v-stepper-header class="elevation-0">
+                    <v-stepper-step color="#c70098" :complete="step1" step="1">Contact Info</v-stepper-step>
 
-                    </v-col>
-                </v-row>
-        </v-container>
+                    <v-divider></v-divider>
 
+                    <v-stepper-step color="#c70098" :complete="pledge" step="2"> 
+                        Giving 
+                        <small style="margin-top: 2px;"> Optional </small>
+                    </v-stepper-step>
+                    
 
-        <v-form v-if="showForm">
-        <v-sheet>
-            <v-container>
-                    <v-col
-                    cols="12"
+                    <v-divider></v-divider>
+
+                    <v-stepper-step color="#c70098" :complete="slots.length > 0" step="3">Prayer time</v-stepper-step>
+
+                    <v-divider></v-divider>
+
+                    <v-stepper-step color="#c70098" step="4">Confirm</v-stepper-step>
+                    </v-stepper-header>
+
+                    <v-stepper-items>
+                    <v-stepper-content 
+                    step="1"
                     >
-                            <v-row class="form-row" id="scroll-to">
+                        <v-row class="form-row" id="scroll-to">
                                 <v-text-field 
                                 v-model="email" 
                                 :error-messages="emailErrors"
@@ -47,15 +67,11 @@
                                     v-model="countryCode" 
                                     :items="countryCodeItems" 
                                     :search-input.sync="countrySearch"
-                                    :error-messages="countryErrors"
-                                    required
                                     filled
                                     label="Country" 
                                     item-text="displayName"
                                     item-value="code"
                                     autocomplete="up-country-code"
-                                    @change="$v.countryCode.$touch()"
-                                    @blur="$v.countryCode.$touch()"
                                     >
                                         <template v-slot:item="{ item }">
                                             {{ item.displayName }}
@@ -70,6 +86,7 @@
                                         </template>
                                     
                                     </v-autocomplete>
+                                    <small style="float: left;">Country and region information is optional</small>
                                 </v-col>
 
                                 <v-col  
@@ -81,15 +98,11 @@
                                     v-model="countryCode" 
                                     :items="countryCodeItems" 
                                     :search-input.sync="countrySearch"
-                                    :error-messages="countryErrors"
-                                    required
                                     filled
                                     label="Country" 
                                     item-text="displayName"
                                     item-value="code"
                                     autocomplete="up-country-code"
-                                    @change="$v.countryCode.$touch()"
-                                    @blur="$v.countryCode.$touch()"
                                     >
                                         <template v-slot:item="{ item }">
                                             {{ item.displayName }}
@@ -102,7 +115,6 @@
                                             <span class="text-right flag-adornment mr-4">{{ item.flag }}</span>
 
                                         </template>
-                                    
                                     </v-autocomplete>
                                 </v-col>
 
@@ -115,8 +127,7 @@
                                     <v-autocomplete
                                         v-model="districtCode" 
                                         :items="countryDict[countryCode].districts"
-                                        :search-input.sync="regionSearch"
-                                        :error-messages="districtErrors" 
+                                        :search-input.sync="regionSearch" 
                                         :hide-no-data="true"
                                         :validate-on-blur="true"
                                         label="Region"
@@ -125,8 +136,6 @@
                                         autocomplete="up-district-code"
                                         required
                                         filled
-                                        @change="$v.districtCode.$touch()"
-                                        @blur="$v.districtCode.$touch()"
                                         >
                                         <template v-slot:item="{ item }">
                                             {{ item.name }}
@@ -147,7 +156,6 @@
                                         v-model="districtCode" 
                                         :items="countryDict[countryCode].districts"
                                         :search-input.sync="regionSearch"
-                                        :error-messages="districtErrors" 
                                         :hide-no-data="true"
                                         :validate-on-blur="true"
                                         label="Region"
@@ -156,8 +164,6 @@
                                         autocomplete="up-district-code"
                                         required
                                         filled
-                                        @change="$v.districtCode.$touch()"
-                                        @blur="$v.districtCode.$touch()"
                                         >
                                         <template v-slot:item="{ item }">
                                             {{ item.name }}
@@ -167,10 +173,25 @@
                                             {{ item.name }}
                                         </template>
                                     </v-autocomplete>
-                                </v-col>
-                            
+                                    <small style="float: left;">Country and region information is optional</small>
+                                </v-col>                                
                             </v-row>
-                            <v-row class="form-row">
+                        <div class="stepper-button">
+                            <v-btn
+                            color="#c70098"
+                            class="continue-btn"
+                            @click="contactStep"
+                            :dark="true"
+                            >
+                            Continue
+                            </v-btn>
+                        </div>
+                    </v-stepper-content>
+
+                    <v-stepper-content 
+                    step="2"
+                    >
+                        <v-row class="form-row">
                                 <v-select
                                 :items="organizations"
                                 v-model="organization"
@@ -178,6 +199,12 @@
                                 label="Anti-Trafficking Organization"
                                 >
                                 </v-select>
+                            </v-row>
+
+                            <v-row> 
+                                <p style="text-align: left;"> We encourge you to give $30 to an anti-trafficking organization of your choice.
+                                    If you want to learn about different organizations check out our resource page.
+                                    It is not required to give financially to sign up for a prayer time. </p><br>
                             </v-row>
                             <v-row>
                                 <p> Don't see your organization of choice?</p><br>
@@ -194,18 +221,14 @@
                                         <v-container>
                                             <v-row>
                                                 <v-col cols="12"> 
-                                                    <span class="headline">Suggest an organization</span>
+                                                    <span>Suggest an organization</span>
                                                 </v-col>
 
                                             <v-col cols="12">
                                                 <v-text-field
                                                 v-model="email"
-                                                :error-messages="emailErrors" 
                                                 label="Email*" 
-                                                required
                                                 filled
-                                                @change="$v.email.$touch()"
-                                                @blur="$v.email.$touch()"
                                                 ></v-text-field>
                                             </v-col>
                                             <v-col cols="12">
@@ -213,27 +236,8 @@
                                                 label="Anti-Trafficking Organization*"
                                                 v-model="organization"
                                                 persistent
-                                                required
                                                 filled
-                                                @change="$v.organization.$touch()"
-                                                @blur="$v.organization.$touch()"
                                                 ></v-text-field>
-                                            </v-col>
-                                            <v-col cols="12">
-                                                <v-textarea 
-                                                filled
-                                                rows="5"
-                                                no-resize="true"
-                                                label="Summary"
-                                                ></v-textarea>
-                                                <v-tooltip v-model="show" top>
-                                                    <template v-slot:activator="{ on }">
-                                                        <v-btn style="float: right;" icon v-on="on">
-                                                        <v-icon color="grey lighten-1">help</v-icon>
-                                                        </v-btn>
-                                                    </template>
-                                                    <span>Programmatic tooltip</span>
-                                                </v-tooltip>
                                             </v-col>
                                             </v-row>
                                         </v-container>
@@ -249,82 +253,126 @@
     
                             </v-row>
                             <v-row> 
-                                <v-checkbox
+                                <v-checkbox 
                                 v-model="pledge"
-                                label="I pledge to donate $30 to my chosen Anti-Trafficking Organization"
+                                label="I will to donate $30 to my chosen Anti-Trafficking Organization"
                                 color="#a300ff"
                                 hide-details
+                                style="padding-top: 16px; padding-bottom: 16px; margin-top: 0px !important;"
                                 ></v-checkbox> 
                             </v-row>
-                    </v-col>
+                            <v-row>
+                                <div class="stepper-button">
+                                    <v-btn
+                                    color="#c70098"
+                                    class="continue-btn"
+                                    :dark="true"
+                                    @click="step = 3"
+                                    >
+                                    Continue
+                                    </v-btn>
 
-            </v-container>
+                                    <v-btn text
+                                    @click="step = 1"
+                                    >Go Back</v-btn>
+                                </div>
+                            </v-row>
+                    </v-stepper-content>
 
-        </v-sheet>
-        <v-container class="v-application">
-            <v-col>
-                    <div v-if="!showDayView">
-                        <v-system-bar 
-                        flat
-                        :min-height="100"
-                        class="calendar-bar">
-                            
-                            <v-btn :outlined="true" class="mr-4" color="grey darken-2" @click="setToday">
-                                Today
-                            </v-btn>
-                            <v-btn v-bind:disabled="this.prevMonthDisabled" fab icon small @click="monthViewPrevMonth">
-                                <v-icon>mdi-chevron-left</v-icon>
-                            </v-btn>
-                            <v-toolbar-title class="ml-0">{{ new Date(this.viewDate.year, this.viewDate.month).toLocaleString('default', { month: 'long' }) }} {{ viewDate.year }}</v-toolbar-title>
-                            <v-btn fab icon small @click="monthViewNextMonth">
-                                <v-icon>mdi-chevron-right</v-icon>
-                            </v-btn>
-                            <v-spacer></v-spacer>
-                        </v-system-bar>
+                    <v-stepper-content 
+                    step="3">
+                        <v-col
+                        cols="12">
+                            <div v-if="!showDayView">
+                                <v-system-bar 
+                                flat
+                                :min-height="100"
+                                class="calendar-bar">
+                                    
+                                    <v-btn :outlined="true" class="mr-4" color="grey darken-2" @click="setToday">
+                                        Today
+                                    </v-btn>
+                                    <v-btn v-bind:disabled="this.prevMonthDisabled" fab icon small @click="monthViewPrevMonth">
+                                        <v-icon>mdi-chevron-left</v-icon>
+                                    </v-btn>
+                                    <v-toolbar-title class="ml-0">{{ new Date(this.viewDate.year, this.viewDate.month).toLocaleString('default', { month: 'long' }) }} {{ viewDate.year }}</v-toolbar-title>
+                                    <v-btn fab icon small @click="monthViewNextMonth">
+                                        <v-icon>mdi-chevron-right</v-icon>
+                                    </v-btn>
+                                    <v-spacer></v-spacer>
+                                </v-system-bar>
 
-                        <v-calendar @click:day="monthDayClick" @click:date="monthDayClick" v-bind:value="this.getCalendarDateText()" v-bind:now="today" color="primary">
-                        </v-calendar>
-                    </div>
+                                <v-calendar @click:day="monthDayClick" @click:date="monthDayClick" v-bind:value="this.getCalendarDateText()" v-bind:now="today" color="primary">
+                                </v-calendar>
+                            </div>
 
-                    <div v-if="showDayView">
-                        <v-system-bar 
-                        flat
-                        :min-height="100"
-                        class="calendar-bar">
+                            <div v-if="showDayView">
+                                <v-system-bar 
+                                flat
+                                :min-height="100"
+                                class="calendar-bar">
 
-                            <v-btn color="grey darken-2" style="margin-right: 1rem;" :outlined="true" @click="backToMonthView">
-                                Back to Month
-                            </v-btn>
-                            <v-btn fab icon small @click="dayViewPrevDay">
-                                <v-icon>mdi-chevron-left</v-icon>
-                            </v-btn>
-                            <v-toolbar-title class="ml-0">{{ new Date(this.viewDate.year, this.viewDate.month).toLocaleString('default', { month: 'long' }) }} {{ viewDate.day + 1 }}, {{ viewDate.year }}</v-toolbar-title>
-                            <v-btn fab icon small @click="dayViewNextDay">
-                                <v-icon>mdi-chevron-right</v-icon>
-                            </v-btn>
-                            <v-spacer></v-spacer>
+                                    <v-btn color="grey darken-2" style="margin-right: 1rem;" :outlined="true" @click="backToMonthView">
+                                        Back to Month
+                                    </v-btn>
+                                    <v-btn fab icon small @click="dayViewPrevDay">
+                                        <v-icon>mdi-chevron-left</v-icon>
+                                    </v-btn>
+                                    <v-toolbar-title class="ml-0">{{ new Date(this.viewDate.year, this.viewDate.month).toLocaleString('default', { month: 'long' }) }} {{ viewDate.day + 1 }}, {{ viewDate.year }}</v-toolbar-title>
+                                    <v-btn fab icon small @click="dayViewNextDay">
+                                        <v-icon>mdi-chevron-right</v-icon>
+                                    </v-btn>
+                                    <v-spacer></v-spacer>
 
-                        </v-system-bar>
+                                </v-system-bar>
 
-                        <v-calendar type="day" v-bind:value="this.getCalendarDateText()" color="primary">
-                            <template v-slot:interval="{ hour }">
-                                <sign-up-day-slot v-bind:slotInfo="dayViewSlotStates[hour * 2]" @input="daySlotUpdated(hour * 2)">
+                                <v-calendar type="day" v-bind:value="this.getCalendarDateText()" color="primary">
+                                    <template v-slot:interval="{ hour }">
+                                        <sign-up-day-slot v-bind:slotInfo="dayViewSlotStates[hour * 2]" @input="daySlotUpdated(hour * 2)">
 
-                                </sign-up-day-slot>
+                                        </sign-up-day-slot>
 
-                                <sign-up-day-slot v-bind:slotInfo="dayViewSlotStates[hour * 2 + 1]" @input="daySlotUpdated(hour * 2 + 1)">
+                                        <sign-up-day-slot v-bind:slotInfo="dayViewSlotStates[hour * 2 + 1]" @input="daySlotUpdated(hour * 2 + 1)">
 
-                                </sign-up-day-slot>
-                            </template>
-                        </v-calendar>
-                    </div>
-                    <br>
+                                        </sign-up-day-slot>
+                                    </template>
+                                </v-calendar>
+                            </div>
+                            <br>
 
+                            <v-row v-if="error">
+                                <v-col v-if="error">
+                                    <v-alert v-if="error" type="error">{{error}}</v-alert>
+                                </v-col>
+                            </v-row>  
+                      
+                            <v-row>
+                                <div class="stepper-button">
+                                    <v-btn
+                                    color="#c70098"
+                                    class="continue-btn"
+                                    style="background-color: #c70098; color: white;"
+                                    v-bind:disabled="slots.length == 0"
+                                    @click="step = 4"
+                                    >
+                                    Review
+                                    </v-btn>
+
+                                    <v-btn text
+                                    @click="step = 2"
+                                    >Go Back</v-btn>
+                                </div>
+                            </v-row>
+                        </v-col>
+                        </v-stepper-content>
+
+                    <v-stepper-content 
+                    step="4"
+                    >
+                        
                         <v-card
                         :flat="true"
                         >
-                            
-
                             <v-div v-for="(month, key) in cartMonths" :key="key">
                                 <v-simple-table>
                                     <template v-slot:default>
@@ -356,38 +404,51 @@
                                 @click="submit" 
                                 :loading="submitStatus == 'PENDING'" 
                                 v-bind:disabled="slots.length == 0"
+                                color="#c70098"
+                                style="color: white;"
                                 > Sign Up For {{ slots.length }} Prayer Slot{{ slots.length == 1 ? '' : 's' }}
                                 <template v-slot:submit>
                                     <span>Submitting...</span>
                                 </template>
                                 </v-btn>
                             </div>
+                            <v-btn text
+                            @click="step = 3"
+                            >Go Back</v-btn>
                         </v-card>
-                    <!-- </v-expansion-panels> -->
-                    <br>
+
+                        <br>
 
                     <v-row>
                         <v-col>
                             <v-alert v-if="error" type="error">{{error}}</v-alert>
                         </v-col>
+
+                        <v-col>
+                            <v-alert v-if="submitStatus" type="error">Something broke</v-alert>
+                        </v-col>
                     </v-row>
 
-                    
-                </v-col>
-            </v-container>
-        </v-form>
+                    </v-stepper-content>
 
-        <div v-if="showThanks">
-            <p>
-                Thanks for signing up! We have sent you an email that will let you confirm your reservation.
 
-                <br/>
+                    </v-stepper-items>
+                </v-stepper>
+            </v-form>
 
-                To get your heart in a place of prayer, we encourage you to read through this message from Lecia.
-            </p>
-        </div>
-        
-    </div>
+            </v-col>
+
+
+        </v-row>
+
+    </v-container>
+
+    
+
+
+</div>
+  
+
 </template>
 
 <script>
@@ -399,8 +460,8 @@ import countries from 'country-region-data';
 import { validationMixin } from 'vuelidate';
 import { required, email } from 'vuelidate/lib/validators';
 
-
 export default {
+
     mixins: [validationMixin],
 
     components: {
@@ -408,16 +469,17 @@ export default {
     },
     validations: {
         email: { required, email },
-        countryCode: { required },
-        districtCode: { required },
         slots: { required },
-        organization: { required }
     },
-    data() {
+    data () {
         return {
+            step: 1, // the current form step
+
+            /* flags that control stepper complete flag */
+            step1: false,
+            step3: false,
+
             showDayView: false,
-            showForm: true,
-            showThanks: false,
             dialog: false,
             error: null,
             countrySearch: null,
@@ -451,7 +513,6 @@ export default {
             slots: [
                 // { year: null, monthIndex: null, dayIndex: null, slotIndex: null }
             ],
-
             organizations: [
                 "Courage Worldwide",
                 "FAIR Girls",
@@ -470,7 +531,7 @@ export default {
             countryDict: {
 
             }
-        };
+        }   
     },
     computed: {
         cartMonths() {
@@ -490,25 +551,13 @@ export default {
 
             return result;
         },
-        emailErrors () {
+        emailErrors() {
         const errors = []
         if (!this.$v.email.$dirty) return errors
         !this.$v.email.email && errors.push('Must be valid email')
         !this.$v.email.required && errors.push('Email is required')
         return errors
-      },
-      countryErrors () {
-        const errors = []
-        if (!this.$v.countryCode.$dirty) return errors
-        !this.$v.countryCode.required && errors.push('Country Code is required')
-        return errors
-      },
-      districtErrors () {
-        const errors = []
-        if (!this.$v.districtCode.$dirty) return errors
-        !this.$v.districtCode.required && errors.push('Region is required')
-        return errors
-      },
+        },
     },
     methods: {
         addSlot() {
@@ -609,6 +658,17 @@ export default {
         },
         suggest() {
 
+        
+        },
+        contactStep() {
+            if (this.$v.email.$anyError || !this.$v.email.$dirty) {
+                this.$v.$touch();
+                this.step1 = false;
+            } else {
+                this.$v.$touch();
+                this.step1 = true;
+                this.step = 2;
+            }
         },
         submit() {
 
@@ -616,9 +676,6 @@ export default {
 
             if (this.$v.$invalid) {
                 this.submitStatus = 'ERROR';
-                var elmnt = document.getElementById("scroll-to");
-                elmnt.scrollIntoView();
-                window.scrollBy(0, -92);
             } else {
                 // do your submit logic here
                 this.submitStatus = 'PENDING'
@@ -627,8 +684,7 @@ export default {
                 }));
 
                 UPClient.createReservations(this.email, this.countryCode, this.districtCode, slotsNumeric, () => {
-                    this.showForm = false;
-                    this.showThanks = true;
+                    this.$router.replace({ path: 'thankyou' });
                     this.$v.$reset()
                     this.email = '';
                     this.slots = [ ];
@@ -673,6 +729,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .signup {
     margin-top: 82px;
 }
@@ -684,8 +741,10 @@ export default {
         line-height: 1.33em;
 }
 
-.form-row {
-    padding-top: 10px;
+.stepper-button {
+    float: left; 
+    padding-top: 16px; 
+    padding-bottom: 16px;
 }
 
 .calendar-bar {
@@ -710,6 +769,10 @@ export default {
 .row {
     margin-right: 0px !important; 
     margin-left: 0px !important;
+}
+
+.continue-btn {
+    margin-right: 16px;
 }
 
 </style>
