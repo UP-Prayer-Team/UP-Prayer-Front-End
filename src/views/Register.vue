@@ -36,7 +36,7 @@
 
                     <v-divider></v-divider>
 
-                    <v-stepper-step color="#c70098" step="4">Confirm</v-stepper-step>
+                    <v-stepper-step color="#c70098" step="4">Review</v-stepper-step>
                     </v-stepper-header>
 
                     <v-stepper-items>
