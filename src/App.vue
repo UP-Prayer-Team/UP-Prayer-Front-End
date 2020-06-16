@@ -123,7 +123,8 @@
                 class="mobile-footer"><v-btn 
                     tile 
                     :outlined="true"
-                    color="white"> Pray 
+                    color="white"
+                    @click="toSignUp"> Pray 
                     <v-icon right>chevron_right</v-icon></v-btn> </v-row>
                     <v-spacer></v-spacer>
             </v-col>
