@@ -1,22 +1,29 @@
 <template>
     <div class="confirm">
-
         <v-container>
-            <v-card>
-                <v-card-title class="display-1 text-center">
-                    {{ message }}
-                </v-card-title>
-                <v-card-text class="text-left">
-                    You have signed up to pray at the following times:
-                    <ul>
-                        <li v-for="(slot, i) in confirmedSlots" v-bind:key="i">
-                            {{ slot.year }}-{{ (slot.monthIndex + 1).toString().padStart(2, '0') }}-{{ (slot.dayIndex + 1).toString().padStart(2, '0') }}
-                        </li>
-                    </ul>
-                </v-card-text>
-            </v-card>
+            <v-row>
+                <v-col
+                cols="12">
+
+                    <div class="logo">
+                        <img src="..\assets\logo.svg" alt="" height="250" width="250">
+                        <div style="padding: 16px;"> {{ message }} </div>
+                        <div style="padding: 16px;" class="subtitle"> You have signed up to pray at the following times: 
+                        </div>
+                        <ul>
+                            <li v-for="(slot, i) in confirmedSlots" v-bind:key="i">
+                                {{ slot.year }}-{{ (slot.monthIndex + 1).toString().padStart(2, '0') }}-{{ (slot.dayIndex + 1).toString().padStart(2, '0') }}
+                            </li>
+                        </ul>
+                    <br><br>
+                    </div>
+
+                </v-col>
+            </v-row>
         </v-container>
     </div>
+
+    
 </template>
 
 <script>
@@ -34,10 +41,10 @@ export default {
         let params = new URLSearchParams(paramString);
         let confirmationID = params.get("confirmation");
         UPClient.confirmReservation(confirmationID, slots => {
-            this.message = "Thank you for praying!"
+            this.message = "Confirmed!"
             this.confirmedSlots = slots;
         }, message => {
-            console.log("OH NO! Message: " + message);
+            console.log("Whoops, something broke! Message: " + message);
         });
     }
 }
@@ -45,14 +52,23 @@ export default {
 
 <style lang="scss" scoped>
 
-.v-card {
-    margin: 100px auto;
-    padding: 50px;
-    width: 70%;
-    display: table;
+.confirm {
+    margin-top: 82px;
 }
-.v-card__title {
-    text-align: center;
+
+.logo {
+    font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 200%;
+        line-height: 1.33em;
 }
+
+.subtitle {
+    font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 70%;
+        line-height: 1.33em;
+}
+
 
 </style>

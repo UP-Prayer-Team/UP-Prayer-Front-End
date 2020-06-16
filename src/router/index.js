@@ -7,6 +7,10 @@ import Charities from '../views/Charities.vue'
 import SignUp from '../views/SignUp.vue'
 import Confirm from '../views/Confirm.vue'
 import Blog from '../views/Blog.vue'
+import Thanks from '../views/Thanks.vue'
+import ThankYou from '../views/ThankYou.vue'
+import Give from '../views/Give.vue'
+import Register from '../views/Register'
 
 Vue.use(VueRouter);
 
@@ -49,7 +53,7 @@ const routes = [
     {
         path: '/signup',
         name: 'sign-up',
-        component: SignUp,
+        component: Register,
         tabText: 'Pray',
         drawerIcon: 'calendar_today'
     },
@@ -57,7 +61,22 @@ const routes = [
         path: '/confirm',
         name: 'confirm',
         component: Confirm
-    }
+    },
+    {
+        path: '/thankyou',
+        name: 'thanks',
+        component: ThankYou,
+    },
+    {
+        path: '/thanks',
+        name: 'thanks',
+        component: Thanks,
+    },
+    {
+        path: '/give',
+        name: 'give',
+        component: Give,
+    },
 ]
 
 const router = new VueRouter({

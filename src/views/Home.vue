@@ -7,7 +7,7 @@
             color="white">
 
                 <div class="landing">
-                    <img src="..\assets\logo.svg" height="200" width="200">
+                    <img src="..\assets\logo.svg" alt="" height="200" width="200">
                     <h1 style="padding: 16px;"> <strong>UP MOVEMENT </strong></h1>
                 </div>
 
@@ -48,10 +48,10 @@
                 :md="6">
                     <v-card 
                     :outlined="true"
-                    min-height="325"
-                    min-width="325"
+                    min-height="300"
+                    min-width="300"
                     style="padding-top: 0px; padding-bottom: 0px; float: left;">
-                        <v-img :contain="true" :src="require('..\\assets\\Flower_Mountain.png')" />
+                        <v-img :contain="true" alt="" :src="flowerSrc" />
                     </v-card>
                 </v-col>
 
@@ -62,7 +62,7 @@
                     min-height="300"
                     min-width="300"
                     style="padding-top: 0px; padding-bottom: 0px; float: left;">
-                        <v-img :contain="true" :src="require('..\\assets\\Tear.png')"> </v-img>
+                        <v-img :contain="true" alt="" :src="tearSrc"> </v-img>
                     </v-card>
                 </v-col>
             </v-row>
@@ -80,7 +80,7 @@
                         <v-card-title>
                         </v-card-title>
                         
-                        <v-card-text> <img src="..\assets\logo.svg"> 
+                        <v-card-text> <img alt="" src="..\assets\logo.svg"> 
                         </v-card-text>
                     </v-card>
                 </v-col>
@@ -92,18 +92,23 @@
                     :outlined="true"
                     class="resource">
                         <v-card-title class="resource-title">
-                            24hr/day
+                            Freedom found in prayer
                         </v-card-title>
 
                         <v-card-subtitle class="resource-subtitle">
-                            Freedom found in prayer
+                            What is 30/30?
                         </v-card-subtitle>
 
                         <v-card-text class="resource-text">
                             <div class="resource-text">
-                                Join the Unstoppable Prayer Movement (UP Movement). Once a year (or more) commit to pray for 30 minutes and donate $30 to the anti-trafficking organization of your choice. 
-                            Why 30 minutes and $30? 
-                            There are 8,750 hours per year which is 17,500 30-minute segments. With that many people praying and each donating $30, human trafficking can stop. It’s not about the money. It’s about the collective force that we can create to call on the Glory of the Lord. The UP Movement breaks down this complex and overwhelming issue into 30 minutes and $30. You, along with many others, can be the movement that stops trafficking in our world.
+                                <div>We believe united, global prayer is powerful and results in change.
+                                The 30/30 idea is to pray for a 30-minute interval and give $30 to an 
+                                anti-trafficking organization of your choice. Prayer opportunities are available
+                                24/7/365. The $30 is to put love in action. It's not a required step, but do encourage you to 
+                                engage in this way. </div>
+                                <div> We say to the industry of trafficking, "Get ready to encounter this Glory-King!"
+                                    The Lord, armed and ready for battle, the Mighty One, invincible in every way!" (Psalm 24:7-8). </div>
+
 
                             </div>
                         
@@ -112,7 +117,7 @@
                         <v-card-actions>
                             <v-btn 
                             depressed
-                            height="50px"
+                            height="60px"
                             color="rgba(0, 0, 0, 100)"
                             min-width="150"
                             max-width="150"
@@ -122,7 +127,7 @@
                             </v-btn>
                             <v-btn 
                             depressed
-                            height="50px"
+                            height="60px"
                             :outlined="true"
                             color="rgba(0, 0, 0, 100)"
                             min-width="150"
@@ -140,80 +145,36 @@
 
         </v-container>
 
-        <div>
-            <v-sheet
-            color="#ededee"
-            class="footer-sheet">
-            </v-sheet>
-            <div class="up-footer">
-                    <v-img :contain="true" :src="require('..\\assets\\up.png')"> </v-img>
-            </div>
-            <div class="movement-footer"> <v-img :contain="true" :src="require('..\\assets\\Movement.png')"> </v-img> </div>
-        </div>
-
     </div>
 </template>
 
 <script>
-// import UPClient from '../services/UPClient'
-// import Endorsement from '../components/Endorsement.vue'
-// import MonthSummaryCalendar from '../components/MonthSummaryCalendar.vue'
 
 export default {
     name: 'home',
-    components: {
-        // 'endorsement': Endorsement,
-        // 'month-summary-calendar': MonthSummaryCalendar
-    },
+
     data() {
         return {
             currentEndorsement: null,
+            flowerSrc: require('../assets/Flower_Mountain.png'),
+            tearSrc: require('../assets/Tear.png'),
         }
     },
     methods: {
-        // getEndos() {
-        //     UPClient.getEndorsementList((currentIndex, endorsements) => {
-        //         console.log("Endorsements: (current index: " + currentIndex + ")\n" + JSON.stringify(endorsements));
-        //     }, message => {
-        //         console.log("ERROR: Couldn't get endorsement list. Message: " + message);
-        //     });
-        // },
-        // getEndo() {
-        //     UPClient.getCurrentEndorsement(endorsement => {
-        //         console.log("Current endorsement: \n" + JSON.stringify(endorsement));
-        //         this.currentEndorsement = endorsement;
-        //     }, message => {
-        //         console.log("ERROR: Couldn't get current endorsement. Message: " + message);
-        //     });
-        // },
-        // getMonthRes() {
-        //     let today = new Date();
-        //     UPClient.getMonthSummary(today.getUTCFullYear(), today.getUTCMonth(), data => {
-        //         // Print out each day
-        //         for (let i = 0; i < data.length; i++) {
-        //             let dayData = data[i];
-        //             console.log("Day " + i + ": "  + dayData.count + " reservations");
-
-        //             for (let j = 0; j < dayData.locations.length; j++) {
-        //                 let resData = dayData.locations[j];
-        //                 console.log("  " + resData.district + ", " + resData.country);
-        //             }
-        //         }
-        //     }, message => {
-        //         console.log("ERROR: Couldn't get reservations for this month. Message: " + message);
-        //     });
-        // },
+     
         toSignUp() {
             this.$router.replace({ name: "sign-up" });
         },
         toResources() {
             this.$router.replace({ name: "prayer" });
         },
+    },
+    mounted () {
+        window.scrollTo(0, 0);
     }
 }
 </script>
 <style lang="scss" scoped>
-// @import '../scss/variables.scss';
 
     #button {
         margin: 15px;
@@ -300,7 +261,7 @@ export default {
         color: black;
         font-size: 4.5rem; // 54pt
         font-weight: 900;
-        line-height: 1.5em;
+        line-height: 1em;
     }
 
     .resource-subtitle {
@@ -310,6 +271,7 @@ export default {
         font-size: 3.33333rem; // 40pt
         font-weight: 700;
         line-height: 1.0em;
+        padding-top: 32px !important;
     }
 
     .signup-btn {
@@ -354,15 +316,34 @@ export default {
         padding: 16px;
     }
 
-    .footer-sheet {
-        border-radius: 0px !important;
-    }
+    /* xxs devices (phones, 430px width and down) */
+    @media only screen and (max-width: 430px) {
 
-    .up-footer {
-        margin-right: 33.33%;
-    }
-    .movement-footer {
-        margin-left: 2.5%;
-        margin-right: 17%;
+        .landing {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 400;
+        letter-spacing: 0.4em; 
+        font-size: 1.2rem;
+        }
+
+
+        .resource-title {
+        font-family: 'Montserrat', sans-serif;
+        text-align: left;
+        color: black;
+        font-size: 4.1777rem; // 54pt
+        font-weight: 900;
+        line-height: 1em;
+        }
+
+        .resource-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            text-align: left;
+            color: black !important;
+            font-size: 3rem; // 40pt
+            font-weight: 700;
+            line-height: 1.0em;
+            padding-top: 32px !important;
+        }
     }
 </style>

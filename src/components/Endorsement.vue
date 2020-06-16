@@ -1,12 +1,9 @@
 <template>
     <div>
-        <h2>{{endorsement.name}}</h2>
-        <br><p class="text-left">
-            {{endorsement.summary}}
-        </p>
-        <p>
+        <div class="endo-title">{{endorsement.name}}</div>
+        <div class="endo-link">
             <a v-bind:href="endorsement.homepageURL">{{endorsement.homepageURL}}</a>
-        </p>
+        </div>
     </div>
 
 </template>
@@ -25,14 +22,25 @@ export default {
 
 <style lang="scss" scoped>
 
-h2 {
-    font-family: 'Montserrat', sans-serif !important;
-    font-weight: 700;
+.v-application a {
+    color: #1565C0 !important;
 }
 
-p {
+.endo-title {
+    font-family: 'Montserrat', sans-serif !important;
+        font-weight: 700;
+        font-size: 1.6666rem;
+        line-height: 2rem;
+    word-break: keep-all;
+    padding-top: 16px; 
+    padding-bottom: 10px;
+}
+
+.endo-link {
     font-family: 'Inter', sans-serif;
         line-height: 1.4em;
+    padding-bottom: 16px; 
+    padding-top: 10px;
 }
 
 </style>

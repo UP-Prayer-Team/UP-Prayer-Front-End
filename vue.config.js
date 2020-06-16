@@ -7,4 +7,7 @@ module.exports = {
             new VuetifyLoaderPlugin()
         ],
     },
+    devServer: {
+        https: true
+      }
   }

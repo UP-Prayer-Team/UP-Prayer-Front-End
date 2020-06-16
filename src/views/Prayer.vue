@@ -3,7 +3,7 @@
 
         <div class="landing-wrapper">
             <v-sheet>
-                <v-img :max-height="430" position="center" :src="require('..\\assets\\placeholder3.jpg')"> 
+                <v-img :max-height="430" position="center" :src="bannerSrc"> 
 
                     <div class="landing-text">
                         <div> Prayer Guide </div>
@@ -15,15 +15,17 @@
         <v-container>
             
         <v-row>
-            <v-col>
+            <v-col align-self="start">
             <div class="title">
-                <br><div class="subtitle-text" style="text-align: left"> 
-                    <div> Our focus is on the majesty of God. We are not here to take on the enemy. <strong> Jesus already won that battle. </strong> </div>
-                    <br><div> We do not need to pray “if it be your will” prayers. We can be confident it is God’s will for trafficking and all evil associated with it to be annihilated. </div>
-                    <br><div> Focus on reminding God of what he says in scripture and declaring it back to him. “God, you said….” is a great way to do this.</div>
-                    <br><div> Consider praying with someone else. Maybe your small group, youth group or other parents of young children want to get together to pray. Even with small children running around you could declare scriptures aloud together as they play. </div><br>
-                    <div> Below is a sample outline, scriptures and examples to help you get started. </div>
-
+                <div class="page-header" style="text-align: left">
+                            Prayer Focus
+                </div>
+                <div class="subtitle-text" style="text-align: left"> 
+                    <div> Our focus is on the majesty of God. We are not here to take on the enemy. <strong> Jesus already won that battle. </strong>
+                    We do not need to pray “if it be your will” prayers. Declare scriptures back to him. “God, you said….” is a great way to do this.
+                        Be confident in your prayers: It is God's will for trafficking and all evil associated with it to come to an end.
+                    </div>
+                     
                 </div>
             </div>
             </v-col>
@@ -168,7 +170,14 @@
 
 <script>
 export default {
-    
+    data() {
+        return {
+            bannerSrc: require('../assets/placeholder3.jpg'),
+        }
+    },
+    mounted () {
+        window.scrollTo(0, 0);
+    }
 }
 </script>
 
@@ -194,6 +203,15 @@ export default {
     transform: translate3d(-50%,-50%,0);
 }
 
+.page-header {
+    font-family: 'Montserrat', sans-serif;   
+    text-align: center;
+    font-weight: 700;
+    font-size: 2em;
+    line-height: 2em;
+    color: black !important;
+}
+
 .header {
     font-family: 'Montserrat', sans-serif;   
     text-align: center;
@@ -207,6 +225,7 @@ export default {
     padding-top: 16px;
     padding-bottom: 16px;
     line-height: 1.4em;
+    color: black !important;
 }
 
 .body-text {
@@ -220,12 +239,33 @@ export default {
 }
 
 .theme--light.v-expansion-panels .v-expansion-panel {
-    background-color: rgba($color: #000000, $alpha: 0) !important;
+    // background-color: rgba($color: #000000, $alpha: 0) !important;
 }
 
 .title {
+    padding-top: 24px;
     padding-left: 24px;
     padding-right: 24px;
 }
+
+
+
+/* xs devices (phones, 440px width and down) */
+    @media only screen and (max-width: 600px) {
+        .header {
+            font-family: 'Montserrat', sans-serif;   
+            text-align: center;
+            font-weight: 700;
+            font-size: 200%;
+            line-height: 1.5em;
+            padding-right: 2.5%;
+        }
+
+
+        .title {
+        padding-left: 24px;
+        padding-right: 24px;
+        }
+    }
 
 </style>
