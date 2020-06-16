@@ -51,7 +51,7 @@
                     min-height="300"
                     min-width="300"
                     style="padding-top: 0px; padding-bottom: 0px; float: left;">
-                        <v-img :contain="true" alt="" :src="flowerSrc" />
+                        <v-img alt="" :src="require('../assets/Flower_Mountain.png')" />
                     </v-card>
                 </v-col>
 
@@ -62,7 +62,7 @@
                     min-height="300"
                     min-width="300"
                     style="padding-top: 0px; padding-bottom: 0px; float: left;">
-                        <v-img :contain="true" alt="" :src="tearSrc"> </v-img>
+                        <v-img alt="" :src="require('../assets/Tear.png')" />
                     </v-card>
                 </v-col>
             </v-row>
@@ -156,8 +156,6 @@ export default {
     data() {
         return {
             currentEndorsement: null,
-            flowerSrc: require('../assets/Flower_Mountain.png'),
-            tearSrc: require('../assets/Tear.png'),
         }
     },
     methods: {
