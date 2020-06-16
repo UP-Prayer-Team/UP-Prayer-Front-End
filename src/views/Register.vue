@@ -333,7 +333,7 @@
 
                                 <v-container style="padding-left: 0px;">
 
-                                    <v-row align="center" justify="left" style="padding-bottom: 10px; position: relative; left: -15px;">
+                                    <v-row align="center" style="padding-bottom: 10px; position: relative; left: -15px;">
                                         <v-btn fab icon small @click="dayViewPrevDay">
                                             <v-icon>mdi-chevron-left</v-icon>
                                         </v-btn>
