@@ -6,7 +6,7 @@
             cols="12">
 
                 <div class="logo">
-                    <img src="..\assets\logo.svg" alt="" height="250" width="250">
+                    <v-img style="margin: auto;" :contain="true" :src="require('../assets/logo.svg')" height="250" width="250" />
                     <div style="padding: 16px;"> The Unstoppable Prayer Movement (UP) operates as a non-profit. If you wish to give directly toward UP activity costs, please do so here. </div>
                 </div>
 

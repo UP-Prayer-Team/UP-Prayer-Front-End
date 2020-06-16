@@ -2,17 +2,24 @@
     <div class="home">
 
         <div class="landing-wrapper">
-            <v-sheet
-            
-            color="white">
+             <v-container
+             style="padding-top: 0px !important; padding-bottom: 0px !important;">
+                 <v-row
+                 justify="center"
+                 align="center">
+                 <v-col
+                 align-self="center"
+                 cols="12"
+                 style="padding-top: 0px !important; padding-bottom: 0px !important;">
 
                 <div class="landing">
-                    <img src="..\assets\logo.svg" alt="" height="200" width="200">
-                    <h1 style="padding: 16px;"> <strong>UP MOVEMENT </strong></h1>
+                    <v-img style="margin: auto;" :src="require('../assets/logo.svg')" alt="" height="200" width="200" />
+                    <h1 style="padding: 16px; margin: auto;"> <strong style="color: black;">UP MOVEMENT </strong></h1>
                 </div>
 
-
-            </v-sheet>
+                </v-col>
+                 </v-row>
+            </v-container>
         </div>
         <div class="banner-wrapper">
             <v-card class="banner">            
@@ -80,7 +87,7 @@
                         <v-card-title>
                         </v-card-title>
                         
-                        <v-card-text> <img alt="" src="..\assets\logo.svg"> 
+                        <v-card-text> <v-img alt="" :src="require('../assets/logo.svg')" />
                         </v-card-text>
                     </v-card>
                 </v-col>

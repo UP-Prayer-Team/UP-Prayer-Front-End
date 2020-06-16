@@ -64,7 +64,7 @@ const routes = [
     },
     {
         path: '/thankyou',
-        name: 'thanks',
+        name: 'thank-you',
         component: ThankYou,
     },
     {

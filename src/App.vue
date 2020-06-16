@@ -16,7 +16,7 @@
                             {{ route.tabText }}
                         </div>
                         <div v-if="route.name == 'home'">
-                            <img src=".\assets\logo.svg" height="50" width="50">
+                            <v-img :contain="true" :src="require('./assets/logo.svg')" height="50" width="50" />
                         </div>
                     </v-tab>
                 </v-tabs>
@@ -26,7 +26,7 @@
             fixed
             :height="82"
             class="hidden-md-and-up">
-                <v-tab @click="toHome"> <img src=".\assets\logo.svg" height="50" width="50"> </v-tab>
+                <v-tab @click="toHome"> <v-img :contain="true" :src="require('./assets/logo.svg')" height="50" width="50" /> </v-tab>
                 <v-spacer></v-spacer>
                 <v-btn text @click.stop="drawer = !drawer">
                     <v-icon :large="true">menu</v-icon>
@@ -66,7 +66,7 @@
                 justify="center"
                 align="end">
                     
-                    <img src=".\assets\logo.svg" height="70" width="70">
+                    <v-img :src="require('./assets/logo.svg')" max-height="70" max-width="70" />
                     <div style="padding: 16px; color: white;" class="logo"> UP Movement </div>
                    
                 </v-row>
@@ -79,7 +79,6 @@
                 align="center"
                 class="desktop-footer">
                     
-                    <!-- <v-col><img src=".\assets\logo.svg" height="75" width="75"></v-col> -->
                     <v-col lg="3"></v-col>
                     <v-col>
                         <donate color="white"></donate>
@@ -149,9 +148,6 @@
             </v-col>
         </v-row>
     </v-container>
-            <!-- <v-spacer></v-spacer>
-            <img src=".\assets\logo.svg" height="24" width="24">
-            <div class="footer">UP Prayer Movement {{ getAppMode() }} &copy; {{ new Date().getFullYear() }}</div> -->
         </v-footer>
     </v-app>
 </template>
