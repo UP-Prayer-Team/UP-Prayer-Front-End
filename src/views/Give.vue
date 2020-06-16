@@ -7,11 +7,22 @@
 
                 <div class="logo">
                     <img src="..\assets\logo.svg" alt="" height="250" width="250">
-                    <div style="padding: 16px;"> Thank you for believing with us and giving to our mission! </div>
+                    <div style="padding: 16px;"> The Unstoppable Prayer Movement (UP) operates as a non-profit. If you wish to give directly toward UP activity costs, please do so here. </div>
                 </div>
 
             </v-col>
         </v-row>
+        <v-row>
+                <v-col
+                cols="12">
+                    <v-sheet :max-height="430" class="donate">
+  
+
+                    <div> <donate></donate> </div>
+                    
+                    </v-sheet>
+                </v-col>
+            </v-row>
     </v-container>
   
 </template>
@@ -20,11 +31,11 @@
 export default {
     mounted () {
         window.scrollTo(0, 0);
-    }
+}
 }
 </script>
 
-<style scoped>
+<style>
 
 .thanks {
     margin-top: 82px;

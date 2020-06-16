@@ -7,8 +7,9 @@
 
                 <div class="logo">
                     <img src="..\assets\logo.svg" alt="" height="250" width="250">
-                    <div style="padding: 16px;"> Thank you for believing with us and giving to our mission! </div>
-                </div>
+                    <div style="padding: 16px;"> Thank you for believing with us and signing up! </div>
+                    <div style="padding: 16px;" class="subtitle"> We have sent you an email that will let you confirm your prayer slot along with some prayer resources. </div>
+                </div><br><br>
 
             </v-col>
         </v-row>
@@ -34,6 +35,13 @@ export default {
     font-family: 'Montserrat', sans-serif;
         font-weight: 700;
         font-size: 200%;
+        line-height: 1.33em;
+}
+
+.subtitle {
+    font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 70%;
         line-height: 1.33em;
 }
 
