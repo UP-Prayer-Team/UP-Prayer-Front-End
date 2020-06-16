@@ -35,16 +35,21 @@
             <v-navigation-drawer v-model="drawer" fixed temporary>
 
                 <v-list>
-                    <v-list-item v-for="(route, i) in getTabRoutes().slice(1)" v-bind:key="i" link @click="tabClicked(route)">
-                        <v-list-item-icon>
-                            <v-icon>{{ route.drawerIcon }}</v-icon>
-                        </v-list-item-icon>
+                    <v-list-item v-for="(route, i) in getTabRoutes()" v-bind:key="i" link @click="tabClicked(route)">
                         <v-list-item-content>
                             <v-list-item-title class="drawer-text">{{ route.tabText }}</v-list-item-title>
                         </v-list-item-content>
+                        <v-list-item-icon>
+                            <v-icon color="black" large>{{ route.drawerIcon }}</v-icon>
+                        </v-list-item-icon>
                     </v-list-item>
                 </v-list>
-                
+
+                 <template v-slot:append>
+                    <div class="nav-drawer-footer-logo">
+                    <v-img style="margin: auto;" :src="require('./assets/logo.svg')" alt="" max-height="200" max-width="200" />
+                    </div>
+                </template>
             </v-navigation-drawer>
         </div>
         <v-content>
@@ -330,8 +335,11 @@ html, body {
 }
 
 .drawer-text {
-    font-family: 'Inter', sans-serif !important;
-    text-align: left;
+    font-family: 'Montserrat', sans-serif !important;
+        text-align: left;
+        font-weight: 700;
+        line-height: 1.33em;
+        font-size: 1.1rem !important;
 }
 
 .footer {
@@ -342,19 +350,38 @@ div.mobile-footer {
     margin: 16px !important;
   }
 
-/* xxs devices (phones, 430px width and down) */
+  div.nav-drawer-footer-logo {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+
+  /* xxs devices (phones, 479px width and down) */
+@media only screen and (max-height: 660px) {
+  div.nav-drawer-footer-logo {
+    display: none;
+  }
+}
+
+/* xxs devices (phones, 479px width and down) */
 @media only screen and (max-width: 479px) {
   div.desktop-footer {
     display: none;
   }
 }
 
-/* xxs devices (phones, 430px width and up) */
+/* xxs devices (phones, 480px width and up) */
 @media only screen and (min-width: 480px) {
   div.mobile-footer {
     display: none;
     margin: 16px !important;
   }
+}
+
+.nav-drawer-header {
+    font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        line-height: 1.33em;
+    align-self: left !important;
 }
 
 </style>

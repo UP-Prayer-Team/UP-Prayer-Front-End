@@ -19,43 +19,43 @@ const routes = [
         path: '/',
         name: 'home',
         component: Home,
-        tabText: 'UP Prayer Movement',
-        drawerIcon: 'home'
+        tabText: 'Home',
+        drawerIcon: 'chevron_right'
     },
     {
         path: '/charities',
         name: 'charities',
         component: Charities,
         tabText: 'Charities',
-        drawerIcon: 'arrow_upward'
+        drawerIcon: 'chevron_right'
     },
     {
         path: '/prayer',
         name: 'prayer',
         component: Prayer,
         tabText: 'Resources',
-        drawerIcon: 'menu_book'
+        drawerIcon: 'chevron_right'
     },
     {
         path: '/updates/:id', 
         name: 'blog',
         component: Blog,
         tabText: 'Updates',
-        drawerIcon: 'mdi-newspaper-variant-multiple'
+        drawerIcon: 'chevron_right'
     },
     {
         path: '/about',
         name: 'about',
         component: About,
         tabText: 'About',
-        drawerIcon: 'help'
+        drawerIcon: 'chevron_right'
     },
     {
         path: '/signup',
         name: 'sign-up',
         component: Register,
         tabText: 'Pray',
-        drawerIcon: 'calendar_today'
+        drawerIcon: 'chevron_right'
     },
     {
         path: '/confirm',

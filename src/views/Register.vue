@@ -206,7 +206,7 @@
                                     If you want to learn about different organizations check out our resource page.
                                     It is not required to give financially to sign up for a prayer time. </p><br>
                             </v-row>
-                            <v-row>
+                            <v-row style="padding-bottom: 16px;"> 
                                 <p> Don't see your organization of choice?</p><br>
                                 <v-spacer></v-spacer>
                                 
@@ -252,7 +252,7 @@
                                     </v-dialog>
     
                             </v-row>
-                            <v-row> 
+                            <v-row style="padding-bottom: 16px;"> 
                                 <v-checkbox 
                                 v-model="pledge"
                                 label="I will to donate $30 to my chosen Anti-Trafficking Organization"
@@ -282,7 +282,7 @@
                     <v-stepper-content 
                     step="3">
                         <v-col
-                        cols="12">
+                        cols="12" style="padding-left: 0px !important; padding-right: 0px !important;">
                             <div v-if="!showDayView">
                                 <v-system-bar 
                                 flat
@@ -323,6 +323,33 @@
                                         <v-icon>mdi-chevron-right</v-icon>
                                     </v-btn>
                                     <v-spacer></v-spacer>
+
+                                </v-system-bar>
+
+                                <v-system-bar 
+                                flat
+                                :min-height="140"
+                                class="calendar-bar-mobile">
+
+                                <v-container style="padding-left: 0px;">
+
+                                    <v-row align="center" style="padding-bottom: 10px; position: relative; left: -15px;">
+                                        <v-btn fab icon small @click="dayViewPrevDay">
+                                            <v-icon>mdi-chevron-left</v-icon>
+                                        </v-btn>
+                                        <v-toolbar-title class="ml-0">{{ new Date(this.viewDate.year, this.viewDate.month).toLocaleString('default', { month: 'long' }) }} {{ viewDate.day + 1 }}, {{ viewDate.year }}</v-toolbar-title>
+                                        <v-btn fab icon small @click="dayViewNextDay">
+                                            <v-icon>mdi-chevron-right</v-icon>
+                                        </v-btn>
+                                    </v-row>
+
+                                    <v-row style="padding-bottom: 17px;">
+                                        <v-btn color="grey darken-2" style="margin-right: 1rem;" :outlined="true" @click="backToMonthView">
+                                        Back to Month
+                                        </v-btn>
+                                    </v-row>
+
+                                </v-container>
 
                                 </v-system-bar>
 
@@ -752,6 +779,36 @@ export default {
     background-color: rgba(0,0,0,0) !important;
 }
 
+.calendar-bar-mobile {
+    height: 100px !important;
+    background-color: rgba(0,0,0,0) !important;
+}
+
+/* xxs devices (phones, 479px width and down) */
+@media only screen and (max-width: 479px) {
+  div.calendar-bar {
+    display: none;
+  }
+
+  div.calendar-bar-mobile {
+    display: visible;
+    height: 100px !important;
+  }
+}
+
+/* xxs devices (phones, 480px width and up) */
+@media only screen and (min-width: 480px) {
+  div.calendar-bar-mobile {
+    display: none;
+  }
+
+  div.calendar-bar {
+    display: visible;
+  }
+}
+
+
+
 .v-toolbar__title {
     margin-left: 1rem;
 }
@@ -774,5 +831,7 @@ export default {
 .continue-btn {
     margin-right: 16px;
 }
+
+
 
 </style>
