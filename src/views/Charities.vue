@@ -7,7 +7,6 @@
                 <v-img :max-height="430" position="center" :src="bannerSrc"> 
 
                     <div class="landing-text">
-                        <div> Our partners: </div>
                         <div> Warriors fighting on </div>
                         <div> the front lines </div>
                     </div>

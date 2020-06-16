@@ -219,6 +219,8 @@ export default {
 .founder {
     margin-top: 16px;
     margin-bottom: 16px;
+    width: 90%;
+    margin: auto;
 }
 
 .v-card {
