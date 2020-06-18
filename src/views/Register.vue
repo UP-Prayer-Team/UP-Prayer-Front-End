@@ -18,7 +18,7 @@
             cols="12"
             >
             <v-form>
-                <v-stepper v-model="step" class="elevation-0">
+                <v-stepper v-model="step" class="elevation-0" id="stepper">
                     <v-stepper-header class="elevation-0">
                     <v-stepper-step color="#c70098" :complete="step1" step="1">Contact Info</v-stepper-step>
 
@@ -392,7 +392,7 @@
                                     class="continue-btn"
                                     style="background-color: #c70098; color: white;"
                                     v-bind:disabled="slots.length == 0"
-                                    @click="step = 4"
+                                    @click="review"
                                     >
                                     Review
                                     </v-btn>
@@ -412,7 +412,7 @@
                         <v-card
                         :flat="true"
                         >
-                            <v-div v-for="(month, key) in cartMonths" :key="key">
+                            <div v-for="(month, key) in cartMonths" :key="key">
                                 <v-simple-table>
                                     <template v-slot:default>
                                         <thead>
@@ -436,7 +436,7 @@
                                     </template>
                                 </v-simple-table>
                                 
-                            </v-div>
+                            </div>
                             
                             <div style="padding: 16px;">
                                 <v-btn 
@@ -545,9 +545,7 @@ export default {
             email: '',
             countryCode: "US", // have to provide a default for the page to render
             districtCode: '',
-            organization: { 
-                // organization JSON object
-            },
+            organization: null,
             suggestedOrg: '',
             pledge: false,
             slots: [
@@ -722,6 +720,11 @@ export default {
                 this.step = 2;
             }
         },
+        review() {
+            document.getElementById("stepper").scrollIntoView();
+            window.scrollBy(0, -92);
+            this.step = 4;
+        },
         submit() {
 
             this.$v.$touch()
@@ -735,7 +738,7 @@ export default {
                 return { year: UPClient.numberOrParse(slot.year), monthIndex: UPClient.numberOrParse(slot.monthIndex), dayIndex: UPClient.numberOrParse(slot.dayIndex), slotIndex: UPClient.numberOrParse(slot.slotIndex) };
                 }));
 
-                if (pledge === true) {
+                if (this.pledge === true && this.organization !== undefined && this.organization !== null) {
                     // include endorsementID in the request
                     UPClient.createReservations(this.email, this.countryCode, this.districtCode, this.organization.id, slotsNumeric, () => {
                     this.$router.replace({ path: 'thankyou' });
