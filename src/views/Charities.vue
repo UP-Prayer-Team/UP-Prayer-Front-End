@@ -81,14 +81,7 @@ export default {
     data() {
         return {
             endorsements: [
-                { homepageURL: "www.courageworldwide.org", name: "Courage Worldwide",  }, 
-                { homepageURL: "www.demandabolition.org", name: "Demand Abolition", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." } ,
-                { homepageURL: "www.ecpatusa.org", name: "ECPAT-USA", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." } , 
-                { homepageURL: "www.exoduscry.com", name: "Exodus Cry", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
-                { homepageURL: "www.fairgirls.org", name: "FAIR Girls", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
-                { homepageURL: "www.missingkids.org/", name: "National Center for Missing & Exploited Children", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
-                { homepageURL: "www.centralusa.salvationarmy.org/metro/fight-for-justice/", name: "Salvation Army", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
-                { homepageURL: "www.worldrelief.org", name: "World Relief", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
+                
             ],
             bannerSrc: require('../assets/placeholder.jpg')
         };
