@@ -16,16 +16,18 @@
         </div>
 
         <v-container>
-            <v-row>
+            <v-row
+            style="padding-top: 16px; padding-bottom: 16px;">
                 <v-col
                 v-for="n in 1"
                 :key="n"
                 cols="12"
                 md="6"
                 align-self="center"
+                style="padding-top: 16px; padding-bottom: 16px;"
                 >
                     <div class="belief-wrapper">
-                        <div class="belief"> We believe we will see an end to human trafficking </div>
+                        <div class="belief"> Freedom for captives </div>
                     </div>
                 </v-col>
                     <v-spacer> </v-spacer>
@@ -34,14 +36,15 @@
                 :key="n"
                 cols="12"
                 md="5"
-                align-self="center">
+                align-self="center"
+                style="padding-top: 16px; padding-bottom: 16px;">
                     <div class="belief-wrapper"> 
                         <div class="vision-subtitle"> Our Vison</div>
-                        <div class="vision-body"> We believe we can partner with God to bring Heaven to earth today. We believe we will see an end to human trafficking in our day as the global church unites and the heavens are opened. </div>
+                        <div class="vision-body"> We partner with God to bring Heaven's priorities to Earth today. We believe we will see an end to human trafficking as believers around the globe unite in focused prayer. </div>
                     </div>
 
                 </v-col>
-                <v-spacer></v-spacer>
+                <v-col class="ml-auto"></v-col>
             </v-row>
 
             <v-row>
@@ -50,12 +53,13 @@
                 v-for="n in 1"
                 :key="n"
                 cols="12"
-                md="6"
+                md="5"
                 align-self="center"
                 order-sm="1"
+                style="padding-top: 16px; padding-bottom: 16px;"
                 >
                     <div class="belief-wrapper">
-                        <div class="mission"> 24 hour prayer </div>
+                        <div class="mission"> 30/$30 </div>
                     </div>
                 </v-col>
                 
@@ -66,26 +70,31 @@
                 md="5"
                 align-self="center"
                 order-sm="2"
-                order-md="0">
+                order-md="0"
+                style="padding-top: 16px; padding-bottom: 16px;"
+                >
                     <div class="belief-wrapper"> 
-                        <div class="vision-subtitle"> Our Mission</div>
-                        <div class="vision-body"> We seek to rally the global church together to cover the issue of human trafficking in 24/7 prayer until it ceases from the earth. We aim to partner with other organizations that are the hands and feet and support them financially and cover them in prayer.</div>
+                        <div class="vision-subtitle"> Our Mission </div>
+                        <div class="vision-body"> With thirty minutes of prayer and thirty dollars donated to an anti-trafficking organization, we will see walls fall down.</div>
                     </div>
-
                 </v-col>
                 <v-spacer></v-spacer>
             </v-row>
 
-            <v-row>
+            <v-row
+            align="start"
+            >
 
                 <v-col
                 v-for="n in 1"
                 :key="n"
                 cols="12"
                 md="6"
-                align-self="center">
+                align-self="center"
+                style="padding-top: 16px; padding-bottom: 16px;"
+                >
                 <div class="belief-wrapper"> 
-                    <v-img class="founder" :src="foundersrc"> </v-img>
+                    <v-img class="founder" max-width="500" :src="foundersrc"> </v-img>
                 </div>
                 </v-col>
                  
@@ -95,7 +104,8 @@
                     :key="n"
                     cols="12"
                     md="5"
-                    align-self="center">
+                    align-self="center"
+                    style="padding-top: 16px; padding-bottom: 16px;">
 
                     <div class="belief-wrapper"> 
                     <div class="vision-subtitle"> Our Founder</div>
@@ -151,27 +161,20 @@ export default {
 }
 
 
-.belief-wrapper {
-    margin-top: 24px;
-    margin-bottom: 24px;
-
-}
-
 .belief {
     font-family: 'Montserrat', sans-serif;
         text-align: left;
         color: black;
-        font-size: 2.5rem; // 54pt
+        font-size: 4.2rem; // 54pt
         font-weight: 900;
-        line-height: 1.2em;
-        // margin: auto;
+        line-height: 1.1em;
 }
 
 .mission {
     font-family: 'Montserrat', sans-serif;
-        text-align: center;
+        text-align: left;
         color: black;
-        font-size: 4.2rem; // 54pt
+        font-size: 4.6rem; // 54pt
         font-weight: 900;
         line-height: 1em;
         // margin: auto;
@@ -219,8 +222,8 @@ export default {
 .founder {
     margin-top: 16px;
     margin-bottom: 16px;
-    width: 90%;
-    margin: auto;
+    text-align: left;
+    // margin: auto;
 }
 
 .v-card {
@@ -243,12 +246,14 @@ export default {
         border-radius: 0px !important;
     }
 
-    .up-footer {
-        margin-right: 33.33%;
-    }
-    .movement-footer {
-        margin-left: 2.5%;
-        margin-right: 17%;
-    }
+.up-footer {
+    margin-right: 33.33%;
+}
+.movement-footer {
+    margin-left: 2.5%;
+    margin-right: 17%;
+}
+
+
 
 </style>
