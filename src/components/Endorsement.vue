@@ -34,6 +34,7 @@ export default {
     word-break: keep-all;
     padding-top: 16px; 
     padding-bottom: 10px;
+    color: black !important;
 }
 
 .endo-link {
