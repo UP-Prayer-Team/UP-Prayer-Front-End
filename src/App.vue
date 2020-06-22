@@ -326,6 +326,10 @@ export default {
     margin-right: auto;
 }
 
+.v-tab--active {
+    color:  #c70098 !important;
+}
+
 html, body {
     height: 100%;
     background-color: white !important;
