@@ -78,55 +78,62 @@
             </v-col>
         </v-row>
         <v-row> 
-            <v-col>
-                <v-row
-                justify="center"
-                align="center"
-                class="desktop-footer">
+            <v-col
+            cols="12">
+                <div class="desktop-footer">
                     
-                    <v-col lg="3"></v-col>
-                    <v-col>
-                        <donate color="white"></donate>
-                    </v-col>
+                    <v-btn
+                    tile
+                    :outlined="true"
+                    @click="toGive"
+                    color="white"
+                    class="footer-buttons">
+                    Give <v-icon right>chevron_right</v-icon>
+                    </v-btn>
 
-                    <v-col> 
-                        <v-btn 
-                        tile 
-                        :outlined="true"
-                        color="white"> Contact Us 
-                        <v-icon right>chevron_right</v-icon></v-btn> 
-                    </v-col>
-
-                    <v-col> 
-                        <v-btn 
-                        tile 
-                        :outlined="true"
-                        color="white"
-                        @click="toSignUp"> Pray 
-                        <v-icon right>chevron_right</v-icon></v-btn> 
-                    </v-col>
-                    <v-col lg="3"></v-col>
-                </v-row>
-
-                    <v-row justify="center"
-                align="center"
-                class="mobile-footer"> <donate color="white"></donate> </v-row>
-                    <v-row justify="center"
-                align="center"
-                class="mobile-footer"> <v-btn 
+                    <v-btn 
                     tile 
                     :outlined="true"
-                    color="white"> Contact Us 
-                    <v-icon right>chevron_right</v-icon></v-btn> </v-row>
-                    <v-row justify="center"
-                align="center"
-                class="mobile-footer"><v-btn 
+                    color="white"
+                    @click="toContactUs"
+                    class="footer-buttons"> Contact Us 
+                    <v-icon right>chevron_right</v-icon>
+                    </v-btn> 
+
+                    <v-btn 
+                    tile 
+                    :outlined="true"
+                    color="white"
+                    @click="toSignUp"
+                    class="footer-buttons"> Pray 
+                    <v-icon right>chevron_right</v-icon>
+                    </v-btn> 
+
+                </div>
+
+                <!-- <div class="mobile-footer"> 
+                    <v-btn
+                    tile
+                    :outlined="true"
+                    @click="toGive"
+                    color="white">
+                    Give <v-icon right>chevron_right</v-icon>
+                    </v-btn>
+                    <v-btn 
+                    tile 
+                    :outlined="true"
+                    color="white"
+                    @click="toContactUs"> Contact Us 
+                    <v-icon right>chevron_right</v-icon>
+                    </v-btn> 
+
+                    <v-btn 
                     tile 
                     :outlined="true"
                     color="white"
                     @click="toSignUp"> Pray 
-                    <v-icon right>chevron_right</v-icon></v-btn> </v-row>
-                    <v-spacer></v-spacer>
+                    <v-icon right>chevron_right</v-icon></v-btn>
+                </div> -->
             </v-col>
         </v-row>
         <v-row>
@@ -160,13 +167,8 @@
 
 <script>
 import UPClient from "./services/UPClient";
-import Donate from './components/Donate.vue';
 
 export default {
-
-    components: {
-        'donate' : Donate
-    },
 
     data() {
         return {
@@ -252,6 +254,12 @@ export default {
         toSignUp() {
             this.$router.replace({ name: "sign-up" });
         },
+        toContactUs() {
+            this.$router.replace({ name: "contact-us" });
+        },
+        toGive() {
+            this.$router.replace({ name: "give" });
+        }
     },
     mounted() {
         this.updateActiveTab();
@@ -284,8 +292,6 @@ export default {
 }
 
 #app {
-    // font-family: 'Montserrat', sans-serif;
-    // font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
@@ -367,19 +373,22 @@ div.mobile-footer {
   }
 }
 
-/* xxs devices (phones, 479px width and down) */
-@media only screen and (max-width: 479px) {
-  div.desktop-footer {
-    display: none;
-  }
+.footer-buttons {
+    margin: 16px
 }
 
-/* xxs devices (phones, 480px width and up) */
-@media only screen and (min-width: 480px) {
-  div.mobile-footer {
-    display: none;
-    margin: 16px !important;
-  }
+  /* xxs devices (phones, 460px width and down) */
+  /* This is not working currently 
+     I would like for the buttons to be fully stacked or fully spread
+     but it looks like the margin amount doesn't affect whether or not 
+     an item gets stacked */
+@media (max-height: 460px) {
+    div.footer-buttons {
+    margin-top: 16px !important;
+    margin-bottom: 16px !important;
+    margin-left: 50px !important;
+    margin-right: 50px !important;
+    }
 }
 
 .nav-drawer-header {
