@@ -18,7 +18,7 @@
             cols="12"
             >
             <v-form>
-                <v-stepper v-model="step" class="elevation-0">
+                <v-stepper v-model="step" class="elevation-0" id="stepper">
                     <v-stepper-header class="elevation-0">
                     <v-stepper-step color="#c70098" :complete="step1" step="1">Contact Info</v-stepper-step>
 
@@ -67,11 +67,14 @@
                                     v-model="countryCode" 
                                     :items="countryCodeItems" 
                                     :search-input.sync="countrySearch"
+                                    :error-messages="countryErrors"
                                     filled
                                     label="Country" 
                                     item-text="displayName"
                                     item-value="code"
                                     autocomplete="up-country-code"
+                                    @change="$v.countryCode.$touch()"
+                                    @blur="$v.countryCode.$touch()"
                                     >
                                         <template v-slot:item="{ item }">
                                             {{ item.displayName }}
@@ -86,7 +89,7 @@
                                         </template>
                                     
                                     </v-autocomplete>
-                                    <small style="float: left;">Country and region information is optional</small>
+                                    <!-- <small style="float: left;">Country and region information is optional</small> -->
                                 </v-col>
 
                                 <v-col  
@@ -98,11 +101,14 @@
                                     v-model="countryCode" 
                                     :items="countryCodeItems" 
                                     :search-input.sync="countrySearch"
+                                    :error-messages="countryErrors"
                                     filled
                                     label="Country" 
                                     item-text="displayName"
                                     item-value="code"
                                     autocomplete="up-country-code"
+                                    @change="$v.countryCode.$touch()"
+                                    @blur="$v.countryCode.$touch()"
                                     >
                                         <template v-slot:item="{ item }">
                                             {{ item.displayName }}
@@ -127,7 +133,8 @@
                                     <v-autocomplete
                                         v-model="districtCode" 
                                         :items="countryDict[countryCode].districts"
-                                        :search-input.sync="regionSearch" 
+                                        :search-input.sync="regionSearch"
+                                        :error-messages="districtErrors" 
                                         :hide-no-data="true"
                                         :validate-on-blur="true"
                                         label="Region"
@@ -136,6 +143,8 @@
                                         autocomplete="up-district-code"
                                         required
                                         filled
+                                        @change="$v.districtCode.$touch()"
+                                        @blur="$v.districtCode.$touch()"
                                         >
                                         <template v-slot:item="{ item }">
                                             {{ item.name }}
@@ -156,6 +165,7 @@
                                         v-model="districtCode" 
                                         :items="countryDict[countryCode].districts"
                                         :search-input.sync="regionSearch"
+                                        :error-messages="districtErrors"
                                         :hide-no-data="true"
                                         :validate-on-blur="true"
                                         label="Region"
@@ -164,6 +174,8 @@
                                         autocomplete="up-district-code"
                                         required
                                         filled
+                                        @change="$v.districtCode.$touch()"
+                                        @blur="$v.districtCode.$touch()"
                                         >
                                         <template v-slot:item="{ item }">
                                             {{ item.name }}
@@ -173,7 +185,7 @@
                                             {{ item.name }}
                                         </template>
                                     </v-autocomplete>
-                                    <small style="float: left;">Country and region information is optional</small>
+                                    <!-- <small style="float: left;">Country and region information is optional</small> -->
                                 </v-col>                                
                             </v-row>
                         <div class="stepper-button">
@@ -193,7 +205,7 @@
                     >
                         <v-row class="form-row">
                                 <v-select
-                                :items="organizations"
+                                :items="organizations.name"
                                 v-model="organization"
                                 filled
                                 label="Anti-Trafficking Organization"
@@ -204,7 +216,7 @@
                             <v-row> 
                                 <p style="text-align: left;"> We encourge you to give $30 to an anti-trafficking organization of your choice.
                                     If you want to learn about different organizations check out our resource page.
-                                    It is not required to give financially to sign up for a prayer time. </p><br>
+                                    It is <strong> not required </strong> to give financially to sign up for a prayer time. </p><br>
                             </v-row>
                             <v-row style="padding-bottom: 16px;"> 
                                 <p> Don't see your organization of choice?</p><br>
@@ -380,7 +392,7 @@
                                     class="continue-btn"
                                     style="background-color: #c70098; color: white;"
                                     v-bind:disabled="slots.length == 0"
-                                    @click="step = 4"
+                                    @click="review"
                                     >
                                     Review
                                     </v-btn>
@@ -398,9 +410,10 @@
                     >
                         
                         <v-card
-                        :flat="true"
+                        :outlined="true"
+                        v-if="slots.length > 0"
                         >
-                            <v-div v-for="(month, key) in cartMonths" :key="key">
+                            <div v-for="(month, key) in cartMonths" :key="key">
                                 <v-simple-table>
                                     <template v-slot:default>
                                         <thead>
@@ -424,7 +437,8 @@
                                     </template>
                                 </v-simple-table>
                                 
-                            </v-div>
+                            </div>
+                            </v-card>
                             
                             <div style="padding: 16px;">
                                 <v-btn 
@@ -442,7 +456,6 @@
                             <v-btn text
                             @click="step = 3"
                             >Go Back</v-btn>
-                        </v-card>
 
                         <br>
 
@@ -452,7 +465,7 @@
                         </v-col>
 
                         <v-col>
-                            <v-alert v-if="submitStatus" type="error">Something broke</v-alert>
+                            <v-alert v-if="submitStatus == 'ERROR'" type="error">Something broke</v-alert>
                         </v-col>
                     </v-row>
 
@@ -469,9 +482,6 @@
         </v-row>
 
     </v-container>
-
-    
-
 
 </div>
   
@@ -497,21 +507,23 @@ export default {
     validations: {
         email: { required, email },
         slots: { required },
+        countryCode: { required },
+        districtCode: { required },
     },
     data () {
         return {
             step: 1, // the current form step
 
-            /* flags that control stepper complete flag */
+            /* flags that control stepper progression */
             step1: false,
             step3: false,
 
-            showDayView: false,
+            showDayView: false, // toggles calander day view, month is default
             dialog: false,
             error: null,
             countrySearch: null,
             regionSearch: null,
-            submitStatus: false,
+            submitStatus: '',
             today: new Date().getUTCFullYear() + '-' + (new Date().getMonth() + 1).toString().padStart(2, '0') + '-' + new Date().getDate().toString().padStart(2, '0'),
             //true if the month and year displayed are equal to the current date
             //dissables the month prev botton
@@ -534,7 +546,7 @@ export default {
             email: '',
             countryCode: "US", // have to provide a default for the page to render
             districtCode: '',
-            organization: '',
+            organization: null,
             suggestedOrg: '',
             pledge: false,
             slots: [
@@ -583,6 +595,18 @@ export default {
         if (!this.$v.email.$dirty) return errors
         !this.$v.email.email && errors.push('Must be valid email')
         !this.$v.email.required && errors.push('Email is required')
+        return errors
+        },
+        countryErrors () {
+        const errors = []
+        if (!this.$v.countryCode.$dirty) return errors
+        !this.$v.countryCode.required && errors.push('Country Code is required')
+        return errors
+        },
+        districtErrors () {
+        const errors = []
+        if (!this.$v.districtCode.$dirty) return errors
+        !this.$v.districtCode.required && errors.push('Region is required')
         return errors
         },
     },
@@ -688,7 +712,7 @@ export default {
         
         },
         contactStep() {
-            if (this.$v.email.$anyError || !this.$v.email.$dirty) {
+            if (this.$v.email.$anyError || !this.$v.email.$dirty || this.$v.countryCode.$anyError || this.$v.districtCode.$anyError) {
                 this.$v.$touch();
                 this.step1 = false;
             } else {
@@ -696,6 +720,11 @@ export default {
                 this.step1 = true;
                 this.step = 2;
             }
+        },
+        review() {
+            document.getElementById("stepper").scrollIntoView();
+            window.scrollBy(0, -92);
+            this.step = 4;
         },
         submit() {
 
@@ -710,17 +739,29 @@ export default {
                 return { year: UPClient.numberOrParse(slot.year), monthIndex: UPClient.numberOrParse(slot.monthIndex), dayIndex: UPClient.numberOrParse(slot.dayIndex), slotIndex: UPClient.numberOrParse(slot.slotIndex) };
                 }));
 
-                UPClient.createReservations(this.email, this.countryCode, this.districtCode, slotsNumeric, () => {
+                if (this.pledge === true && this.organization !== undefined && this.organization !== null) {
+                    // include endorsementID in the request
+                    UPClient.createReservations(this.email, this.countryCode, this.districtCode, this.organization.id, slotsNumeric, () => {
                     this.$router.replace({ path: 'thankyou' });
                     this.$v.$reset()
                     this.email = '';
                     this.slots = [ ];
-                }, (message) => {
-                    this.error = message;
-                    console.log("Error: Failed to create reservations. Message: " + message);
-                });
+                    }, (message) => {
+                        this.error = message;
+                        console.log("Error: Failed to create reservations. Message: " + message);
+                    });
 
-
+                } else {
+                    UPClient.createReservations(this.email, this.countryCode, this.districtCode, slotsNumeric, () => {
+                    this.$router.replace({ path: 'thankyou' });
+                    this.$v.$reset()
+                    this.email = '';
+                    this.slots = [ ];
+                    }, (message) => {
+                        this.error = message;
+                        console.log("Error: Failed to create reservations. Message: " + message);
+                    });
+                }
                 setTimeout(() => {
                 this.submitStatus = 'OK'
                 }, 500)
@@ -743,7 +784,7 @@ export default {
         getOrganizations() {
             var data = UPClient.getEndorsementList();
             for (let organization in data) {
-                this.organizations.push(organization.name);
+                this.organizations.push(organization);
             }
         }
     },

@@ -5,14 +5,14 @@
     :outlined="true"
     @click="donate"
     :color="color">
-    Give <v-icon right>chevron_right</v-icon>
+    ${{ price }} <v-icon right style="margin-left: 0px !important;">chevron_right</v-icon>
     </v-btn>
   
 </template>
 
 <script>
 import { loadStripe } from '@stripe/stripe-js';
-const stripePromise = loadStripe('pk_live_WYk87SMj78XtusRoL72L7lhb00xjX3YWHY');
+const stripePromise = loadStripe('pk_test_51GsDP6DSETweKl9naTxFisLcIDO4mWlKaF9Rb9aWnKPwEgS5yQFtTbkMJD7KrG1eMhzJon9tLEtnyYIBwwb509c400cjFyAsXG');
 
 export default {
 
@@ -20,6 +20,13 @@ export default {
         color: {
             type: String,
             default: 'black'
+        },
+        price: {
+            type: String,
+        },
+        priceLink: { 
+            type: String,
+            default: 'price_1GxGmYDSETweKl9n7Bnmh1Gl'
         }
     },
 
@@ -29,7 +36,7 @@ export default {
             const { error } = await stripe.redirectToCheckout({
             lineItems: [
                 
-                {price: 'price_1GsBucCO1IOF3vob7EQyOZKa', quantity: 1}
+                {price: this.priceLink, quantity: 1}
             ],
             mode: 'payment',
             successUrl: process.env.VUE_APP_HOST + '/#/thanks',
@@ -43,9 +50,4 @@ export default {
         }
     }
 }
-
 </script>
-
-<style>
-
-</style>

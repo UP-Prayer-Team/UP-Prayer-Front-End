@@ -70,6 +70,19 @@ export default class UPClient {
         }, onFailure);
     }
 
+
+    // email: String
+    // countryCode: String
+    // districtCode: String
+    // endorsementID: String
+    // slots: { year: Int, monthIndex: Int, dayIndex: Int, slotIndex: Int }[]
+    // onSuccess: () -> void
+    static createReservations(email, countryCode, districtCode, organization, slots, onSuccess, onFailure) {
+        submitRequest("POST", "/api/reservations/create", { email: email, country: countryCode, district: districtCode, endorsementID: organization, slots: slots }, _ => {
+            onSuccess();
+        }, onFailure);
+    }
+
     // confirmationCode: String
     // onSuccess: ({ year: Int, monthIndex: Int, dayIndex: Int, slotIndex: Int }[]) -> void
     static confirmReservation(confirmationCode, onSuccess, onFailure) {

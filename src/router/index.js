@@ -4,13 +4,13 @@ import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Prayer from '../views/Prayer.vue'
 import Charities from '../views/Charities.vue'
-import SignUp from '../views/SignUp.vue'
 import Confirm from '../views/Confirm.vue'
 import Blog from '../views/Blog.vue'
 import Thanks from '../views/Thanks.vue'
 import ThankYou from '../views/ThankYou.vue'
 import Give from '../views/Give.vue'
-import Register from '../views/Register'
+import Register from '../views/Register.vue'
+import ContactUs from '../views/ContactUs.vue'
 
 Vue.use(VueRouter);
 
@@ -76,6 +76,11 @@ const routes = [
         path: '/give',
         name: 'give',
         component: Give,
+    },
+    {
+        path: '/contact',
+        name: 'contact-us',
+        component: ContactUs,
     },
 ]
 

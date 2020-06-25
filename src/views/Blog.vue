@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-container>
+        <v-container style="updates">
             <v-row>
                 <v-col>
                     <v-toolbar flat color="transparent">
@@ -87,6 +87,11 @@ export default {
 </script>
 
 <style scoped>
+
+.updates {
+    margin-top: 82px;
+}
+
 /* Blog Content Styles
    (Please keep in sync with UP-Prayer-Admin's BlogPosts.vue) */
 /* Hack because something (Vuetify?) is killing all margins on heading elements for some reason. */

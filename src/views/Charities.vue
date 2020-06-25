@@ -18,32 +18,56 @@
         </div>
 
         <v-container>
+            <v-row>
+                <v-col
+                cols="12">
+                    <div class="title">
+                        <div class="page-header" style="text-align: left">
+                            Anti-Trafficking Organizations
+                        </div>
+                        <div class="subtitle-text" style="text-align: left"> 
+                            <div> We aim to partner with organizations that are the hands and feet in the battle to end human trafficking,
+                            supporting them financially and covering them in prayer.
+                            Below are some of the organizations that our prayer warriors have given too. </div>
+                        </div>
+                    </div>
+                </v-col>
+            </v-row>
+
             <v-row class="hidden-sm-and-down">
                 <v-col>
-                    <v-card class="mb-5"
-                        v-for="(end, i) in endorsements.slice(0, Math.ceil(endorsements.length / 2))" 
-                        v-bind:key="i"
-                        
-                        >
-                        <v-card-text>
-                            <endorsement v-bind:endorsement="end">
+                    <v-hover
+                    v-slot:default="{ hover }"
+                    v-for="(end, i) in endorsements.slice(0, Math.ceil(endorsements.length / 2))" 
+                    v-bind:key="i">
+                        <v-card class="mb-5"
+                        :elevation="hover ? 12 : 2"
+                        :href="'http://' + end.homepageURL" 
+                        target="_blank">
+                            <v-card-text>
+                                <endorsement v-bind:endorsement="end">
 
-                            </endorsement>
-                        </v-card-text>
-                    </v-card>
+                                </endorsement>
+                            </v-card-text>
+                        </v-card>
+                    </v-hover>
                 </v-col>
                 <v-col>
-                    <v-card class="mb-5"
-                        v-for="(end, i) in endorsements.slice(Math.ceil(endorsements.length / 2), endorsements.length)" 
-                        v-bind:key="i"
-                        
-                        >
-                        <v-card-text>
-                            <endorsement v-bind:endorsement="end">
+                    <v-hover
+                    v-slot:default="{ hover }"
+                    v-for="(end, i) in endorsements.slice(Math.ceil(endorsements.length / 2), endorsements.length)" 
+                    v-bind:key="i">
+                        <v-card class="mb-5"
+                        :elevation="hover ? 12 : 2"
+                        :href="'http://' + end.homepageURL" 
+                        target="_blank">
+                            <v-card-text>
+                                <endorsement v-bind:endorsement="end">
 
-                            </endorsement>
-                        </v-card-text>
-                    </v-card>
+                                </endorsement>
+                            </v-card-text>
+                        </v-card>
+                    </v-hover>
                 </v-col>
             </v-row>
 
@@ -81,14 +105,7 @@ export default {
     data() {
         return {
             endorsements: [
-                { homepageURL: "www.courageworldwide.org", name: "Courage Worldwide",  }, 
-                { homepageURL: "www.demandabolition.org", name: "Demand Abolition", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." } ,
-                { homepageURL: "www.ecpatusa.org", name: "ECPAT-USA", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." } , 
-                { homepageURL: "www.exoduscry.com", name: "Exodus Cry", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
-                { homepageURL: "www.fairgirls.org", name: "FAIR Girls", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
-                { homepageURL: "www.missingkids.org/", name: "National Center for Missing & Exploited Children", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
-                { homepageURL: "www.centralusa.salvationarmy.org/metro/fight-for-justice/", name: "Salvation Army", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
-                { homepageURL: "www.worldrelief.org", name: "World Relief", summary: "This is an example charity, all donations will go to helping further examples in the future. Together we can pave a future with better examples." },
+                
             ],
             bannerSrc: require('../assets/placeholder.jpg')
         };
@@ -127,6 +144,27 @@ export default {
     
     transform: translate(-50%,-50%);
     transform: translate3d(-50%,-50%,0);
+}
+
+.title {
+    padding-top: 24px;
+}
+
+.page-header {
+    font-family: 'Montserrat', sans-serif;   
+    text-align: center;
+    font-weight: 700;
+    font-size: 2em;
+    line-height: 2em;
+    color: black !important;
+}
+
+.subtitle-text {
+    font-family: 'Inter', sans-serif;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    line-height: 1.4em;
+    color: black !important;
 }
 
 </style>
