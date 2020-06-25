@@ -43,7 +43,8 @@
                         <v-card class="mb-5"
                         :elevation="hover ? 12 : 2"
                         :href="'http://' + end.homepageURL" 
-                        target="_blank">
+                        target="_blank"
+                        v-if="end.name != 'Other'">
                             <v-card-text>
                                 <endorsement v-bind:endorsement="end">
 
@@ -60,7 +61,8 @@
                         <v-card class="mb-5"
                         :elevation="hover ? 12 : 2"
                         :href="'http://' + end.homepageURL" 
-                        target="_blank">
+                        target="_blank"
+                        v-if="end.name != 'Other'">
                             <v-card-text>
                                 <endorsement v-bind:endorsement="end">
 
@@ -78,7 +80,8 @@
                 cols="10" 
                 justify="center"
                 >
-                    <v-card class="mb-5">
+                    <v-card class="mb-5"
+                    v-if="end.name != 'Other'">
                         <v-card-text>
                             <endorsement v-bind:endorsement="end">
 
@@ -105,7 +108,7 @@ export default {
     data() {
         return {
             endorsements: [
-                
+
             ],
             bannerSrc: require('../assets/placeholder.jpg')
         };
