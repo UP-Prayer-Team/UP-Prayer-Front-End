@@ -205,7 +205,9 @@
                     >
                         <v-row class="form-row">
                                 <v-select
-                                :items="organizations.name"
+                                :items="organizations"
+                                item-text="name"
+                                item-value="id"
                                 v-model="organization"
                                 filled
                                 label="Anti-Trafficking Organization"
@@ -553,14 +555,7 @@ export default {
                 // { year: null, monthIndex: null, dayIndex: null, slotIndex: null }
             ],
             organizations: [
-                "Courage Worldwide",
-                "FAIR Girls",
-                "Demand Abolition",
-                "National Center for Missing & Exploited Children",
-                "ECPAT-USA",
-                "Salvation Army",
-                "Exodus Cry",
-                "World Relief"
+                
             ],
 
             countryCodeItems: [
@@ -741,7 +736,7 @@ export default {
 
                 if (this.pledge === true && this.organization !== undefined && this.organization !== null) {
                     // include endorsementID in the request
-                    UPClient.createReservations(this.email, this.countryCode, this.districtCode, this.organization.id, slotsNumeric, () => {
+                    UPClient.createReservations(this.email, this.countryCode, this.districtCode, this.organization, slotsNumeric, () => {
                     this.$router.replace({ path: 'thankyou' });
                     this.$v.$reset()
                     this.email = '';
@@ -781,15 +776,13 @@ export default {
                 this.countryDict[data.code] = data;
             }
         },
-        getOrganizations() {
-            var data = UPClient.getEndorsementList();
-            for (let organization in data) {
-                this.organizations.push(organization);
-            }
-        }
     },
     mounted() {
-        this.getOrganizations();
+        UPClient.getEndorsementList((currentIndex, endorsements) => {
+            this.organizations = endorsements;
+        }, _ => {
+            console.log(_);
+        });
         this.populateCountryList();
         window.scrollTo(0, 0);
     }
