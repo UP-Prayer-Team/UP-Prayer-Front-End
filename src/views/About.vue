@@ -17,14 +17,14 @@
 
         <v-container>
             <v-row
-            style="padding-top: 16px; padding-bottom: 16px;">
+            style="padding-top: 24px; padding-bottom: 24px;">
                 <v-col
                 v-for="n in 1"
                 :key="n"
                 cols="12"
                 md="6"
                 align-self="center"
-                style="padding-top: 16px; padding-bottom: 16px;"
+                style="padding-top: 24px; padding-bottom: 24px;"
                 >
                     <div class="belief-wrapper">
                         <div class="belief"> Freedom for captives </div>
@@ -37,14 +37,14 @@
                 cols="12"
                 md="5"
                 align-self="center"
-                style="padding-top: 16px; padding-bottom: 16px;">
+                style="padding-top: 24px; padding-bottom: 24px;">
                     <div class="belief-wrapper"> 
                         <div class="vision-subtitle"> Our Vison</div>
                         <div class="vision-body"> We partner with God to bring Heaven's priorities to Earth today. We believe we will see an end to human trafficking as believers around the globe unite in focused prayer. </div>
                     </div>
 
                 </v-col>
-                <v-col class="ml-auto"></v-col>
+                <!-- <v-col class="ml-auto"></v-col> -->
             </v-row>
 
             <v-row>
@@ -56,7 +56,7 @@
                 md="5"
                 align-self="center"
                 order-sm="1"
-                style="padding-top: 16px; padding-bottom: 16px;"
+                style="padding-top: 24px; padding-bottom: 24px;"
                 >
                     <div class="belief-wrapper">
                         <div class="mission"> 30/$30 </div>
@@ -71,7 +71,7 @@
                 align-self="center"
                 order-sm="2"
                 order-md="0"
-                style="padding-top: 16px; padding-bottom: 16px;"
+                style="padding-top: 24px; padding-bottom: 24px;"
                 >
                     <div class="belief-wrapper"> 
                         <div class="vision-subtitle"> Our Mission </div>
@@ -91,7 +91,7 @@
                 cols="12"
                 md="6"
                 align-self="center"
-                style="padding-top: 16px; padding-bottom: 16px;"
+                style="padding-top: 24px; padding-bottom: 24px;"
                 >
                 <div class="belief-wrapper"> 
                     <v-img class="founder" max-width="500" :src="foundersrc"> </v-img>
@@ -105,7 +105,7 @@
                     cols="12"
                     md="5"
                     align-self="center"
-                    style="padding-top: 16px; padding-bottom: 16px;">
+                    style="padding-top: 24px; padding-bottom: 24px;">
 
                     <div class="belief-wrapper"> 
                     <div class="vision-subtitle"> Our Founder</div>
