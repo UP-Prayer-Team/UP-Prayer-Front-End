@@ -410,7 +410,8 @@
                     >
                         
                         <v-card
-                        :flat="true"
+                        :outlined="true"
+                        v-if="slots.length > 0"
                         >
                             <div v-for="(month, key) in cartMonths" :key="key">
                                 <v-simple-table>
@@ -437,6 +438,7 @@
                                 </v-simple-table>
                                 
                             </div>
+                            </v-card>
                             
                             <div style="padding: 16px;">
                                 <v-btn 
@@ -454,7 +456,6 @@
                             <v-btn text
                             @click="step = 3"
                             >Go Back</v-btn>
-                        </v-card>
 
                         <br>
 
