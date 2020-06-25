@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-container style="updates">
+        <v-container class="updates">
             <v-row>
                 <v-col>
                     <v-toolbar flat color="transparent">

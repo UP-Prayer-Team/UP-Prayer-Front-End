@@ -79,9 +79,9 @@
         </v-row>
         <v-row> 
             <v-col
-            cols="12">
-                <div class="desktop-footer">
-                    
+            cols="12"
+            align-self="center">
+                <div class="hidden-xs-only">
                     <v-btn
                     tile
                     :outlined="true"
@@ -108,32 +108,54 @@
                     class="footer-buttons"> Pray 
                     <v-icon right>chevron_right</v-icon>
                     </v-btn> 
-
                 </div>
 
-                <!-- <div class="mobile-footer"> 
-                    <v-btn
-                    tile
-                    :outlined="true"
-                    @click="toGive"
-                    color="white">
-                    Give <v-icon right>chevron_right</v-icon>
-                    </v-btn>
-                    <v-btn 
-                    tile 
-                    :outlined="true"
-                    color="white"
-                    @click="toContactUs"> Contact Us 
-                    <v-icon right>chevron_right</v-icon>
-                    </v-btn> 
+                <div class="hidden-sm-and-up">
 
-                    <v-btn 
-                    tile 
-                    :outlined="true"
-                    color="white"
-                    @click="toSignUp"> Pray 
-                    <v-icon right>chevron_right</v-icon></v-btn>
-                </div> -->
+                    <v-row
+                    align="center"
+                    align-content="center"
+                    justify="center">
+                        <v-btn
+                        tile
+                        :outlined="true"
+                        @click="toGive"
+                        color="white"
+                        class="footer-buttons">
+                        Give <v-icon right>chevron_right</v-icon>
+                        </v-btn>
+                    </v-row>
+
+                    <v-row
+                    align="center"
+                    align-content="center"
+                    justify="center">
+                        <v-btn 
+                        tile 
+                        :outlined="true"
+                        color="white"
+                        @click="toContactUs"
+                        class="footer-buttons"> Contact Us 
+                        <v-icon right>chevron_right</v-icon>
+                        </v-btn> 
+                    </v-row>
+
+                    <v-row
+                    align="center"
+                    align-content="center"
+                    justify="center">
+                        <v-btn 
+                        tile 
+                        :outlined="true"
+                        color="white"
+                        @click="toSignUp"
+                        class="footer-buttons"> Pray 
+                        <v-icon right>chevron_right</v-icon>
+                        </v-btn> 
+                    </v-row>
+                </div>
+
+                
             </v-col>
         </v-row>
         <v-row>
@@ -357,14 +379,11 @@ html, body {
     background: linear-gradient(to right, black, black, black) !important;
 }
 
-div.mobile-footer {
-    margin: 16px !important;
-  }
 
-  div.nav-drawer-footer-logo {
+div.nav-drawer-footer-logo {
     padding-top: 32px;
     padding-bottom: 32px;
-  }
+}
 
   /* xxs devices (phones, 479px width and down) */
 @media only screen and (max-height: 660px) {
@@ -375,20 +394,6 @@ div.mobile-footer {
 
 .footer-buttons {
     margin: 16px
-}
-
-  /* xxs devices (phones, 460px width and down) */
-  /* This is not working currently 
-     I would like for the buttons to be fully stacked or fully spread
-     but it looks like the margin amount doesn't affect whether or not 
-     an item gets stacked */
-@media (max-height: 460px) {
-    div.footer-buttons {
-    margin-top: 16px !important;
-    margin-bottom: 16px !important;
-    margin-left: 50px !important;
-    margin-right: 50px !important;
-    }
 }
 
 .nav-drawer-header {

@@ -1,4 +1,4 @@
-# UP Prayer Movement Website 
+# UP Movement Website 
 
 <img src="https://raw.githubusercontent.com/UP-Prayer-Team/UP-Prayer-Front-End/master/public/favicon.ico" alt="drawing" width="150"/>
 
