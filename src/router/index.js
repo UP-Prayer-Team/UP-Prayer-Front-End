@@ -11,6 +11,7 @@ import ThankYou from '../views/ThankYou.vue'
 import Give from '../views/Give.vue'
 import Register from '../views/Register.vue'
 import ContactUs from '../views/ContactUs.vue'
+import Devos from '../views/Devos.vue'
 
 Vue.use(VueRouter);
 
@@ -81,6 +82,11 @@ const routes = [
         path: '/contact',
         name: 'contact-us',
         component: ContactUs,
+    },
+    {
+        path: '/devos',
+        name: 'devos',
+        component: Devos,
     },
 ]
 
