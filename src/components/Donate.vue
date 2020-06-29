@@ -2,6 +2,7 @@
 
     <v-btn
     tile
+    large
     :outlined="true"
     @click="donate"
     :color="color">

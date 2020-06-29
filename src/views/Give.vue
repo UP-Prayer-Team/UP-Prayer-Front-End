@@ -8,7 +8,10 @@
 
                 <div class="logo">
                     <v-img style="margin: auto;" :contain="true" :src="require('../assets/logo.svg')" height="200" width="200" />
-                    <div style="padding: 16px; padding-top: 32px;"> The UP Movement operates as a non-profit. If you wish to give directly toward UP activity costs, please do so here. </div>
+                    <div style="padding: 16px; padding-top: 32px;"> 
+                        <div>The UP Movement operates as a non-profit. </div>
+                        <div class="subtitle"> If you wish to give directly toward UP activity costs, please do so here. </div> 
+                    </div>
                 </div>
 
             </v-col>
@@ -31,6 +34,8 @@
                                     <app-donate class="donate" price="50" :priceLink="this.price50"></app-donate>
                                     
                                     <app-donate class="donate" price="100" :priceLink="this.price100"></app-donate>
+
+                                    <app-donate class="donate" price="250" :priceLink="this.price250"></app-donate>
                                 
                                 </v-col>
                             </v-row>
@@ -57,6 +62,7 @@ export default {
             price25: 'price_1GxGmYDSETweKl9nFeFMCLjL',
             price50: 'price_1GxGmYDSETweKl9nC0XCAStA',
             price100: 'price_1GxGmYDSETweKl9n0dcutW49',
+            price250: 'price_1GzQ3LDSETweKl9n9iuUAcCc',
         }
     },
     mounted () {
@@ -65,7 +71,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 .give {
     margin-top: 82px;
@@ -77,10 +83,29 @@ export default {
         font-size: 2rem;
         line-height: 1.33em;
         word-break: keep-all;
+        color: black;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    line-height: 1.1em;
+    padding-top: 16px;
+    padding-bottom: 0px !important;
 }
 
 .donate {
     margin: 10px;
 }
+
+/* xs devices (phones, 430px width and down) */
+    @media only screen and (max-width: 560px) {
+        .logo {
+            font-size: 1.5rem;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+        }
+    }
 
 </style>
