@@ -23,7 +23,7 @@
   
                         <v-container>
                             <v-row>
-                                <v-col cols="12" style="padding-bottom: 36px;">
+                                <v-col cols="12">
                                 
                                     <app-donate class="donate" price="5" :priceLink="this.price5"></app-donate>
                                     
@@ -37,6 +37,12 @@
 
                                     <app-donate class="donate" price="250" :priceLink="this.price250"></app-donate>
                                 
+                                </v-col>
+                            </v-row>
+                            <v-row> 
+                                <v-col
+                                cols="12"> 
+                                    <div class="fine-print"> If you wish to give an amount not listed you can reach out to us at info@upmovement.org </div><br><br>
                                 </v-col>
                             </v-row>
                         </v-container>
@@ -91,6 +97,14 @@ export default {
     line-height: 1.1em;
     padding-top: 16px;
     padding-bottom: 0px !important;
+}
+
+.fine-print {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    word-break: keep-all;
+    color: black;
+    font-size: .8rem;
 }
 
 .donate {

@@ -9,7 +9,7 @@
                     <v-img style="margin: auto;" :contain="true" :src="require('../assets/logo.svg')" height="200" width="200" />
                     <div style="padding: 16px;"> Contact us! </div>
                     <div style="max-width: 250px; margin: 0 auto; padding: 16px;"> <v-img src="https://media.giphy.com/media/6UbEozsUuERkQ/giphy.gif"> </v-img> </div>
-                    <div style="padding: 16px;" class="subtitle"> You can reach us at up info@upmovement.org </div>
+                    <div style="padding: 16px;" class="subtitle"> You can reach us at info@upmovement.org </div>
                 </div><br><br>
 
             </v-col>
