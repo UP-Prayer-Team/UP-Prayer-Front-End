@@ -2,10 +2,11 @@
 
     <v-btn
     tile
+    large
     :outlined="true"
     @click="donate"
     :color="color">
-    ${{ price }} <v-icon right style="margin-left: 0px !important;">chevron_right</v-icon>
+    ${{ price }}
     </v-btn>
   
 </template>

@@ -37,7 +37,7 @@
                 cols="12"
                 md="5"
                 align-self="center"
-                style="padding-top: 24px; padding-bottom: 24px;">
+                class="row-padding">
                     <div class="belief-wrapper"> 
                         <div class="vision-subtitle"> Our Vison</div>
                         <div class="vision-body"> We partner with God to bring Heaven's priorities to Earth today. We believe we will see an end to human trafficking as believers around the globe unite in focused prayer. </div>
@@ -71,7 +71,7 @@
                 align-self="center"
                 order-sm="2"
                 order-md="0"
-                style="padding-top: 24px; padding-bottom: 24px;"
+                class="row-padding"
                 >
                     <div class="belief-wrapper"> 
                         <div class="vision-subtitle"> Our Mission </div>
@@ -89,12 +89,12 @@
                 v-for="n in 1"
                 :key="n"
                 cols="12"
-                md="6"
+                md="5"
                 align-self="center"
                 style="padding-top: 24px; padding-bottom: 24px;"
                 >
-                <div class="belief-wrapper"> 
-                    <v-img class="founder" max-width="500" :src="foundersrc"> </v-img>
+                <div class="founder-wrapper"> 
+                    <v-img class="founder" max-width="500" position="center center" :contain="true" :src="foundersrc"> </v-img>
                 </div>
                 </v-col>
                  
@@ -107,7 +107,7 @@
                     align-self="center"
                     style="padding-top: 24px; padding-bottom: 24px;">
 
-                    <div class="belief-wrapper"> 
+                    <div> 
                     <div class="vision-subtitle"> Our Founder</div>
 
                     <div class="quote-body">I truly believe God is able to do immeasurably more than we can ask or imagine and I want to discover what we can accomplish when we come together in unity and focus on a specific issue. Passionate, united prayer is powerful beyond measure. We will see the Kingdom released on earth as we band together in alignment with the heart of Jesus. He came to set the captives free and his glory will be revealed as he does this! May our united prayer be the tipping point so we see captives and slaves literally set free. </div>
@@ -115,7 +115,7 @@
                     </div>
                 </v-col>
                  
-                <v-spacer></v-spacer>
+                <!-- <v-spacer></v-spacer> -->
                 
             </v-row>
 
@@ -222,7 +222,7 @@ export default {
 .founder {
     margin-top: 16px;
     margin-bottom: 16px;
-    text-align: left;
+    // text-align: left;
     // margin: auto;
 }
 
@@ -243,8 +243,8 @@ export default {
 }
 
 .footer-sheet {
-        border-radius: 0px !important;
-    }
+    border-radius: 0px !important;
+}
 
 .up-footer {
     margin-right: 33.33%;
@@ -254,6 +254,60 @@ export default {
     margin-right: 17%;
 }
 
+.row-padding {
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
 
+.founder-wrapper {
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+
+/* 950px width and down */
+    @media  (max-width: 959px) {
+        .row-padding {
+            padding-top: 16px;
+            padding-bottom: 0px;
+        }
+
+        .mission {
+            text-align: center;
+        }
+        .vision-subtitle {
+            text-align: center;
+        }
+
+        .vision-body {
+            text-align: center;
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+
+        .belief {
+            text-align: center;
+        }
+
+        .founder {
+            margin: 0 auto;
+        }
+
+        .founder-wrapper {
+            padding-top: 40px;
+            padding-bottom: 0px;
+        }
+
+        .quote-body {
+            text-align: center;
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+    }
+
+    @media only screen and (max-width: 460px) {
+        .belief {
+            font-size: 3.8rem;
+        }
+    }
 
 </style>

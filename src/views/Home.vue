@@ -14,7 +14,7 @@
 
                 <div class="landing">
                     <v-img style="margin: auto;" :src="require('../assets/logo.svg')" alt="" height="200" width="200" />
-                    <h1 style="padding: 16px; margin: auto;"> <strong style="color: black;">UP MOVEMENT </strong></h1>
+                    <div class="landing-text" style="padding: 16px; margin: auto;"> UP MOVEMENT </div>
                 </div>
 
                 </v-col>
@@ -78,7 +78,7 @@
             align="start"
             justify="end">
                 <v-col
-                class="hidden-sm-and-down"
+                class="hidden-md-and-down"
                 >
 
                     <v-card
@@ -92,7 +92,8 @@
                     </v-card>
                 </v-col>
                  <v-col
-                 :md="8"
+                 :md="12"
+                 :lg="8"
                  >
                     <div class="resource-card-wrapper">
                     <v-card
@@ -192,15 +193,18 @@ export default {
     .landing-wrapper {
 
         padding-top: 16px;
-        padding-bottom: 24px;
+        padding-bottom: 16px;
     }
 
-    .landing {
+    
+
+    .landing-text {
         font-family: 'Montserrat', sans-serif;
-        font-weight: 400;
-        letter-spacing: 0.4em; 
+        font-weight: 800;
+        font-size: 4rem;
+        letter-spacing: .08em;
+        color: black;
        
-        font-size: 1.5rem;
     }
 
     .banner {
@@ -231,7 +235,7 @@ export default {
         text-align: left;
         padding-right: 10%;
         font-weight: 700;
-        font-size: 200%;
+        font-size: 2em;
         line-height: 1.33em;
         padding-left: 0px !important;
     }
@@ -321,14 +325,14 @@ export default {
         padding: 16px;
     }
 
-    /* xxs devices (phones, 430px width and down) */
-    @media only screen and (max-width: 430px) {
+    /* xs devices (phones, 430px width and down) */
+    @media only screen and (max-width: 560px) {
 
-        .landing {
+        .landing-text {
         font-family: 'Montserrat', sans-serif;
-        font-weight: 400;
-        letter-spacing: 0.4em; 
-        font-size: 1.2rem;
+        font-weight: 800;
+        letter-spacing: .1em;
+        font-size: 2.5rem;
         }
 
 
@@ -346,6 +350,52 @@ export default {
             text-align: left;
             color: black !important;
             font-size: 3rem; // 40pt
+            font-weight: 700;
+            line-height: 1.0em;
+            padding-top: 32px !important;
+        }
+
+        .resource-text {
+            font-size: 1.0rem;
+        }
+
+        .banner-text {
+            font-family: 'Montserrat', sans-serif;
+            color: white !important;    
+            text-align: left;
+            padding-right: 10%;
+            font-weight: 700;
+            font-size: 1.5em;
+            line-height: 1.33em;
+            padding-left: 0px !important;
+        }
+    }
+
+    /* xxs devices (phones, 430px width and down) */
+    @media only screen and (max-width: 370px) {
+
+        .landing-text {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 800;
+        letter-spacing: .1em;
+        font-size: 2.35rem;
+        }
+
+
+        .resource-title {
+        font-family: 'Montserrat', sans-serif;
+        text-align: left;
+        color: black;
+        font-size: 3.6777rem; // 54pt
+        font-weight: 900;
+        line-height: 1em;
+        }
+
+        .resource-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            text-align: left;
+            color: black !important;
+            font-size: 2.5rem; // 40pt
             font-weight: 700;
             line-height: 1.0em;
             padding-top: 32px !important;
