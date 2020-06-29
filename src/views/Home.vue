@@ -112,7 +112,7 @@
                                 <div>We believe united, global prayer is powerful and results in change.
                                 The 30/30 idea is to pray for a 30-minute interval and give $30 to an 
                                 anti-trafficking organization of your choice. Prayer opportunities are available
-                                24/7/365. The $30 is to put love in action. It's not a required step, but do encourage you to 
+                                24/7/365. The $30 is to put love in action. It's not a required step, but we do encourage you to 
                                 engage in this way. </div>
                                 <div> We say to the industry of trafficking, "Get ready to encounter this Glory-King!"
                                     The Lord, armed and ready for battle, the Mighty One, invincible in every way!" (Psalm 24:7-8). </div>
@@ -169,10 +169,10 @@ export default {
     methods: {
      
         toSignUp() {
-            this.$router.replace({ name: "sign-up" });
+            this.$router.replace({ name: "pray" });
         },
         toResources() {
-            this.$router.replace({ name: "prayer" });
+            this.$router.replace({ name: "resources" });
         },
     },
     mounted () {

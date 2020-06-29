@@ -31,8 +31,8 @@ const routes = [
         drawerIcon: 'chevron_right'
     },
     {
-        path: '/prayer',
-        name: 'prayer',
+        path: '/resources',
+        name: 'resources',
         component: Prayer,
         tabText: 'Resources',
         drawerIcon: 'chevron_right'
@@ -52,8 +52,8 @@ const routes = [
         drawerIcon: 'chevron_right'
     },
     {
-        path: '/signup',
-        name: 'sign-up',
+        path: '/pray',
+        name: 'pray',
         component: Register,
         tabText: 'Pray',
         drawerIcon: 'chevron_right'

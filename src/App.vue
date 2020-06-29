@@ -217,7 +217,7 @@ export default {
                 {
                     text: 'Resources',
                     disabled: false,
-                    to: 'prayer',
+                    to: 'resources',
                     
                 },
                 {
@@ -228,7 +228,7 @@ export default {
                 {
                     text: 'Pray',
                     disabled: false,
-                    to: 'signup',
+                    to: 'pray',
                 }
             ]
         }
@@ -274,7 +274,7 @@ export default {
             return process.env.VUE_APP_MODE;
         },
         toSignUp() {
-            this.$router.replace({ name: "sign-up" });
+            this.$router.replace({ name: "pray" });
         },
         toContactUs() {
             this.$router.replace({ name: "contact-us" });
