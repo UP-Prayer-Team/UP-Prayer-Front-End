@@ -47,12 +47,12 @@
 
                  <template v-slot:append>
                     <div class="nav-drawer-footer-logo">
-                    <v-img style="margin: auto;" :src="require('./assets/logo.svg')" alt="" max-height="200" max-width="200" />
+                    <v-img style="margin: auto;" :src="require('./assets/logo.svg')" alt="" max-height="150" max-width="150" />
                     </div>
                 </template>
             </v-navigation-drawer>
         </div>
-        <v-content>
+        <v-content style="padding-bottom: 16px !important;">
             <router-view/>
         </v-content>
         <v-footer
@@ -72,7 +72,7 @@
                 align="end">
                     
                     <v-img :src="require('./assets/logo.svg')" max-height="70" max-width="70" />
-                    <div style="padding: 16px; color: white;" class="logo"> UP Movement </div>
+                    <div style="padding: 16px; padding-bottom: 10px; color: white;" class="footer-logo"> UP MOVEMENT </div>
                    
                 </v-row>
             </v-col>
@@ -379,6 +379,10 @@ html, body {
     background: linear-gradient(to right, black, black, black) !important;
 }
 
+.v-footer--absolute {
+    position: relative !important;
+}
+
 
 div.nav-drawer-footer-logo {
     padding-top: 32px;
@@ -401,6 +405,15 @@ div.nav-drawer-footer-logo {
         font-weight: 700;
         line-height: 1.33em;
     align-self: left !important;
+}
+
+.footer-logo {
+    font-family: 'Montserrat', sans-serif;
+        font-weight: 800;
+        font-size: 2rem;
+        line-height: 1.33em;
+        word-break: keep-all;
+        letter-spacing: .08em;
 }
 
 </style>
