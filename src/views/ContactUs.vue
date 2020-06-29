@@ -9,7 +9,7 @@
                     <v-img style="margin: auto;" :contain="true" :src="require('../assets/logo.svg')" height="250" width="250" />
                     <div style="padding: 16px;"> Contact us! </div>
                     <div style="padding: 16px;" class="subtitle"> You can reach us at up info@upmovement.org </div>
-                </div><br><br>
+                </div><br><br><br><br>
 
             </v-col>
         </v-row>
@@ -34,15 +34,36 @@ export default {
 .logo {
     font-family: 'Montserrat', sans-serif;
         font-weight: 700;
-        font-size: 200%;
+        font-size: 4rem;
         line-height: 1.33em;
+        color: black
 }
 
 .subtitle {
     font-family: 'Montserrat', sans-serif;
         font-weight: 700;
-        font-size: 70%;
+        font-size: 2rem;
         line-height: 1.33em;
 }
+
+/* xs devices (phones, 430px width and down) */
+    @media only screen and (max-width: 560px) {
+
+        .subtitle {
+            font-size: 1.5rem;
+        }
+    }
+
+    /* xxs devices (phones, 430px width and down) */
+    @media only screen and (max-width: 370px) {
+
+        .logo {
+            font-size: 2.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+        }
+    }
 
 </style>

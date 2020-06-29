@@ -61,6 +61,7 @@ export default {
         font-weight: 700;
         font-size: 200%;
         line-height: 1.33em;
+        color: black;
 }
 
 .subtitle {
