@@ -28,7 +28,7 @@
                         <div class="subtitle-text" style="text-align: left"> 
                             <div> We aim to partner with organizations that are the hands and feet in the battle to end human trafficking,
                             supporting them financially and covering them in prayer.
-                            Below are some of the organizations that our prayer warriors have given too. </div>
+                            Below are some of the organizations that our prayer warriors have financially supported. </div>
                         </div>
                     </div>
                 </v-col>
