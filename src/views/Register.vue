@@ -461,13 +461,14 @@
 
                         <br>
 
-                    <v-row>
+                    <v-row v-if="error">
                         <v-col>
-                            <v-alert v-if="error" type="error">{{error}}</v-alert>
+                            <v-alert type="error">{{error}}</v-alert>
                         </v-col>
-
+                    </v-row>
+                    <v-row v-if="submitStatus == 'ERROR'">
                         <v-col>
-                            <v-alert v-if="submitStatus == 'ERROR'" type="error">Something broke</v-alert>
+                            <v-alert type="error">Something broke</v-alert>
                         </v-col>
                     </v-row>
 
@@ -747,7 +748,7 @@ export default {
                     });
 
                 } else {
-                    UPClient.createReservations(this.email, this.countryCode, this.districtCode, slotsNumeric, () => {
+                    UPClient.createReservations(this.email, this.countryCode, this.districtCode, "", slotsNumeric, () => {
                     this.$router.replace({ path: 'thankyou' });
                     this.$v.$reset()
                     this.email = '';
