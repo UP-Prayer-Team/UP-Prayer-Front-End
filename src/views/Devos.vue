@@ -18,10 +18,10 @@
             <v-col align-self="start">
             <div class="title">
                 <div class="page-header" style="text-align: left">
-                            5 Day Devotional
+                    5 Day Devotional
                 </div>
                 <div class="subtitle-text" style="text-align: left"> 
-                    <div> We encourge you to start this devotional 5 days before your prayer time to position your heart to pull heaven to earth. </div> 
+                    <div> We encourage you to start this devotional 5 days before your prayer time. </div> 
                 </div>
             </div>
             </v-col>
