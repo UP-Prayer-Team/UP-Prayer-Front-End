@@ -116,8 +116,6 @@
                                 engage in this way. </div>
                                 <div> We say to the industry of trafficking, "Get ready to encounter this Glory-King!"
                                     The Lord, armed and ready for battle, the Mighty One, invincible in every way!" (Psalm 24:7-8). </div>
-
-
                             </div>
                         
                         </v-card-text>
@@ -221,8 +219,8 @@ export default {
         border-radius: 0px !important;
     }
 
-    .theme--light.v-card.v-card--outlined {
-        border: white;
+    .theme--light.v-card {
+        border: white !important;
     }
 
     .banner {

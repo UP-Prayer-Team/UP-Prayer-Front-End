@@ -5,6 +5,7 @@
             elevate-on-scroll
             fixed
             :height="82"
+            color="white"
             class="hidden-sm-and-down">
                 <v-spacer></v-spacer>
                 <v-tabs 
@@ -24,6 +25,7 @@
             <v-app-bar
             elevate-on-scroll
             fixed
+            color="white"
             :height="82"
             class="hidden-md-and-up">
                 <v-tab @click="toHome"> <v-img :contain="true" :src="require('./assets/logo.svg')" height="50" width="50" /> </v-tab>
