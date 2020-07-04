@@ -55,8 +55,8 @@
                 :md="6">
                     <v-card 
                     :outlined="true"
-                    min-height="300"
-                    min-width="300"
+                    min-height="280"
+                    min-width="280"
                     style="padding-top: 0px; padding-bottom: 0px; float: left;">
                         <v-img alt="" :src="require('../assets/Flower_Mountain.png')" />
                     </v-card>
@@ -66,8 +66,8 @@
                 :md="6">
                     <v-card 
                     :outlined="true"
-                    min-height="300"
-                    min-width="300"
+                    min-height="280"
+                    min-width="280"
                     style="padding-top: 0px; padding-bottom: 0px; float: left;">
                         <v-img alt="" :src="require('../assets/Tear.png')" />
                     </v-card>
@@ -323,6 +323,17 @@ export default {
         padding: 16px;
     }
 
+    @media only screen and (max-width: 630px) {
+        .landing-text {
+        font-size: 3rem;
+        }
+
+        .resource-title {
+            font-size: 4rem; // 54pt
+        }
+    }
+
+
     /* xs devices (phones, 430px width and down) */
     @media only screen and (max-width: 560px) {
 
@@ -338,7 +349,7 @@ export default {
         font-family: 'Montserrat', sans-serif;
         text-align: left;
         color: black;
-        font-size: 4.1777rem; // 54pt
+        font-size: 3.8rem; // 54pt
         font-weight: 900;
         line-height: 1em;
         }
@@ -369,34 +380,46 @@ export default {
         }
     }
 
+    @media only screen and (max-width: 420px) {
+
+        .banner-text {
+            font-size: 1.3em;
+        }
+
+        .landing-text {
+        font-size: 2.25rem;
+        }
+        .resource-title {
+            font-size: 3.5rem; // 54pt
+        }
+    }
+
+     @media only screen and (max-width: 390px) {
+
+        .landing-text {
+        font-size: 2.15rem;
+        }
+    }
+
     /* xxs devices (phones, 430px width and down) */
     @media only screen and (max-width: 370px) {
 
         .landing-text {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 800;
-        letter-spacing: .1em;
-        font-size: 2.35rem;
+        font-size: 2rem;
+        }
+
+        .banner-text {
+        font-size: 1.1em;
         }
 
 
         .resource-title {
-        font-family: 'Montserrat', sans-serif;
-        text-align: left;
-        color: black;
-        font-size: 3.6777rem; // 54pt
-        font-weight: 900;
-        line-height: 1em;
+        font-size: 3.2rem; // 54pt
         }
 
         .resource-subtitle {
-            font-family: 'Montserrat', sans-serif;
-            text-align: left;
-            color: black !important;
-            font-size: 2.5rem; // 40pt
-            font-weight: 700;
-            line-height: 1.0em;
-            padding-top: 32px !important;
+        
+            font-size: 2.2rem; // 40pt
         }
     }
 </style>
