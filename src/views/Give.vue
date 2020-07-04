@@ -1,14 +1,14 @@
 <template>
 
     <v-container class="give">
-        <v-row>
+        <v-row style="padding-bottom: 0px !important;">
             <v-col
             cols="12"
             style="padding-bottom: 0px;">
 
                 <div class="logo">
                     <v-img style="margin: auto;" :contain="true" :src="require('../assets/logo.svg')" height="200" width="200" />
-                    <div style="padding: 16px; padding-top: 32px;"> 
+                    <div style="padding: 16px; padding-top: 32px; padding-bottom: 0px !important;" > 
                         <div>The UP Movement operates as a non-profit. </div>
                         <div class="subtitle"> If you wish to give directly toward UP activity costs, please do so here. </div> 
                     </div>
@@ -21,7 +21,7 @@
                 cols="12">
                     <v-sheet :max-height="460">
   
-                        <v-container>
+                        
                             <v-row>
                                 <v-col cols="12">
                                 
@@ -42,10 +42,11 @@
                             <v-row> 
                                 <v-col
                                 cols="12"> 
-                                    <div class="fine-print"> If you wish to give an amount not listed you can reach out to us at info@upmovement.org </div><br><br>
+                                    <div class="fine-print"><div> If you wish to give an amount not listed please contact us at info@upmovement.org </div> 
+                                    <div> Unstoppable Prayer Movement is a tax-deductible, 501(3)c non-profit organization </div></div><br><br>
                                 </v-col>
                             </v-row>
-                        </v-container>
+                        
                     </v-sheet>
                 </v-col>
             </v-row>

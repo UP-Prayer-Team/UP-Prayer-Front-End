@@ -4,13 +4,10 @@
         <v-row>
             <v-col
             cols="12">
-
                 <div class="logo">
                     <v-img style="margin: auto;" :contain="true" :src="require('../assets/logo.svg')" height="250" width="250" />
                     <div style="padding: 16px;"> Thank you for believing with us and giving to our mission! </div>
-                    <div style="max-width: 250px; margin: 0 auto; padding-top: 24px;"> <v-img src="https://media.giphy.com/media/AwLhdQZ229gRi/giphy.gif"> </v-img> </div>
                 </div><br><br>
-
             </v-col>
         </v-row>
     </v-container>
