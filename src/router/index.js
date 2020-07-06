@@ -39,7 +39,7 @@ const routes = [
     },
     {
         path: '/updates/:id', 
-        name: 'blog',
+        name: 'updates',
         component: Blog,
         tabText: 'Updates',
         drawerIcon: 'chevron_right'

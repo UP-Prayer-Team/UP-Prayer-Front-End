@@ -231,14 +231,15 @@
 
                                     <v-card>
                                         
-                                        <v-card-text>
                                         <v-container>
                                             <v-row>
                                                 <v-col cols="12"> 
                                                     <span>Suggest an organization</span>
                                                 </v-col>
 
-                                            <v-col cols="12">
+                                                <v-col><h3> Email your suggestion to info@upmovement.org and we will take a look at it!</h3></v-col>
+
+                                            <!-- <v-col cols="12">
                                                 <v-text-field
                                                 v-model="email"
                                                 label="Email*" 
@@ -252,15 +253,14 @@
                                                 persistent
                                                 filled
                                                 ></v-text-field>
-                                            </v-col>
+                                            </v-col> -->
                                             </v-row>
                                         </v-container>
-                                        <small>*indicates required field</small>
-                                        </v-card-text>
+                                        <!-- <small>*indicates required field</small> -->
                                         <v-card-actions>
                                         <v-spacer></v-spacer>
-                                        <v-btn color="blue darken-1" text @click="dialog = false">Cancel</v-btn>
-                                        <v-btn color="blue darken-1" text @click="suggest">Submit Request</v-btn>
+                                        <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
+                                        <!-- <v-btn color="blue darken-1" text @click="suggest">Submit Request</v-btn> -->
                                         </v-card-actions>
                                     </v-card>
                                     </v-dialog>
@@ -442,7 +442,7 @@
                             </div>
                             </v-card>
                             
-                            <div style="padding: 16px;">
+                            <div class="submit-button">
                                 <v-btn 
                                 @click="submit" 
                                 :loading="submitStatus == 'PENDING'" 
@@ -842,7 +842,10 @@ export default {
   }
 }
 
-
+.submit-button {
+    padding-top: 16px; 
+    padding-bottom: 16px;
+}
 
 .v-toolbar__title {
     margin-left: 1rem;
