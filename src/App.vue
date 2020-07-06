@@ -213,7 +213,7 @@ export default {
                 {
                     text: 'Updates',
                     disabled: false,
-                    to: 'blog',
+                    to: 'updates:id',
                     
                 },
                 {
