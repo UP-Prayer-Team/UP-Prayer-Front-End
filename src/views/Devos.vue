@@ -134,7 +134,7 @@
 export default {
     data() {
         return {
-            bannerSrc: require('../assets/devo.jpg'),
+            bannerSrc: require('../assets/PrayerGuide-min.jpg'),
         }
     },
     mounted () {
