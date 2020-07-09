@@ -8,7 +8,7 @@
                     <div class="logo">
                         <v-img style="margin: auto;" :contain="true" :src="require('../assets/logo.svg')" height="250" width="250" />
                         <div style="padding: 16px;"> {{ message }} </div>
-                        <div style="padding: 16px;" class="subtitle"> You have signed up to pray at the following times: 
+                        <div style="padding: 16px;" class="subtitle"> You have signed up to pray on the following days: 
                         </div>
                         <ul style="list-style-type:none">
                             <li v-for="(slot, i) in confirmedSlots" v-bind:key="i">
