@@ -172,7 +172,7 @@
 export default {
     data() {
         return {
-            bannerSrc: require('../assets/placeholder3.jpg'),
+            bannerSrc: require('../assets/PrayerGuide-min.jpg'),
         }
     },
     mounted () {

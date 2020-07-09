@@ -110,7 +110,7 @@ export default {
             endorsements: [
 
             ],
-            bannerSrc: require('../assets/placeholder.jpg')
+            bannerSrc: require('../assets/Frontlines-min.jpg')
         };
     },
     mounted() {
