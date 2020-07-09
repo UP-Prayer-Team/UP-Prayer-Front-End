@@ -10,7 +10,7 @@
                         <div style="padding: 16px;"> {{ message }} </div>
                         <div style="padding: 16px;" class="subtitle"> You have signed up to pray at the following times: 
                         </div>
-                        <ul>
+                        <ul style="list-style-type:none">
                             <li v-for="(slot, i) in confirmedSlots" v-bind:key="i">
                                 {{ slot.year }}-{{ (slot.monthIndex + 1).toString().padStart(2, '0') }}-{{ (slot.dayIndex + 1).toString().padStart(2, '0') }}
                             </li>
@@ -59,15 +59,14 @@ export default {
 .logo {
     font-family: 'Montserrat', sans-serif;
         font-weight: 700;
-        font-size: 200%;
+        font-size: 3.5rem;
         line-height: 1.33em;
-        color: black;
 }
 
 .subtitle {
     font-family: 'Montserrat', sans-serif;
         font-weight: 700;
-        font-size: 70%;
+        font-size: 2rem;
         line-height: 1.33em;
 }
 
