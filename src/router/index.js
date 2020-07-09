@@ -38,7 +38,7 @@ const routes = [
         drawerIcon: 'chevron_right'
     },
     {
-        path: '/updates/:id', 
+        path: '/updates', 
         name: 'updates',
         component: Blog,
         tabText: 'Updates',

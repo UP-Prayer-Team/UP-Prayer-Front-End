@@ -71,11 +71,9 @@
             cols="12">
                 <v-row
                 justify="center"
-                align="end">
-                    
+                align="end"> 
                     <v-img :src="require('./assets/logo.svg')" max-height="70" max-width="70" />
                     <div style="padding: 16px; padding-bottom: 10px; color: white;" class="footer-logo"> UP MOVEMENT </div>
-                   
                 </v-row>
             </v-col>
         </v-row>
@@ -213,7 +211,7 @@ export default {
                 {
                     text: 'Updates',
                     disabled: false,
-                    to: 'updates:id',
+                    to: 'updates',
                     
                 },
                 {
@@ -287,11 +285,6 @@ export default {
     },
     mounted() {
         this.updateActiveTab();
-        UPClient.listPosts(posts => {
-            this.latestBlogID = posts.length > 0 ? posts[0].id : null;
-        }, message => {
-            console.log("Couldn't get latest blog post: " + message);
-        });
     },
     watch: {
         $route(_, __) {
@@ -416,6 +409,14 @@ div.nav-drawer-footer-logo {
         line-height: 1.33em;
         word-break: keep-all;
         letter-spacing: .08em;
+}
+
+.logo {
+    font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 3.5rem;
+        line-height: 1.33em;
+        color: black;
 }
 
 </style>
