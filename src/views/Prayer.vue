@@ -42,7 +42,7 @@
                     <v-expansion-panel-header
                     color="transparent">
                         <div class="header" style="text-align: left">
-                            Worship and Prayer over those praying before me
+                            Worship and Prayer over Those Praying Before Me
                         </div><br>
                     </v-expansion-panel-header>
                     <v-expansion-panel-content
@@ -108,7 +108,7 @@
                     <v-expansion-panel-header
                     color="transparent">
                         <div class="header" style="text-align: left">
-                            Those fighting on the ground level
+                            Those Fighting on the Ground Level
                         </div><br>
                     </v-expansion-panel-header>
                     <v-expansion-panel-content
@@ -127,7 +127,7 @@
                     <v-expansion-panel-header
                     color="transparent">
                         <div class="header" style="text-align: left">
-                            Those who buy and sell people
+                            Those Who Buy and Sell People
                         </div><br>
                     </v-expansion-panel-header>
                     <v-expansion-panel-content
@@ -137,7 +137,7 @@
                             <div> Reveal the deep things of darkness and people involved in the trafficking industry. Bring utter darkness into the light. (Job 12:22) </div><br>
                             <div> Pursue your enemies and crush the human trafficking industry. Do not turn back until it is destroyed. Crush it completely so it cannot rise. May it fall beneath your feet. </div><br>
                             <div> Arm us with strength for battle and humble our adversaries before us. You make those who buy and sell others turn their backs in flight. You destroy your foes. They cry for help, but there is no one to save this industry. Beat this industry as fine as the dust of the earth; pound and trample it like mud in the streets. May each individual who buys and sells others lose heart and come trembling from their strongholds. (II Samuel 22:38-46) </div><br>
-                            <div> At the same time our hearts cry out for justice to come to each of those who have bought and sold others, we also know mercy triumphs over judgment. You have judged the enemy of our souls and gained victory for each of us on the cross. Call these people into repentance, Lord. May they truly have a change of heart and turn to you. Your mercy triumphs over judgement. May they know eternal mercy even as they experience the judgment of earth. </div>
+                            <div> At the same time our hearts cry out for justice to come to each of those who have bought and sold others, we also know mercy triumphs over judgment. You have judged the enemy of our souls and gained victory for each of us on the cross. Call these people into repentance, Lord. May they truly have a change of heart and turn to you. Your mercy triumphs over judgment. May they know eternal mercy even as they experience the judgment of earth. </div>
                         </div>
                     </v-expansion-panel-content>
                 </v-expansion-panel>
@@ -146,7 +146,7 @@
                      <v-expansion-panel-header
                      color="transparent">
                     <div class="header" style="text-align: left">
-                        Praise and Protection for those praying after me
+                        Praise and Protection for Those Praying After Me
                     </div><br>
                      </v-expansion-panel-header>
                     <v-expansion-panel-content
@@ -156,7 +156,7 @@
                             <div> Therefore we praise you, Lord, among the nations. We sing the praises of your name. You give us great victories. You show unfailing kindness to us and to those for whom we are praying. (II Samuel 22:47-51) </div><br>
                             <div> You will save each one who has been trafficked, God! We praise you in advance for gathering them and delivering them from captivity. We give thanks to your holy name and glory in your praise. Praise be to you, Lord, the God of each of us, from everlasting to everlasting. (I Chronicles 16:35-36) </div><br>
                             <div> We cut off any bitterness, rage, anger, slander, and all forms of negativity from this time of intercession. We close any opening to the enemy created in our spirits as we prayed. We lock them up and seal them with the blood of Jesus shed on the cross for each of us. </div><br>
-                            <div> We release each person who has trafficked others or been involved in the human trafficking industry from our judgement and expections. We give up our right to judge them. Because of your love and the redemption you offer to each of them, woo them with your kindness. We bless and do not curse them. May your kindness lead to redemption for millions of people in the human trafficking industry. Let them be part of your billion soul harvest, leading to revival throughout the world! </div><br>
+                            <div> We release each person who has trafficked others or been involved in the human trafficking industry from our judgment and expectations. We give up our right to judge them. Because of your love and the redemption you offer to each of them, woo them with your kindness. We bless and do not curse them. May your kindness lead to redemption for millions of people in the human trafficking industry. Let them be part of your billion soul harvest, leading to revival throughout the world! </div><br>
                             <div> Pour your anointing on those who are praying next. Surround them with a wall of holy fire as protection over each of them and those they love. We recognize we are joining heavenly forces in this unstoppable prayer movement. Keep each of us who have prayed, who are praying and who will pray safe physically, mentally, spiritually and emotionally. We trust you and place our lives in your hands. </div>
                         </div>
                     </v-expansion-panel-content>
