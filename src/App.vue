@@ -54,9 +54,9 @@
                 </template>
             </v-navigation-drawer>
         </div>
-        <v-content style="padding-bottom: 16px !important;">
+        <v-main style="padding-bottom: 16px !important;">
             <router-view/>
-        </v-content>
+        </v-main>
         <v-footer
         :absolute="true"
         :padless="true"
@@ -321,7 +321,7 @@ export default {
     font-family: 'Inter', sans-serif !important;
 }
 
-.v-content {
+.v-main {
     padding: 0;
     margin-top: 30px;
 }
@@ -358,7 +358,7 @@ html, body {
     background-color: white !important;
 }
 
-.v-content {
+.v-main {
     margin-top: 0px;
 }
 
