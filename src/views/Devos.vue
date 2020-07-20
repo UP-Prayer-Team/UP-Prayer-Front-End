@@ -4,10 +4,6 @@
         <div class="landing-wrapper">
             <v-sheet>
                 <v-img :max-height="430" position="center" :src="bannerSrc"> 
-
-                    <div class="landing-text">
-                        <div> Devotionals </div>
-                    </div>
                 </v-img>
             </v-sheet>
         </div>
@@ -134,7 +130,7 @@
 export default {
     data() {
         return {
-            bannerSrc: require('../assets/PrayerGuide-min.jpg'),
+            bannerSrc: require('../assets/Devos_UPMovement.jpg'),
         }
     },
     mounted () {
