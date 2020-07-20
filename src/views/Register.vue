@@ -45,7 +45,7 @@
                     >
                         <v-row class="form-row" id="scroll-to">
                                 <v-text-field 
-                                v-model="email" 
+                                v-model.trim="email" 
                                 :error-messages="emailErrors"
                                 label="Email" 
                                 required
@@ -705,7 +705,6 @@ export default {
         },
         suggest() {
 
-        
         },
         contactStep() {
             if (this.$v.email.$anyError || !this.$v.email.$dirty || this.$v.countryCode.$anyError || this.$v.districtCode.$anyError) {
