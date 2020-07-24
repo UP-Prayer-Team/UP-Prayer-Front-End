@@ -3,144 +3,102 @@
 
         <div class="landing-wrapper">
             <div>
-            <v-sheet
-            color="#ededee"
-            class="footer-sheet">
-            </v-sheet>
-            <div class="up-footer">
-                    <v-img :contain="true" alt="" :src="upsrc"> </v-img>
+                <v-sheet
+                color="#ededee"
+                class="footer-sheet">
+                </v-sheet>
+                <div class="about-image">
+                    <v-img :contain="true" alt="" position="left" :src="aboutsrc" style="max-height: 100% !important;"> </v-img>
+                </div>
             </div>
-            <div class="movement-footer"> <v-img :contain="true" :src="movementsrc"> </v-img> </div>
-        </div>
-
         </div>
 
         <v-container>
-            <v-row
-            style="padding-top: 24px; padding-bottom: 24px;">
-                <v-col
-                v-for="n in 1"
-                :key="n"
-                cols="12"
-                md="6"
-                align-self="center"
-                style="padding-top: 24px; padding-bottom: 24px;"
-                >
-                    <div class="belief-wrapper">
+            <v-row>
+                <v-col data-aos="fade-in">
+                    <v-row align="center" justify="center" style="padding: 16px;">
                         <div class="belief"> Freedom for captives </div>
-                    </div>
+                    </v-row>
+                    <v-row align="center" justify="center" style="padding: 16px;">
+                        <div>
+                            <div class="vision-subtitle"> Our Vison </div>
+                            <div class="vision-body"> We partner with God to bring Heaven's priorities to Earth today. We believe we will see an end to human trafficking as believers around the globe unite in focused prayer. </div>
+                        </div>
+                    </v-row>
                 </v-col>
-                    <v-spacer> </v-spacer>
-                <v-col
-                v-for="n in 1"
-                :key="n"
-                cols="12"
-                md="5"
-                align-self="center"
-                class="row-padding">
-                    <div class="belief-wrapper"> 
-                        <div class="vision-subtitle"> Our Vison</div>
-                        <div class="vision-body"> We partner with God to bring Heaven's priorities to Earth today. We believe we will see an end to human trafficking as believers around the globe unite in focused prayer. </div>
-                    </div>
-
-                </v-col>
-                <!-- <v-col class="ml-auto"></v-col> -->
             </v-row>
 
             <v-row>
-                
-                <v-col
-                v-for="n in 1"
-                :key="n"
-                cols="12"
-                md="5"
-                align-self="center"
-                order-sm="1"
-                style="padding-top: 24px; padding-bottom: 24px;"
-                >
-                    <div class="belief-wrapper">
+                <v-col data-aos="fade-in">
+                    <v-row align="center" justify="center" style="padding: 16px;">
                         <div class="mission"> 30/$30 </div>
-                    </div>
+                    </v-row>
+                    <v-row align="center" justify="center" style="padding: 16px;">
+                        <div>
+                            <div class="vision-subtitle"> Our Mission </div>
+                            <div class="vision-body"> With thirty minutes of prayer and thirty dollars donated to an anti-trafficking organization, we will see walls fall down.</div>
+                        </div>
+                    </v-row>
                 </v-col>
-                
-                <v-col
-                v-for="n in 1"
-                :key="n"
-                cols="12"
-                md="5"
-                align-self="center"
-                order-sm="2"
-                order-md="0"
-                class="row-padding"
-                >
-                    <div class="belief-wrapper"> 
-                        <div class="vision-subtitle"> Our Mission </div>
-                        <div class="vision-body"> With thirty minutes of prayer and thirty dollars donated to an anti-trafficking organization, we will see walls fall down.</div>
-                    </div>
-                </v-col>
-                <v-spacer></v-spacer>
             </v-row>
 
             <v-row
             align="start"
+            justify="center"
+            style="padding: 16px;"
             >
-
                 <v-col
-                v-for="n in 1"
-                :key="n"
-                cols="12"
-                md="5"
                 align-self="center"
                 style="padding-top: 24px; padding-bottom: 24px;"
                 >
                 <div class="founder-wrapper"> 
                     <v-img class="founder" max-width="500" position="center center" :contain="true" :src="foundersrc"> </v-img>
                 </div>
-                </v-col>
-                 
-                 <v-spacer></v-spacer>
-                 <v-col
-                    v-for="n in 1"
-                    :key="n"
-                    cols="12"
-                    md="5"
-                    align-self="center"
-                    style="padding-top: 24px; padding-bottom: 24px;">
 
-                    <div> 
-                    <div class="vision-subtitle"> Our Founder</div>
+                <div> 
+                <div class="vision-subtitle"> Our Founder</div>
 
-                    <div class="quote-body">I truly believe God is able to do immeasurably more than we can ask or imagine and I want to discover what we can accomplish when we come together in unity and focus on a specific issue. Passionate, united prayer is powerful beyond measure. We will see the Kingdom released on earth as we band together in alignment with the heart of Jesus. He came to set the captives free and his glory will be revealed as he does this! May our united prayer be the tipping point so we see captives and slaves literally set free. </div>
-                    <div class="vision-footer"> -Lecia Retter </div>
-                    </div>
+                <div class="quote-body">I truly believe God is able to do immeasurably more than we can ask or imagine and I want to discover what we can accomplish when we come together in unity and focus on a specific issue. Passionate, united prayer is powerful beyond measure. We will see the Kingdom released on earth as we band together in alignment with the heart of Jesus. He came to set the captives free and his glory will be revealed as he does this! May our united prayer be the tipping point so we see captives and slaves literally set free. </div>
+                <div class="vision-footer"> -Lecia Retter </div>
+                </div>
                 </v-col>
-                 
-                <!-- <v-spacer></v-spacer> -->
-                
             </v-row>
-
         </v-container>
+
+
+        <!-- <v-img alt="" :src="require('../assets/grey-logo.svg')" style="max-width: 80%;" /> -->
     </div>
 </template>
 
 <script>
+
 export default {
   data() {
     return {
       foundersrc: require('../assets/_GFU9977.jpg'),
-      upsrc: require('../assets/up.png'),
-      movementsrc: require('../assets/Movement.png')
+      aboutsrc: require('../assets/about_up.png'),
     }
   },
   mounted () {
     window.scrollTo(0, 0);
-}
+  },
+  
 }
 </script>
 
 <style lang="scss" scoped>
 .about {
     margin-top: 82px;
+}
+
+.about-image {
+    height: 90vh;
+}
+
+ @media only screen and (max-width: 959px) {
+    .about-image {
+    height: 100% !important;
+    }
 }
 
 .landing-text {
@@ -163,18 +121,18 @@ export default {
 
 .belief {
     font-family: 'Montserrat', sans-serif;
-        text-align: left;
+        text-align: center;
         color: black;
-        font-size: 4.2rem; // 54pt
+        font-size: 4.6rem;
         font-weight: 900;
         line-height: 1.1em;
 }
 
 .mission {
     font-family: 'Montserrat', sans-serif;
-        text-align: left;
+        text-align: center;
         color: black;
-        font-size: 4.6rem; // 54pt
+        font-size: 5rem;
         font-weight: 900;
         line-height: 1em;
         // margin: auto;
@@ -183,11 +141,12 @@ export default {
 
 .vision-subtitle {
     font-family: 'Montserrat', sans-serif;
-        text-align: left;
+        text-align: center;
         color: black !important;
         font-size: 1.33333rem; // 40pt
         font-weight: 700;
         line-height: 1.0em;
+    display: block;
 }
 
 .vision-footer {
@@ -201,7 +160,7 @@ export default {
 
 .vision-body {
     font-family: 'Inter', sans-serif;
-        text-align: left;
+        text-align: center;
         color: black !important;
         font-size: 1.1rem; // 16pt
         padding-top: 16px;
@@ -222,8 +181,7 @@ export default {
 .founder {
     margin-top: 16px;
     margin-bottom: 16px;
-    // text-align: left;
-    // margin: auto;
+    margin: auto;
 }
 
 .v-card {
@@ -246,9 +204,6 @@ export default {
     border-radius: 0px !important;
 }
 
-.up-footer {
-    margin-right: 33.33%;
-}
 .movement-footer {
     margin-left: 2.5%;
     margin-right: 17%;
@@ -262,52 +217,25 @@ export default {
 .founder-wrapper {
     padding-top: 24px;
     padding-bottom: 24px;
+
 }
-
-/* 950px width and down */
-    @media  (max-width: 959px) {
-        .row-padding {
-            padding-top: 16px;
-            padding-bottom: 0px;
-        }
-
-        .mission {
-            text-align: center;
-        }
-        .vision-subtitle {
-            text-align: center;
-        }
-
-        .vision-body {
-            text-align: center;
-            padding-left: 5%;
-            padding-right: 5%;
-        }
-
-        .belief {
-            text-align: center;
-        }
-
-        .founder {
-            margin: 0 auto;
-        }
-
-        .founder-wrapper {
-            padding-top: 40px;
-            padding-bottom: 0px;
-        }
-
-        .quote-body {
-            text-align: center;
-            padding-left: 5%;
-            padding-right: 5%;
-        }
-    }
 
     @media only screen and (max-width: 460px) {
         .belief {
-            font-size: 3.8rem;
+            font-size: 3rem;
         }
+
+        .mission {
+            font-size: 3rem;
+        }
+    }
+
+    .theme--light.v-card {
+        border: white !important;
+    }
+
+    .background {
+        background: url('../assets/grey-logo.svg');
     }
 
 </style>
