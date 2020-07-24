@@ -57,7 +57,8 @@
                     :outlined="true"
                     min-height="280"
                     min-width="280"
-                    style="padding-top: 0px; padding-bottom: 0px; float: left;">
+                    style="padding-top: 0px; padding-bottom: 0px; float: left;"
+                    data-aos="fade-in">
                         <v-img alt="" :src="require('../assets/Flower_Mountain.png')" />
                     </v-card>
                 </v-col>
@@ -68,7 +69,8 @@
                     :outlined="true"
                     min-height="280"
                     min-width="280"
-                    style="padding-top: 0px; padding-bottom: 0px; float: left;">
+                    style="padding-top: 0px; padding-bottom: 0px; float: left;"
+                    data-aos="fade-in">
                         <v-img alt="" :src="require('../assets/Tear.png')" />
                     </v-card>
                 </v-col>
@@ -83,10 +85,10 @@
 
                     <v-card
                     :outlined="true"
-                    class="logo-card"> 
+                    class="logo-card"
+                    data-aos="fade-in"> 
                         <v-card-title>
                         </v-card-title>
-                        
                         <v-card-text> <v-img alt="" :src="require('../assets/logo.svg')" />
                         </v-card-text>
                     </v-card>
@@ -98,7 +100,8 @@
                     <div class="resource-card-wrapper">
                     <v-card
                     :outlined="true"
-                    class="resource">
+                    class="resource"
+                    data-aos="fade-in">
                         <v-card-title class="resource-title">
                             Freedom found in prayer
                         </v-card-title>
