@@ -2,7 +2,8 @@
     <div>
         <div class="endo-title">{{endorsement.name}}</div>
         <div class="endo-link">
-            <a v-bind:href="endorsement.homepageURL">{{endorsement.homepageURL}}</a>
+            <!-- <a v-bind:href="endorsement.homepageURL">{{endorsement.homepageURL}}</a> -->
+            <img v-bind:src="endorsement.donateURL">
         </div>
     </div>
 
@@ -24,6 +25,10 @@ export default {
 
 .v-application a {
     color: #1565C0 !important;
+}
+
+img {
+     max-height: 50px !important;
 }
 
 .endo-title {
