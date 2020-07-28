@@ -64,17 +64,17 @@ export default {
     },
     data() {
         return {
-            price5: 'price_1GxGmYDSETweKl9n7Bnmh1Gl',
-            price10: 'price_1GxGmYDSETweKl9nrdkgQzow',
-            price25: 'price_1GxGmYDSETweKl9nFeFMCLjL',
-            price50: 'price_1GxGmYDSETweKl9nC0XCAStA',
-            price100: 'price_1GxGmYDSETweKl9n0dcutW49',
+            price5: 'price_1GxGwGDSETweKl9nC9Ax62Xu',
+            price10: 'price_1GxGwGDSETweKl9nAvZuoQDs',
+            price25: 'price_1GxGwGDSETweKl9nI379zO6f',
+            price50: 'price_1GxGwGDSETweKl9n4n6fmjEX',
+            price100: 'price_1GxGwGDSETweKl9nJSPJPHNE',
             price250: 'price_1GzQ3LDSETweKl9n9iuUAcCc',
         }
     },
     mounted () {
         window.scrollTo(0, 0);
-}
+    }
 }
 </script>
 
