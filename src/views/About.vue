@@ -13,7 +13,7 @@
             </div>
         </div>
 
-        <v-container>
+        <v-container style="margin-top: 16px;">
             <v-row>
                 <v-col data-aos="fade-in">
                     <v-row align="center" justify="center" style="padding: 16px;">
