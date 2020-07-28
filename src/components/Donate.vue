@@ -13,7 +13,7 @@
 
 <script>
 import { loadStripe } from '@stripe/stripe-js';
-const stripePromise = loadStripe('pk_test_51GsDP6DSETweKl9naTxFisLcIDO4mWlKaF9Rb9aWnKPwEgS5yQFtTbkMJD7KrG1eMhzJon9tLEtnyYIBwwb509c400cjFyAsXG');
+const stripePromise = loadStripe('pk_live_8CVRgAt7IgE8rLYLMsq0V11R00jQgfPzhm');
 
 export default {
 
