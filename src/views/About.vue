@@ -21,7 +21,7 @@
                     </v-row>
                     <v-row align="center" justify="center" style="padding: 16px;">
                         <div>
-                            <div class="vision-subtitle"> Our Vison </div>
+                            <div class="vision-subtitle"> Our Vision </div>
                             <div class="vision-body"> We partner with God to bring Heaven's priorities to Earth today. We believe we will see an end to human trafficking as believers around the globe unite in focused prayer. </div>
                         </div>
                     </v-row>
