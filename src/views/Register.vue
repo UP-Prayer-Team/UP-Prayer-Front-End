@@ -269,7 +269,7 @@
                             <v-row style="padding-bottom: 16px;"> 
                                 <v-checkbox 
                                 v-model="pledge"
-                                label="I will to donate $30 to my chosen Anti-Trafficking Organization"
+                                label="I will donate $30 to my chosen Anti-Trafficking Organization"
                                 color="#a300ff"
                                 hide-details
                                 style="padding-top: 16px; padding-bottom: 16px; margin-top: 0px !important;"
